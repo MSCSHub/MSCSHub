@@ -10,6 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module'
 import { HttpClientModule } from '@angular/common/http';
 import { SearchInputComponent } from './search/search-input/search-input.component';
+import { MenuComponent } from './navbar/menu/menu.component';
+import { LoginComponent } from './user/login/login.component';
+import { SettingsComponent } from './user/settings/settings.component';
+import { AdminComponent } from './user/admin/admin.component';
+import { CoursesComponent } from './courses/courses.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 
 @NgModule({
@@ -17,7 +23,13 @@ import { SearchInputComponent } from './search/search-input/search-input.compone
     AppComponent,
     DashboardComponent,
     NavbarComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    MenuComponent,
+    LoginComponent,
+    SettingsComponent,
+    AdminComponent,
+    CoursesComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +37,11 @@ import { SearchInputComponent } from './search/search-input/search-input.compone
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule
+  ],
+  entryComponents: [
+    LoginComponent,
+    SettingsComponent,
+    AdminComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
