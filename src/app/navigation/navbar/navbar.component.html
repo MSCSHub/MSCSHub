@@ -1,3 +1,6 @@
+<!-- <div *ngIf="isFetching" class="progress-bar-container">
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</div> -->
 <mat-toolbar color="primary" class="app-toolbar no-print">
     <mat-toolbar-row>
         <button mat-button class="hamburger" title="Docs menu">
@@ -6,7 +9,7 @@
         <a class="nav-link home" href="/">
             <img src="assets/images/logos/Colorwheel/Colorwheel-256.png" width="40" height="40" title="Home" alt="Home">
         </a>
-        <!-- <app-top-menu *ngIf="showTopMenu" [nodes]="topMenuNodes" [currentNode]="currentNodes?.TopBar"></aio-top-menu> -->
+        <app-nav-nodes></app-nav-nodes>
         <app-search-input class="search-container" #searchBox (onSearch)="doSearch($event)" (onFocus)="doSearch($event)"></app-search-input>
         <div class="toolbar-external-icons-container">
             <a href="https://utmscso.slack.com" title="Slack" aria-label="UT MSCSO on Slack">

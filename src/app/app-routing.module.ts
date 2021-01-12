@@ -11,16 +11,20 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: '/home',
+    path: 'home',
     component: DashboardComponent
   },
   {
-    path: '/courses',
+    path: 'courses',
     component: CoursesComponent
   },
   {
-    path: '/reviews',
+    path: 'reviews',
     component: ReviewsComponent
+  },
+  {
+    path: 'settings',
+    component: DashboardComponent
   }
 ];
 
