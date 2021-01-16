@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 })
 export class MenuComponent implements OnInit {
   public currentUrl: string = ''
-  isLoggedIn: boolean = true
+  isLoggedIn: boolean = false
   navInfo = {
     reviews: {
       title: 'Reviews',

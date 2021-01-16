@@ -35,7 +35,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { CustomIconRegistry, SVG_ICONS } from '../shared/custom-icon-registry';
+import { CustomIconRegistry, SVG_ICONS } from '../shared/custom-icons/custom-icon-registry';
 
 
 // These are the hardcoded inline svg sources to be used by the `<mat-icon>` component.

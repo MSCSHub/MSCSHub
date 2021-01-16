@@ -124,6 +124,10 @@
               "devServerTarget": "utmscs:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

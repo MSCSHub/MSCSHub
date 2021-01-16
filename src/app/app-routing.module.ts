@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { AdminComponent } from './user/admin/admin.component';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { SettingsComponent } from './user/settings/settings.component';
+import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 
 const routes: Routes = [
   {
@@ -12,20 +20,53 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: 'courses',
-    component: CoursesComponent
+    component: CoursesComponent,
+  },
+  {
+    path: 'course/:id',
+    component: CourseDetailComponent,
   },
   {
     path: 'reviews',
-    component: ReviewsComponent
+    component: ReviewsComponent,
+  },
+  {
+    path: 'review/:id',
+    component: ReviewDetailComponent,
   },
   {
     path: 'settings',
-    component: DashboardComponent
-  }
+    component: SettingsComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'logout',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'passwordReset',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'verifyEmail',
+    component: VerifyEmailComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+  },
 ];
 
 @NgModule({

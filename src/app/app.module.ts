@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,7 +22,12 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { AngularFireModule } from "@angular/fire"
 import { AngularFireAuthModule } from "@angular/fire/auth"
 import { AngularFirestoreModule } from "@angular/fire/firestore"
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
+import { RegisterComponent } from './user/register/register.component';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './user/verify-email/verify-email.component'
 
 
 @NgModule({
@@ -36,6 +42,11 @@ import { environment } from '../environments/environment'
     AdminComponent,
     CoursesComponent,
     ReviewsComponent,
+    CourseDetailComponent,
+    ReviewDetailComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,9 @@ import { environment } from '../environments/environment'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   // entryComponents: [
   //   LoginComponent,
