@@ -29,4 +29,9 @@
             <span class="nav-link-inner">{{ navInfo.login.title }}</span>
         </a>
     </li>
+    <li *ngIf="!isLoggedIn">
+        <a class="nav-link" routerLink="{{navInfo.register.url}}" [title]="navInfo.register.title">
+            <span class="nav-link-inner">{{ navInfo.register.title }}</span>
+        </a>
+    </li>
 </ul>

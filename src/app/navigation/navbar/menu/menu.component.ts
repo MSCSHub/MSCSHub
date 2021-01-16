@@ -33,7 +33,11 @@ export class MenuComponent implements OnInit {
     },
     home: {
       title: 'Home',
-      url: '/home'
+      url: '/home',
+    },
+    register: {
+      title: 'Register',
+      url: '/register',
     }
   }
 

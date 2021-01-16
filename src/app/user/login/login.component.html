@@ -1,39 +1,27 @@
-<p>login works!</p>
-<div class="col-md-6 offset-md-3 mt-5">
-    <div class="alert alert-info">
-        Username: test<br>
-        Password: test
-    </div>
-    <div class="card">
-        <h4 class="card-header">Login</h4>
-        <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" 
-                        formControlName="username" 
-                        class="form-control"
-                        [ngClass]="{'is-invalid': submitted && f.username.errors}"/>
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        Username is required
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" 
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Sign In</mat-card-title>
+        </mat-card-header>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field class="form-field-full-width">
+                    <input matInput placeholder="Email"
+                           formControlName="email"
+                           [ngClass]="{'is-invalid': submitted && f.email.errors}">
+                </mat-form-field>
+                <mat-form-field class="form-field-full-width">
+                    <input matInput type="password" 
                            formControlName="password" 
-                           class="form-control" 
-                           [ngClass]="{'is-invalid': submitted && f.username.errors}"/>
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        Password is required
-                    </div>
-                </div>
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login
-                </button>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-            </form>
-        </div>
-    </div>
+                           [ngClass]="{'is-invalid': submitted && f.email.errors}"
+                           placeholder="Password">
+                </mat-form-field>
+            </mat-card-content>
+            <button [disabled]="loading" mat-stroked-button color="accent" class="btn-block">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Sign In
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </form>
+    </mat-card>
 </div>
