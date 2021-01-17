@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IClass } from '../class';
 import { ClassService } from "../class.service";
 
 @Component({
@@ -9,9 +10,10 @@ import { ClassService } from "../class.service";
 export class CoursesComponent implements OnInit {
 
   constructor(private classService: ClassService) { }
-  allClasses = this.classService.getAllClasses();
+  public allClasses: IClass[] = [];
 
   ngOnInit(): void {
+    this.classService.getAllClasses().subscribe(data => this.allClasses = data);
   }
 
 }

@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "utmscs"
+  "defaultProject": "utmscs",
+  "cli": {
+    "analytics": false
+  }
 }
