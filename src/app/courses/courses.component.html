@@ -1,1 +1,5 @@
-<p>courses works!</p>
+<h2>Classes</h2>
+
+<div class="class-single" *ngFor="let class of allClasses | async">
+  <h3>{{class.data.ClassName}}</h3>
+</div>
