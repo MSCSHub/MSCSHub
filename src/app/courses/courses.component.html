@@ -1,7 +1,11 @@
 <h2>Classes</h2>
 
 <div class="class-single" *ngFor="let class of allClasses">
-  <h3>{{class.data.ClassName}}</h3>
+  <h3>
+    <a [title] = "class.data.ClassName" [routerLink]="['/courses', class.id]">
+      {{class.data.ClassName}}
+    </a>
+  </h3>
   <div>Difficulty: {{class.data.DifficultyAvg}}</div>
   <div>Workload (Hours Per Week): {{class.data.WorkloadAvg}}</div>
   <div>Rating (1-5): {{class.data.RatingAvg}}</div>

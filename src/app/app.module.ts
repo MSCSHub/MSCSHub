@@ -28,7 +28,9 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './user/verify-email/verify-email.component'
+import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
+import { SingleClassReviewsComponent } from './single-class-reviews/single-class-reviews.component'
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { VerifyEmailComponent } from './user/verify-email/verify-email.component
     RegisterComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    SingleClassReviewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import { VerifyEmailComponent } from './user/verify-email/verify-email.component
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    RouterModule.forRoot([{path: 'courses/:courseId', component: SingleClassReviewsComponent}]),
   ],
   // entryComponents: [
   //   LoginComponent,

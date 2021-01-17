@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IClass } from '../class';
+//Service
 import { ClassService } from "../class.service";
 
 @Component({
