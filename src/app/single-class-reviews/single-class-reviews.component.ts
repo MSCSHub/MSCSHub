@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 //Service
-import { ClassService } from "../class.service";
+import { ClassService } from "../services/classes/class.service";
 import { IReview } from '../review';
 
 @Component({

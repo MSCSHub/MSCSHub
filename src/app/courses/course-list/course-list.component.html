@@ -1,0 +1,51 @@
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" [trackBy]="trackById">
+
+  <ng-container matColumnDef="CourseNumber">
+    <th mat-header-cell *matHeaderCellDef>Course Number</th>
+    <td mat-cell *matCellDef="let class">{{class.CourseNumber}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="ClassName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Name</th>
+    <td mat-cell *matCellDef="let class">{{class.ClassName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="RatingCount">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Reviews</th>
+    <td mat-cell *matCellDef="let class">{{class.RatingCount}}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="RatingAvg">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Rating<br>(1-7)</th>
+    <td mat-cell *matCellDef="let class">{{class.RatingAvg | number: '1.1-1'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="DifficultyAvg">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Difficulty<br>(1-7)</th>
+    <td mat-cell *matCellDef="let class">{{class.DifficultyAvg | number: '1.1-1'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="WorkloadAvg">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Workload<br>(hrs/wk)</th>
+    <td mat-cell *matCellDef="let class">{{class.WorkloadAvg | number: '1.1-1'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="BookUsefulnessAvg">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="constrain-width">Book Usefulness<br>(1-7)</th>
+    <td mat-cell *matCellDef="let class">{{class.BookUsefulnessAvg | number: '1.1-1'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Semester">
+    <th mat-header-cell *matHeaderCellDef class="center">Semester</th>
+    <td mat-cell *matCellDef="let class" class="center constrain-width" matTooltip="{{class.semesters.toString().replaceAll(',','\n')}}" [matTooltipPosition]="'below'">
+      <mat-chip-list style="display: inline-block">
+        <mat-chip *ngIf="class.season.spring" class="my-chips spring">Spring</mat-chip>
+        <mat-chip *ngIf="class.season.summer" class="my-chips summer">Summer</mat-chip>
+        <mat-chip *ngIf="class.season.fall" class="my-chips fall">Fall</mat-chip>
+      </mat-chip-list>      
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/courses/', row.ClassName]"></tr>
+</table>

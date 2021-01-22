@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { IClass } from './class';
+import { IClass } from '../../class';
 import { Observable } from 'rxjs';
-import { IReview } from './review';
+import { IReview } from '../../review';
 
 @Injectable({
   providedIn: 'root'

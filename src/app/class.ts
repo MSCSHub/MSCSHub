@@ -8,7 +8,7 @@ export interface IClass {
     "RatingAvg":number,
     "BookUsefulnessCount":number,
     "ClassName":string,
-    "WorkloadCount":5,
+    "WorkloadCount": number,
     "Teacher":string,
     "BookUsefulnessAvg":number,
     "DifficultyCount":number

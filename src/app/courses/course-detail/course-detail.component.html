@@ -1,1 +1,31 @@
-<p>course-detail works!</p>
+<div class="content">
+  <div class="content2">
+    <div class="content3">
+      <div class="padded-cell white">
+        <h1 class="flat-bottom">{{courseName}}</h1>
+        <h3 class="white">({{courseNumber}})</h3>
+      </div>
+    </div>
+  </div>
+  <div class="grid-container">
+    <app-course-card *ngFor="let card of cards" [title]="card.title" [subtitle]="card.subtitle" [value]="card.value"></app-course-card>
+  </div>
+  <br>
+  <h2>Course Reviews:</h2>
+  <div class="review-container">
+    <mat-card *ngFor="let review of reviewData">
+      <mat-card-header>
+        <mat-card-title>{{courseName}}</mat-card-title>
+        <mat-card-subtitle>{{review?.timestamp || '1/1/2021 12:00:00 AM'}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        Rating: {{review.Rating}} <br>
+        Difficulty: {{review.Difficulty}} <br>
+        Workload: {{review.Workload}} <br>
+        Book Usefulness: {{review.BookUsefulness}}<br><br>
+        <b>Review:</b><br>
+        {{review.Review}}<br><br>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

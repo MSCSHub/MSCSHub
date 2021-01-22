@@ -31,6 +31,8 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { SingleClassReviewsComponent } from './single-class-reviews/single-class-reviews.component'
 import { RouterModule } from '@angular/router';
+import { CourseListComponent } from './courses/course-list/course-list.component';
+import { CourseCardComponent } from './courses/course-detail/course-card/course-card.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import { RouterModule } from '@angular/router';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     SingleClassReviewsComponent,
+    CourseListComponent,
+    CourseCardComponent,
   ],
   imports: [
     BrowserModule,
