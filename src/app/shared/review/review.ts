@@ -1,3 +1,5 @@
+import { Timestamp } from "rxjs";
+
 export interface Review {
   BookUsefulness: number,
   ClassId: string,
@@ -5,4 +7,5 @@ export interface Review {
   Rating: number,
   Review: string,
   Workload: number,
+  Timestamp?: Date
 }

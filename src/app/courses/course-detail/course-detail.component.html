@@ -16,7 +16,7 @@
     <mat-card *ngFor="let review of reviewData">
       <mat-card-header>
         <mat-card-title>{{courseName}}</mat-card-title>
-        <mat-card-subtitle>{{review?.timestamp || '1/1/2021 12:00:00 AM'}}</mat-card-subtitle>
+        <mat-card-subtitle>{{review?.Timestamp || '1/1/2021 12:00:00 AM'}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         Rating: {{review.Rating}} <br>
