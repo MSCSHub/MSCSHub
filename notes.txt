@@ -1,0 +1,5 @@
+Good resource on grids - https://mastery.games/post/tile-layouts/
+Good resource on flex layouts in angular - https://medium.com/angular-in-depth/angular-flex-layout-flexbox-and-grid-layout-for-angular-component-6e7c24457b63
+CSS Guide - https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout
+Angular Tour of Heroes - https://angular.io/tutorial/toh-pt6
+Load data in chunks for reviews - https://medium.com/@AnkitMaheshwariIn/pagination-in-angular-firestore-firebase-database-add-get-documents-14ca723e9c24

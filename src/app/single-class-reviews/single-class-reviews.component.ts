@@ -17,7 +17,7 @@ export class SingleClassReviewsComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const courseIdFromRoute = String(routeParams.get('courseId'));
-    this.classService.getAllReviewsForClass(courseIdFromRoute).subscribe(data => this.reviewsForClass = data);
+    // this.classService.getAllReviewsForClass(courseIdFromRoute).subscribe(data => this.reviewsForClass = data);
   }
 
 }

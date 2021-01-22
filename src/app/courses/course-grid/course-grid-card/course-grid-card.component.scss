@@ -1,0 +1,21 @@
+.mat-card-header, .mat-card-title, .mat-card-subtitle {
+  display: flex;
+  justify-content: center;
+  text-align:center;
+  align-items: center;
+}
+
+.mat-card-header {
+  height: 100px;
+}
+
+.mat-chip-list {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  border: 0;
+  width: 100%;
+  height: auto;
+}

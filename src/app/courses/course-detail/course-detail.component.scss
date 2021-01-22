@@ -9,13 +9,23 @@ h1 {
 }
 
 h3 {
-  font-size: 2rem;
-  line-height: 2.25rem;
+  font-size: 2.5rem;
+  line-height: 2.75rem;
   font-weight: 700;
   margin-top: 1em;
   margin-bottom: 0px;
   padding-bottom: 10px;
   letter-spacing: -0.025rem;
+}
+
+.review-spacer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 16px;
+}
+
+.next-prev-container button {
+  margin-left: 4px;
 }
 
 .mat-card {
@@ -24,7 +34,6 @@ h3 {
 
 .mat-card-content{
   margin: 0px 15px 50px 15px;
-  margin-bottom: 50px;
 }
 
 .grid-container {
@@ -58,21 +67,21 @@ h3 {
   margin-top: 20px;
 }
 
-.content2 {
+.image-container {
   background-size: contain;
   background-position: 90% 50%;
   background-repeat: no-repeat;
   background-attachment: local;
   background-color: #005f86;
-  background-image: url(https://www.cs.utexas.edu/sites/default/files/images/Machine-Learning_75opacity.png);
+  // background-image: url(https://www.cs.utexas.edu/sites/default/files/images/Machine-Learning_75opacity.png);
 }
 
-.content3 {
+.gradient-container {
   margin-bottom: 0px;
   background-size: cover;
-  background: linear-gradient(
-    180deg,
-    rgba(51, 63, 72, 0.71) 0%,
-    rgba(0, 95, 134, 0.84) 100%
-  );
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(51, 63, 72, 0.71) 0%,
+  //   rgba(0, 95, 134, 0.84) 100%
+  // );
 }

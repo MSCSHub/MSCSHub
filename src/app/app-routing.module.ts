@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    component: CoursesComponent,
+    component: CourseGridComponent,
   },
   {
     path: 'courses/:id',

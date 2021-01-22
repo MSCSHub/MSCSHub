@@ -1,0 +1,34 @@
+<div class="content">
+  <div class="course-grid-container">
+    <mat-card *ngFor="let class of classes" [routerLink]="['/courses/', class.ClassName]">
+      <mat-card-header>
+        <mat-card-title>{{class.ClassName}}</mat-card-title>
+        <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img src="{{class.GraphicThumbnail}}">
+      </mat-card-content>
+      <mat-chip-list>
+        <div *ngFor="let item of class.meta | keyvalue">
+          <mat-chip *ngIf="item.value">{{item.key | titlecase}}</mat-chip>
+        </div>
+        <mat-chip *ngFor="let lang of class.languages">{{lang}}</mat-chip>
+      </mat-chip-list>
+    </mat-card>
+    <mat-card *ngFor="let class of classes" [routerLink]="['/courses/', class.ClassName]">
+      <mat-card-header>
+        <mat-card-title>{{class.ClassName}}</mat-card-title>
+        <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img src="{{class.GraphicThumbnail}}">
+      </mat-card-content>
+      <mat-chip-list>
+        <div *ngFor="let item of class.meta | keyvalue">
+          <mat-chip *ngIf="item.value">{{item.key | titlecase}}</mat-chip>
+        </div>
+        <mat-chip *ngFor="let lang of class.languages">{{lang}}</mat-chip>
+      </mat-chip-list>
+    </mat-card>
+  </div>
+</div>

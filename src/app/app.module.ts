@@ -33,6 +33,9 @@ import { SingleClassReviewsComponent } from './single-class-reviews/single-class
 import { RouterModule } from '@angular/router';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CourseCardComponent } from './courses/course-detail/course-card/course-card.component';
+import { CourseGridComponent } from './courses/course-grid/course-grid.component';
+import { CourseGridCardComponent } from './courses/course-grid/course-grid-card/course-grid-card.component';
+import { CourseGridImageComponent } from './courses/course-grid/course-grid-image/course-grid-image.component';
 
 
 @NgModule({
@@ -55,6 +58,9 @@ import { CourseCardComponent } from './courses/course-detail/course-card/course-
     SingleClassReviewsComponent,
     CourseListComponent,
     CourseCardComponent,
+    CourseGridComponent,
+    CourseGridCardComponent,
+    CourseGridImageComponent,
   ],
   imports: [
     BrowserModule,
