@@ -20,17 +20,15 @@ export class CourseDetailComponent implements OnInit {
     {title: 'Rating', subtitle: 'On a Scale of 1-7', value: 0},
     {title: 'Difficulty', subtitle: 'On a Scale of 1-7', value: 0},
     {title: 'Workload', subtitle: 'Hours Per Week', value: 0},
-    {title: 'Book Usefulness', subtitle: 'On a Scale of 1-7', value: 0}
+    {title: 'Book Usefulness', subtitle: 'On a Scale of 1-7', value: 0},
   ]
   reviewDataStack: any[] = []
   reviewData: Review[] = []
-  firstReviewResponse: any = []
-  lastReviewResponse: any = []
-  prev_start_at: any = []
-  page_number: number = 0
-  disable_next: boolean = false
-  disable_prev: boolean = false
-  page_length: number = 5
+  pageNumber: number = 0
+  disableNext: boolean = false
+  disablePrev: boolean = false
+  pageLength: number = 5
+  maxLength: number = 99999
 
   constructor(
     private route: ActivatedRoute,
@@ -56,10 +54,10 @@ export class CourseDetailComponent implements OnInit {
   }
 
   getFirstPage() {
-    this.disable_prev = true
+    this.disablePrev = true
     this.afs.collection('Reviews', ref => ref
       .where("ClassId", '==', this.courseId)
-      .limit(this.page_length)
+      .limit(this.pageLength)
       .orderBy("Rating","desc")
     ).get().subscribe(response => {
       console.log(response)
@@ -67,8 +65,8 @@ export class CourseDetailComponent implements OnInit {
       if (!response.docs.length){
         console.log("No reviews exist")
         //TODO Add something to let the user know that there are no reviews
-        this.disable_next = true
-        this.disable_prev = true
+        this.disableNext = true
+        this.disablePrev = true
         return
       }
       this.reviewData = []
@@ -76,19 +74,20 @@ export class CourseDetailComponent implements OnInit {
         this.reviewData.push(item.data() as Review)
       }
       this.reviewDataStack.push(response)
-      this.page_number = 0
-      if (this.reviewData.length < 5) {
-        this.disable_next = true
+      this.pageNumber = 0
+      if (response.docs.length < 5) {
+        this.disableNext = true
+        this.maxLength = this.reviewData.length
       }
     }, error => {console.log(error)})
   }
 
   nextPage() {
-    this.disable_prev = false
-    const lastReview = this.reviewDataStack[this.reviewDataStack.length-1].docs[this.page_length-1]
+    this.disablePrev = false
+    const lastReview = this.reviewDataStack[this.reviewDataStack.length-1].docs[this.pageLength-1]
     this.afs.collection('Reviews', ref => ref
       .where("ClassId", '==', this.courseId)
-      .limit(this.page_length)
+      .limit(this.pageLength)
       .orderBy("Rating","desc")
       .startAfter(lastReview)
     ).get().subscribe(response => {
@@ -97,31 +96,41 @@ export class CourseDetailComponent implements OnInit {
       if (!response.docs.length){
         console.log("No reviews exist")
         //TODO Add something to let the user know that there are no reviews
-        this.disable_next = true
+        this.disableNext = true
         return
       }
       for (let item of response.docs) {
         this.reviewData.push(item.data() as Review)
       }
       this.reviewDataStack.push(response)
-      // this.page_number++
+      this.pageNumber++
       if (response.docs.length < 5 || this.reviewData.length >= this.course.RatingCount) { // TODO Add || this.page_number*this.page_length + this.reviewData.length >= course.RatingCount
-        this.disable_next = true
+        this.disableNext = true
+        this.maxLength = this.reviewData.length
       }
     }, error => {console.log(error)})
   }
 
   getPrevPage(): void {
-    this.page_number--
-  }
-
-  getNextPage(): void {
-    this.page_number++
-    if(this.page_number * this.page_length >= this.reviewData.length) {
-      this.nextPage()
+    this.pageNumber--
+    this.disableNext = false
+    console.log("Previous", this.pageNumber)
+    if (this.pageNumber === 0) {
+      this.disablePrev = true
     }
   }
 
+  getNextPage(): void {
+    this.disablePrev = false
+    if((this.pageNumber+1) * this.pageLength >= this.reviewData.length) {
+      this.nextPage()
+    } else { this.pageNumber++ }
+    console.log(this.pageNumber * this.pageLength)
+    console.log(this.maxLength)
+    if ((this.pageNumber+1)*this.pageLength >= this.maxLength) {
+      this.disableNext = true
+    }
+  }
 
   updateCards(): void {
     this.cards[0].value = this.course.RatingCount

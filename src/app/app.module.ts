@@ -29,13 +29,15 @@ import { ReviewDetailComponent } from './reviews/review-detail/review-detail.com
 import { RegisterComponent } from './user/register/register.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
-import { SingleClassReviewsComponent } from './single-class-reviews/single-class-reviews.component'
 import { RouterModule } from '@angular/router';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CourseCardComponent } from './courses/course-detail/course-card/course-card.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { CourseGridCardComponent } from './courses/course-grid/course-grid-card/course-grid-card.component';
 import { CourseGridImageComponent } from './courses/course-grid/course-grid-image/course-grid-image.component';
+import { LogoutComponent } from './user/logout/logout.component';
+import { FeedbackComponent, DialogOnSubmission } from './feedback/feedback.component';
+import { CreateReviewComponent, DialogReviewSubmission } from './reviews/create-review/create-review.component';
 
 
 @NgModule({
@@ -55,12 +57,16 @@ import { CourseGridImageComponent } from './courses/course-grid/course-grid-imag
     RegisterComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    SingleClassReviewsComponent,
     CourseListComponent,
     CourseCardComponent,
     CourseGridComponent,
     CourseGridCardComponent,
     CourseGridImageComponent,
+    LogoutComponent,
+    FeedbackComponent,
+    DialogOnSubmission,
+    CreateReviewComponent,
+    DialogReviewSubmission,
   ],
   imports: [
     BrowserModule,
@@ -74,13 +80,7 @@ import { CourseGridImageComponent } from './courses/course-grid/course-grid-imag
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    RouterModule.forRoot([{path: 'courses/:courseId', component: SingleClassReviewsComponent}]),
   ],
-  // entryComponents: [
-  //   LoginComponent,
-  //   SettingsComponent,
-  //   AdminComponent
-  // ],
   providers: [],
   bootstrap: [AppComponent]
 })

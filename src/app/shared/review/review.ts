@@ -1,5 +1,3 @@
-import { Timestamp } from "rxjs";
-
 export interface Review {
   BookUsefulness: number,
   ClassId: string,

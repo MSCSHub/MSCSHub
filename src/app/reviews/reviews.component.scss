@@ -1,0 +1,36 @@
+.review-spacer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 16px;
+}
+
+.next-prev-container button {
+  margin-left: 4px;
+}
+
+.mat-card {
+  margin: 10px 0px;
+}
+
+.mat-card-content{
+  margin: 0px 15px 50px 15px;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  color: #545454;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  padding: 0;
+  justify-content: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  margin-top: 20px;
+//   display: flex;
+}

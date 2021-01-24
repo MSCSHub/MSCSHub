@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-nav-nodes',
@@ -11,48 +12,36 @@ export class MenuComponent implements OnInit {
   public currentUrl: string = ''
   isLoggedIn: boolean = false
   navInfo = {
-    reviews: {
-      title: 'Reviews',
-      url: '/reviews',
-    },
-    courses: {
-      title: 'Courses',
-      url: '/courses',
-    },
-    login: {
-      title: 'Login',
-      url: '/login',
-    },
-    logout: {
-      title: 'Log Out',
-      url: '/logout',
-    },
-    settings: {
-      title: 'User Settings',
-      url: '/settings',
-    },
-    home: {
-      title: 'Home',
-      url: '/home',
-    },
-    register: {
-      title: 'Register',
-      url: '/register',
-    }
+    reviews: {title: 'Reviews', url: '/reviews'},
+    courses: {title: 'Courses', url: '/courses'},
+    login: {title: 'Login', url: '/login'},
+    logout: {title: 'Log Out', url: '/logout'},
+    settings: {title: 'User Settings', url: '/settings'},
+    home: {title: 'Home', url: '/home'},
+    register: {title: 'Register', url: '/register'},
+    createReview: {title: 'Create Review', url: '/createReview'},
   }
 
   constructor(
     private router: Router,
     private location: Location,
+    private auth: AuthService,
   ) { }
 
   ngOnInit(): void {
-    // this.currentUrl = location.pathname
-    // console.log(this.location.path(), location)
     this.router.events.subscribe((val) => {
       this.currentUrl = this.location.path();
     });
+    this.auth.isLoggedIn.subscribe(state => {
+      console.log("Menu: Is logged in?", state)
+      this.isLoggedIn = state
+    })
+  }
 
+  logout() {
+    console.log("Logging out from menu...")
+    this.auth.logout()
+    // this.router.navigate(['/login'])
   }
   
 }

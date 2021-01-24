@@ -21,9 +21,11 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
   ) {
-    if(this.auth.isLoggedIn){
-      this.router.navigate(['/'])
-    }
+    this.auth.isLoggedIn.subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['/'])
+      }
+    })
   }
 
   ngOnInit(): void {
