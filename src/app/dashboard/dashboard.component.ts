@@ -21,8 +21,5 @@ export class DashboardComponent implements OnInit {
     this.auth.userData.subscribe(userData => {
       this.user = userData
     })
-    // this.isLoggedIn = this.auth.isLoggedIn
-    // this.user = this.auth.userData
   }
-
 }

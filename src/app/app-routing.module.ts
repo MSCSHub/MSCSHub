@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FeedbackComponent } from './feedback/feedback.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { CreateReviewComponent } from './reviews/create-review/create-review.component';
@@ -13,6 +12,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
+import { AuthguardGuard } from './user/authguard.guard';
 
 const routes: Routes = [
   {
@@ -32,8 +32,9 @@ const routes: Routes = [
   {path: 'passwordReset', component: ForgotPasswordComponent},
   {path: 'verifyEmail', component: VerifyEmailComponent},
   {path: 'admin', component: AdminComponent},
-  {path: 'feedback', component: FeedbackComponent},
-  {path: 'createReview', component: CreateReviewComponent}
+  // {path: 'feedback', component: FeedbackComponent},
+  // {path: 'feedback', redirectTo: 'https://github.com/MSCSHub/MSCSHub/issues/new', pathMatch: 'full'},
+  {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]}
 ];
 
 @NgModule({

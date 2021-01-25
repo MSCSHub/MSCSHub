@@ -128,8 +128,8 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "--base-href": "https://mscshub.com", 
-            "--cname": "mscshub.com"
+            "base-href": "https://mscshub.com", 
+            "cname": "mscshub.com"
           }
         }
       }

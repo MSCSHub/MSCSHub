@@ -25,4 +25,5 @@ export interface ClassData {
     elective: boolean,
   }
   languages: string[] | null,
+  courseId: string,
 }

@@ -29,7 +29,6 @@ import { ReviewDetailComponent } from './reviews/review-detail/review-detail.com
 import { RegisterComponent } from './user/register/register.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
-import { RouterModule } from '@angular/router';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CourseCardComponent } from './courses/course-detail/course-card/course-card.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
@@ -38,6 +37,7 @@ import { CourseGridImageComponent } from './courses/course-grid/course-grid-imag
 import { LogoutComponent } from './user/logout/logout.component';
 import { FeedbackComponent, DialogOnSubmission } from './feedback/feedback.component';
 import { CreateReviewComponent, DialogReviewSubmission } from './reviews/create-review/create-review.component';
+import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logged-in.component';
 
 
 @NgModule({
@@ -67,6 +67,7 @@ import { CreateReviewComponent, DialogReviewSubmission } from './reviews/create-
     DialogOnSubmission,
     CreateReviewComponent,
     DialogReviewSubmission,
+    DialogNotLoggedIn
   ],
   imports: [
     BrowserModule,

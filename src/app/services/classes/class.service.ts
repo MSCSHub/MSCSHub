@@ -17,7 +17,7 @@ export class ClassService {
     private afs: AngularFirestore  
   ) {
     this.afs.collection<ClassData>('Class')
-      .valueChanges()
+      .valueChanges({idField: 'courseId'})
       .subscribe(data => {
         this._classes.next(data)
       })

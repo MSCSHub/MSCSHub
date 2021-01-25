@@ -63,6 +63,7 @@ export class CreateReviewComponent implements OnInit {
       // languages: ['', Validators.required],
       userData: ['', Validators.required],
       timestamp: [new Date(), Validators.required],
+      courseId: ['', Validators.required]
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
@@ -73,6 +74,9 @@ export class CreateReviewComponent implements OnInit {
 
   onSubmit() {
     console.log("Submitting", this.reviewForm?.invalid)
+    const courseName = this.reviewForm.controls['course'].value
+    const courseId = this.courses?.find(item => item.ClassName === courseName)?.courseId
+    this.reviewForm.controls['courseId'].setValue(courseId)
     this.submitted = true
     if(this.reviewForm?.invalid){
       console.log(this.reviewForm.errors)
@@ -94,7 +98,7 @@ export class CreateReviewComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogReviewSubmission)
     dialogRef.afterClosed().subscribe(result => {
       console.log("Dialog closed!", result)
-      this.router.navigate(['courses'])
+      this.router.navigate(['courses', this.reviewForm.controls['course'].value])
     })
   }
 

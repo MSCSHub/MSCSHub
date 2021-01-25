@@ -40,6 +40,7 @@ export class FeedbackComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.location.href = "https://github.com/MSCSHub/MSCSHub/issues/new";
     this.feedbackForm = this.formBuilder.group({
       title: ['', Validators.required],
       category: ['', Validators.required],
