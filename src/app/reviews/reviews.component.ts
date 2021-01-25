@@ -36,7 +36,7 @@ export class ReviewsComponent implements OnInit {
     this.disablePrev = true
     this.afs.collection('Reviews', ref => ref
       .limit(this.pageLength)
-      .orderBy("Rating","desc")
+      .orderBy("rating","desc")
     ).get().subscribe(response => {
       console.log(response)
       console.log(response.docs)
@@ -65,7 +65,7 @@ export class ReviewsComponent implements OnInit {
     const lastReview = this.reviewDataStack[this.reviewDataStack.length-1].docs[this.pageLength-1]
     this.afs.collection('Reviews', ref => ref
       .limit(this.pageLength)
-      .orderBy("Rating","desc")
+      .orderBy("rating","desc")
       .startAfter(lastReview)
     ).get().subscribe(response => {
       console.log(response)

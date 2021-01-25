@@ -36,11 +36,11 @@ export class CourseDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.courseName = this.route.snapshot.paramMap.get('id') || ""
     this.getClassData()
   }
 
   getClassData(): void {
-    this.courseName = this.route.snapshot.paramMap.get('id') || ""
     let docRef = this.afs.collection('Class', ref => ref.where("ClassName", "==", this.courseName))
     let x = docRef.get().subscribe((ss) => {
       if (ss.docs.length === 1) {
@@ -56,9 +56,9 @@ export class CourseDetailComponent implements OnInit {
   getFirstPage() {
     this.disablePrev = true
     this.afs.collection('Reviews', ref => ref
-      .where("ClassId", '==', this.courseId)
+      .where("course", '==', this.courseName)
       .limit(this.pageLength)
-      .orderBy("Rating","desc")
+      .orderBy("timestamp","desc")
     ).get().subscribe(response => {
       console.log(response)
       console.log(response.docs)
@@ -86,9 +86,9 @@ export class CourseDetailComponent implements OnInit {
     this.disablePrev = false
     const lastReview = this.reviewDataStack[this.reviewDataStack.length-1].docs[this.pageLength-1]
     this.afs.collection('Reviews', ref => ref
-      .where("ClassId", '==', this.courseId)
+      .where("course", '==', this.courseName)
       .limit(this.pageLength)
-      .orderBy("Rating","desc")
+      .orderBy("timestamp","desc")
       .startAfter(lastReview)
     ).get().subscribe(response => {
       console.log(response)

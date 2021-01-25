@@ -217,6 +217,7 @@ export const svgIconProviders = [
     ],
     providers: [     
         { provide: MatIconRegistry, useClass: CustomIconRegistry },
+        { provide: MAT_DATE_LOCALE, useValue: 'en-US' },
         svgIconProviders
     ]
 })
