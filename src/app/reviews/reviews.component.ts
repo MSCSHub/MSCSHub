@@ -36,7 +36,7 @@ export class ReviewsComponent implements OnInit {
     this.disablePrev = true
     this.afs.collection('Reviews', ref => ref
       .limit(this.pageLength)
-      .orderBy("rating","desc")
+      .orderBy("timestamp","desc")
     ).get().subscribe(response => {
       console.log(response)
       console.log(response.docs)

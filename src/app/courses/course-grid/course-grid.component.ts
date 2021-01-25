@@ -14,7 +14,7 @@ export class CourseGridComponent implements OnInit {
     private courses: ClassService,
   ) {
     this.courses.classes.subscribe(data => {
-      this.classes = data
+      this.classes = data.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
     })
   }
 

@@ -22,8 +22,9 @@
   <div class="review-container">
     <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
       <mat-card-header>
-        <mat-card-title>{{courseName}}</mat-card-title>
-        <mat-card-subtitle>{{review.timestamp | date: 'M/d/yyyy h:mm'}}</mat-card-subtitle>
+        <mat-card-title>{{review.title}}</mat-card-title>
+        <mat-card-subtitle>{{courseName}}</mat-card-subtitle>
+        <mat-card-subtitle>{{review.timestamp.toMillis() | date: 'M/d/yyyy h:mm a z'}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         Rating: {{review.rating}} <br>
@@ -31,7 +32,10 @@
         Workload: {{review.workload}} <br>
         Book Usefulness: {{review.bookUsefulness}}<br><br>
         <b>Review:</b><br>
-        {{review.review}}<br><br>
+          <p style="white-space: pre-line;">
+            {{review.review}}
+          </p>
+        <br><br>
       <!-- </mat-card-content> -->
       Was this review helpful?
       <mat-button-toggle-group name="helpful" aria-label="Helpful">

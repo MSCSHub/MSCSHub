@@ -41,12 +41,12 @@
             <mat-card-content>
                 <mat-form-field class="form-field-full-width">
                     <input matInput placeholder="Title"
-                           formControlName="title"
+                           formControlName="title" required
                            [ngClass]="{'is-invalid': submitted}">
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Course</mat-label>
-                    <mat-select formControlName="course">
+                    <mat-select formControlName="course" required>
                         <mat-option *ngFor="let course of courses" 
                             [value]="course.ClassName">
                             {{course.ClassName}}
@@ -55,7 +55,7 @@
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Semester</mat-label>
-                    <mat-select formControlName="semester">
+                    <mat-select formControlName="semester" required>
                         <mat-option *ngFor="let semester of semesters" 
                             [value]="semester">
                             {{semester}}
@@ -64,7 +64,7 @@
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Year</mat-label>
-                    <mat-select formControlName="year">
+                    <mat-select formControlName="year" required [ngClass]="{'is-invalid': submitted}">
                         <mat-option *ngFor="let year of years" 
                             [value]="year">
                             {{year}}
@@ -85,55 +85,62 @@
                 </div> -->
                 <mat-form-field class="form-field-full-width">
                     <textarea matInput type="textarea" rows="20"
-                           formControlName="review" 
+                           formControlName="review" required
                            [ngClass]="{'is-invalid': submitted}"
                            placeholder="Review"></textarea>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Workload"
-                           formControlName="workload"
+                    <input matInput placeholder="Workload" 
+                           type="number" max="50" min="10"
+                           formControlName="workload" required
                            [ngClass]="{'is-invalid': submitted}">
                     <mat-hint>How many hours per week did this class require?</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Rating"
-                           formControlName="rating"
+                    <input matInput placeholder="Rating" 
+                           type="number" max="7" min="1"
+                           formControlName="rating" required
                            [ngClass]="{'is-invalid': submitted}">
                     <mat-hint>Rate the class overall on a scale of 1-7</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Difficulty"
-                           formControlName="difficulty"
+                    <input matInput placeholder="Difficulty" 
+                           type="number" max="7" min="1"
+                           formControlName="difficulty" required
                            [ngClass]="{'is-invalid': submitted}">
                     <mat-hint>Rate the difficulty on a scale of 1-7</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Book Usefulness"
-                           formControlName="bookUsefulness"
+                    <input matInput placeholder="Book Usefulness" 
+                           type="number" max="7" min="1"
+                           formControlName="bookUsefulness" required
                            [ngClass]="{'is-invalid': submitted}">
                     <mat-hint>Rate the book usefulness on a scale of 1-7</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Lecture Quality"
-                           formControlName="lectureQuality"
+                    <input matInput placeholder="Lecture Quality" 
+                           type="number" max="7" min="1"
+                           formControlName="lectureQuality" required
                            [ngClass]="{'is-invalid': submitted}">
                     <mat-hint>Rate the quality of the lectures on a scale of 1-7</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Professor Quality"
-                           formControlName="professorQuality"
+                    <input matInput placeholder="Professor Quality" 
+                           type="number" max="7" min="1"
+                           formControlName="professorQuality" required
                            [ngClass]="{'is-invalid': submitted}">
                     <mat-hint>Rate the quality of the professor on a scale of 1-7</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Piazza Community"
-                           formControlName="piazzaCommunity"
+                    <input matInput placeholder="Piazza Community" 
+                           type="number" max="7" min="1"
+                           formControlName="piazzaCommunity" required
                            [ngClass]="{'is-invalid': submitted}">
                     <mat-hint>Rate your experience with piazza community for this class on a scale of 1-7</mat-hint>
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Projects</mat-label>
-                    <mat-select formControlName="projects">
+                    <mat-select formControlName="projects" required>
                         <mat-option value="true">Yes</mat-option>
                         <mat-option value="false">No</mat-option>
                     </mat-select>
@@ -141,7 +148,7 @@
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Homeworks</mat-label>
-                    <mat-select formControlName="homework">
+                    <mat-select formControlName="homework" required>
                         <mat-option value="true">Yes</mat-option>
                         <mat-option value="false">No</mat-option>
                     </mat-select>
@@ -149,7 +156,7 @@
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Peer Reviewed</mat-label>
-                    <mat-select formControlName="peerReviewed">
+                    <mat-select formControlName="peerReviewed" required>
                         <mat-option value="true">Yes</mat-option>
                         <mat-option value="false">No</mat-option>
                     </mat-select>
@@ -157,7 +164,7 @@
                 </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Exams</mat-label>
-                    <mat-select formControlName="exams">
+                    <mat-select formControlName="exams" required>
                         <mat-option value="true">Yes</mat-option>
                         <mat-option value="false">No</mat-option>
                     </mat-select>

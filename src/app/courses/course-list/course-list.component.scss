@@ -12,6 +12,11 @@ th {
   margin-left: -5px !important;
 }
 
+::ng-deep .mat-chip-list-wrapper {
+  justify-content: center;
+  margin: 1px !important;
+}
+
 tr.mat-row:hover {
   background-color: #F5F5F5;
 }
@@ -19,6 +24,7 @@ tr.mat-row:hover {
 .my-chips {
   font-size: 12px;
   min-height: 20px;
+  margin:1px !important;
 }
 
 .th .center {
@@ -26,7 +32,7 @@ tr.mat-row:hover {
 }
 
 .constrain-width {
-  max-width: 50px;
+  max-width: 100px;
 }
 
 .circle {
