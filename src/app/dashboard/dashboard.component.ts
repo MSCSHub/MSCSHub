@@ -15,8 +15,14 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.auth.isLoggedIn
-    this.user = this.auth.userData
+    this.auth.isLoggedIn.subscribe(state => {
+      this.isLoggedIn = state
+    })
+    this.auth.userData.subscribe(userData => {
+      this.user = userData
+    })
+    // this.isLoggedIn = this.auth.isLoggedIn
+    // this.user = this.auth.userData
   }
 
 }

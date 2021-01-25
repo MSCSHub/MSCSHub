@@ -1,11 +1,22 @@
-import { Timestamp } from "rxjs";
+import { Timestamp } from "@firebase/firestore-types";
 
 export interface Review {
-  BookUsefulness: number,
-  ClassId: string,
-  Difficulty: number,
-  Rating: number,
-  Review: string,
-  Workload: number,
-  Timestamp?: Date
+  bookUsefulness: number,
+  classId: string,
+  course: string,
+  difficulty: number,
+  exams: true,
+  homework: true,
+  lectureQuality: number,
+  peerReviewed: boolean,
+  piazzaCommunity: number,
+  professorQuality: number,
+  projects: false,
+  rating: number,
+  review: string,
+  semester: string,
+  title: string,
+  timestamp: Timestamp,
+  workload: number,
+  year: number,
 }

@@ -54,7 +54,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -126,8 +126,11 @@
           }
         },
         "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {}
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "--base-href": "https://mscshub.com", 
+            "--cname": "mscshub.com"
+          }
         }
       }
     }

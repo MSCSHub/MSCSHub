@@ -1,1 +1,43 @@
-<p>reviews works!</p>
+<div class="content">
+    <div class="review-spacer">
+        <!-- /TODO Add more features above the review container, like filters and a search bar and date picker -->
+        <h2>Course Reviews:</h2>
+        <div class="next-prev-container">
+            Page {{pageNumber + 1}}
+            <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)=getPrevPage()>Prev</button>
+            <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+        </div>
+    </div>
+    <div class="review-container">
+        <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
+            <mat-card-header>
+                <mat-card-title>{{review.title}}</mat-card-title>
+                <mat-card-subtitle>{{review.course}}</mat-card-subtitle>
+                <mat-card-subtitle>{{review.timestamp.toMillis() | date: 'M/d/yyyy h:mm a z'}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                Rating: {{review.rating}} <br>
+                Difficulty: {{review.difficulty}} <br>
+                Workload: {{review.workload}} <br>
+                Book Usefulness: {{review.bookUsefulness}}<br><br>
+                <b>Review:</b><br>
+                    <p style="white-space: pre-line;">
+                        {{review.review}}
+                    </p>
+                <br><br>
+                Was this review helpful?
+                <mat-button-toggle-group name="helpful" aria-label="Helpful">
+                    <mat-button-toggle value="yes">Yes</mat-button-toggle>
+                    <mat-button-toggle value="no">No</mat-button-toggle>
+                </mat-button-toggle-group>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="review-footer">
+        <div class="next-prev-container">
+            Page {{pageNumber + 1}}
+            <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)=getPrevPage()>Prev</button>
+            <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+        </div>
+    </div>
+</div>

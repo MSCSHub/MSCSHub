@@ -1,6 +1,13 @@
 <div class="dashboard-header">
-  <span class="dashboard-item dash-image"><img src="/assets/images/logos/Colorwheel/Colorwheel-128.png"></span>
+  <span class="dashboard-item dash-image"><img src="assets/images/logos/Colorwheel/Colorwheel-128.png"></span>
   <h1 class="dashboard-item">Welcome to MSCSHub!</h1>
-  <span class="dashboard-item">This is the unofficial site for the University of Texas at Austin Masters of Computer Science Online. Here you can find reviews for classes and add your own.</span>
+  <span class="dashboard-item">
+    This is the unofficial site for the University of Texas
+    at Austin Masters of Computer Science Online. Here you
+    can find reviews for classes and add your own.
+  </span>
+  <div class=feedback-container>
+  <button mat-button routerLink="/feedback" class="feedback-button" color="primary">Found a bug? Want a new feature? Send Feedback</button>
+  </div>
 </div>
 <app-course-list></app-course-list>

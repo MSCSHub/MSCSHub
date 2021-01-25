@@ -14,13 +14,18 @@
             <span class="nav-link-inner">{{ navInfo.reviews.title }}</span>
         </a>
     </li>
-    <li *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.settings.url }">
+    <li [ngClass]="{selected: currentUrl === navInfo.createReview.url }">
+        <a class="nav-link" routerLink="{{navInfo.createReview.url}}" [title]="navInfo.createReview.title">
+            <span class="nav-link-inner">{{ navInfo.createReview.title }}</span>
+        </a>
+    </li>
+    <!-- <li *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.settings.url }">
         <a class="nav-link" routerLink="{{navInfo.settings.url}}" [title]="navInfo.settings.title">
             <span class="nav-link-inner">{{ navInfo.settings.title }}</span>
         </a>
-    </li>
+    </li> -->
     <li *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.logout.url }">
-        <a class="nav-link" routerLink="{{navInfo.logout.url}}" [title]="navInfo.logout.title">
+        <a class="nav-link" (click)="logout()" [title]="navInfo.logout.title">
             <span class="nav-link-inner">{{ navInfo.logout.title }}</span>
         </a>
     </li>
@@ -29,9 +34,9 @@
             <span class="nav-link-inner">{{ navInfo.login.title }}</span>
         </a>
     </li>
-    <li *ngIf="!isLoggedIn">
+    <!-- <li *ngIf="!isLoggedIn">
         <a class="nav-link" routerLink="{{navInfo.register.url}}" [title]="navInfo.register.title">
             <span class="nav-link-inner">{{ navInfo.register.title }}</span>
         </a>
-    </li>
+    </li> -->
 </ul>
