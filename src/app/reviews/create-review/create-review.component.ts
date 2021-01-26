@@ -63,7 +63,7 @@ export class CreateReviewComponent implements OnInit {
       // languages: ['', Validators.required],
       userData: ['', Validators.required],
       timestamp: [new Date(), Validators.required],
-      courseId: ['', Validators.required]
+      classId: ['', Validators.required]
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
@@ -75,20 +75,18 @@ export class CreateReviewComponent implements OnInit {
   onSubmit() {
     console.log("Submitting", this.reviewForm?.invalid)
     const courseName = this.reviewForm.controls['course'].value
-    const courseId = this.courses?.find(item => item.ClassName === courseName)?.courseId
-    this.reviewForm.controls['courseId'].setValue(courseId)
+    const classId = this.courses?.find(item => item.ClassName === courseName)?.courseId
+    this.reviewForm.controls['classId'].setValue(classId)
     this.submitted = true
     if(this.reviewForm?.invalid){
       console.log(this.reviewForm.errors)
       console.log(this.reviewForm)
       return
     }
-    console.log("Hello")
     this.loading = true
     this.afs.collection('Reviews')
       .add(this.reviewForm.value)
       .then(result => {
-        console.log("Submission result:", result)
         this.loading = false
         this.openDialog()
       }, error => console.log("Submission failed:", error))
@@ -97,7 +95,6 @@ export class CreateReviewComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(DialogReviewSubmission)
     dialogRef.afterClosed().subscribe(result => {
-      console.log("Dialog closed!", result)
       this.router.navigate(['courses', this.reviewForm.controls['course'].value])
     })
   }

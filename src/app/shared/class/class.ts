@@ -26,4 +26,5 @@ export interface ClassData {
   }
   languages: string[] | null,
   courseId: string,
+  category: string
 }

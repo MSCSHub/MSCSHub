@@ -60,8 +60,6 @@ export class CourseDetailComponent implements OnInit {
       .limit(this.pageLength)
       .orderBy("timestamp","desc")
     ).get().subscribe(response => {
-      console.log(response)
-      console.log(response.docs)
       if (!response.docs.length){
         console.log("No reviews exist")
         //TODO Add something to let the user know that there are no reviews
@@ -91,8 +89,6 @@ export class CourseDetailComponent implements OnInit {
       .orderBy("timestamp","desc")
       .startAfter(lastReview)
     ).get().subscribe(response => {
-      console.log(response)
-      console.log(response.docs)
       if (!response.docs.length){
         console.log("No reviews exist")
         //TODO Add something to let the user know that there are no reviews

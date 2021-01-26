@@ -1,29 +1,14 @@
-.mat-card-header, .mat-card-title, .mat-card-subtitle {
-  display: flex;
-  justify-content: center;
-  text-align:center;
-  align-items: center;
+.filter-cards {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 15px;
+  padding-bottom: 0px;
 }
 
-.mat-card-header {
-  height: 100px;
+.selected {
+  background-color: aquamarine;
 }
-
-.mat-chip-list {
-  display: flex;
-  justify-content: center;
-}
-
-.mat-chip-list-wrapper {
-  justify-content: center;
-}
-
-// .mat-card-content {
-//   display: flex;
-//   justify-content: center;
-//   font-weight: 600;
-//   font-size: 21px;
-// }
 
 .course-grid-container {
   display: grid;
@@ -34,12 +19,32 @@
   justify-content: center;
   align-content: center;
   padding-top: 20px;
-}
 
-img {
-  border: 0;
-  width: 100%;
-  height: auto;
+  .mat-card-header, .mat-card-title, .mat-card-subtitle {
+    display: flex;
+    justify-content: center;
+    text-align:center;
+    align-items: center;
+  }
+
+  .mat-card-header {
+    height: 100px;
+  }
+
+  .mat-chip-list {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-chip-list-wrapper {
+    justify-content: center;
+  }
+
+  img {
+    border: 0;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .content {
