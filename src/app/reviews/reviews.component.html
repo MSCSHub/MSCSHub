@@ -1,4 +1,46 @@
 <div class="content">
+    <mat-card>
+        <mat-card-subtitle>Filter Reviews By:</mat-card-subtitle>
+        <mat-card-content>
+            <form class="filter-grid" [formGroup]="queryForm">
+                <mat-card class="query-card">
+                    <mat-card-subtitle>Filter by Class Name</mat-card-subtitle>
+                    <mat-form-field style="width: 100%">
+                        <mat-label>Course</mat-label>
+                        <mat-select (selectionChange)="onCourseChange($event.value)">
+                            <mat-option *ngFor="let course of courses" [value]="course.courseId">
+                                {{course.ClassName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card>
+                <mat-card class="query-card">
+                    <mat-card-subtitle>Filter By Query</mat-card-subtitle>
+                    <mat-form-field>
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let category of categories | keyvalue" [value]="category.value">
+                                {{category.key}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="op-width">
+                        <mat-label>Op.</mat-label>
+                        <mat-select formControlName="operation">
+                            <mat-option *ngFor="let operation of operations" [value]="operation">
+                                {{operation}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="input-width">
+                        <mat-label>Input</mat-label>
+                        <input matInput formControlName="inputValue" type="number">
+                    </mat-form-field>
+                    <button mat-flat-button color="primary" (click)="onQuerySubmit()">Submit</button>
+                </mat-card>
+            </form>
+        </mat-card-content>
+    </mat-card>
     <div class="review-spacer">
         <!-- /TODO Add more features above the review container, like filters and a search bar and date picker -->
         <h2>Course Reviews:</h2>
@@ -9,6 +51,7 @@
         </div>
     </div>
     <div class="review-container">
+        <div class="center" *ngIf="nothingHere"><h1>Could not find any Reviews using input parameters.<br>Please try a different search.</h1></div>
         <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
             <mat-card-header>
                 <mat-card-title>{{review.title}}</mat-card-title>
@@ -21,12 +64,13 @@
                 Workload: {{review.workload}} <br>
                 Book Usefulness: {{review.bookUsefulness}}<br><br>
                 <b>Review:</b><br>
-                    <p style="white-space: pre-line;">
-                        {{review.review}}
-                    </p>
+                <p style="white-space: pre-line;">
+                    {{review.review}}
+                </p>
                 <br><br>
                 Was this review helpful?
-                <mat-button-toggle-group name="helpful" aria-label="Helpful">
+                <mat-button-toggle-group name="helpful" aria-label="Helpful" [disabled]="!isLoggedIn"
+                    matTooltip="Must be logged in." [matTooltipDisabled]="isLoggedIn">
                     <mat-button-toggle value="yes">Yes</mat-button-toggle>
                     <mat-button-toggle value="no">No</mat-button-toggle>
                 </mat-button-toggle-group>

@@ -38,7 +38,11 @@
         <br><br>
       <!-- </mat-card-content> -->
       Was this review helpful?
-      <mat-button-toggle-group name="helpful" aria-label="Helpful">
+      <mat-button-toggle-group name="helpful" 
+                               aria-label="Helpful" 
+                               [disabled]="!isLoggedIn"
+                               matTooltip="Must be logged in."
+                               [matTooltipDisabled]="isLoggedIn">
         <mat-button-toggle value="yes">Yes</mat-button-toggle>
         <mat-button-toggle value="no">No</mat-button-toggle>
       </mat-button-toggle-group>

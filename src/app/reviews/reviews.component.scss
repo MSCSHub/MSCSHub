@@ -1,3 +1,30 @@
+.filter-grid {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 15px;
+  padding-bottom: 0px;
+}
+
+.query-card {
+  .mat-form-field {
+    margin-right: 15px;
+  }
+
+  .op-width {
+    max-width: 55px;
+  }
+
+  .input-width {
+    margin-bottom: 0px;
+    max-width: 150px;
+  }
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2), 0px 0px 0px 1px rgba(0, 0, 0, 0.14), 1px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
 .review-spacer {
   display: flex;
   justify-content: space-between;

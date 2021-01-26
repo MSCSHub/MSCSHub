@@ -65,5 +65,7 @@ export class CourseGridComponent implements OnInit {
     } else {
       this.visibleClasses = selectedLangs.filter(x => selectedCats.includes(x))
     }
+    this.classes.sort((a,b) => this.visibleClasses.includes(a.ClassName) <= this.visibleClasses.includes(b.ClassName) ? ( (a.ClassName > b.ClassName) ? 2 : 1)  : -1)
+    // this.classes.sort((a,b) => (a.ClassName > b.ClassName) ? (this.visibleClasses.includes(a.ClassName) < this.visibleClasses.includes(b.ClassName) ? 4 : 2) : (this.visibleClasses.includes(a.ClassName) < this.visibleClasses.includes(b.ClassName) ? 3 : 1))
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { element } from 'protractor';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { Review } from '../../shared/review/review'
 
@@ -29,14 +30,17 @@ export class CourseDetailComponent implements OnInit {
   disablePrev: boolean = false
   pageLength: number = 5
   maxLength: number = 99999
+  isLoggedIn: boolean = false
 
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
     this.courseName = this.route.snapshot.paramMap.get('id') || ""
+    this.auth.isLoggedIn.subscribe(state => {this.isLoggedIn = state})
     this.getClassData()
   }
 

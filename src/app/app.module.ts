@@ -38,6 +38,7 @@ import { LogoutComponent } from './user/logout/logout.component';
 import { FeedbackComponent, DialogOnSubmission } from './feedback/feedback.component';
 import { CreateReviewComponent, DialogReviewSubmission } from './reviews/create-review/create-review.component';
 import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logged-in.component';
+import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-feedback.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logg
     DialogOnSubmission,
     CreateReviewComponent,
     DialogReviewSubmission,
-    DialogNotLoggedIn
+    DialogNotLoggedIn,
+    DialogSendFeedback,
   ],
   imports: [
     BrowserModule,
