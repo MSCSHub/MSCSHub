@@ -33,15 +33,12 @@ export class MenuComponent implements OnInit {
       this.currentUrl = this.location.path();
     });
     this.auth.isLoggedIn.subscribe(state => {
-      console.log("Menu: Is logged in?", state)
       this.isLoggedIn = state
     })
   }
 
   logout() {
-    console.log("Logging out from menu...")
     this.auth.logout()
-    // this.router.navigate(['/login'])
   }
   
 }

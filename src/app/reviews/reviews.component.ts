@@ -53,10 +53,8 @@ export class ReviewsComponent implements OnInit {
 
   getFirstPage() {
     this.disablePrev = true
-    let docRef = this.afs.collection('Reviews', ref => ref
-      .limit(this.pageLength)
-      .orderBy("timestamp","desc")
-    )
+    this.disableNext = false
+    this.nothingHere = false
     this.afs.collection('Reviews', ref => {
       let query = ref.limit(this.pageLength)
       if(this.courseId) {query = query.where("classId", "==", this.courseId)}
@@ -95,11 +93,15 @@ export class ReviewsComponent implements OnInit {
     this.disablePrev = false
     this.nothingHere = false
     const lastReview = this.reviewDataStack[this.reviewDataStack.length-1].docs[this.pageLength-1]
-    this.afs.collection('Reviews', ref => ref
-      .limit(this.pageLength)
-      .orderBy("rating","desc")
-      .startAfter(lastReview)
-    ).get().subscribe(response => {
+    this.afs.collection('Reviews', ref => {
+      let query = ref.limit(this.pageLength)
+      if(this.courseId) {query = query.where("classId", "==", this.courseId)}
+      if(this.queryValid) {
+        query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
+        if (this.f['operation'].value != "==") {query = query.orderBy(this.f['category'].value, "desc")}
+      }
+      return query.orderBy('timestamp', 'desc').startAfter(lastReview)
+    }).get().subscribe(response => {
       console.log(response)
       console.log(response.docs)
       if (!response.docs.length){

@@ -23,7 +23,7 @@
   </div>
   <div class="course-grid-container">
     <!-- <div class="card-repeater"> -->
-      <mat-card *ngFor="let class of classes" [class.selected]="visibleClasses.includes(class.ClassName)" [routerLink]="['/courses/', class.ClassName]">
+      <mat-card *ngFor="let class of visibleClasses" [routerLink]="['/courses/', class.ClassName]">
         <mat-card-header>
           <mat-card-title>{{class.ClassName}}</mat-card-title>
           <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>

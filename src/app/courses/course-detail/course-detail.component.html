@@ -1,6 +1,6 @@
 <div class="content">
-  <div class="image-container" [style.background-image]="course.GraphicUrl">
-    <div class="gradient-container" [style.background]="course.GraphicColor">
+  <div class="image-container" #imageContainer>
+    <div class="gradient-container" #gradientContainer>
       <div class="padded-cell white">
         <h1 class="flat-bottom">{{courseName}}</h1>
         <h3 class="white">({{courseNumber}})</h3>
@@ -30,7 +30,7 @@
         Rating: {{review.rating}} <br>
         Difficulty: {{review.difficulty}} <br>
         Workload: {{review.workload}} <br>
-        Book Usefulness: {{review.bookUsefulness}}<br><br>
+        Book Usefulness: {{review.bookUsefulness || 'N/A'}}<br><br>
         <b>Review:</b><br>
           <p style="white-space: pre-line;">
             {{review.review}}

@@ -12,7 +12,7 @@ export class CourseGridComponent implements OnInit {
   categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust"]
   selected: string[] = []
-  visibleClasses: string[] = []
+  visibleClasses: ClassData[] = []
 
   constructor(
     private courses: ClassService,
@@ -40,32 +40,27 @@ export class CourseGridComponent implements OnInit {
 
   filterItems(): void {
     this.visibleClasses = []
-    let selectedLangs: string[] = []
-    let selectedCats: string[] = []
+    let selectedLangs: ClassData[] = []
+    let selectedCats: ClassData[] = []
     if(this.selected.length === 0){
-      // this.visibleClasses = this.classes.map(x => x.ClassName)
-      // console.log("Filtering - nothing selected",this.visibleClasses)
+      this.visibleClasses = this.classes
     } else {
       for(var i=0; i<this.selected.length; i++){
         let item = this.selected[i]
         if(this.categories.includes(item)){
-          let dataToPush = this.classes.filter(x => x.category === item).map(course => course.ClassName)
+          let dataToPush = this.classes.filter(x => x.category === item)
           selectedCats = selectedCats.concat(dataToPush)
-          console.log(`Filtering category ${item} - ${dataToPush} - result ${this.visibleClasses}`)
         } else {
-          let dataToPush = this.classes.filter(x => x.languages?.includes(item)).map(course => course.ClassName)
-          // this.visibleClasses = this.visibleClasses.concat(dataToPush)
+          let dataToPush = this.classes.filter(x => x.languages?.includes(item))
           selectedLangs = selectedLangs.concat(dataToPush)
-          console.log(`Filtering language ${item} - ${dataToPush} - result ${this.visibleClasses}`)
         }
       }
+      if (selectedLangs.length === 0 || selectedCats.length === 0){
+        this.visibleClasses = selectedLangs.concat(selectedCats)
+      } else {
+        this.visibleClasses = selectedLangs.filter(x => selectedCats.includes(x))
+      }
     }
-    if (selectedLangs.length === 0 || selectedCats.length === 0){
-      this.visibleClasses = selectedLangs.concat(selectedCats)
-    } else {
-      this.visibleClasses = selectedLangs.filter(x => selectedCats.includes(x))
-    }
-    this.classes.sort((a,b) => this.visibleClasses.includes(a.ClassName) <= this.visibleClasses.includes(b.ClassName) ? ( (a.ClassName > b.ClassName) ? 2 : 1)  : -1)
-    // this.classes.sort((a,b) => (a.ClassName > b.ClassName) ? (this.visibleClasses.includes(a.ClassName) < this.visibleClasses.includes(b.ClassName) ? 4 : 2) : (this.visibleClasses.includes(a.ClassName) < this.visibleClasses.includes(b.ClassName) ? 3 : 1))
+    this.visibleClasses.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
   }
 }

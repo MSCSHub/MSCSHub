@@ -61,14 +61,13 @@ export class CreateReviewComponent implements OnInit {
       peerReviewed: [false, Validators.required],
       exams: [false, Validators.required],
       // languages: ['', Validators.required],
-      userData: ['', Validators.required],
+      userId: ['', Validators.required],
       timestamp: [new Date(), Validators.required],
       classId: ['', Validators.required]
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
-      this.reviewForm.controls['userData']
-        .setValue(JSON.stringify([user.displayName, user.email]))
+      this.reviewForm.controls['userId'].setValue(JSON.stringify(user.uid))
     })
   }
 

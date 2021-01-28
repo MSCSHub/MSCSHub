@@ -1,3 +1,14 @@
+::ng-deep .mat-cell,
+::ng-deep .mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 0px 5px !important;
+    line-break: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
 table {
   width: 100%;
 }
@@ -7,9 +18,7 @@ th {
 }
 
 ::ng-deep .mat-tooltip  {
-  white-space: pre-line    !important;
-  margin-top: -5px !important;
-  margin-left: -5px !important;
+  white-space: pre-line !important;
 }
 
 ::ng-deep .mat-chip-list-wrapper {

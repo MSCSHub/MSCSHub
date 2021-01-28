@@ -1,7 +1,6 @@
 .filter-grid {
   display: grid;
-  justify-content: space-evenly;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 15px;
   padding-bottom: 0px;
 }
@@ -11,13 +10,17 @@
     margin-right: 15px;
   }
 
+  .category-width {
+    max-width: 250px;
+  }
+
   .op-width {
     max-width: 55px;
   }
 
   .input-width {
     margin-bottom: 0px;
-    max-width: 150px;
+    max-width: 100px;
   }
 }
 
@@ -28,7 +31,7 @@
 .review-spacer {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 16px;
+  margin: 40px 0px 16px 5px;
 }
 
 .next-prev-container button {

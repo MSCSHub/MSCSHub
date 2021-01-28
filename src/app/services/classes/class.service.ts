@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http'
 import { ClassData } from 'src/app/shared/class/class';
 import { AngularFirestore } from '@angular/fire/firestore';
 // import { IClass } from '../../class';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 // import { IReview } from '../../review';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassService {
-  private _classes: BehaviorSubject<ClassData[]> = new BehaviorSubject([] as ClassData[])
+  // private _classes: BehaviorSubject<ClassData[]> = new BehaviorSubject([] as ClassData[])
+  private _classes: ReplaySubject<ClassData[]> = new ReplaySubject()
   public classes: Observable<ClassData[]> = this._classes.asObservable()
 
   constructor(

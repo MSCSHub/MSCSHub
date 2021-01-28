@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterContentInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { element } from 'protractor';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { Review } from '../../shared/review/review'
 
@@ -11,11 +12,10 @@ import { Review } from '../../shared/review/review'
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.scss']
 })
-export class CourseDetailComponent implements OnInit {
+export class CourseDetailComponent implements OnInit, AfterViewInit {
   courseName: string = ""
   courseNumber: string = ""
-  courseId: string = ""
-  course!: ClassData
+  course?: ClassData
   cards = [
     {title: 'Reviews', subtitle: 'Total Count', value: 0}, 
     {title: 'Rating', subtitle: 'On a Scale of 1-7', value: 0},
@@ -32,29 +32,41 @@ export class CourseDetailComponent implements OnInit {
   maxLength: number = 99999
   isLoggedIn: boolean = false
 
+  @ViewChild('imageContainer')  imageContainer!: ElementRef;
+  @ViewChild('gradientContainer')  gradientContainer!: ElementRef;
+
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private renderer: Renderer2,
+    private classService: ClassService
   ) {}
+  ngAfterViewInit(): void {
+    this.updateGraphicStyles()
+  }
 
   ngOnInit(): void {
     this.courseName = this.route.snapshot.paramMap.get('id') || ""
     this.auth.isLoggedIn.subscribe(state => {this.isLoggedIn = state})
     this.getClassData()
+    this.getFirstPage()
   }
 
   getClassData(): void {
-    let docRef = this.afs.collection('Class', ref => ref.where("ClassName", "==", this.courseName))
-    let x = docRef.get().subscribe((ss) => {
-      if (ss.docs.length === 1) {
-        this.course = ss.docs[0].data() as ClassData
-        this.courseId = ss.docs[0].id
-        this.courseNumber = this.course.CourseNumber
-        this.updateCards()
-        this.getFirstPage()
-      }
+    this.classService.classes.subscribe(data => {
+      this.course = data.find(x => x.ClassName == this.courseName)
+      this.courseNumber = this.course!.CourseNumber
+      this.updateCards(this.course!)
+      this.updateGraphicStyles()
     })
+  }
+
+  updateGraphicStyles(): void {
+    if(this.gradientContainer?.nativeElement){
+      this.renderer.setStyle(this.gradientContainer?.nativeElement,'background',this.course?.GraphicColor)
+      this.renderer.setStyle(this.imageContainer?.nativeElement,'background-image',this.course?.GraphicUrl)
+    }
   }
 
   getFirstPage() {
@@ -104,7 +116,7 @@ export class CourseDetailComponent implements OnInit {
       }
       this.reviewDataStack.push(response)
       this.pageNumber++
-      if (response.docs.length < 5 || this.reviewData.length >= this.course.RatingCount) { // TODO Add || this.page_number*this.page_length + this.reviewData.length >= course.RatingCount
+      if (response.docs.length < 5 || this.reviewData.length >= this.course!.RatingCount) { // TODO Add || this.page_number*this.page_length + this.reviewData.length >= course.RatingCount
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
@@ -132,11 +144,11 @@ export class CourseDetailComponent implements OnInit {
     }
   }
 
-  updateCards(): void {
-    this.cards[0].value = this.course.RatingCount
-    this.cards[1].value = this.course.RatingAvg
-    this.cards[2].value = this.course.DifficultyAvg
-    this.cards[3].value = this.course.WorkloadAvg
-    this.cards[4].value = this.course.BookUsefulnessAvg
+  updateCards(course: ClassData): void {
+    this.cards[0].value = course.RatingCount
+    this.cards[1].value = course.RatingAvg
+    this.cards[2].value = course.DifficultyAvg
+    this.cards[3].value = course.WorkloadAvg
+    this.cards[4].value = course.BookUsefulnessAvg
   }
 }

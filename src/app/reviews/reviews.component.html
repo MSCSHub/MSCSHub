@@ -16,7 +16,7 @@
                 </mat-card>
                 <mat-card class="query-card">
                     <mat-card-subtitle>Filter By Query</mat-card-subtitle>
-                    <mat-form-field>
+                    <mat-form-field class="category-width">
                         <mat-label>Category</mat-label>
                         <mat-select formControlName="category">
                             <mat-option *ngFor="let category of categories | keyvalue" [value]="category.value">
@@ -43,10 +43,10 @@
     </mat-card>
     <div class="review-spacer">
         <!-- /TODO Add more features above the review container, like filters and a search bar and date picker -->
-        <h2>Course Reviews:</h2>
+        <h1>Course Reviews:</h1>
         <div class="next-prev-container">
             Page {{pageNumber + 1}}
-            <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)=getPrevPage()>Prev</button>
+            <button mat-stroked-button color="primary" [disabled]="disablePrev || pageNumber === 0" (click)=getPrevPage()>Prev</button>
             <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
         </div>
     </div>

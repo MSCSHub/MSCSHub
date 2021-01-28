@@ -1,7 +1,7 @@
 .filter-cards {
   display: grid;
   justify-content: space-evenly;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 15px;
   padding-bottom: 0px;
 }
