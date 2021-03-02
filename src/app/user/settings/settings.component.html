@@ -1,1 +1,25 @@
-<p>settings works!</p>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>User Profile</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="text-align: center;">
+            <br>
+            <form class="user-edit-form">
+                <div *ngFor="let item of userInfo | keyvalue">
+                    <mat-form-field class="form-field-full-width">
+                        <mat-label>{{ item.value.displayName }}</mat-label>
+                        <input type="text" matInput disabled 
+                               placeholder="First Name" value="{{item.value.value}}"
+                               class="font-override">
+                    </mat-form-field>
+                </div>
+            </form>
+            <mat-nav-list>
+                <mat-list-item *ngFor="let link of links | keyvalue">
+                   <a matLine color="primary" routerLink="{{ link.value }}">{{ link.key }}</a>
+                </mat-list-item>
+              </mat-nav-list>
+        </mat-card-content>
+    </mat-card>
+</div>

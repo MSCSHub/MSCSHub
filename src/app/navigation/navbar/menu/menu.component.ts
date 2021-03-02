@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
     courses: {title: 'Courses', url: '/courses'},
     login: {title: 'Login', url: '/login'},
     logout: {title: 'Log Out', url: '/logout'},
-    settings: {title: 'User Settings', url: '/settings'},
+    settings: {title: 'User Profile', url: '/settings'},
     home: {title: 'Home', url: '/home'},
     register: {title: 'Register', url: '/register'},
     createReview: {title: 'Create Review', url: '/createReview'},

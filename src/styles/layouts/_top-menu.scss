@@ -216,7 +216,7 @@ app-search-input.search-container {
     height: 50%;
     -webkit-appearance: none;
 
-    &:focus {
+    &:hover {
       outline: none;
     }
 
@@ -228,6 +228,9 @@ app-search-input.search-container {
     @include bp(big) {
       transition: width 0.4s ease-in-out;
 
+      &:hover {
+        width: 80%;
+      }
       &:focus {
         width: 80%;
       }

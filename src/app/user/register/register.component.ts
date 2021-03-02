@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   submitted: boolean = false
   returnUrl: string = '/'
   error: string = ''
+  emailRegex: string = "^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?utexas\.edu"
   Semesters = [
     'Fall 2019',
     'Spring 2020',
@@ -25,15 +26,15 @@ export class RegisterComponent implements OnInit {
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(this.emailRegex)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      firstSemester: ['', Validators.required],
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/verifyEmail';
 
@@ -48,9 +49,12 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm?.invalid){
       return
     }
-
     this.loading = true
-    this.auth.signUp(this.f.email.value, this.f.password.value, this.f.firstName.value, this.f.lastName.value)
+    this.auth.signUp(this.f.email.value, 
+                     this.f.password.value, 
+                     this.f.firstName.value, 
+                     this.f.lastName.value,
+                     this.f.firstSemester.value)
       // .then(() => {this.loading = false})
       .catch(error => {
         this.loading = false

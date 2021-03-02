@@ -4,5 +4,14 @@
     placeholder="Search"
     (input)="doSearch()"
     (keyup)="doSearch()"
-    (focus)="doFocus()"
-    (click)="doSearch()">
+    [formControl]="searchControl"
+    [matAutocomplete]="auto">
+<mat-autocomplete class="search-container" 
+                  autoActiveFirstOption 
+                  #auto="matAutocomplete"
+                  (optionSelected)=doSearch()>
+    <mat-option *ngFor="let class of filteredOptions | async" 
+                [value]="class.ClassName">
+        {{class.ClassName}}
+    </mat-option>
+</mat-autocomplete>

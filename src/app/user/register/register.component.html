@@ -10,18 +10,27 @@
                     <input matInput placeholder="First Name"
                            formControlName="firstName"
                            [ngClass]="{'is-invalid': submitted && f.firstName.errors}">
+                    <mat-error *ngIf="f.firstName.errors">
+                        You must include your first name. This will never be shown publicly.
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="form-field-full-width">
                     <input matInput placeholder="Last Name"
                            formControlName="lastName"
                            [ngClass]="{'is-invalid': submitted && f.lastName.errors}">
+                    <mat-error *ngIf="f.lastName.errors">
+                        You must include your last name. This will never be shown publicly.
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Email"
+                    <input matInput placeholder="UTexas Email"
                            formControlName="email"
                            [ngClass]="{'is-invalid': submitted && f.email.errors}">
+                    <mat-error *ngIf="f.email.errors">
+                        Must provide a <strong>@utexas.edu</strong> email.
+                    </mat-error>
                 </mat-form-field>
         
                 <mat-form-field class="form-field-full-width">
@@ -29,15 +38,22 @@
                            formControlName="password" 
                            [ngClass]="{'is-invalid': submitted && f.email.errors}"
                            placeholder="Password">
+                    <mat-error *ngIf="f.password.errors">
+                        Password must be at least <strong>6 characters</strong> in length.
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="form-field-full-width">
-                    <mat-label>First Semester</mat-label>
-                        <mat-select>
-                            <mat-option [value]="semester" *ngFor="let semester of Semesters">
+                    <mat-label>What was your first semester in the program?</mat-label>
+                        <mat-select formControlName="firstSemester">
+                            <mat-option [value]="semester" 
+                                        *ngFor="let semester of Semesters">
                                 {{semester}}
                             </mat-option>
                         </mat-select>
+                    <mat-error *ngIf="f.firstSemester.errors">
+                        You must select a semester.
+                    </mat-error>
                 </mat-form-field>
             </mat-card-content>
             <button mat-stroked-button color="accent" class="btn-block">Register</button>

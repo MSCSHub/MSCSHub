@@ -1,0 +1,34 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Edit User Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="text-align: center;">
+            <br>
+            <form class="user-edit-form" 
+                  [formGroup]="editUserDataForm" 
+                  (ngSubmit)="onSubmit()">
+                <div *ngFor="let item of userInfo | keyvalue">
+                    <mat-form-field class="form-field-full-width">
+                        <mat-label>{{ item.value.displayName }}</mat-label>
+                        <input type="text" 
+                               *ngIf="item.value.is_input; else semesterBlock"
+                               matInput 
+                               placeholder="First Name" 
+                               value="{{item.value.value}}"
+                               formControlName="{{item.value.name}}">
+                        <ng-template #semesterBlock>
+                            <mat-select formControlName="firstSemester">
+                                <mat-option [value]="semester" 
+                                            *ngFor="let semester of Semesters">
+                                    {{semester}}
+                                </mat-option>
+                            </mat-select>
+                        </ng-template>
+                    </mat-form-field>
+                </div>
+                <button mat-stroked-button color="primary">Save Changes</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

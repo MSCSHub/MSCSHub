@@ -8,5 +8,8 @@ export interface User {
 }
 
 export interface FbUser extends firebase.default.User {
-    slackId?: string
+    slackId?: string,
+    firstName?: string,
+    lastName?: string,
+    firstSemester?: string
 }

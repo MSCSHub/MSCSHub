@@ -4,6 +4,13 @@
       <div class="padded-cell white">
         <h1 class="flat-bottom">{{courseName}}</h1>
         <h3 class="white">({{courseNumber}})</h3>
+        <mat-chip-list>
+          <mat-chip>{{course?.category}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+          <div *ngFor="let item of course?.meta | keyvalue">
+            <mat-chip *ngIf="item.value">{{item.key | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+          </div>
+          <mat-chip *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+        </mat-chip-list>
       </div>
     </div>
   </div>

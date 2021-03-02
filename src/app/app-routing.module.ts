@@ -13,6 +13,8 @@ import { RegisterComponent } from './user/register/register.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { AuthguardGuard } from './user/authguard.guard';
+import { LogoutComponent } from './user/logout/logout.component';
+import { EditComponent } from './user/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -27,14 +29,18 @@ const routes: Routes = [
   {path: 'review/:id', component: ReviewDetailComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'logout', redirectTo: '/home', pathMatch: 'full'},
+  // {path: 'logout', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'logout', component: LogoutComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'passwordReset', component: ForgotPasswordComponent},
   {path: 'verifyEmail', component: VerifyEmailComponent},
   {path: 'admin', component: AdminComponent},
   // {path: 'feedback', component: FeedbackComponent},
   // {path: 'feedback', redirectTo: 'https://github.com/MSCSHub/MSCSHub/issues/new', pathMatch: 'full'},
-  {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]}
+  {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
+  {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
+  {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
+  {path: '**', redirectTo: "/home"}
 ];
 
 @NgModule({
