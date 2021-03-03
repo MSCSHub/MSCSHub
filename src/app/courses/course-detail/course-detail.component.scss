@@ -91,6 +91,6 @@ h3 {
   // );
 }
 
-.mat-chip-list-wrapper {
-  justify-content: flex-start;
+::ng-deep .mat-chip-list-wrapper {
+  justify-content: flex-start !important;
 }
