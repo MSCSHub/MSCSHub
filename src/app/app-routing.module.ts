@@ -15,6 +15,7 @@ import { VerifyEmailComponent } from './user/verify-email/verify-email.component
 import { AuthguardGuard } from './user/authguard.guard';
 import { LogoutComponent } from './user/logout/logout.component';
 import { EditComponent } from './user/edit/edit.component';
+import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
 
 const routes: Routes = [
   {
@@ -27,9 +28,9 @@ const routes: Routes = [
   {path: 'courses/:id', component: CourseDetailComponent},
   {path: 'reviews', component: ReviewsComponent},
   {path: 'review/:id', component: ReviewDetailComponent},
+  {path: 'review/edit/:id', component: CreateReviewComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'login', component: LoginComponent},
-  // {path: 'logout', redirectTo: '/home', pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'passwordReset', component: ForgotPasswordComponent},
@@ -39,7 +40,7 @@ const routes: Routes = [
   // {path: 'feedback', redirectTo: 'https://github.com/MSCSHub/MSCSHub/issues/new', pathMatch: 'full'},
   {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
   {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
-  {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
+  {path: 'user/reviews', component: ViewUserReviewsComponent, canActivate: [AuthguardGuard]},
   {path: '**', redirectTo: "/home"}
 ];
 

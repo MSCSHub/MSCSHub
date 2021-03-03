@@ -1,1 +1,22 @@
-<p>view-user-reviews works!</p>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>My Reviews</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="text-align: center;">
+            <mat-nav-list>
+                <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}">
+                    <span matLine>{{ review.course }}&nbsp; — &nbsp;{{ review.title }}</span>
+                    <div (click)="$event.stopPropagation()">
+                        <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.')">
+                            <mat-icon>add_link</mat-icon>
+                        </button>
+                        <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
+                            <mat-icon>mode_edit</mat-icon>
+                        </button>
+                    </div>
+                </mat-list-item>
+              </mat-nav-list>
+        </mat-card-content>
+    </mat-card>
+</div>

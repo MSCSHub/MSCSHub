@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
+import { Review } from 'src/app/shared/review/review';
 
 @Component({
   selector: 'dialog-review-sumission-dialog',
@@ -19,6 +20,8 @@ export class DialogReviewSubmission {}
   styleUrls: ['./create-review.component.scss']
 })
 export class CreateReviewComponent implements OnInit {
+  headerText: string = "Create New Review"
+  reviewId: string = ""
   error: any
   loading: boolean = false
   submitted: boolean = false
@@ -37,37 +40,48 @@ export class CreateReviewComponent implements OnInit {
     public dialog: MatDialog,
     private afs: AngularFirestore,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.courseService.classes.subscribe(data =>
       this.courses = data
     )
+    this.initializeReviewForm()
+    this.loadReview()
+  }
+
+  loadReview() {
+    this.reviewId = this.route.snapshot.paramMap.get('id') || ""
+    if(this.reviewId){
+      this.headerText = "Edit Review"
+      this.afs.collection("Reviews").doc(this.reviewId).get().subscribe(doc => {
+        this.reviewForm.setValue(doc.data() as Review)
+      })
+    }
+  }
+
+  initializeReviewForm() {
     this.reviewForm = this.formBuilder.group({
       title: ['', Validators.required],
       course: ['', Validators.required],
       semester: ['', Validators.required],
-      year: ['', Validators.required],
+      year: ['', [Validators.required, Validators.max(2099), Validators.min(2019)]],
       review: ['Pros:\n1. \n2. \n3. \n\nCons:\n1. \n2. \n3. \n\nOverall:\n', Validators.required],
-      rating: ['', Validators.required],
-      difficulty: ['', Validators.required],
-      workload: ['', Validators.required],
-      bookUsefulness: ['', Validators.required],
-      lectureQuality: ['', Validators.required],
-      professorQuality: ['', Validators.required],
-      piazzaCommunity: ['', Validators.required],
-      projects: [false, Validators.required],
-      homework: [false, Validators.required],
-      peerReviewed: [false, Validators.required],
-      exams: [false, Validators.required],
-      // languages: ['', Validators.required],
+      rating: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
+      difficulty: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
+      workload: ['', [Validators.required, Validators.max(100), Validators.min(0)]],
+      bookUsefulness: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
+      lectureQuality: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
+      professorQuality: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
+      piazzaCommunity: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
       userId: ['', Validators.required],
       timestamp: [new Date(), Validators.required],
       classId: ['', Validators.required]
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
-      this.reviewForm.controls['userId'].setValue(JSON.stringify(user.uid))
+      this.reviewForm.controls['userId'].setValue(user.uid)
     })
   }
 
@@ -83,12 +97,22 @@ export class CreateReviewComponent implements OnInit {
       return
     }
     this.loading = true
-    this.afs.collection('Reviews')
-      .add(this.reviewForm.value)
-      .then(result => {
-        this.loading = false
-        this.openDialog()
-      }, error => console.log("Submission failed:", error))
+    if(this.reviewId) {
+      this.afs.collection('Reviews')
+        .doc(this.reviewId)
+        .update(this.reviewForm.value)
+        .then(result => {
+          this.loading = false
+          this.openDialog()
+        }, error => console.log("Submission failed:", error))
+    } else {
+      this.afs.collection('Reviews')
+        .add(this.reviewForm.value)
+        .then(result => {
+          this.loading = false
+          this.openDialog()
+        }, error => console.log("Submission failed:", error))
+    }
   }
 
   openDialog() {
@@ -97,5 +121,4 @@ export class CreateReviewComponent implements OnInit {
       this.router.navigate(['courses', this.reviewForm.controls['course'].value])
     })
   }
-
 }

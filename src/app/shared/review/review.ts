@@ -19,4 +19,6 @@ export interface Review {
   timestamp: Timestamp,
   workload: number,
   year: number,
+  userId?: string,
+  reviewId?: string,
 }

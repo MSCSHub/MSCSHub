@@ -1,1 +1,42 @@
-<p>Review Detail works!</p>
+<div class="content">
+  <div class="review-container">
+    <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
+      <mat-card-header>
+        <mat-card-title>
+          {{review.title}}
+        </mat-card-title>
+        <mat-card-subtitle>{{review.course}}</mat-card-subtitle>
+        <mat-card-subtitle>{{review.timestamp.toMillis() | date: 'M/d/yyyy h:mm a z'}}</mat-card-subtitle>
+        <div fxFlex></div>
+        <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.')">
+          <mat-icon matTooltip="Copy link to review">add_link</mat-icon>
+        </button>
+        <button mat-icon-button 
+                routerLink="/review/edit/{{review.reviewId}}"
+                *ngIf="review.userId === userData?.uid">
+          <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        Rating: {{review.rating}} <br>
+        Difficulty: {{review.difficulty}} <br>
+        Workload: {{review.workload}} <br>
+        Book Usefulness: {{review.bookUsefulness || 'N/A'}}<br><br>
+        <b>Review:</b><br>
+          <p style="white-space: pre-line;">
+            {{review.review}}
+          </p>
+        <br><br>
+      Was this review helpful?
+      <mat-button-toggle-group name="helpful" 
+                               aria-label="Helpful" 
+                               [disabled]="!isLoggedIn"
+                               matTooltip="Must be logged in."
+                               [matTooltipDisabled]="isLoggedIn">
+        <mat-button-toggle value="yes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no">No</mat-button-toggle>
+      </mat-button-toggle-group>
+    </mat-card-content>
+    </mat-card>
+  </div>
+</div>

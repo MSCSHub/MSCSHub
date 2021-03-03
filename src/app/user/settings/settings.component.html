@@ -16,8 +16,8 @@
                 </div>
             </form>
             <mat-nav-list>
-                <mat-list-item *ngFor="let link of links | keyvalue">
-                   <a matLine color="primary" routerLink="{{ link.value }}">{{ link.key }}</a>
+                <mat-list-item *ngFor="let link of links | keyvalue" routerLink="{{ link.value }}">
+                   <a matLine color="primary">{{ link.key }}</a>
                 </mat-list-item>
               </mat-nav-list>
         </mat-card-content>
