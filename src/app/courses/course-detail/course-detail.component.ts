@@ -85,7 +85,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       }
       this.reviewData = []
       for (let item of response.docs) {
-        this.reviewData.push(item.data() as Review)
+        const review = item.data() as Review
+        review.reviewId = item.id
+        this.reviewData.push(review)
       }
       this.reviewDataStack.push(response)
       this.pageNumber = 0
@@ -112,7 +114,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         return
       }
       for (let item of response.docs) {
-        this.reviewData.push(item.data() as Review)
+        const review = item.data() as Review
+        review.reviewId = item.id
+        this.reviewData.push(review)
       }
       this.reviewDataStack.push(response)
       this.pageNumber++

@@ -70,9 +70,9 @@ export class AuthService {
         })
         this.setUserData(result.user)
       })
-      .catch((error) => {
-        window.alert(error.message)
-      })
+      // .catch((error) => {
+      //   window.alert(error.message)
+      // })
   }
 
   signUp(email: string, password: string, firstName: string, lastName: string, firstSemester: string) {

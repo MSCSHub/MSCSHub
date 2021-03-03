@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { type } from 'os';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -48,11 +49,20 @@ export class LoginComponent implements OnInit {
 
     this.loading = true
     this.auth.signIn(this.f.email.value, this.f.password.value)
-      // .then(() => {this.loading = false})
+      .then(() => {this.loading = false})
       .catch(error => {
         this.loading = false
-        this.error = error
+        this.processError(error)
       })
+  }
+
+  processError(error: any): void {
+    if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password"){
+      this.error = "Your account information was entered incorrectly."
+    // } else if(error.code === "auth/wrong-password") {
+    } else {
+      this.error = error.message
+    }
   }
 
 }

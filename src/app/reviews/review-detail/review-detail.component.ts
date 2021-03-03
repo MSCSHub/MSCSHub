@@ -19,7 +19,7 @@ export class ReviewDetailComponent implements OnInit {
   @Input() pageNumber: number = 0
   @Input() query: string = ""
   @Input() pageLength: number = 10
-  reviewData: Review[] = []
+  @Input() reviewData: Review[] = []
   isLoggedIn: boolean = false
   userData: FbUser | undefined
   durationInSeconds: number = 3
@@ -51,85 +51,10 @@ export class ReviewDetailComponent implements OnInit {
     })
   }
 
-  openSnackBar(message: string, action: string = "Dismiss") {
-    this.clipboard.copy(window.location.href)
+  openSnackBar(message: string, reviewId?: string, action: string = "Dismiss") {
+    this.clipboard.copy(`${window.location.host}/review/${reviewId}`)
     this._snackBar.open(message, action, {
       duration: this.durationInSeconds * 1000,
     });
   }
-
-
-  // getFirstPage() {
-  //   this.afs.collection('Reviews', ref => ref
-  //     .where("course", '==', this.courseName)
-  //     .limit(this.pageLength)
-  //     .orderBy("timestamp","desc")
-  //   ).get().subscribe(response => {
-  //     if (!response.docs.length){
-  //       console.log("No reviews exist")
-  //       //TODO Add something to let the user know that there are no reviews
-  //       this.disableNext = true
-  //       this.disablePrev = true
-  //       return
-  //     }
-  //     this.reviewData = []
-  //     for (let item of response.docs) {
-  //       this.reviewData.push(item.data() as Review)
-  //     }
-  //     this.reviewDataStack.push(response)
-  //     this.pageNumber = 0
-  //     if (response.docs.length < 5) {
-  //       this.disableNext = true
-  //       this.maxLength = this.reviewData.length
-  //     }
-  //   }, error => {console.log(error)})
-  // }
-
-  // nextPage() {
-  //   this.disablePrev = false
-  //   const lastReview = this.reviewDataStack[this.reviewDataStack.length-1].docs[this.pageLength-1]
-  //   this.afs.collection('Reviews', ref => ref
-  //     .where("course", '==', this.courseName)
-  //     .limit(this.pageLength)
-  //     .orderBy("timestamp","desc")
-  //     .startAfter(lastReview)
-  //   ).get().subscribe(response => {
-  //     if (!response.docs.length){
-  //       console.log("No reviews exist")
-  //       //TODO Add something to let the user know that there are no reviews
-  //       this.disableNext = true
-  //       return
-  //     }
-  //     for (let item of response.docs) {
-  //       this.reviewData.push(item.data() as Review)
-  //     }
-  //     this.reviewDataStack.push(response)
-  //     this.pageNumber++
-  //     if (response.docs.length < 5 || this.reviewData.length >= this.course!.RatingCount) { // TODO Add || this.page_number*this.page_length + this.reviewData.length >= course.RatingCount
-  //       this.disableNext = true
-  //       this.maxLength = this.reviewData.length
-  //     }
-  //   }, error => {console.log(error)})
-  // }
-
-  // getPrevPage(): void {
-  //   this.pageNumber--
-  //   this.disableNext = false
-  //   console.log("Previous", this.pageNumber)
-  //   if (this.pageNumber === 0) {
-  //     this.disablePrev = true
-  //   }
-  // }
-
-  // getNextPage(): void {
-  //   this.disablePrev = false
-  //   if((this.pageNumber+1) * this.pageLength >= this.reviewData.length) {
-  //     this.nextPage()
-  //   } else { this.pageNumber++ }
-  //   console.log(this.pageNumber * this.pageLength)
-  //   console.log(this.maxLength)
-  //   if ((this.pageNumber+1)*this.pageLength >= this.maxLength) {
-  //     this.disableNext = true
-  //   }
-  // }
 }

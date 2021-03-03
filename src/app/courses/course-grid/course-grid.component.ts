@@ -13,6 +13,7 @@ export class CourseGridComponent implements OnInit {
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust"]
   selected: string[] = []
   visibleClasses: ClassData[] = []
+  visibleClasses2: Set<ClassData> = new Set()
 
   constructor(
     private courses: ClassService,
@@ -39,28 +40,38 @@ export class CourseGridComponent implements OnInit {
   }
 
   filterItems(): void {
-    this.visibleClasses = []
+    // this.visibleClasses = []
+    this.visibleClasses2.clear()
     let selectedLangs: ClassData[] = []
     let selectedCats: ClassData[] = []
     if(this.selected.length === 0){
-      this.visibleClasses = this.classes
+      this.classes.forEach(data => {
+        this.visibleClasses2.add(data)
+      })
     } else {
       for(var i=0; i<this.selected.length; i++){
         let item = this.selected[i]
         if(this.categories.includes(item)){
-          let dataToPush = this.classes.filter(x => x.category === item)
-          selectedCats = selectedCats.concat(dataToPush)
+          this.classes.filter(x => x.category === item).forEach(data => {
+            this.visibleClasses2.add(data)
+          })
         } else {
-          let dataToPush = this.classes.filter(x => x.languages?.includes(item))
-          selectedLangs = selectedLangs.concat(dataToPush)
+          this.classes.filter(x => x.languages?.includes(item)).forEach(data => {
+            this.visibleClasses2.add(data)
+          })
         }
       }
       if (selectedLangs.length === 0 || selectedCats.length === 0){
-        this.visibleClasses = selectedLangs.concat(selectedCats)
+        selectedCats.forEach(data => {
+          this.visibleClasses2.add(data)
+        })
       } else {
-        this.visibleClasses = selectedLangs.filter(x => selectedCats.includes(x))
+        selectedLangs.filter(x => selectedCats.includes(x)).forEach(data => {
+          this.visibleClasses2.add(data)
+        })
       }
     }
+    this.visibleClasses = Array.from(this.visibleClasses2)
     this.visibleClasses.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
   }
 }
