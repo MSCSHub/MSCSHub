@@ -18,12 +18,13 @@ export interface ClassData {
   GraphicUrl: string,
   GraphicColor: string,
   GraphicThumbnail: string,
-  meta: {
-    theory: boolean,
-    applications: boolean,
-    systems: boolean,
-    elective: boolean,
-  }
+  meta: {[key: string]: boolean},
+  // meta: {
+  //   theory: boolean,
+  //   applications: boolean,
+  //   systems: boolean,
+  //   elective: boolean,
+  // }
   languages: string[] | null,
   courseId: string,
   category: string

@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { Review } from 'src/app/shared/review/review';
+import { FbUser } from 'src/app/shared/user/user';
 
 @Component({
   selector: 'dialog-review-sumission-dialog',
@@ -32,6 +33,8 @@ export class CreateReviewComponent implements OnInit {
   years: number[] = [this.currentYear, this.currentYear-1, this.currentYear-2]
   courses: ClassData[] | undefined
   reviewForm: FormGroup = new FormGroup({})
+  completedReviews: string[] = []
+  userData: FbUser | undefined
 
   constructor(
     private courseService: ClassService,
@@ -44,9 +47,11 @@ export class CreateReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.courseService.classes.subscribe(data =>
-      this.courses = data
-    )
+    this.courseService.classes.subscribe(data => this.courses = data)
+    this.auth.userData.subscribe(data => {
+      this.userData = data
+      this.getUserReviews()
+    })
     this.initializeReviewForm()
     this.loadReview()
   }
@@ -59,6 +64,21 @@ export class CreateReviewComponent implements OnInit {
         this.reviewForm.setValue(doc.data() as Review)
       })
     }
+  }
+
+  getUserReviews(): void {
+    this.afs.collection('Reviews', ref => 
+      ref.where("userId", '==', this.userData?.uid)
+    ).get().subscribe(response => {
+      if (!response.docs.length){
+        return
+      }
+      this.completedReviews = []
+      for (let item of response.docs) {
+        const review = item.data() as Review
+        this.completedReviews.push(review.course)
+      }
+    }, error => {console.log(error)})
   }
 
   initializeReviewForm() {

@@ -41,6 +41,7 @@ import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logg
 import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-feedback.component';
 import { EditComponent } from './user/edit/edit.component';
 import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
+import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-rev
     DialogSendFeedback,
     EditComponent,
     ViewUserReviewsComponent,
+    EditCourseMetadataComponent,
   ],
   imports: [
     BrowserModule,

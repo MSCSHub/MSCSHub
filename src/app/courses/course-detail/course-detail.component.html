@@ -1,6 +1,13 @@
 <div class="content">
   <div class="image-container" #imageContainer>
     <div class="gradient-container" #gradientContainer>
+      <div>
+        <div fxFlex></div>
+        <mat-chip class="edit-chip" routerLink="/courses/edit/{{courseName}}">
+          Edit
+          <mat-icon class="tab" matTooltip="Edit course details">mode_edit</mat-icon>
+        </mat-chip>
+      </div>
       <div class="padded-cell white">
         <h1 class="flat-bottom">{{courseName}}</h1>
         <h3 class="white">({{courseNumber}})</h3>
@@ -27,7 +34,7 @@
     </div>
   </div>
   <div class="review-container">
-    <app-review-detail [reviewData]="reviewData"></app-review-detail>
+    <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber"></app-review-detail>
   </div>
   <div class="review-footer">
     <div class="next-prev-container">

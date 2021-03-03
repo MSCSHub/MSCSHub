@@ -16,6 +16,7 @@ import { AuthguardGuard } from './user/authguard.guard';
 import { LogoutComponent } from './user/logout/logout.component';
 import { EditComponent } from './user/edit/edit.component';
 import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
+import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'home', component: DashboardComponent},
   {path: 'courses', component: CourseGridComponent},
   {path: 'courses/:id', component: CourseDetailComponent},
+  {path: 'courses/edit/:id', component: EditCourseMetadataComponent},
   {path: 'reviews', component: ReviewsComponent},
   {path: 'review/:id', component: ReviewDetailComponent},
   {path: 'review/edit/:id', component: CreateReviewComponent},

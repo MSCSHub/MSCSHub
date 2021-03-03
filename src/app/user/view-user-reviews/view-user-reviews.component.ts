@@ -34,8 +34,8 @@ export class ViewUserReviewsComponent implements OnInit {
   }
 
   getUserReviews(): void {
-        this.afs.collection('Reviews', ref => ref
-      .where("userId", '==', this.userData?.uid)
+    this.afs.collection('Reviews', ref => 
+      ref.where("userId", '==', this.userData?.uid)
     ).get().subscribe(response => {
       if (!response.docs.length){
         console.log("No reviews exist")
