@@ -47,6 +47,7 @@ export class CreateReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.reviewId = this.route.snapshot.paramMap.get('id') || ""
     this.courseService.classes.subscribe(data => this.courses = data)
     this.auth.userData.subscribe(data => {
       this.userData = data
@@ -57,12 +58,12 @@ export class CreateReviewComponent implements OnInit {
   }
 
   loadReview() {
-    this.reviewId = this.route.snapshot.paramMap.get('id') || ""
     if(this.reviewId){
       this.headerText = "Edit Review"
       this.afs.collection("Reviews").doc(this.reviewId).get().subscribe(doc => {
         this.reviewForm.setValue(doc.data() as Review)
       })
+      this.f.course.disable()
     }
   }
 
@@ -105,8 +106,11 @@ export class CreateReviewComponent implements OnInit {
     })
   }
 
+  get f() {
+    return this.reviewForm?.controls
+  }
+
   onSubmit() {
-    console.log("Submitting", this.reviewForm?.invalid)
     const courseName = this.reviewForm.controls['course'].value
     const classId = this.courses?.find(item => item.ClassName === courseName)?.courseId
     this.reviewForm.controls['classId'].setValue(classId)

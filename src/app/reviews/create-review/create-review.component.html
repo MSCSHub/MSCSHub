@@ -48,7 +48,7 @@
                     <mat-label>Course</mat-label>
                     <mat-select formControlName="course" required>
                         <div *ngFor="let course of courses">
-                            <mat-option *ngIf="!completedReviews.includes(course.ClassName)"
+                            <mat-option *ngIf="reviewId || !completedReviews.includes(course.ClassName)"
                                 [value]="course.ClassName">
                                 {{course.ClassName}}
                             </mat-option>
