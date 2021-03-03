@@ -20,4 +20,8 @@ export class NavbarComponent implements OnInit {
   doSearch(event: any){
     alert(this.currentUrl)
   }
+
+  visitLink(): void {
+    window.location.href = "https://www.paypal.com/donate?business=eric.pryzant%40gmail.com&item_name=Funds+future+development+of+MSCShub.com&currency_code=USD"
+  }
 }

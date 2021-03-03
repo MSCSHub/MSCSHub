@@ -11,6 +11,7 @@
         </a>
         <app-nav-nodes></app-nav-nodes>
         <app-search-input class="search-container" #searchBox (onSearch)="doSearch($event)" (onFocus)="doSearch($event)"></app-search-input>
+        <button mat-raised-button class="donate" (click)="visitLink()">Donate</button>
         <div class="toolbar-external-icons-container">
             <a href="https://utmscso.slack.com" title="Slack" aria-label="UT MSCSO on Slack">
                 <mat-icon svgIcon="logos:slack"></mat-icon>
