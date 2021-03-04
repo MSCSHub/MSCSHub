@@ -3,16 +3,20 @@
 </div> -->
 <mat-toolbar color="primary" class="app-toolbar no-print">
     <mat-toolbar-row>
-        <button mat-button class="hamburger" title="Docs menu">
+        <button mat-button class="hamburger" (click)="doMenuClick()">
             <mat-icon svgIcon="menu"></mat-icon>
         </button>
         <a class="nav-link home" routerLink="/">
             <img src="assets/images/logos/Colorwheel/Colorwheel-128.png" width="40" height="40" title="Home" alt="Home">
+            <!-- <span fxShow.lt-sm="true" fxShow="false">&nbsp;&nbsp;&nbsp;MSCS Hub</span> -->
         </a>
         <app-nav-nodes></app-nav-nodes>
-        <app-search-input class="search-container" #searchBox (onSearch)="doSearch($event)" (onFocus)="doSearch($event)"></app-search-input>
-        <button mat-raised-button class="donate" (click)="visitLink()">Donate</button>
-        <div class="toolbar-external-icons-container">
+        <app-search-input class="search-container" 
+                          fxHide.lt-sm fxShow
+                          #searchBox (onSearch)="doSearch($event)" 
+                          (onFocus)="doSearch($event)"></app-search-input>
+        <!-- <button mat-raised-button class="donate" (click)="donateLink()">Donate</button> -->
+        <div class="toolbar-external-icons-container" fxHide.lt-md fxShow>
             <a href="https://utmscso.slack.com" title="Slack" aria-label="UT MSCSO on Slack">
                 <mat-icon svgIcon="logos:slack"></mat-icon>
             </a>

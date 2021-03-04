@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input() drawerFunc: any
+  @Output() menuClicked: EventEmitter<boolean> = new EventEmitter<boolean>()
   public currentUrl: string = ''
+  menuStatus = false
 
   constructor(
     private router: Router,
@@ -21,7 +24,11 @@ export class NavbarComponent implements OnInit {
     alert(this.currentUrl)
   }
 
-  visitLink(): void {
+  doMenuClick(): void {
+    this.menuClicked.emit()
+  }
+
+  donateLink(): void {
     window.location.href = "https://www.paypal.com/donate?business=eric.pryzant%40gmail.com&item_name=Funds+future+development+of+MSCShub.com&currency_code=USD"
   }
 }

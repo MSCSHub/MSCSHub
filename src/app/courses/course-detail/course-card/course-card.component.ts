@@ -9,4 +9,5 @@ export class CourseCardComponent {
   @Input() title: string = ""
   @Input() subtitle: string = ""
   @Input() value: number = 0
+  @Input() data: any
 }

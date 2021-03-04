@@ -21,7 +21,10 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     {title: 'Rating', subtitle: 'On a Scale of 1-7', value: 0},
     {title: 'Difficulty', subtitle: 'On a Scale of 1-7', value: 0},
     {title: 'Workload', subtitle: 'Hours Per Week', value: 0},
-    {title: 'Book Usefulness', subtitle: 'On a Scale of 1-7', value: 0},
+    {title: 'Textbook', subtitle: 'On a Scale of 1-7', value: 0},
+    {title: 'Lectures', subtitle: 'On a Scale of 1-7', value: 0},
+    {title: 'Professor', subtitle: 'On a Scale of 1-7', value: 0},
+    {title: 'Piazza Support', subtitle: 'On a Scale of 1-7', value: 0},
   ]
   reviewDataStack: any[] = []
   reviewData: Review[] = []

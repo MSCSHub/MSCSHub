@@ -21,9 +21,10 @@
       </div>
     </div>
   </div>
-  <div class="grid-container">
+  <!-- <div class="grid-container">
     <app-course-card *ngFor="let card of cards" [title]="card.title" [subtitle]="card.subtitle" [value]="card.value"></app-course-card>
-  </div>
+  </div> -->
+  <app-course-card [data]="cards"></app-course-card>
   <br>
   <div class="review-spacer">
     <h2>Course Reviews:</h2>

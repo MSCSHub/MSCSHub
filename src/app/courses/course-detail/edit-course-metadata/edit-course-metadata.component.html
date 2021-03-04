@@ -1,0 +1,72 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>{{courseName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="text-align: center;">
+            <br>
+            <form class="user-edit-form" 
+                  [formGroup]="courseMetadataForm" 
+                  (ngSubmit)="onSubmit()">
+                <mat-form-field class="form-field-full-width">
+                    <mat-label>Category</mat-label>
+                    <mat-select type="boolean" formControlName="category" required>
+                        <mat-option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</mat-option>
+                    </mat-select>
+                    <mat-hint>What type of credit is this course?</mat-hint>
+                </mat-form-field>
+                <div *ngFor="let field of fields">
+                    <mat-form-field class="form-field-full-width">
+                        <mat-label>{{field | titlecase}}</mat-label>
+                        <mat-select type="boolean" formControlName="{{field}}" required>
+                            <mat-option value="true">Yes</mat-option>
+                            <mat-option value="false">No</mat-option>
+                        </mat-select>
+                        <!-- <mat-hint>Does this class have {{field}}?</mat-hint> -->
+                    </mat-form-field>
+                </div>
+                <mat-form-field class="form-field-full-width">
+                    <mat-label>Languages</mat-label>
+                    <mat-select formControlName="languages" multiple>
+                        <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <button mat-stroked-button color="primary">Save Changes</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<!-- 
+<mat-form-field class="form-field-full-width">
+    <mat-label>Projects</mat-label>
+    <mat-select formControlName="projects" required>
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+    </mat-select>
+    <mat-hint>Does this class have projects?</mat-hint>
+</mat-form-field>
+<mat-form-field class="form-field-full-width">
+    <mat-label>Homeworks</mat-label>
+    <mat-select formControlName="homework" required>
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+    </mat-select>
+    <mat-hint>Does this class have homeworks?</mat-hint>
+</mat-form-field>
+<mat-form-field class="form-field-full-width">
+    <mat-label>Peer Reviewed</mat-label>
+    <mat-select formControlName="peerReviewed" required>
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+    </mat-select>
+    <mat-hint>Are homeworks peer reviewed?</mat-hint>
+</mat-form-field>
+<mat-form-field class="form-field-full-width">
+    <mat-label>Exams</mat-label>
+    <mat-select formControlName="exams" required>
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+    </mat-select>
+    <mat-hint>Does this class have exams?</mat-hint>
+</mat-form-field> -->

@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
 import {Clipboard, ClipboardModule} from '@angular/cdk/clipboard';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-review-detail',
@@ -18,11 +19,14 @@ export class ReviewDetailComponent implements OnInit {
   @Input() class: string = ""
   @Input() pageNumber: number = 0
   @Input() query: string = ""
-  @Input() pageLength: number = 10
+  @Input() pageLength: number = 5
   @Input() reviewData: Review[] = []
+  @Input() dataLength: number = 0
   isLoggedIn: boolean = false
   userData: FbUser | undefined
   durationInSeconds: number = 3
+  pageSizeOptions: number[] = [5, 10, 25, 100]
+  pageEvent: PageEvent = new PageEvent()
 
   constructor(
     private route: ActivatedRoute,

@@ -1,0 +1,6 @@
+<mat-nav-list>
+    <div *ngFor="let link of links | keyvalue">
+        <a mat-list-item *ngIf="link.value.show" (click)="closeDrawer()"
+           [routerLink]="link.value.link">{{link.value.title}}</a>
+    </div>
+</mat-nav-list>

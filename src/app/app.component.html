@@ -1,6 +1,11 @@
-<app-navbar></app-navbar>
-<div class="main-container">
-    <main>
-        <router-outlet></router-outlet>
-    </main>
-</div>
+<app-navbar (menuClicked)="drawer.toggle()"></app-navbar>
+<mat-drawer-container class="sidemenu-container" autosize>
+    <mat-drawer #drawer class="sidemenu-sidenav" mode="side">
+        <app-sidenav (routeSelected)="drawer.close()"></app-sidenav>
+    </mat-drawer>
+    <div class="main-container">
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</mat-drawer-container>

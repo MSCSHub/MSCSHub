@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'reviews', component: ReviewsComponent},
   {path: 'review/:id', component: ReviewDetailComponent},
   {path: 'review/edit/:id', component: CreateReviewComponent},
-  {path: 'settings', component: SettingsComponent},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'register', component: RegisterComponent},

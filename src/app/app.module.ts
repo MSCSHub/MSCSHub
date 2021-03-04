@@ -42,6 +42,7 @@ import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-fe
 import { EditComponent } from './user/edit/edit.component';
 import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
+import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { EditCourseMetadataComponent } from './courses/course-detail/edit-course
     EditComponent,
     ViewUserReviewsComponent,
     EditCourseMetadataComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
