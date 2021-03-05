@@ -11,10 +11,15 @@
 
 .footer-links {
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     a {
         padding: 0 10px;
     }
-    a:hover {
-        text-decoration-line: underline;
-    }
+}
+
+a:hover {
+    text-decoration-line: underline;
 }

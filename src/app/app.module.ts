@@ -33,7 +33,6 @@ import { CourseListComponent } from './courses/course-list/course-list.component
 import { CourseCardComponent } from './courses/course-detail/course-card/course-card.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { CourseGridCardComponent } from './courses/course-grid/course-grid-card/course-grid-card.component';
-import { CourseGridImageComponent } from './courses/course-grid/course-grid-image/course-grid-image.component';
 import { LogoutComponent } from './user/logout/logout.component';
 import { FeedbackComponent, DialogOnSubmission } from './feedback/feedback.component';
 import { CreateReviewComponent, DialogReviewSubmission } from './reviews/create-review/create-review.component';
@@ -44,6 +43,10 @@ import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-rev
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { FooterComponent } from './footer/footer.component';
+import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
+import { ThankyouComponent } from './misc/thankyou/thankyou.component';
+import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
+import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,6 @@ import { FooterComponent } from './footer/footer.component';
     CourseCardComponent,
     CourseGridComponent,
     CourseGridCardComponent,
-    CourseGridImageComponent,
     LogoutComponent,
     FeedbackComponent,
     DialogOnSubmission,
@@ -80,6 +82,10 @@ import { FooterComponent } from './footer/footer.component';
     EditCourseMetadataComponent,
     SidenavComponent,
     FooterComponent,
+    SadPandaComponent,
+    ThankyouComponent,
+    NothingHereComponent,
+    PandaPartyComponent,
   ],
   imports: [
     BrowserModule,

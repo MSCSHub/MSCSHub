@@ -17,6 +17,9 @@ import { LogoutComponent } from './user/logout/logout.component';
 import { EditComponent } from './user/edit/edit.component';
 import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
+import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
+import { ThankyouComponent } from './misc/thankyou/thankyou.component';
+import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 
 const routes: Routes = [
   {
@@ -43,7 +46,9 @@ const routes: Routes = [
   {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
   {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
   {path: 'user/reviews', component: ViewUserReviewsComponent, canActivate: [AuthguardGuard]},
-  {path: '**', redirectTo: "/home"}
+  {path: 'sadPanda', component: SadPandaComponent},
+  {path: 'thankyou', component: ThankyouComponent},
+  {path: '**', component: NothingHereComponent}
 ];
 
 @NgModule({

@@ -29,6 +29,6 @@ export class NavbarComponent implements OnInit {
   }
 
   donateLink(): void {
-    window.location.href = "https://www.paypal.com/donate?business=eric.pryzant%40gmail.com&item_name=Funds+future+development+of+MSCShub.com&currency_code=USD"
+    window.location.href = "https://www.paypal.com/donate?hosted_button_id=8HUJHWGZD4MUG"
   }
 }

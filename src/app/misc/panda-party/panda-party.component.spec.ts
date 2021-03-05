@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourseGridImageComponent } from './course-grid-image.component';
+import { PandaPartyComponent } from './panda-party.component';
 
-describe('CourseGridImageComponent', () => {
-  let component: CourseGridImageComponent;
-  let fixture: ComponentFixture<CourseGridImageComponent>;
+describe('PandaPartyComponent', () => {
+  let component: PandaPartyComponent;
+  let fixture: ComponentFixture<PandaPartyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CourseGridImageComponent ]
+      declarations: [ PandaPartyComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CourseGridImageComponent);
+    fixture = TestBed.createComponent(PandaPartyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
