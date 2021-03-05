@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NothingHereComponent implements OnInit {
   title = "You look lost..."
   subtitle = "Mr. Panda is here to help you get home"
-  sources = [
+  sources = [ // teeturtle.com
     "https://12ax7web.s3.amazonaws.com/accounts/1/products/imported/cant-adult-today-t-shirt-teeturtle-1000x1000.jpg",
     "https://12ax7web.s3.amazonaws.com/accounts/1/products/1986199881257/Say-No-to-Doing-Things_800x800_SEPS2-1000x1000.jpg",
     "https://12ax7web.s3.amazonaws.com/accounts/1/products/1986199881068/Im-Having-So-Much-Fun_800x800_SEPS-1000x1000.jpg",
