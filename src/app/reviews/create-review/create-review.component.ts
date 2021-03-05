@@ -57,7 +57,10 @@ export class CreateReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.reviewId = this.route.snapshot.paramMap.get('id') || ""
-    this.courseService.classes.subscribe(data => this.courses = data)
+    this.courseService.classes.subscribe(data => {
+      this.courses = data
+      this.courses.sort((a,b) => (a.ClassName > b.ClassName) ? 1 : -1)
+    })
     this.auth.userData.subscribe(data => {
       this.userData = data
       this.getUserReviews()
@@ -80,9 +83,7 @@ export class CreateReviewComponent implements OnInit {
     this.afs.collection('Reviews', ref => 
       ref.where("userId", '==', this.userData?.uid)
     ).get().subscribe(response => {
-      if (!response.docs.length){
-        return
-      }
+      if (!response.docs.length) return
       this.completedReviews = []
       for (let item of response.docs) {
         const review = item.data() as Review
@@ -137,14 +138,22 @@ export class CreateReviewComponent implements OnInit {
         .then(result => {
           this.loading = false
           this.openDialog()
-        }, error => console.log("Submission failed:", error))
+        }, error => {
+          console.log("Submission failed:", error)
+          this.loading = false
+          this.error = error.message
+        })
     } else {
       this.afs.collection('Reviews')
         .add(this.reviewForm.value)
         .then(result => {
           this.loading = false
           this.openDialog()
-        }, error => console.log("Submission failed:", error))
+        }, error => {
+          console.log("Submission failed:", error)
+          this.loading = false
+          this.error = error.message
+        })
     }
   }
 
