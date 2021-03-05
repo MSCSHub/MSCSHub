@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -35,7 +35,16 @@ export class CreateReviewComponent implements OnInit {
   reviewForm: FormGroup = new FormGroup({})
   completedReviews: string[] = []
   userData: FbUser | undefined
-
+  fields = [
+    {formName: "workload", title: "Workload", min: "1", max: "50", hint: "How many hours per week did this class require?"},
+    {formName: "rating", title: "Rating", min: "1", max: "7", hint: "Rate the class overall on a scale of 1-7"},
+    {formName: "difficulty", title: "Difficulty", min: "1", max: "7", hint: "How difficult was this class on a scale of 1-7?"},
+    {formName: "bookUsefulness", title: "Textbook Usefulness", min: "1", max: "7", hint: "How usefull was the textbook on a scale of 1-7?"},
+    {formName: "lectureQuality", title: "Lecture Quality", min: "1", max: "7", hint: "Rate the quality of the lectures on a scale of 1-7"},
+    {formName: "professorQuality", title: "Professor Quality", min: "1", max: "7", hint: "Rate the aggregate quality of the professor(s) on a scale of 1-7"},
+    {formName: "piazzaCommunity", title: "Piazza Support", min: "1", max: "7", hint: "Rate your experience with piazza community for this class on a scale of 1-7"},
+  ]
+  
   constructor(
     private courseService: ClassService,
     private formBuilder: FormBuilder,

@@ -11,11 +11,14 @@
         <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
           <mat-icon matTooltip="Copy link to review">add_link</mat-icon>
         </button>
-        <button mat-icon-button 
-                routerLink="/review/edit/{{review.reviewId}}"
-                *ngIf="review.userId === userData?.uid">
-          <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
-        </button>
+        <div *ngIf="review.userId === userData?.uid">
+          <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
+            <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="removeReview(review.reviewId)">
+            <mat-icon matTooltip="Edit review">delete</mat-icon>
+          </button>
+        </div>
       </mat-card-header>
       <mat-card-content>
         Rating: {{review.rating}} <br>

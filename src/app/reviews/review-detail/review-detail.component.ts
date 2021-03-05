@@ -5,8 +5,15 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
-import {Clipboard, ClipboardModule} from '@angular/cdk/clipboard';
-import { PageEvent } from '@angular/material/paginator';
+import {Clipboard} from '@angular/cdk/clipboard';
+import { MatDialog } from '@angular/material/dialog';
+
+
+@Component({
+  selector: 'dialog-on-delete-dialog',
+  templateUrl: 'dialog-on-delete-dialog.html',
+})
+export class DialogOnDelete {}
 
 @Component({
   selector: 'app-review-detail',
@@ -26,14 +33,14 @@ export class ReviewDetailComponent implements OnInit {
   userData: FbUser | undefined
   durationInSeconds: number = 3
   pageSizeOptions: number[] = [5, 10, 25, 100]
-  pageEvent: PageEvent = new PageEvent()
 
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     private auth: AuthService,
     private _snackBar: MatSnackBar,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -60,5 +67,21 @@ export class ReviewDetailComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  removeReview(reviewId: string | undefined): void {
+    if(!reviewId) return
+    this.openDialog(reviewId)
+  }
+
+  openDialog(reviewId: string) {
+    const dialogRef = this.dialog.open(DialogOnDelete)
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.afs.collection("Reviews").doc(reviewId).delete()
+        let index =  this.reviewData.findIndex(x => x.reviewId==reviewId)
+        this.reviewData.splice(index, 1)
+      }
+    })
   }
 }

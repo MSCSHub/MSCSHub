@@ -25,7 +25,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth"
 import { AngularFirestoreModule } from "@angular/fire/firestore"
 import { environment } from '../environments/environment';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
-import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
+import { ReviewDetailComponent, DialogOnDelete } from './reviews/review-detail/review-detail.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
@@ -43,6 +43,7 @@ import { EditComponent } from './user/edit/edit.component';
 import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     ReviewsComponent,
     CourseDetailComponent,
     ReviewDetailComponent,
+    DialogOnDelete,
     RegisterComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
@@ -77,6 +79,7 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
     ViewUserReviewsComponent,
     EditCourseMetadataComponent,
     SidenavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
