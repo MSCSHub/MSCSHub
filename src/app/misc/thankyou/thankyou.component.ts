@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class ThankyouComponent implements OnInit {
   title = "Thank you!!!"
   subtitle = "You are an amazing human being. From the bottom of our hearts, we want to say thanks for supporting this site. It wouldn't be possible without people like you."
-  source = "https://12ax7web.s3.amazonaws.com/accounts/1/products/1986199880534/Powered-By-Coffee-and-Love_800x800_SEPS-1000x1000.jpg"
+  // source = "https://12ax7web.s3.amazonaws.com/accounts/1/products/1986199880534/Powered-By-Coffee-and-Love_800x800_SEPS-1000x1000.jpg"
+  source = "https://12ax7web.s3.amazonaws.com/accounts/1/products/1986199880604/Happy-Dance_800x800_SEPS-2-1000x1000.jpg"
   altText = "You are amazing!"
 
   constructor() { }
