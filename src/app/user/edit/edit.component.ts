@@ -50,7 +50,6 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log("Edit User: Submitted!")
     if(this.f.invalid){
       return
     }

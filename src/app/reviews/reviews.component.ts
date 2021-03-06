@@ -64,15 +64,12 @@ export class ReviewsComponent implements OnInit {
       }
       return query.orderBy('timestamp', 'desc')
     }).get().subscribe(response => {
-      console.log(response)
-      console.log(response.docs)
       if (!response.docs.length){
-        console.log("No reviews exist")
+        console.log("Reviews: No reviews exist")
         this.disableNext = true
         this.disablePrev = true
         this.reviewData = []
         this.nothingHere = true
-        //TODO Add a material dialog here to let the user know that there are no reviews
         return
       }
       this.reviewData = []
@@ -84,11 +81,10 @@ export class ReviewsComponent implements OnInit {
       this.reviewDataStack.push(response)
       this.pageNumber = 0
       if (this.reviewData.length < 5) {
-        console.log("NEXT DISABLED DUE TO REVIEW DATA LENGTH")
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log(error)})
+    }, error => {console.log("Reviews:", error)})
   }
 
   nextPage() {
@@ -104,10 +100,8 @@ export class ReviewsComponent implements OnInit {
       }
       return query.orderBy('timestamp', 'desc').startAfter(lastReview)
     }).get().subscribe(response => {
-      console.log(response)
-      console.log(response.docs)
       if (!response.docs.length){
-        console.log("No reviews exist")
+        console.log("Reviews:", "No reviews exist")
         //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         return
@@ -123,7 +117,7 @@ export class ReviewsComponent implements OnInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log(error)})
+    }, error => {console.log("Reviews:", error)})
   }
 
   getPrevPage(): void {
@@ -141,7 +135,6 @@ export class ReviewsComponent implements OnInit {
   }
 
   onCourseChange(value: any): void {
-    console.log(value)
     this.courseId = value
     this.getFirstPage()
   }
@@ -151,9 +144,6 @@ export class ReviewsComponent implements OnInit {
   }
 
   onQuerySubmit(): void {
-    console.log("Submitted!")
-    console.log(this.queryForm.valid)
-    console.log(this.queryForm.value)
     if(this.queryForm.valid){
       this.queryValid = true
       this.getFirstPage()

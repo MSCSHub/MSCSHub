@@ -4,11 +4,9 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
-import { FindValueSubscriber } from 'rxjs/internal/operators/find';
+import { Observable, ReplaySubject } from 'rxjs';
 
-import { FbUser, User } from '../../shared/user/user'
+import { FbUser } from '../../shared/user/user'
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +16,8 @@ export class AuthService {
   public userData: Observable<FbUser> = this._userData.asObservable()
   private _isLoggedIn: ReplaySubject<boolean> = new ReplaySubject(1)
   public isLoggedIn: Observable<boolean> = this._isLoggedIn.asObservable()
+  private _isVerified: ReplaySubject<boolean> = new ReplaySubject(1)
+  public isVerified: Observable<boolean> = this._isVerified.asObservable()
 
   constructor(
     public afs: AngularFirestore,
@@ -25,16 +25,22 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
   ) { 
-    if(localStorage.getItem('user') != 'null') {
+    let localData = localStorage.getItem('user')
+    if(localData != 'null' && localData) {
+      console.log(localData)
       this._isLoggedIn.next(true)
+      let parsedData = JSON.parse(localData)
+      this._userData.next(parsedData)
+      this._isVerified.next(parsedData.emailVerified)
     }
     this.afAuth.authState.subscribe(user => {
       if(user) {
-        // this._userData.next(user)
         this.setUserData(user)
         this._isLoggedIn.next(true)
+        this._isVerified.next(user.emailVerified)
       } else {
         this._isLoggedIn.next(false)
+        this._isVerified.next(false)
         this._userData.next(undefined)
         localStorage.setItem('user', JSON.stringify(null))
       }
@@ -49,7 +55,6 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`)
     var docRef = this.afs.collection("UserExtraData").doc(user?.uid)
     docRef.get().subscribe(doc => {
-      console.log("Auth: Extra User Data - ", doc)
       const data: FbUser = doc.data() as FbUser
       user.firstSemester = data?.firstSemester
       user.firstName = data?.firstName
@@ -58,8 +63,6 @@ export class AuthService {
       localStorage.setItem('user', JSON.stringify(user))
       this._userData.next(user)
     })
-    // .then((doc: { data: () => FbUser; }) => {
-    // })
   }
 
   signIn(email: string, password: string){
@@ -70,9 +73,6 @@ export class AuthService {
         })
         this.setUserData(result.user)
       })
-      // .catch((error) => {
-      //   window.alert(error.message)
-      // })
   }
 
   signUp(email: string, password: string, firstName: string, lastName: string, firstSemester: string) {
@@ -93,15 +93,15 @@ export class AuthService {
   }
 
   logout() {
+    console.log("Logging out!")
     return this.afAuth.signOut().then(() => {
       this.setUserData(null)
       this._isLoggedIn.next(false)
       this._userData.next(undefined)
-      // this.router.navigate(['login'])
     }).then(_ => {
       this.router.navigate(['logout'])
     })
-    .catch((error) => { console.log(error) })
+    .catch((error) => { console.log("Auth: logout - ", error) })
   }
 
   forgotPassword(email: string){
@@ -114,9 +114,6 @@ export class AuthService {
   }
   updateUserExtraData(firstName: string, lastName: string, firstSemester: string) {
     const displayName = `${firstName} ${lastName}`
-    // this.userData.subscribe((user: FbUser) => {
-      
-    // })
     this.afAuth.currentUser.then((user: FbUser | null) => {
       user?.updateProfile({displayName: displayName})
       this.afs.collection("UserExtraData").doc(user?.uid).set({

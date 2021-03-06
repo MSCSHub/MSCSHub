@@ -47,7 +47,6 @@ export class ReviewDetailComponent implements OnInit {
     this.auth.isLoggedIn.subscribe(status => {this.isLoggedIn = status})
     this.auth.userData.subscribe(data => {
       this.userData = data
-      console.log("Review Detail: userdata uid", this.userData?.uid)
     })
     this.reviewId = this.route.snapshot.paramMap.get('id') || this.reviewId
     if(this.reviewId != ""){this.getSingleReview(this.reviewId)}
@@ -58,7 +57,6 @@ export class ReviewDetailComponent implements OnInit {
       const review = doc.data() as Review
       review.reviewId = doc.id
       this.reviewData.push(review)
-      console.log("Review Detail: review uid", this.reviewData[0]?.userId)
     })
   }
 

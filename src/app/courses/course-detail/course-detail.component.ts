@@ -50,7 +50,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.courseName = this.route.snapshot.paramMap.get('id') || ""
+    this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
     this.auth.isLoggedIn.subscribe(state => {this.isLoggedIn = state})
     this.getClassData()
     this.getFirstPage()
@@ -80,7 +80,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       .orderBy("timestamp","desc")
     ).get().subscribe(response => {
       if (!response.docs.length){
-        console.log("No reviews exist")
+        console.log("Course Detail: No reviews exist")
         //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         this.disablePrev = true
@@ -98,7 +98,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log(error)})
+    }, error => {console.log("Course Detail: getFirstPage - ", error)})
   }
 
   nextPage() {
@@ -111,7 +111,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       .startAfter(lastReview)
     ).get().subscribe(response => {
       if (!response.docs.length){
-        console.log("No reviews exist")
+        console.log("Course Detail: No reviews exist")
         //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         return
@@ -127,13 +127,12 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log(error)})
+    }, error => {console.log("Course Detail: nextPage -", error)})
   }
 
   getPrevPage(): void {
     this.pageNumber--
     this.disableNext = false
-    console.log("Previous", this.pageNumber)
     if (this.pageNumber === 0) {
       this.disablePrev = true
     }
@@ -144,8 +143,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     if((this.pageNumber+1) * this.pageLength >= this.reviewData.length) {
       this.nextPage()
     } else { this.pageNumber++ }
-    console.log(this.pageNumber * this.pageLength)
-    console.log(this.maxLength)
     if ((this.pageNumber+1)*this.pageLength >= this.maxLength) {
       this.disableNext = true
     }
@@ -157,5 +154,8 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     this.cards[2].value = course.DifficultyAvg
     this.cards[3].value = course.WorkloadAvg
     this.cards[4].value = course.BookUsefulnessAvg
+    this.cards[5].value = course.LectureQualityAvg
+    this.cards[6].value = course.ProfessorQualityAvg
+    this.cards[7].value = course.PiazzaCommunityAvg
   }
 }

@@ -34,9 +34,9 @@ import { CourseCardComponent } from './courses/course-detail/course-card/course-
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { CourseGridCardComponent } from './courses/course-grid/course-grid-card/course-grid-card.component';
 import { LogoutComponent } from './user/logout/logout.component';
-import { FeedbackComponent, DialogOnSubmission } from './feedback/feedback.component';
 import { CreateReviewComponent, DialogReviewSubmission } from './reviews/create-review/create-review.component';
 import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logged-in.component';
+import { DialogNotVerified } from './shared/dialog/not-verified/dialog-not-verified.component';
 import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-feedback.component';
 import { EditComponent } from './user/edit/edit.component';
 import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
@@ -71,11 +71,10 @@ import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
     CourseGridComponent,
     CourseGridCardComponent,
     LogoutComponent,
-    FeedbackComponent,
-    DialogOnSubmission,
     CreateReviewComponent,
     DialogReviewSubmission,
     DialogNotLoggedIn,
+    DialogNotVerified,
     DialogSendFeedback,
     EditComponent,
     ViewUserReviewsComponent,

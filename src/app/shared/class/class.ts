@@ -1,31 +1,31 @@
 export interface ClassData {
-  CourseNumber: string,
+  courseId: string,
+  BookUsefulnessAvg: number,
+  BookUsefulnessCount: number,
   ClassName: string,
+  CourseNumber: string,
   DifficultyAvg: number,
   DifficultyCount: number,
+  GraphicThumbnail: string,
+  GraphicColor: string,
+  GraphicUrl: string,
+  LectureQualityAvg: number,
+  LectureQualityCount: number,
+  PiazzaCommunityAvg: number,
+  PiazzaCommunityCount: number,
+  ProfessorQualityAvg: number,
+  ProfessorQualityCount: number,
   RatingAvg: number,
   RatingCount: number,
   Teacher: string,
   WorkloadAvg: number,
   WorkloadCount: number,
-  BookUsefulnessAvg: number,
-  BookUsefulnessCount: number,
+  category: string
+  languages: string[] | null,
+  meta: {[key: string]: boolean},
   season: {
     spring: boolean,
     summer: boolean,
     fall: boolean
   },
-  GraphicUrl: string,
-  GraphicColor: string,
-  GraphicThumbnail: string,
-  meta: {[key: string]: boolean},
-  // meta: {
-  //   theory: boolean,
-  //   applications: boolean,
-  //   systems: boolean,
-  //   elective: boolean,
-  // }
-  languages: string[] | null,
-  courseId: string,
-  category: string
 }

@@ -13,7 +13,7 @@ import { CourseGridComponent } from '../../course-grid/course-grid.component';
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
-  fields: string[] = ["exams", "homework", "projects", "proofs"]
+  fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed"]
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
   categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
   courseMetadataForm!: FormGroup
@@ -25,17 +25,16 @@ export class EditCourseMetadataComponent implements OnInit {
     private courseService: ClassService,
     private afs: AngularFirestore,
     private router: Router
-  ) { 
-    
-  }
+  ) { }
 
   ngOnInit(): void {
-    this.courseName = this.route.snapshot.paramMap.get('id') || ""
+    this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
     this.courseMetadataForm = this.formBuilder.group({
       exams: ['', Validators.required],
       homework: ['', Validators.required],
       projects: ['', Validators.required],
       proofs: ['', Validators.required],
+      "peer reviewed": ['', Validators.required],
       category: ['', Validators.required],
       languages: ['']
     })
@@ -47,6 +46,7 @@ export class EditCourseMetadataComponent implements OnInit {
       this.f.proofs.setValue(this.courseData?.meta.proofs.toString())
       this.f.category.setValue(this.courseData?.category)
       this.f.languages.setValue(this.courseData?.languages)
+      this.f["peer reviewed"].setValue(this.courseData?.meta['peer reviewed']?.toString())
     })
   }
 
@@ -55,7 +55,6 @@ export class EditCourseMetadataComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log("Edit CourseMetadata: Language value after submit", this.f.languages.value)
     this.afs
         .collection("Class")
         .doc(this.courseData?.courseId)
@@ -66,10 +65,10 @@ export class EditCourseMetadataComponent implements OnInit {
             homework: this.f.homework.value === "true" ? true : false,
             projects: this.f.projects.value === "true" ? true : false,
             proofs: this.f.proofs.value === "true" ? true : false,
+            "peer reviewed": this.f["peer reviewed"].value === "true" ? true : false
           },
           languages: this.f.languages.value
         }).then(() => {
-          console.log("Edit courseMetaData: Successfully updated")
           this.router.navigate([`courses/${this.courseName}`])
         })
   }

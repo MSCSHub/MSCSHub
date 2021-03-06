@@ -3,41 +3,51 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { DialogNotLoggedIn } from '../shared/dialog/not-logged-in/dialog-not-logged-in.component';
+import { DialogNotVerified } from '../shared/dialog/not-verified/dialog-not-verified.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FbUser } from '../shared/user/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthguardGuard implements CanActivate {
   private isLoggedIn: boolean = false
+  private isVerified: boolean = false
+  // private userData: FbUser | undefined
 
   constructor(
     private auth: AuthService,
     private router: Router,
     public dialog: MatDialog,
   ) {
-    this.auth.isLoggedIn.subscribe(state => {
-      this.isLoggedIn = state
-    })
+    this.auth.isLoggedIn.subscribe(state => {this.isLoggedIn = state})
+    // this.auth.userData.subscribe(data => {this.isVerified = data.emailVerified})
+    this.auth.isVerified.subscribe(state => this.isVerified = state)
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.isLoggedIn) {
+    console.log("AuthGuard: CanActivate - emailVerified?", this.isVerified)
+    if (this.isLoggedIn && this.isVerified) {
       return true
     } else {
-      // window.alert("Please log in before leaving a review. This helps us ensure that only UT students are able to submit course reviews.")
-      // this.router.navigate(['login'])
-      this.openDialog()
+      if(!this.isLoggedIn) {this.openLoginDialog()}
+      else if(!this.isVerified) {this.openVerifyDialog()}
       return false
     }
   }
 
-  openDialog() {
+  openLoginDialog() {
     const dialogRef = this.dialog.open(DialogNotLoggedIn)
     dialogRef.afterClosed().subscribe(result => {
-      console.log("Dialog closed!", result)
+      this.router.navigate(['login'])
+    })
+  }
+
+  openVerifyDialog() {
+    const dialogRef = this.dialog.open(DialogNotVerified)
+    dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['login'])
     })
   }
