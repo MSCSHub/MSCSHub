@@ -33,8 +33,12 @@
   // color: rgb(57,114,234);
 }
 
-.center-text {
+.center-text, .radio-container {
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
 }

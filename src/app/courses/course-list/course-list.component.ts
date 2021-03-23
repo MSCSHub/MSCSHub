@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,7 +10,8 @@ import { ClassData } from '../../shared/class/class'
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
 })
-export class CourseListComponent implements OnInit, AfterViewInit {
+export class CourseListComponent implements AfterViewInit {
+  @Input() scale: number = 7
   classes: ClassData[] = []
   dataSource = new MatTableDataSource<ClassData>()
   displayedColumns: string[] = [
@@ -27,7 +28,6 @@ export class CourseListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort
    
   constructor(
-    private afs: AngularFirestore,
     private courses: ClassService
   ) { }
   ngAfterViewInit(): void {
@@ -36,15 +36,6 @@ export class CourseListComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(this.classes)
       this.dataSource.sort = this.sort
     })
-  }
-
-  ngOnInit(): void {    
-    // this.afs.collection<ClassData>('Class')
-    //   .valueChanges()
-    //   .subscribe(data => {
-    //     this.dataSource = new MatTableDataSource(data)
-    //     this.dataSource.sort = this.sort
-    //   })
   }
 
   trackById(index: number, item: ClassData) {

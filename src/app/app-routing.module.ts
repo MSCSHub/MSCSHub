@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'home', component: DashboardComponent},
   {path: 'courses', component: CourseGridComponent},
   {path: 'courses/:courseId', component: CourseDetailComponent},
-  {path: 'courses/edit/:courseId', component: EditCourseMetadataComponent},
+  {path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard]},
   {path: 'reviews', component: ReviewsComponent},
   {path: 'review/:id', component: ReviewDetailComponent},
   {path: 'review/edit/:id', component: CreateReviewComponent},

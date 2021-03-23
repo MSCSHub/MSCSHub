@@ -24,6 +24,7 @@ export class CourseGridComponent implements OnInit {
       this.classes = data.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
       this.filterItems()
     })
+    document.getElementsByClassName("mat-drawer-content")[0].scroll(0,0)
   }
 
   isSelected(item: string): boolean {

@@ -4,8 +4,7 @@
       <div>
         <div fxFlex></div>
         <mat-chip class="edit-chip" routerLink="/courses/edit/{{courseName}}">
-          Edit
-          <mat-icon class="tab" matTooltip="Edit course details">mode_edit</mat-icon>
+          Edit<mat-icon class="tab" matTooltip="Edit course details">mode_edit</mat-icon>
         </mat-chip>
       </div>
       <div class="padded-cell white">
@@ -21,16 +20,13 @@
       </div>
     </div>
   </div>
-  <!-- <div class="grid-container">
-    <app-course-card *ngFor="let card of cards" [title]="card.title" [subtitle]="card.subtitle" [value]="card.value"></app-course-card>
-  </div> -->
   <app-course-card [data]="cards"></app-course-card>
   <br>
-  <div class="review-spacer">
+  <div class="review-spacer" id="review-spacer">
     <h2>Course Reviews:</h2>
     <div class="next-prev-container">
       Page {{pageNumber + 1}}
-      <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)=getPrevPage()>Prev</button>
+      <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
       <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
     </div>
   </div>
@@ -40,7 +36,7 @@
   <div class="review-footer">
     <div class="next-prev-container">
       Page {{pageNumber + 1}}
-      <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)=getPrevPage()>Prev</button>
+      <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
       <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
     </div>
   </div>

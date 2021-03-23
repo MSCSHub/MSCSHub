@@ -13,7 +13,7 @@ import { FbUser } from '../shared/user/user';
 export class AuthguardGuard implements CanActivate {
   private isLoggedIn: boolean = false
   private isVerified: boolean = false
-  // private userData: FbUser | undefined
+  private userData: FbUser | undefined
 
   constructor(
     private auth: AuthService,
@@ -21,14 +21,14 @@ export class AuthguardGuard implements CanActivate {
     public dialog: MatDialog,
   ) {
     this.auth.isLoggedIn.subscribe(state => {this.isLoggedIn = state})
-    // this.auth.userData.subscribe(data => {this.isVerified = data.emailVerified})
+    this.auth.userData.subscribe(data => {this.userData = data})
     this.auth.isVerified.subscribe(state => this.isVerified = state)
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log("AuthGuard: CanActivate - emailVerified?", this.isVerified)
+    console.log("AuthGuard: CanActivate? - emailVerified?", this.isLoggedIn, this.isVerified)
     if (this.isLoggedIn && this.isVerified) {
       return true
     } else {
@@ -48,7 +48,8 @@ export class AuthguardGuard implements CanActivate {
   openVerifyDialog() {
     const dialogRef = this.dialog.open(DialogNotVerified)
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(['login'])
+      // console.log("Resetting user email:", this.userData?.sendEmailVerification())
+      this.router.navigate(['verifyEmail'])
     })
   }
 }

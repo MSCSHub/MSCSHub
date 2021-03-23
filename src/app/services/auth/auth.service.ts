@@ -27,7 +27,7 @@ export class AuthService {
   ) { 
     let localData = localStorage.getItem('user')
     if(localData != 'null' && localData) {
-      console.log(localData)
+      // console.log(localData)
       this._isLoggedIn.next(true)
       let parsedData = JSON.parse(localData)
       this._userData.next(parsedData)
@@ -37,6 +37,7 @@ export class AuthService {
       if(user) {
         this.setUserData(user)
         this._isLoggedIn.next(true)
+        console.log(user.emailVerified)
         this._isVerified.next(user.emailVerified)
       } else {
         this._isLoggedIn.next(false)
@@ -112,6 +113,7 @@ export class AuthService {
       })
       .catch(error => {window.alert(error)})
   }
+
   updateUserExtraData(firstName: string, lastName: string, firstSemester: string) {
     const displayName = `${firstName} ${lastName}`
     this.afAuth.currentUser.then((user: FbUser | null) => {
@@ -125,5 +127,11 @@ export class AuthService {
       this.router.navigate(['settings'])
     })
     return
+  }
+
+  resendVerification() {
+    return this.afAuth.currentUser.then((user: FbUser | null) => {
+      user?.sendEmailVerification()
+    })
   }
 }

@@ -16,13 +16,13 @@
   </ng-container>
 
   <ng-container matColumnDef="RatingAvg">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="On a scale of 1-7">Rating</th>
-    <td mat-cell *matCellDef="let class">{{class.RatingAvg | number: '1.0-1'}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Rating</th>
+    <td mat-cell *matCellDef="let class">{{class.RatingAvg*scale/7 | number: '1.0-1'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="DifficultyAvg">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="On a scale of 1-7">Difficulty</th>
-    <td mat-cell *matCellDef="let class">{{class.DifficultyAvg | number: '1.0-1'}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Difficulty</th>
+    <td mat-cell *matCellDef="let class">{{class.DifficultyAvg*scale/7 | number: '1.0-1'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="WorkloadAvg">
@@ -31,8 +31,8 @@
   </ng-container>
 
   <ng-container matColumnDef="BookUsefulnessAvg">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Book usefulness on a scale of 1-7">Textbook</th>
-    <td mat-cell *matCellDef="let class">{{class.BookUsefulnessAvg | number: '1.0-1'}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="How useful is the textbook?">Textbook</th>
+    <td mat-cell *matCellDef="let class">{{class.BookUsefulnessAvg*scale/7 | number: '1.0-1'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="Semester">

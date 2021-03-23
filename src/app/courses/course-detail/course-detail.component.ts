@@ -48,12 +48,13 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.updateGraphicStyles()
   }
-
+  
   ngOnInit(): void {
     this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
     this.auth.isLoggedIn.subscribe(state => {this.isLoggedIn = state})
     this.getClassData()
     this.getFirstPage()
+    document.getElementsByClassName("mat-drawer-content")[0].scroll(0,0) // Ensures that we start from the top
   }
 
   getClassData(): void {
@@ -136,6 +137,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     if (this.pageNumber === 0) {
       this.disablePrev = true
     }
+    this.goToLocation("review-spacer")
   }
 
   getNextPage(): void {
@@ -146,6 +148,13 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     if ((this.pageNumber+1)*this.pageLength >= this.maxLength) {
       this.disableNext = true
     }
+    this.goToLocation("review-spacer")
+  }
+
+  goToLocation(location: string): void {
+    window.location.hash = ""
+    window.location.hash = location
+    // window.location.hash = ""
   }
 
   updateCards(course: ClassData): void {

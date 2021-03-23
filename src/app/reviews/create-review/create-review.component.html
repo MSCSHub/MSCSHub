@@ -11,12 +11,7 @@
         </mat-card-header>
 
         <form class="login-form" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-            <mat-card-content>
-                <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Title" formControlName="title" 
-                           required [ngClass]="{'is-invalid': submitted}">
-                </mat-form-field>
-                
+            <mat-card-content>                
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Course</mat-label>
                     <mat-select formControlName="course" required>
@@ -45,6 +40,11 @@
                             {{year}}
                         </mat-option>
                     </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-field-full-width">
+                    <input matInput placeholder="Review itle" formControlName="title" 
+                           required [ngClass]="{'is-invalid': submitted}">
                 </mat-form-field>
 
                 <mat-form-field class="form-field-full-width">
