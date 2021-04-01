@@ -22,11 +22,7 @@ import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: DashboardComponent},
   {path: 'courses', component: CourseGridComponent},
   {path: 'courses/:courseId', component: CourseDetailComponent},

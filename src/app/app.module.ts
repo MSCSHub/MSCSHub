@@ -23,7 +23,10 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { AngularFireModule } from "@angular/fire"
 import { AngularFireAuthModule } from "@angular/fire/auth"
 import { AngularFirestoreModule } from "@angular/fire/firestore"
+import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { environment } from '../environments/environment';
+
+
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { ReviewDetailComponent, DialogOnDelete } from './reviews/review-detail/review-detail.component';
 import { RegisterComponent } from './user/register/register.component';
@@ -94,12 +97,16 @@ import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireAnalyticsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
   ],
-  providers: [],
+  providers: [
+    ScreenTrackingService,
+    UserTrackingService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

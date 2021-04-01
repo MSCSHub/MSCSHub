@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -35,11 +35,17 @@ export class CreateReviewComponent implements OnInit {
   reviewForm: FormGroup = new FormGroup({})
   completedReviews: string[] = []
   userData: FbUser | undefined
+  scaleTooltip = `
+    You know how people say: "on a scale of 1-10"?\n
+    I've used the principle of Millers law to start asking people to measure on a scale of 1-7.\n
+    Universally, people balk at the scale. But I explain to them that most people can't tell the difference between 2 and 3 on a ten point scale. If you can't articulate a difference, there's no use in the measurement.\n
+    Seven is great because you get more than the simplicity of 1-5 and can be a better reflection of your true evaluation.
+  `
   fields = [
     {formName: "workload", title: "Workload", min: "1", max: "50", hint: "How many hours per week did this class require?"},
     {formName: "rating", title: "Rating", min: "1", max: "7", hint: "Rate the class overall on a scale of 1-7"},
-    {formName: "difficulty", title: "Difficulty", min: "1", max: "7", hint: "How difficult was this class on a scale of 1-7?"},
-    {formName: "bookUsefulness", title: "Textbook Usefulness", min: "1", max: "7", hint: "How usefull was the textbook on a scale of 1-7?"},
+    {formName: "difficulty", title: "Difficulty", min: "1", max: "7", hint: "How difficult was this class on a scale of 1-7? 1 = Easiest, 7 = Hardest"},
+    {formName: "bookUsefulness", title: "Textbook Usefulness", min: "0", max: "7", hint: "How usefull was the textbook on a scale of 1-7? Use 0 if there was no textbook."},
     {formName: "lectureQuality", title: "Lecture Quality", min: "1", max: "7", hint: "Rate the quality of the lectures on a scale of 1-7"},
     {formName: "professorQuality", title: "Professor Quality", min: "1", max: "7", hint: "Rate the aggregate quality of the professor(s) on a scale of 1-7"},
     {formName: "piazzaCommunity", title: "Piazza Support", min: "1", max: "7", hint: "Rate your experience with piazza community for this class on a scale of 1-7"},

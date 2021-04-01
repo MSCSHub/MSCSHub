@@ -2,6 +2,18 @@
     max-width: 800px;
 }
 
+.review-spacer {
+    text-align: center;
+    padding-top: 15px;
+    h3 {
+        display: flex;
+        justify-content: center;
+    }
+}
+::ng-deep .mat-tooltip  {
+    white-space: pre-line !important;
+}
+
 // .review-slider-container {
 //     align-items: center;
 //     // flex-wrap: wrap;
