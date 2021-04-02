@@ -50,6 +50,7 @@ import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
 import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
+import { StarRatingComponent } from './reviews/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
     ThankyouComponent,
     NothingHereComponent,
     PandaPartyComponent,
+    StarRatingComponent,
   ],
   imports: [
     BrowserModule,
