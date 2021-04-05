@@ -19,17 +19,23 @@
         </div>
       </mat-card-header>
       <mat-card-content>
-        Rating: {{review.rating}} <br>
-        Difficulty: {{review.difficulty}} <br>
-        Workload: {{review.workload}} <br>
-        <span *ngIf="review.bookUsefulness > 0">
-          Book Usefulness: {{review.bookUsefulness}}
-        </span>
-        <br><br>
+        <div class="rating-grid">
+          <span>Rating: {{review.rating}}</span>
+          <span><app-star-rating [selectedValue]="review.rating"></app-star-rating></span>
+          <span>Difficulty: {{review.difficulty}}</span>
+          <span><app-star-rating [selectedValue]="review.difficulty"></app-star-rating></span>
+          <span>Textbook: <span *ngIf="review.bookUsefulness>0">{{review.bookUsefulness}}</span></span>
+          <span><app-star-rating [selectedValue]="review.bookUsefulness"></app-star-rating></span>
+          <span>Lectures: <span *ngIf="review.lectureQuality>0">{{review.lectureQuality}}</span></span>
+          <span><app-star-rating [selectedValue]="review.lectureQuality"></app-star-rating></span>
+          <span>Professor: <span *ngIf="review.professorQuality>0">{{review.professorQuality}}</span></span>
+          <span><app-star-rating [selectedValue]="review.professorQuality"></app-star-rating></span>
+          <span>Piazza: <span *ngIf="review.piazzaCommunity>0">{{review.piazzaCommunity}}</span></span>
+          <span><app-star-rating [selectedValue]="review.piazzaCommunity"></app-star-rating></span>
+          <span>Workload:</span><span>{{review.workload}} hours per week</span>
+        </div>
         <b>Review:</b><br>
-          <p style="white-space: pre-line;">
-            {{review.review}}
-          </p>
+          <p style="white-space: pre-line;">{{review.review}}</p>
         <br><br>
       Was this review helpful?
       <mat-button-toggle-group name="helpful" 

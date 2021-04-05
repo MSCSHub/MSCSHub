@@ -1,1 +1,7 @@
-<p>star-rating works!</p>
+<div *ngIf="selectedValue>0; else elseBlock">
+    <pz *ngFor="let star of stars; let i= index" [ngClass]="{'selected': (star <= selectedValue)}"> ★</pz>
+</div>
+<ng-template #elseBlock>
+    <div *ngIf="selectedValue==0">No Textbook</div>
+    <div *ngIf="selectedValue<0">Not Reviewed</div>
+</ng-template>

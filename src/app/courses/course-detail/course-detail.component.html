@@ -10,6 +10,10 @@
       <div class="padded-cell white">
         <h1 class="flat-bottom">{{courseName}}</h1>
         <h3 class="white">({{courseNumber}})</h3>
+        <h4 class="white">
+          <span>Professor: {{course?.Teacher | titlecase}}</span>
+          <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
+        </h4>
         <mat-chip-list>
           <mat-chip>{{course?.category}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
           <div *ngFor="let item of course?.meta | keyvalue">
@@ -21,8 +25,9 @@
     </div>
   </div>
   <app-course-card [data]="cards"></app-course-card>
-  <br>
-  <div class="review-spacer" id="review-spacer">
+  <!-- <br> -->
+  <div class="review-spacer" id="review-spacer"></div>
+  <div class="review-controller">
     <h2>Course Reviews:</h2>
     <div class="next-prev-container">
       Page {{pageNumber + 1}}

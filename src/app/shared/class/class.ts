@@ -18,11 +18,19 @@ export interface ClassData {
   RatingAvg: number,
   RatingCount: number,
   Teacher: string,
+  Textbook: boolean,
+  TextbookName: string,
   WorkloadAvg: number,
   WorkloadCount: number,
   category: string
   languages: string[] | null,
-  meta: {[key: string]: boolean},
+  meta: {
+    exams: boolean, 
+    homework: boolean, 
+    "peer reviewed": boolean, 
+    projects: boolean, 
+    proofs: boolean, 
+  },
   season: {
     spring: boolean,
     summer: boolean,

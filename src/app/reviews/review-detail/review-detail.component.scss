@@ -18,3 +18,16 @@
 .mat-card-content{
   margin: 0px 16px 50px 16px;
 }
+
+.rating-grid {
+  display: grid;
+  @media (min-width: 575px) {
+    grid-template-columns: 100px 150px 100px 150px;
+    grid-auto-rows: 30px;
+  }
+  @media (max-width: 575px) {
+    grid-template-columns: 150px 150px;
+    grid-auto-rows: 30px;
+  }
+  padding-top: 10px;
+}

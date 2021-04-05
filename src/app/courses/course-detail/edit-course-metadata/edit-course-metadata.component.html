@@ -15,6 +15,10 @@
                     </mat-select>
                     <mat-hint>What type of credit is this course?</mat-hint>
                 </mat-form-field>
+                <mat-form-field class="form-field-full-width">
+                    <input matInput placeholder="Professor Name" formControlName="professor">
+                    <mat-hint>Separate professor names with an ampersand ' & '.</mat-hint>
+                </mat-form-field>
                 <div *ngFor="let field of fields">
                     <mat-form-field class="form-field-full-width">
                         <mat-label>{{field | titlecase}}</mat-label>
@@ -24,6 +28,10 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <mat-form-field class="form-field-full-width">
+                    <input matInput placeholder="Textbook Name" formControlName="textbookName">
+                    <mat-hint>Leave blank if no textbook.</mat-hint>
+                </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Languages</mat-label>
                     <mat-select formControlName="languages" multiple>

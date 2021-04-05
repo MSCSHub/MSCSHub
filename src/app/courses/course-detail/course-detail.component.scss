@@ -1,5 +1,10 @@
 h1 {
-  font-size: 5rem;
+  @media (min-width: 500px){
+    font-size: 5rem;
+  }
+  @media (max-width: 500px){
+    font-size: 3.5rem;
+  }
   line-height: 5rem;
   font-weight: 900;
   text-shadow: 1px 1px 1px rgba(51, 63, 72, 0.4);
@@ -18,10 +23,14 @@ h3 {
   letter-spacing: -0.025rem;
 }
 
-.review-spacer {
+.review-controller {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 16px;
+  margin: 0 0 -16px;
+}
+
+.review-spacer {
+  padding: 20px;
 }
 
 .review-footer {

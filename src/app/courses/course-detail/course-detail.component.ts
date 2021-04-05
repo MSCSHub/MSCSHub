@@ -1,16 +1,15 @@
-import { Component, OnInit, AfterContentInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { element } from 'protractor';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
-import { Review } from '../../shared/review/review'
+import { Review } from '../../shared/review/review';
 
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
-  styleUrls: ['./course-detail.component.scss']
+  styleUrls: ['./course-detail.component.scss'],
 })
 export class CourseDetailComponent implements OnInit, AfterViewInit {
   courseName: string = ""
@@ -43,7 +42,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     private afs: AngularFirestore,
     private auth: AuthService,
     private renderer: Renderer2,
-    private classService: ClassService
+    private classService: ClassService,
   ) {}
   ngAfterViewInit(): void {
     this.updateGraphicStyles()
@@ -56,7 +55,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     this.getFirstPage()
     document.getElementsByClassName("mat-drawer-content")[0].scroll(0,0) // Ensures that we start from the top
   }
-
+  
   getClassData(): void {
     this.classService.classes.subscribe(data => {
       this.course = data.find(x => x.ClassName == this.courseName)
@@ -154,7 +153,8 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   goToLocation(location: string): void {
     window.location.hash = ""
     window.location.hash = location
-    // window.location.hash = ""
+    let x = document.getElementsByClassName("mat-drawer-content")[0]
+    x.scroll(0, x.scrollTop - 30)
   }
 
   updateCards(course: ClassData): void {
@@ -162,7 +162,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     this.cards[1].value = course.RatingAvg
     this.cards[2].value = course.DifficultyAvg
     this.cards[3].value = course.WorkloadAvg
-    this.cards[4].value = course.BookUsefulnessAvg
+    this.cards[4].value = course.Textbook ? course.BookUsefulnessAvg : 0
     this.cards[5].value = course.LectureQualityAvg
     this.cards[6].value = course.ProfessorQualityAvg
     this.cards[7].value = course.PiazzaCommunityAvg
