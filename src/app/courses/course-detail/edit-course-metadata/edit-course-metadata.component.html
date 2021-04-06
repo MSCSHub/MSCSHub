@@ -22,24 +22,22 @@
                 <div *ngFor="let field of fields">
                     <mat-form-field class="form-field-full-width">
                         <mat-label>{{field | titlecase}}</mat-label>
-                        <mat-select type="boolean" formControlName="{{field}}" required>
+                        <mat-select type="boolean" formControlName="{{field}}Bool" required>
                             <mat-option value="true">Yes</mat-option>
                             <mat-option value="false">No</mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <mat-form-field class="form-field-full-width">
+                        <input matInput placeholder="{{field | titlecase}} Information" formControlName="{{field}}">
+                    </mat-form-field>
                 </div>
-                <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Textbook Name" formControlName="textbookName">
-                    <mat-hint>Leave blank if no textbook.</mat-hint>
-                </mat-form-field>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Languages</mat-label>
                     <mat-select formControlName="languages" multiple>
                         <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <br>
-                <button mat-stroked-button color="primary">Save Changes</button>
+                <br><button mat-stroked-button color="primary">Save Changes</button>
             </form>
         </mat-card-content>
     </mat-card>
