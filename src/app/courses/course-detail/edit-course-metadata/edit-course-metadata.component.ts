@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
@@ -33,35 +33,46 @@ export class EditCourseMetadataComponent implements OnInit {
     this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
     this.courseMetadataForm = this.formBuilder.group({
       exams: ['', Validators.required],
+      examsBool: ['', Validators.required],
       homework: ['', Validators.required],
+      homeworkBool: ['', Validators.required],
       professor: ['', Validators.required],
       projects: ['', Validators.required],
+      projectsBool: ['', Validators.required],
       proofs: ['', Validators.required],
+      proofsBool: ['', Validators.required],
       "peer reviewed": ['', Validators.required],
+      "peer reviewedBool": ['', Validators.required],
       textbook: ['', Validators.required],
+      textbookBool: ['', Validators.required],
       textbookName: [''],
       category: ['', Validators.required],
       languages: ['']
     })
     this.courseService.classes.subscribe(data => {
       this.courseData = data.find(x => x.ClassName == this.courseName)
-      this.f.exams.setValue(this.courseData?.meta.exams.toString())
-      this.f.homework.setValue(this.courseData?.meta.homework.toString())
-      this.f.projects.setValue(this.courseData?.meta.projects.toString())
-      this.f.proofs.setValue(this.courseData?.meta.proofs.toString())
+      this.setFieldData(this.f.exams, this.f.examsBool, this.courseData?.meta.exams)
+      this.setFieldData(this.f.homework, this.f.homeworkBool, this.courseData?.meta.homework)
+      this.setFieldData(this.f.projects, this.f.projectsBool, this.courseData?.meta.projects)
+      this.setFieldData(this.f.proofs, this.f.proofsBool, this.courseData?.meta.proofs)
+      this.setFieldData(this.f["peer reviewed"], this.f["peer reviewedBool"], this.courseData?.meta['peer reviewed'].toString())
+      this.setFieldData(this.f.textbook, this.f.textbookBool, this.courseData?.TextbookName)
       this.f.category.setValue(this.courseData?.category)
       this.f.languages.setValue(this.courseData?.languages)
-      this.f["peer reviewed"].setValue(this.courseData?.meta['peer reviewed']?.toString())
-      this.f.textbook.setValue(this.courseData?.Textbook.toString())
-      this.f.textbookName.setValue(this.courseData?.TextbookName)
       this.f.professor.setValue(this.courseData?.Teacher)
-      this.courseData?.Textbook ? this.f.textbookName.enable() : this.f.textbookName.disable()
     })
-    this.f.textbook.valueChanges.subscribe(val => {val=="true" ? this.f.textbookName.enable() : this.f.textbookName.disable()})
   }
 
   get f() {
     return this.courseMetadataForm?.controls
+  }
+
+  setFieldData(field: AbstractControl, fieldBool: AbstractControl, fieldValue: any): void {
+    console.log(field, fieldBool, fieldValue)
+    fieldValue ? field.setValue(fieldValue) : ""
+    fieldValue ? fieldBool.setValue("true") : fieldBool.setValue("false")
+    fieldValue ? field.enable() : field.disable()
+    fieldBool.valueChanges.subscribe(val => {val=="true" ? field.enable() : field.disable()})
   }
 
   onSubmit(): void {
@@ -71,16 +82,16 @@ export class EditCourseMetadataComponent implements OnInit {
       .update({
         category: this.f.category.value,
         meta: {
-          exams: this.f.exams.value === "true" ? true : false,
-          homework: this.f.homework.value === "true" ? true : false,
-          projects: this.f.projects.value === "true" ? true : false,
-          proofs: this.f.proofs.value === "true" ? true : false,
-          "peer reviewed": this.f["peer reviewed"].value === "true" ? true : false,
+          exams: this.f.examsBool.value === "true" ? this.f.exams.value : "",
+          homework: this.f.homeworkBool.value === "true" ? this.f.homework.value : "",
+          projects: this.f.projectsBool.value === "true" ? this.f.projects.value : "",
+          proofs: this.f.proofsBool.value === "true" ? this.f.proofs.value : "",
+          "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
         },
         languages: this.f.languages.value,
         Teacher: this.tc.transform(this.f.professor.value),
-        Textbook: this.f.textbook.value === "true" ? true : false,
-        TextbookName: this.tc.transform(this.f.textbookName.value),
+        Textbook: this.f.textbookBool.value === "true" ? true : false,
+        TextbookName: this.tc.transform(this.f.textbook.value),
       }).then(() => {
         this.router.navigate([`courses/${this.courseName}`])
       })

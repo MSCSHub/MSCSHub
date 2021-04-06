@@ -17,7 +17,7 @@
         <mat-chip-list>
           <mat-chip>{{course?.category}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
           <div *ngFor="let item of course?.meta | keyvalue">
-            <mat-chip *ngIf="item.value">{{item.key | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+            <mat-chip *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">{{item.key | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
           </div>
           <mat-chip *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
         </mat-chip-list>
@@ -25,7 +25,6 @@
     </div>
   </div>
   <app-course-card [data]="cards"></app-course-card>
-  <!-- <br> -->
   <div class="review-spacer" id="review-spacer"></div>
   <div class="review-controller">
     <h2>Course Reviews:</h2>
