@@ -17,7 +17,7 @@
         <mat-chip-list>
           <mat-chip>{{course?.category}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
           <div *ngFor="let item of course?.meta | keyvalue">
-            <mat-chip *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">{{item.key | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+            <mat-chip *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">{{item.key | titlecase}}&nbsp;<mat-icon>info_outline</mat-icon></mat-chip>
           </div>
           <mat-chip *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
         </mat-chip-list>
