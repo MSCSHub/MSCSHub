@@ -38,7 +38,7 @@ export class CreateReviewComponent implements OnInit {
   scaleTooltip = `
     You know how people say: "on a scale of 1-10"?\n
     I've used the principle of Millers law to start asking people to measure on a scale of 1-7.\n
-    Universally, people balk at the scale. But I explain to them that most people can't tell the difference between 2 and 3 on a ten point scale. If you can't articulate a difference, there's no use in the measurement.\n
+    Universally, people balk at the scale. But I explain to them that most people can't tell the difference between 2 and 3 or a 6 and 7 on a ten point scale. If you can't articulate a difference, there's no use in the measurement.\n
     Seven is great because you get more than the simplicity of 1-5 and can be a better reflection of your true evaluation.
   `
   fields = [
@@ -104,14 +104,14 @@ export class CreateReviewComponent implements OnInit {
       course: ['', Validators.required],
       semester: ['', Validators.required],
       year: ['', [Validators.required, Validators.max(2099), Validators.min(2019)]],
-      review: ['Pros:\n1. \n2. \n3. \n\nCons:\n1. \n2. \n3. \n\nOverall:\n', Validators.required],
-      rating: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
-      difficulty: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
-      workload: ['', [Validators.required, Validators.max(100), Validators.min(0)]],
+      review: ['Pros:\n1. \n2. \n3. \n\nCons:\n1. \n2. \n3. \n\nDetailed Review:\n', Validators.required],
+      rating: ['', [Validators.required, Validators.max(7), Validators.min(1)]],
+      difficulty: ['', [Validators.required, Validators.max(7), Validators.min(1)]],
+      workload: ['', [Validators.required, Validators.max(100), Validators.min(1)]],
       bookUsefulness: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
-      lectureQuality: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
-      professorQuality: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
-      piazzaCommunity: ['', [Validators.required, Validators.max(7), Validators.min(0)]],
+      lectureQuality: ['', [Validators.required, Validators.max(7), Validators.min(1)]],
+      professorQuality: ['', [Validators.required, Validators.max(7), Validators.min(1)]],
+      piazzaCommunity: ['', [Validators.required, Validators.max(7), Validators.min(1)]],
       userId: ['', Validators.required],
       timestamp: [new Date(), Validators.required],
       classId: ['', Validators.required]
