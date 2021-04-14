@@ -87,17 +87,11 @@ h3 {
   background-repeat: no-repeat;
   background-attachment: local;
   background-color: #005f86;
-  // background-image: url(https://www.cs.utexas.edu/sites/default/files/images/Machine-Learning_75opacity.png);
 }
 
 .gradient-container {
   margin-bottom: 0px;
   background-size: cover;
-  // background: linear-gradient(
-  //   180deg,
-  //   rgba(51, 63, 72, 0.71) 0%,
-  //   rgba(0, 95, 134, 0.84) 100%
-  // );
 }
 
 .tab {
@@ -108,4 +102,8 @@ h3 {
   margin-right: 15px;
   margin-top: 15px;
   margin-bottom: -15px;
+}
+
+::ng-deep .mat-tooltip  {
+  white-space: pre-line !important;
 }
