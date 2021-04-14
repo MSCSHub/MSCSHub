@@ -26,8 +26,7 @@ export interface Review {
 }
 
 export enum reviewFeedbackType {
-  positive,
-  negative,
-  undoPositive,
-  undoNegative,
+  positive = "yes",
+  negative = "no",
+  undoFeedback = "",
 }

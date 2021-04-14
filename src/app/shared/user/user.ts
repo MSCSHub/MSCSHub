@@ -12,5 +12,5 @@ export interface FbUser extends firebase.default.User {
     firstName?: string,
     lastName?: string,
     firstSemester?: string,
-    reviewFeedback?: Map<string, boolean>//{[key: string]: boolean}
+    reviewFeedback?: {[key: string]: boolean}
 }
