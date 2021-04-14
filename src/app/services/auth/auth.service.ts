@@ -4,7 +4,9 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 import { Observable, ReplaySubject } from 'rxjs';
+import { reviewFeedbackType } from 'src/app/shared/review/review';
 
 import { FbUser } from '../../shared/user/user'
 
@@ -25,7 +27,7 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
   ) { 
-    this.afs.firestore.enablePersistence().catch(err => console.log("Persistence failed to enable, error:", err))
+    this.afs.firestore.enablePersistence().catch(err => console.error("Persistence failed to enable, error:", err))
     let localData = localStorage.getItem('user')
     if(localData != 'null' && localData) {
       this._isLoggedIn.next(true)
@@ -60,6 +62,7 @@ export class AuthService {
       user.firstName = data?.firstName
       user.lastName = data?.lastName
       user.slackId = data?.slackId
+      user.reviewFeedback = data?.reviewFeedback
       localStorage.setItem('user', JSON.stringify(user))
       this._userData.next(user)
     })
@@ -86,7 +89,8 @@ export class AuthService {
           slackId: null,
           firstSemester: firstSemester,
           firstName: firstName,
-          lastName: lastName
+          lastName: lastName,
+          reviewFeedback: new Map<string, boolean>()
         })
         this.router.navigate(['verifyEmail'])
       })
@@ -100,7 +104,7 @@ export class AuthService {
     }).then(_ => {
       this.router.navigate(['logout'])
     })
-    .catch((error) => { console.log("Auth: logout - ", error) })
+    .catch((error) => { console.error("Auth: logout - ", error) })
   }
 
   forgotPassword(email: string){
@@ -116,7 +120,7 @@ export class AuthService {
     const displayName = `${firstName} ${lastName}`
     this.afAuth.currentUser.then((user: FbUser | null) => {
       user?.updateProfile({displayName: displayName})
-      this.afs.collection("UserExtraData").doc(user?.uid).set({
+      this.afs.collection("UserExtraData").doc(user?.uid).update({
         firstSemester: firstSemester,
         firstName: firstName,
         lastName: lastName
@@ -130,6 +134,31 @@ export class AuthService {
   resendVerification() {
     return this.afAuth.currentUser.then((user: FbUser | null) => {
       user?.sendEmailVerification()
+    })
+  }
+
+  undoOldVote(reviewId: string, oldVote: boolean): void {
+    if(oldVote === undefined) return;
+    else if(oldVote === true) this.afs.collection("Reviews").doc(reviewId).update({'helpfulPositive': firebase.default.firestore.FieldValue.increment(-1)})
+    else this.afs.collection("Reviews").doc(reviewId).update({'helpfulNegative': firebase.default.firestore.FieldValue.increment(-1)})
+  }
+
+  reviewFeedback(reviewId: string, vote: reviewFeedbackType): boolean | any {
+    return this.afAuth.currentUser.then((user: FbUser | null) => {
+      if (!user || !user?.emailVerified) return false
+      let oldVal = user?.reviewFeedback?.get(reviewId) || undefined
+      if(oldVal != undefined) this.undoOldVote(reviewId, oldVal)
+      if(vote === reviewFeedbackType.positive) {
+        this.afs.collection("Reviews").doc(reviewId).update({'helpfulPositive': firebase.default.firestore.FieldValue.increment(1)})
+        user?.reviewFeedback?.set(reviewId, true)
+      } else if(vote === reviewFeedbackType.negative) {
+        this.afs.collection("Reviews").doc(reviewId).update({'helpfulPositive': firebase.default.firestore.FieldValue.increment(1)})
+        user?.reviewFeedback?.set(reviewId, false)
+      } else {
+        user?.reviewFeedback?.delete(reviewId)
+      }
+      // calculate new wilson score - coming later
+      return true
     })
   }
 }
