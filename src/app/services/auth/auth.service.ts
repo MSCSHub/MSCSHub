@@ -25,7 +25,7 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
   ) { 
-    this.afs.firestore.enablePersistence().catch(err => console.log("Persistence failed to enable, error:", err))
+    this.afs.firestore.enablePersistence().catch(err => console.error("Persistence failed to enable, error:", err))
     let localData = localStorage.getItem('user')
     if(localData != 'null' && localData) {
       this._isLoggedIn.next(true)
@@ -100,7 +100,7 @@ export class AuthService {
     }).then(_ => {
       this.router.navigate(['logout'])
     })
-    .catch((error) => { console.log("Auth: logout - ", error) })
+    .catch((error) => { console.error("Auth: logout - ", error) })
   }
 
   forgotPassword(email: string){

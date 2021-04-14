@@ -65,7 +65,7 @@ export class ReviewsComponent implements OnInit {
       return query.orderBy('timestamp', 'desc')
     }).get().subscribe(response => {
       if (!response.docs.length){
-        console.log("Reviews: No reviews exist")
+        console.warn("Reviews: No reviews exist")
         this.disableNext = true
         this.disablePrev = true
         this.reviewData = []
@@ -84,7 +84,7 @@ export class ReviewsComponent implements OnInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log("Reviews:", error)})
+    }, error => {console.error("Reviews:", error)})
   }
 
   nextPage() {
@@ -101,7 +101,7 @@ export class ReviewsComponent implements OnInit {
       return query.orderBy('timestamp', 'desc').startAfter(lastReview)
     }).get().subscribe(response => {
       if (!response.docs.length){
-        console.log("Reviews:", "No reviews exist")
+        console.warn("Reviews:", "No reviews exist")
         //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         return
@@ -117,7 +117,7 @@ export class ReviewsComponent implements OnInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log("Reviews:", error)})
+    }, error => {console.error("Reviews:", error)})
   }
 
   getPrevPage(): void {
