@@ -57,6 +57,7 @@
                 </mat-form-field>
             </mat-card-content>
             <button mat-stroked-button color="accent" class="btn-block">Register</button>
+            <div *ngIf="error" class="alert">{{error}}</div>
         </form>
     </mat-card>
 </div>
