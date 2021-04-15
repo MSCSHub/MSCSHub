@@ -11,5 +11,6 @@ export interface FbUser extends firebase.default.User {
     slackId?: string,
     firstName?: string,
     lastName?: string,
-    firstSemester?: string
+    firstSemester?: string,
+    reviewFeedback?: {[key: string]: boolean}
 }

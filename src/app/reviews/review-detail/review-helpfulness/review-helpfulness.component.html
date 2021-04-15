@@ -1,0 +1,10 @@
+<mat-button-toggle-group [multiple]="true" name="helpful" 
+        aria-label="Helpful" 
+        [disabled]="!isLoggedIn"
+        matTooltip="Must be logged in."
+        [matTooltipDisabled]="isLoggedIn"
+        [value]="value"
+        (change)="sendReviewFeedback($event)">
+    <mat-button-toggle value="yes">Yes</mat-button-toggle>
+    <mat-button-toggle value="no">No</mat-button-toggle>
+</mat-button-toggle-group>

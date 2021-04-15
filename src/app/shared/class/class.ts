@@ -35,5 +35,5 @@ export interface ClassData {
     spring: boolean,
     summer: boolean,
     fall: boolean
-  },
+  }
 }

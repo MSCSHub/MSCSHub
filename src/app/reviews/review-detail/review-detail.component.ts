@@ -82,4 +82,14 @@ export class ReviewDetailComponent implements OnInit {
       }
     })
   }
+
+  getFeedbackValue(reviewId: string): string[] {
+    if(!this.userData?.reviewFeedback) return [""]
+    if(reviewId in this.userData?.reviewFeedback!) {
+      let feedback = this.userData?.reviewFeedback![reviewId]
+      if(feedback) return ["yes"]
+      else return ["no"]
+    }
+    return [""]
+  }
 }
