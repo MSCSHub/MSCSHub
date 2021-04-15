@@ -33,6 +33,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   pageLength: number = 5
   maxLength: number = 99999
   isLoggedIn: boolean = false
+  objectKeys = Object.keys
 
   @ViewChild('imageContainer')  imageContainer!: ElementRef;
   @ViewChild('gradientContainer')  gradientContainer!: ElementRef;
@@ -80,7 +81,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       .orderBy("timestamp","desc")
     ).get().subscribe(response => {
       if (!response.docs.length){
-        console.log("Course Detail: No reviews exist")
+        console.warn("Course Detail: No reviews exist")
         //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         this.disablePrev = true
@@ -98,7 +99,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log("Course Detail: getFirstPage - ", error)})
+    }, error => {console.error("Course Detail: getFirstPage - ", error)})
   }
 
   nextPage() {
@@ -111,7 +112,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       .startAfter(lastReview)
     ).get().subscribe(response => {
       if (!response.docs.length){
-        console.log("Course Detail: No reviews exist")
+        console.warn("Course Detail: No reviews exist")
         //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         return
@@ -127,7 +128,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.log("Course Detail: nextPage -", error)})
+    }, error => {console.error("Course Detail: nextPage -", error)})
   }
 
   getPrevPage(): void {
@@ -166,5 +167,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     this.cards[5].value = course.LectureQualityAvg
     this.cards[6].value = course.ProfessorQualityAvg
     this.cards[7].value = course.PiazzaCommunityAvg
+  }
+
+  semesterMatch(season: string, semesters: string[]): string {
+    return semesters.filter(function(k){return ~k.indexOf(season)}).toString().split(',').join('\n')
   }
 }

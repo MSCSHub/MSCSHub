@@ -38,7 +38,7 @@ export class ViewUserReviewsComponent implements OnInit {
       ref.where("userId", '==', this.userData?.uid)
     ).get().subscribe(response => {
       if (!response.docs.length){
-        console.log("View User Reviews: getUserReviews - No reviews exist")
+        console.warn("View User Reviews: getUserReviews - No reviews exist")
         return
       }
       this.reviewData = []
@@ -47,7 +47,7 @@ export class ViewUserReviewsComponent implements OnInit {
         review.reviewId = item.id
         this.reviewData.push(review)
       }
-    }, error => {console.log("View User Reviews: getUserReviews - ", error)})
+    }, error => {console.error("View User Reviews: getUserReviews - ", error)})
   }
 
   openSnackBar(message: string, action: string = "Dismiss") {

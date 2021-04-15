@@ -68,7 +68,6 @@ export class EditCourseMetadataComponent implements OnInit {
   }
 
   setFieldData(field: AbstractControl, fieldBool: AbstractControl, fieldValue: any): void {
-    console.log(field, fieldBool, fieldValue)
     fieldValue ? field.setValue(fieldValue) : ""
     fieldValue ? fieldBool.setValue("true") : fieldBool.setValue("false")
     fieldValue ? field.enable() : field.disable()

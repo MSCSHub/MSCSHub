@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClassService } from 'src/app/services/classes/class.service';
@@ -24,12 +23,14 @@ export class CourseListComponent implements AfterViewInit {
     'BookUsefulnessAvg',
     'Semester',
   ]
+  objectKeys = Object.keys
   
   @ViewChild(MatSort) sort!: MatSort
    
   constructor(
     private courses: ClassService
   ) { }
+
   ngAfterViewInit(): void {
     this.courses.classes.subscribe(data => {
       this.classes = data
@@ -41,5 +42,4 @@ export class CourseListComponent implements AfterViewInit {
   trackById(index: number, item: ClassData) {
     return item.ClassName
   }
-
 }

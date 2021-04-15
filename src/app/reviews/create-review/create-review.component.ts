@@ -95,7 +95,7 @@ export class CreateReviewComponent implements OnInit {
         const review = item.data() as Review
         this.completedReviews.push(review.course)
       }
-    }, error => {console.log("Create Review:", error)})
+    }, error => {console.error("Create Review:", error)})
   }
 
   initializeReviewForm() {
@@ -144,7 +144,7 @@ export class CreateReviewComponent implements OnInit {
           this.loading = false
           this.openDialog()
         }, error => {
-          console.log("Create Review: Submission failed - ", error)
+          console.error("Create Review: Submission failed - ", error)
           this.loading = false
           this.error = error.message
         })
@@ -155,7 +155,7 @@ export class CreateReviewComponent implements OnInit {
           this.loading = false
           this.openDialog()
         }, error => {
-          console.log("Create Review: Submission failed -", error)
+          console.error("Create Review: Submission failed -", error)
           this.loading = false
           this.error = error.message
         })
