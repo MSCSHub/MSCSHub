@@ -6,6 +6,8 @@ export interface Review {
   course: string,
   difficulty: number,
   exams: true,
+  helpfulNegative?: number,
+  helpfulPositive?: number,
   homework: true,
   lectureQuality: number,
   peerReviewed: boolean,
@@ -21,4 +23,10 @@ export interface Review {
   year: number,
   userId?: string,
   reviewId?: string,
+}
+
+export enum reviewFeedbackType {
+  positive = "yes",
+  negative = "no",
+  undoFeedback = "",
 }

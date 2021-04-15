@@ -38,14 +38,7 @@
           <p style="white-space: pre-line;">{{review.review}}</p>
         <br><br>
       Was this review helpful?
-      <mat-button-toggle-group name="helpful" 
-                               aria-label="Helpful" 
-                               [disabled]="!isLoggedIn"
-                               matTooltip="Must be logged in."
-                               [matTooltipDisabled]="isLoggedIn">
-        <mat-button-toggle value="yes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no">No</mat-button-toggle>
-      </mat-button-toggle-group>
+      <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId" [value]="getFeedbackValue(review.reviewId!)"></app-review-helpfulness>
     </mat-card-content>
     </mat-card>
   </div>

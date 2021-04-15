@@ -4,7 +4,9 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import firebase from 'firebase/app'
 import { Observable, ReplaySubject } from 'rxjs';
+import { reviewFeedbackType } from 'src/app/shared/review/review';
 
 import { FbUser } from '../../shared/user/user'
 
@@ -60,6 +62,7 @@ export class AuthService {
       user.firstName = data?.firstName
       user.lastName = data?.lastName
       user.slackId = data?.slackId
+      user.reviewFeedback = data?.reviewFeedback
       localStorage.setItem('user', JSON.stringify(user))
       this._userData.next(user)
     })
@@ -86,7 +89,8 @@ export class AuthService {
           slackId: null,
           firstSemester: firstSemester,
           firstName: firstName,
-          lastName: lastName
+          lastName: lastName,
+          reviewFeedback: new Map<string, boolean>()
         })
         this.router.navigate(['verifyEmail'])
       })
@@ -116,7 +120,7 @@ export class AuthService {
     const displayName = `${firstName} ${lastName}`
     this.afAuth.currentUser.then((user: FbUser | null) => {
       user?.updateProfile({displayName: displayName})
-      this.afs.collection("UserExtraData").doc(user?.uid).set({
+      this.afs.collection("UserExtraData").doc(user?.uid).update({
         firstSemester: firstSemester,
         firstName: firstName,
         lastName: lastName
@@ -130,6 +134,36 @@ export class AuthService {
   resendVerification() {
     return this.afAuth.currentUser.then((user: FbUser | null) => {
       user?.sendEmailVerification()
+    })
+  }
+
+  undoOldVote(reviewId: string, oldVote: boolean): void {
+    if(oldVote === undefined) return;
+    else if(oldVote === true) this.afs.collection("Reviews").doc(reviewId).update({'helpfulPositive': firebase.firestore.FieldValue.increment(-1)})
+    else this.afs.collection("Reviews").doc(reviewId).update({'helpfulNegative': firebase.firestore.FieldValue.increment(-1)})
+  }
+
+  reviewFeedback(reviewId: string, vote: reviewFeedbackType): Promise<boolean> {
+    return this.afAuth.currentUser.then((user: FbUser | null) => {
+      if (!user || !user?.emailVerified) return false
+      if(!user.reviewFeedback) user.reviewFeedback = {}
+
+      let oldVal = (reviewId in user.reviewFeedback) ? user.reviewFeedback[reviewId] : undefined
+      if(oldVal != undefined) this.undoOldVote(reviewId, oldVal)
+      if(vote === reviewFeedbackType.positive) {
+        this.afs.collection("Reviews").doc(reviewId).update({'helpfulPositive': firebase.firestore.FieldValue.increment(1)})
+        user.reviewFeedback[reviewId] = true
+        this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
+      } else if(vote === reviewFeedbackType.negative) {
+        this.afs.collection("Reviews").doc(reviewId).update({'helpfulNegative': firebase.firestore.FieldValue.increment(1)})
+        user.reviewFeedback[reviewId] = false
+        this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
+      } else {
+        delete user.reviewFeedback[reviewId]
+        this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
+      }
+      // calculate new wilson score - coming later
+      return true
     })
   }
 }
