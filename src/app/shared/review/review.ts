@@ -23,6 +23,7 @@ export interface Review {
   year: number,
   userId?: string,
   reviewId?: string,
+  wilsonScore?: number,
 }
 
 export enum reviewFeedbackType {

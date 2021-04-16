@@ -6,7 +6,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from '@angular/router';
 import firebase from 'firebase/app'
 import { Observable, ReplaySubject } from 'rxjs';
-import { reviewFeedbackType } from 'src/app/shared/review/review';
+import { Review, reviewFeedbackType } from 'src/app/shared/review/review';
 
 import { FbUser } from '../../shared/user/user'
 
@@ -163,6 +163,13 @@ export class AuthService {
         this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       }
       // calculate new wilson score - coming later
+      this.afs.collection("Reviews").doc(reviewId).get().subscribe(data => {
+        let updatedReview = data.data() as Review
+        let positive = updatedReview.helpfulPositive || 0
+        let negative = updatedReview.helpfulNegative || 0
+        let result = ((positive + 1.9208) / (positive + negative) - 1.96 * Math.sqrt((positive * negative) / (positive + negative) + 0.9604) / (positive + negative)) / (1 + 3.8416 / (positive + negative))
+        this.afs.collection("Reviews").doc(reviewId).update({'wilsonScore': result})
+      })
       return true
     })
   }
