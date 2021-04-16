@@ -17,23 +17,23 @@
 
   <ng-container matColumnDef="RatingAvg">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Rating</th>
-    <td mat-cell *matCellDef="let class">{{class.RatingAvg*scale/7 | number: '1.0-1'}}</td>
+    <td mat-cell *matCellDef="let class">{{class.RatingCount ? (class.RatingAvg*scale/7 | number: '1.0-1') : 'N/A'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="DifficultyAvg">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Difficulty</th>
-    <td mat-cell *matCellDef="let class">{{class.DifficultyAvg*scale/7 | number: '1.0-1'}}</td>
+    <td mat-cell *matCellDef="let class">{{class.RatingCount ? (class.DifficultyAvg*scale/7 | number: '1.0-1') : 'N/A'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="WorkloadAvg">
     <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Hours spent per week">Workload (hrs/wk)</th>
-    <td mat-cell *matCellDef="let class">{{class.WorkloadAvg | number: '1.0-1'}}</td>
+    <td mat-cell *matCellDef="let class">{{class.RatingCount ? (class.WorkloadAvg | number: '1.0-1') : 'N/A'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="BookUsefulnessAvg">
     <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="How useful is the textbook?">Textbook</th>
     <td mat-cell *matCellDef="let class">
-      <div *ngIf="class.Textbook; else noTextbook">{{class.BookUsefulnessAvg*scale/7 | number: '1.0-1'}}</div>
+      <div *ngIf="class.Textbook; else noTextbook">{{(class.RatingCount && class.BookUsefulnessCount) ? (class.BookUsefulnessAvg*scale/7 | number: '1.0-1') : 'N/A'}}</div>
       <ng-template #noTextbook>No Book</ng-template>
     </td>
   </ng-container>
