@@ -28,7 +28,7 @@ export class AuthguardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log("AuthGuard: CanActivate? - emailVerified?", this.isLoggedIn, this.isVerified)
+    console.debug("AuthGuard: CanActivate? - emailVerified?", this.isLoggedIn, this.isVerified)
     if (this.isLoggedIn && this.isVerified) {
       return true
     } else {
@@ -48,7 +48,6 @@ export class AuthguardGuard implements CanActivate {
   openVerifyDialog() {
     const dialogRef = this.dialog.open(DialogNotVerified)
     dialogRef.afterClosed().subscribe(result => {
-      // console.log("Resetting user email:", this.userData?.sendEmailVerification())
       this.router.navigate(['verifyEmail'])
     })
   }

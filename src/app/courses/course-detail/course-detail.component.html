@@ -20,6 +20,12 @@
             <mat-chip *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">{{item.key | titlecase}}&nbsp;<mat-icon>info_outline</mat-icon></mat-chip>
           </div>
           <mat-chip *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+          <div *ngFor="let season of course?.season | keyvalue">
+            <mat-chip *ngIf="season.value" matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}">
+              {{season.key | titlecase}}&nbsp;
+              <mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
+            </mat-chip>
+          </div>
         </mat-chip-list>
       </div>
     </div>

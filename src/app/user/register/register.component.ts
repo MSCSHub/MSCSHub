@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
                      this.f.firstName.value, 
                      this.f.lastName.value,
                      this.f.firstSemester.value)
-      // .then(() => {this.loading = false})
+      .then(() => {this.loading = false})
       .catch(error => {
         this.loading = false
         this.error = error
