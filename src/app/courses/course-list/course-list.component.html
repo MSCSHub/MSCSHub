@@ -32,7 +32,10 @@
 
   <ng-container matColumnDef="BookUsefulnessAvg">
     <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="How useful is the textbook?">Textbook</th>
-    <td mat-cell *matCellDef="let class">{{class.BookUsefulnessAvg*scale/7 | number: '1.0-1'}}</td>
+    <td mat-cell *matCellDef="let class">
+      <div *ngIf="class.Textbook; else noTextbook">{{class.BookUsefulnessAvg*scale/7 | number: '1.0-1'}}</div>
+      <ng-template #noTextbook>No Book</ng-template>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="Semester">
