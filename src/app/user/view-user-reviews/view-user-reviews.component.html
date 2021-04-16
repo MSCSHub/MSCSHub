@@ -15,6 +15,9 @@
                         <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
                             <mat-icon>mode_edit</mat-icon>
                         </button>
+                        <button mat-icon-button (click)="removeReview(review.reviewId)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </div>
                 </mat-list-item>
               </mat-nav-list>
