@@ -1,12 +1,13 @@
-import {Clipboard} from '@angular/cdk/clipboard';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogOnDelete } from 'src/app/reviews/review-detail/review-detail.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
-
 
 @Component({
   selector: 'app-view-user-reviews',
@@ -20,10 +21,10 @@ export class ViewUserReviewsComponent implements OnInit {
   
   constructor(
     private auth: AuthService,
-    private courseService: ClassService,
     private afs: AngularFirestore,
     private clipboard: Clipboard,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +56,22 @@ export class ViewUserReviewsComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  removeReview(reviewId: string | undefined): void {
+    if(!reviewId) return
+    this.openDialog(reviewId)
+  }
+
+  openDialog(reviewId: string) {
+    const dialogRef = this.dialog.open(DialogOnDelete)
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.afs.collection("Reviews").doc(reviewId).delete()
+        let index =  this.reviewData.findIndex(x => x.reviewId==reviewId)
+        this.reviewData.splice(index, 1)
+      }
+    })
   }
 
 }
