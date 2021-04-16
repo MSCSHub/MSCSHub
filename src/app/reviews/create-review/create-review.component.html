@@ -56,24 +56,45 @@
 
                 <div class="review-spacer">
                     <h2>Course Ratings</h2>
-                    <h3>
+                    <!-- <h3>
                         Please rate the following on a scale of 1-7&nbsp;&nbsp;&nbsp;
                         <mat-icon #tooltip="matTooltip" (click)="tooltip.show()" matTooltip="{{scaleTooltip}}" [matTooltipClass]="'multiline-tooltip'">info_outline</mat-icon>
                     </h3>
                     <p>1 - The Worst, 2 - Bad, 3 - Below Average, 4 - Average, 5 - Above Average, 6 - Good, 7 - The Best</p>
-                    <p>Difficulty Rating: 1 - Easiest Thing Ever, 7 - Makes You Want To Cry</p>
+                    <p>Difficulty Rating: 1 - Easiest Thing Ever, 7 - Makes You Want To Cry</p> -->
                 </div>
-                <mat-form-field *ngFor="let field of fields" class="form-field-full-width">
+                <!-- <mat-form-field *ngFor="let field of fields" class="form-field-full-width">
                     <input matInput type="number" placeholder="{{ field.title }}"
                            required max="{{ field.max }}" min="{{ field.min }}"
                             formControlName="{{ field.formName }}">
                     <mat-hint>{{ field.hint }}</mat-hint>
-                </mat-form-field>
-                <!-- In case you ever want to use a slider for input, here's a good starting point
+                </mat-form-field> -->
+                <!-- In case you ever want to use a slider for input, here's a good starting point -->
+                <!-- I messed around with this and had a lot of trouble getting it to look "right". It's a lot tougher to design something when it's not made by google with a $1M budget. -->
                 <div class="review-slider-container">
-                    <mat-label class="review-label">Difficulty:</mat-label>
-                    <mat-slider fxFlex class="review-slider" [formControl]="rating" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
-                </div> -->
+                    <mat-label class="review-label">How would you rate the piazza support?:</mat-label>
+                    <mat-slider fxFlex class="review-slider" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+                </div>
+                <div class="review-slider-container">
+                    <mat-label class="review-label">How would you rate the lecture quality?:</mat-label>
+                    <mat-slider fxFlex class="review-slider" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+                </div>
+                <div class="review-slider-container">
+                    <mat-label class="review-label">How would you rate the class overall?:</mat-label>
+                    <mat-slider fxFlex class="review-slider" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+                </div>
+                <div class="review-slider-container">
+                    <mat-label class="review-label">How useful was the textbook?:</mat-label>
+                    <mat-slider fxFlex class="review-slider" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+                </div>
+                <div class="review-slider-container">
+                    <mat-label class="review-label">How was the professor quality?:</mat-label>
+                    <mat-slider fxFlex class="review-slider" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+                </div>
+                <div class="review-slider-container">
+                    <mat-label class="review-label">How difficult was the course?:</mat-label>
+                    <mat-slider fxFlex class="review-slider" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+                </div>
             </mat-card-content>
             <button [disabled]="loading" mat-raised-button color="primary" class="btn-block">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>

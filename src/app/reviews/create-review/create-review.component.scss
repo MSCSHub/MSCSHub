@@ -10,8 +10,38 @@
         justify-content: center;
     }
 }
+
+.review-slider-container {
+    flex-direction: column;
+    padding-bottom: 30px;
+    align-items: center;
+}
+
+.review-label {
+    align-self: center;
+    padding-right: 7px;
+}
+
 ::ng-deep .mat-tooltip  {
     white-space: pre-line !important;
+}
+
+::ng-deep .mat-slider-track-wrapper {
+    height: 3px !important; 
+    top: -2px !important;
+    
+}
+
+::ng-deep .mat-slider-track-background {
+    height: 3px !important; 
+}
+
+::ng-deep .mat-slider-track-fill {
+    height: 3px !important; 
+}
+
+.mat-slider-horizontal {
+    min-width: 500px;
 }
 
 // .review-slider-container {
