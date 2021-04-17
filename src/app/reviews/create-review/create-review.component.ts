@@ -117,7 +117,7 @@ export class CreateReviewComponent implements OnInit {
       classId: ['', Validators.required],
       helpfulPositive: [1, Validators.required],
       helpfulNegative: [0, Validators.required],
-      wilsonScore: [0.2065, Validators.required]
+      wilsonScore: [0.8, Validators.required]
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {

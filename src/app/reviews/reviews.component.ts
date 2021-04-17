@@ -39,7 +39,7 @@ export class ReviewsComponent implements OnInit {
     {displayText: "Newest", field: "timestamp", order: "desc"},
     {displayText: "Oldest", field: "timestamp", order: "asc"},
   ]
-  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[2]
+  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[0]
 
 
   constructor(
