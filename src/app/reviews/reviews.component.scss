@@ -30,12 +30,9 @@
 
 .review-spacer {
   display: flex;
+  flex-flow: wrap;
   justify-content: space-between;
   margin: 40px 0px 16px 5px;
-}
-
-.next-prev-container button {
-  margin-left: 4px;
 }
 
 .mat-card {
@@ -63,4 +60,39 @@
   margin: 0 auto;
   margin-top: 20px;
 //   display: flex;
+}
+
+.order-dropdown {
+  font-size: 14px;
+}
+
+.review-controller {
+  ::ng-deep .mat-form-field-infix {
+    border-top: 0.5em solid transparent;
+    max-width: 125px;
+  }
+
+  ::ng-deep .mat-form-field-flex {
+    padding-top: 0px !important;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    border-radius: 4px 4px 4px 4px !important;
+  }
+
+  ::ng-deep .mat-form-field-underline {
+    width: 0px !important;
+  }
+
+  ::ng-deep .mat-select-arrow-wrapper {
+    vertical-align: bottom !important;
+  }
+
+  .page-label {
+    vertical-align: middle;
+    margin-right: 9px;
+  }
+
+  .next-prev-container button {
+    margin-right: 4px;
+    padding: 0.16rem 0rem 0.16rem 0rem;
+  }  
 }
