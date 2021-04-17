@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { Review } from '../../shared/review/review';
+import firebase from 'firebase/app'
 
 @Component({
   selector: 'app-course-detail',
@@ -25,6 +26,12 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     {title: 'Professor', subtitle: 'On a Scale of 1-7', value: 0},
     {title: 'Piazza Support', subtitle: 'On a Scale of 1-7', value: 0},
   ]
+  orderByOptions = [
+    {displayText: "Most Helpful", field: "wilsonScore", order: "desc"},
+    {displayText: "Least Helpful", field: "wilsonScore", order: "asc"},
+    {displayText: "Newest", field: "timestamp", order: "desc"},
+    {displayText: "Oldest", field: "timestamp", order: "asc"},
+  ]
   reviewDataStack: any[] = []
   reviewData: Review[] = []
   pageNumber: number = 0
@@ -33,6 +40,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   pageLength: number = 5
   maxLength: number = 99999
   isLoggedIn: boolean = false
+  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[2]
   objectKeys = Object.keys
 
   @ViewChild('imageContainer')  imageContainer!: ElementRef;
@@ -74,12 +82,16 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   getFirstPage() {
+    this.pageNumber = 0
     this.disablePrev = true
+    this.disableNext = false
+    this.reviewDataStack = []
     this.afs.collection('Reviews', ref => ref
       .where("course", '==', this.courseName)
       .limit(this.pageLength)
-      .orderBy("timestamp","desc")
+      .orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
     ).get().subscribe(response => {
+      this.reviewData = []
       if (!response.docs.length){
         console.warn("Course Detail: No reviews exist")
         //TODO Add something to let the user know that there are no reviews
@@ -87,7 +99,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disablePrev = true
         return
       }
-      this.reviewData = []
       for (let item of response.docs) {
         const review = item.data() as Review
         review.reviewId = item.id
@@ -108,7 +119,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     this.afs.collection('Reviews', ref => ref
       .where("course", '==', this.courseName)
       .limit(this.pageLength)
-      .orderBy("timestamp","desc")
+      .orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
       .startAfter(lastReview)
     ).get().subscribe(response => {
       if (!response.docs.length){
@@ -155,7 +166,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     window.location.hash = ""
     window.location.hash = location
     let x = document.getElementsByClassName("mat-drawer-content")[0]
-    x.scroll(0, x.scrollTop - 30)
+    x.scroll(0, x.scrollTop - 40)
   }
 
   updateCards(course: ClassData): void {
@@ -171,5 +182,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
 
   semesterMatch(season: string, semesters: string[]): string {
     return semesters.filter(function(k){return ~k.indexOf(season)}).toString().split(',').join('\n')
+  }
+
+  newSort(event: any): void {
+    this.getFirstPage()
   }
 }

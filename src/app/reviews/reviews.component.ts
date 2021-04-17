@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
 import { Review } from '../shared/review/review';
+import firebase from 'firebase/app'
 
 @Component({
   selector: 'app-reviews',
@@ -32,6 +33,14 @@ export class ReviewsComponent implements OnInit {
   queryValid: boolean = false
   queryForm!: FormGroup
   nothingHere: boolean = false
+  orderByOptions = [
+    {displayText: "Most Helpful", field: "wilsonScore", order: "desc"},
+    {displayText: "Least Helpful", field: "wilsonScore", order: "asc"},
+    {displayText: "Newest", field: "timestamp", order: "desc"},
+    {displayText: "Oldest", field: "timestamp", order: "asc"},
+  ]
+  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[2]
+
 
   constructor(
     private afs: AngularFirestore,
@@ -52,6 +61,7 @@ export class ReviewsComponent implements OnInit {
   }
 
   getFirstPage() {
+    this.pageNumber = 0
     this.disablePrev = true
     this.disableNext = false
     this.nothingHere = false
@@ -62,7 +72,8 @@ export class ReviewsComponent implements OnInit {
         query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
         if (this.f['operation'].value != "==") {query = query.orderBy(this.f['category'].value, "desc")}
       }
-      return query.orderBy('timestamp', 'desc')
+      // return query.orderBy('timestamp', 'desc')
+      return query.orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
     }).get().subscribe(response => {
       if (!response.docs.length){
         console.warn("Reviews: No reviews exist")
@@ -123,6 +134,7 @@ export class ReviewsComponent implements OnInit {
   getPrevPage(): void {
     this.pageNumber--
     this.disableNext = false
+    this.goToLocation("review-spacer")
   }
 
   getNextPage(): void {
@@ -132,6 +144,7 @@ export class ReviewsComponent implements OnInit {
     if ((this.pageNumber+1)*this.pageLength >= this.maxLength) {
       this.disableNext = true
     }
+    this.goToLocation("review-spacer")
   }
 
   onCourseChange(value: any): void {
@@ -148,5 +161,16 @@ export class ReviewsComponent implements OnInit {
       this.queryValid = true
       this.getFirstPage()
     }
+  }
+
+  goToLocation(location: string): void {
+    window.location.hash = ""
+    window.location.hash = location
+    let x = document.getElementsByClassName("mat-drawer-content")[0]
+    x.scroll(0, x.scrollTop - 80)
+  }
+
+  newSort(event: any): void {
+    this.getFirstPage()
   }
 }

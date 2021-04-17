@@ -8,7 +8,7 @@
         </mat-chip>
       </div>
       <div class="padded-cell white">
-        <h1 class="flat-bottom">{{courseName}}</h1>
+        <h2 class="flat-bottom">{{courseName}}</h2>
         <h3 class="white">({{courseNumber}})</h3>
         <h4 class="white">
           <span>Professor: {{course?.Teacher | titlecase}}</span>
@@ -32,11 +32,18 @@
   <app-course-card [data]="cards"></app-course-card>
   <div class="review-spacer" id="review-spacer"></div>
   <div class="review-controller">
-    <h2>Course Reviews:</h2>
+    <h1>Course Reviews:</h1>
     <div class="next-prev-container">
-      Page {{pageNumber + 1}}
+      <span class="page-label">Page {{pageNumber + 1}}</span>
       <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
       <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+      <mat-form-field class="order-dropdown" appearance="fill">
+        <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
+          <mat-option *ngFor="let option of orderByOptions" [value]="option">
+            Sort by {{option.displayText}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>      
     </div>
   </div>
   <div class="review-container">
