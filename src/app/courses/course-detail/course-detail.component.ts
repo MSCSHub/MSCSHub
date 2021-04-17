@@ -40,7 +40,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   pageLength: number = 5
   maxLength: number = 99999
   isLoggedIn: boolean = false
-  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[2]
+  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[0]
   objectKeys = Object.keys
 
   @ViewChild('imageContainer')  imageContainer!: ElementRef;

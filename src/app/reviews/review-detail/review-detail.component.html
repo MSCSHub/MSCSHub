@@ -37,8 +37,8 @@
         <b>Review:</b><br>
           <p style="white-space: pre-line;">{{review.review}}</p>
         <br><br>
-      Was this review helpful?
-      <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId" [value]="getFeedbackValue(review.reviewId!)"></app-review-helpfulness>
+      <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId" [value]="getFeedbackValue(review.reviewId!)" 
+                              [positive]="review.helpfulPositive" [negative]="review.helpfulNegative"></app-review-helpfulness>
     </mat-card-content>
     </mat-card>
   </div>
