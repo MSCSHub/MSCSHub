@@ -23,13 +23,6 @@ h3 {
   letter-spacing: -0.025rem;
 }
 
-.review-controller {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-between;
-  margin: 0 0 -16px;
-}
-
 .review-spacer {
   padding: 20px;
 }
@@ -116,9 +109,14 @@ h3 {
 }
 
 .review-controller {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  margin: 0 0 -16px;
+  
   ::ng-deep .mat-form-field-infix {
     border-top: 0.5em solid transparent;
-    max-width: 155px;
+    max-width: 150px;
   }
 
   ::ng-deep .mat-form-field-flex {
@@ -138,5 +136,8 @@ h3 {
   .page-label {
     vertical-align: middle;
     margin-right: 9px;
+  }
+  .next-prev-container button {
+    min-width: 55px;
   }
 }

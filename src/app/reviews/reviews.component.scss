@@ -69,7 +69,7 @@
 .review-controller {
   ::ng-deep .mat-form-field-infix {
     border-top: 0.5em solid transparent;
-    max-width: 155px;
+    max-width: 150px;
   }
 
   ::ng-deep .mat-form-field-flex {
@@ -94,5 +94,8 @@
   .next-prev-container button {
     margin-right: 4px;
     padding: 0.16rem 0rem 0.16rem 0rem;
+    @media(max-width: 400px){
+      min-width: 53px;
+    }
   }  
 }
