@@ -137,10 +137,10 @@ export class AuthService {
     })
   }
 
-  undoOldVote(reviewId: string, oldVote: boolean): void {
-    if(oldVote === undefined) return;
-    else if(oldVote === true) this.afs.collection("Reviews").doc(reviewId).update({'helpfulPositive': firebase.firestore.FieldValue.increment(-1)})
-    else this.afs.collection("Reviews").doc(reviewId).update({'helpfulNegative': firebase.firestore.FieldValue.increment(-1)})
+  undoOldVote(reviewId: string, oldVote: boolean, helpful: {positive: number, negative: number}): {positive: number, negative: number} {
+    if(oldVote === true) helpful.positive -= 1
+    else if(oldVote === false) helpful.negative -= 1
+    return helpful
   }
 
   reviewFeedback(reviewId: string, vote: reviewFeedbackType): Promise<boolean> {
@@ -148,27 +148,24 @@ export class AuthService {
       if (!user || !user?.emailVerified) return false
       if(!user.reviewFeedback) user.reviewFeedback = {}
 
+      let helpful = {positive:  0, negative: 0}
       let oldVal = (reviewId in user.reviewFeedback) ? user.reviewFeedback[reviewId] : undefined
-      if(oldVal != undefined) this.undoOldVote(reviewId, oldVal)
+      if(oldVal != undefined) helpful = this.undoOldVote(reviewId, oldVal, helpful)
       if(vote === reviewFeedbackType.positive) {
-        this.afs.collection("Reviews").doc(reviewId).update({'helpfulPositive': firebase.firestore.FieldValue.increment(1)})
+        helpful.positive += 1
         user.reviewFeedback[reviewId] = true
         this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       } else if(vote === reviewFeedbackType.negative) {
-        this.afs.collection("Reviews").doc(reviewId).update({'helpfulNegative': firebase.firestore.FieldValue.increment(1)})
+        helpful.negative += 1
         user.reviewFeedback[reviewId] = false
         this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       } else {
         delete user.reviewFeedback[reviewId]
         this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       }
-      // calculate new wilson score - coming later
-      this.afs.collection("Reviews").doc(reviewId).get().subscribe(data => {
-        let updatedReview = data.data() as Review
-        let positive = updatedReview.helpfulPositive || 0
-        let negative = updatedReview.helpfulNegative || 0
-        let result = ((positive + 1.9208) / (positive + negative) - 1.96 * Math.sqrt((positive * negative) / (positive + negative) + 0.9604) / (positive + negative)) / (1 + 3.8416 / (positive + negative))
-        this.afs.collection("Reviews").doc(reviewId).update({'wilsonScore': result})
+      this.afs.collection("Reviews").doc(reviewId).update({
+        'helpfulPositive': firebase.firestore.FieldValue.increment(helpful.positive),
+        'helpfulNegative': firebase.firestore.FieldValue.increment(helpful.negative)
       })
       return true
     })
