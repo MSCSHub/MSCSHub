@@ -1,25 +1,25 @@
-name: Deploy to gh-pages
+# name: Deploy to gh-pages
 
-on:
-  push:
-    branches: [ main ]
+# on:
+#   push:
+#     branches: [ main ]
 
-jobs:
-  build:
-    name: Build and Test
-    runs-on: ubuntu-latest
-    steps:
-    # Checkout the branch
-    - name: Checkout
-      uses: actions/checkout@v1
+# jobs:
+#   build:
+#     name: Build and Test
+#     runs-on: ubuntu-latest
+#     steps:
+#     # Checkout the branch
+#     - name: Checkout
+#       uses: actions/checkout@v1
     
-    # Ensure that gh-actions is using the correct version of node
-    - name: Use Node 15.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '15.x'
+#     # Ensure that gh-actions is using the correct version of node
+#     - name: Use Node 15.x
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: '15.x'
 
-    - name: Install dependencies
-      run: npm ci
-    - name: Deploy
-      run: npm run ng-deploy
+#     - name: Install dependencies
+#       run: npm ci
+#     - name: Deploy
+#       run: npm run ng-deploy
