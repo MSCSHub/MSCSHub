@@ -1,0 +1,28 @@
+name: workflow name
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout the branch
+    - name: Checkout
+      uses: actions/checkout@v1
+    
+    # Ensure that gh-actions is using the correct version of node
+    - name: Use Node 15.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '15.x'
+
+    - name: Install dependencies
+      run: npm ci
+    - name: Deploy
+      run: npm run ng-deploy
