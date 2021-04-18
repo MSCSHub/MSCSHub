@@ -1,4 +1,4 @@
-name: workflow name
+name: Deploy to gh-pages
 
 on:
   push:
