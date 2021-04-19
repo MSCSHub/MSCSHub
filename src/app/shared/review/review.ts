@@ -9,6 +9,7 @@ export interface Review {
   helpfulNegative?: number,
   helpfulPositive?: number,
   homework: true,
+  lastUpdated: Timestamp,
   lectureQuality: number,
   peerReviewed: boolean,
   piazzaCommunity: number,
