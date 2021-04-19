@@ -1,3 +1,5 @@
+import { Timestamp } from "@firebase/firestore-types";
+
 export interface ClassData {
   courseId: string,
   BookUsefulnessAvg: number,
@@ -24,6 +26,7 @@ export interface ClassData {
   WorkloadCount: number,
   category: string
   languages: string[] | null,
+  lastUpdated: Timestamp,
   meta: {
     exams: boolean, 
     homework: boolean, 
