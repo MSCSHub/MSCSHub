@@ -11,7 +11,10 @@
 
 table {
   width: 100%;
-}
+  @media(min-width: 1600px) {
+    width: 1600px;
+  }
+ }
 
 th {
   font-weight: bold;
