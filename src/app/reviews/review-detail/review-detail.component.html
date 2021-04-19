@@ -3,19 +3,21 @@
     <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
       <mat-card-header>
         <mat-card-title>{{review.title}}</mat-card-title>
-        <mat-card-subtitle>{{review.course}}</mat-card-subtitle>
+        <mat-card-subtitle>{{review.course}} - {{review.semester}} {{review.year}}</mat-card-subtitle>
         <mat-card-subtitle>{{review.timestamp.toMillis() | date: 'M/d/yyyy h:mm a z'}}</mat-card-subtitle>
         <div fxFlex></div>
-        <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
-          <mat-icon matTooltip="Copy link to review">add_link</mat-icon>
-        </button>
-        <div *ngIf="review.userId === userData?.uid">
-          <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
-            <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
+        <div class="review-detail-buttons">
+          <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
+            <mat-icon matTooltip="Copy link to review">add_link</mat-icon>
           </button>
-          <button mat-icon-button (click)="removeReview(review.reviewId)">
-            <mat-icon matTooltip="Edit review">delete</mat-icon>
-          </button>
+          <div *ngIf="review.userId === userData?.uid" class="review-detail-owner-buttons">
+            <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
+              <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeReview(review.reviewId)">
+              <mat-icon matTooltip="Edit review">delete</mat-icon>
+            </button>
+          </div>
         </div>
       </mat-card-header>
       <mat-card-content>

@@ -31,3 +31,10 @@
   }
   padding-top: 10px;
 }
+
+.review-detail-buttons, .review-detail-owner-buttons {
+  display: flex;
+  @media(max-width:600px){
+    flex-direction: column;
+  }
+}
