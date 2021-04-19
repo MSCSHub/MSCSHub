@@ -1,7 +1,20 @@
 .mat-card {
-    max-width: 600px;
+    @media(min-width: 600px){
+        max-width: 600px;
+    }
+    @media (max-width: 600px) {
+        padding: 45px 10px 55px;
+    }
 }
 
 .list-buttons {
     display: flex;
+}
+
+.user-reviews-card-content {
+    text-align: center;
+}
+
+.view-own-reviews-nothing-here ::ng-deep .mat-line {
+    white-space: pre-wrap !important;
 }
