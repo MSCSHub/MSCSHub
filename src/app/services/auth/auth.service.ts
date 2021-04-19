@@ -154,18 +154,16 @@ export class AuthService {
       if(vote === reviewFeedbackType.positive) {
         helpful.positive += 1
         user.reviewFeedback[reviewId] = true
-        this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       } else if(vote === reviewFeedbackType.negative) {
         helpful.negative += 1
         user.reviewFeedback[reviewId] = false
-        this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       } else {
         delete user.reviewFeedback[reviewId]
-        this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       }
+      this.afs.collection("UserExtraData").doc(user.uid).update({reviewFeedback: user.reviewFeedback})
       this.afs.collection("Reviews").doc(reviewId).update({
         'helpfulPositive': firebase.firestore.FieldValue.increment(helpful.positive),
-        'helpfulNegative': firebase.firestore.FieldValue.increment(helpful.negative)
+        'helpfulNegative': firebase.firestore.FieldValue.increment(helpful.negative),
       })
       return true
     })

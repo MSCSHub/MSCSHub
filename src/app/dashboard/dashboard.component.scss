@@ -1,5 +1,10 @@
 .cl-container {
   overflow-x: auto;
+  @media(min-width:1600px){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .dashboard-header {
