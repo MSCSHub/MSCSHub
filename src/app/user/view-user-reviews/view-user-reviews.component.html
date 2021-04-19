@@ -3,9 +3,9 @@
         <mat-card-header>
             <mat-card-title>My Reviews</mat-card-title>
         </mat-card-header>
-        <mat-card-content style="text-align: center;">
+        <mat-card-content class="user-reviews-card-content">
             <mat-nav-list>
-                <mat-list-item *ngIf="!reviewData.length" routerLink="/createReview"><span matLine>You haven't created any reviews yet. Click here to get started</span></mat-list-item>
+                <mat-list-item *ngIf="!reviewData.length" routerLink="/createReview" class="view-own-reviews-nothing-here"><span matLine>You haven't created any reviews yet. Click here to get started</span></mat-list-item>
                 <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}">
                     <span matLine>{{ review.course }}&nbsp; — &nbsp;{{ review.title }}</span>
                     <div (click)="$event.stopPropagation()" class="list-buttons">
