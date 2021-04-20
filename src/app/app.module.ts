@@ -16,7 +16,6 @@ import { MenuComponent } from './navigation/navbar/menu/menu.component';
 import { LoginComponent } from './user/login/login.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { AdminComponent } from './user/admin/admin.component';
-import { CoursesComponent } from './courses/courses.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 
 // Firebase
@@ -63,7 +62,6 @@ import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpf
     LoginComponent,
     SettingsComponent,
     AdminComponent,
-    CoursesComponent,
     ReviewsComponent,
     CourseDetailComponent,
     ReviewDetailComponent,
