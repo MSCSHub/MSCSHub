@@ -7,13 +7,7 @@ import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
-
-
-@Component({
-  selector: 'dialog-on-delete-dialog',
-  templateUrl: 'dialog-on-delete-dialog.html',
-})
-export class DialogOnDelete {}
+import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
 
 @Component({
   selector: 'app-review-detail',

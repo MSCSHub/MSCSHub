@@ -94,7 +94,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       this.reviewData = []
       if (!response.docs.length){
         console.warn("Course Detail: No reviews exist")
-        //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         this.disablePrev = true
         return
@@ -124,7 +123,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     ).get().subscribe(response => {
       if (!response.docs.length){
         console.warn("Course Detail: No reviews exist")
-        //TODO Add something to let the user know that there are no reviews
         this.disableNext = true
         return
       }

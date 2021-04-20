@@ -3,9 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogOnDelete } from 'src/app/reviews/review-detail/review-detail.component';
+import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { ClassService } from 'src/app/services/classes/class.service';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
 
