@@ -6,14 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
+import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/dialog-review-submission.component';
+import { DialogReviewTooShort } from 'src/app/shared/dialog/review-too-short/dialog-review-too-short.component';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
-
-@Component({
-  selector: 'dialog-review-sumission-dialog',
-  templateUrl: 'dialog-review-submission-dialog.html',
-})
-export class DialogReviewSubmission {}
 
 @Component({
   selector: 'app-create-review',
@@ -50,6 +46,8 @@ export class CreateReviewComponent implements OnInit {
     {formName: "professorQuality", title: "Professor Quality", min: "1", max: "7", hint: "Rate the aggregate quality of the professor(s) on a scale of 1-7"},
     {formName: "piazzaCommunity", title: "Piazza Support", min: "1", max: "7", hint: "Rate your experience with piazza community for this class on a scale of 1-7"},
   ]
+  recommendedWordCount: number = 100
+  wordCountEnforced: boolean = true
   
   constructor(
     private courseService: ClassService,
@@ -130,6 +128,14 @@ export class CreateReviewComponent implements OnInit {
     return this.reviewForm?.controls
   }
 
+  countWords(s: string){
+    s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
+    s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
+    s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
+    return s.split(' ').filter(function(str){return str!="";}).length;
+    //return s.split(' ').filter(String).length; - this can also be used
+  }
+
   onSubmit() {
     const courseName = this.reviewForm.controls['course'].value
     const classId = this.courses?.find(item => item.ClassName === courseName)?.courseId
@@ -139,6 +145,10 @@ export class CreateReviewComponent implements OnInit {
       this.error = this.reviewForm.errors
       return
     }
+    if(this.wordCountEnforced && this.countWords(this.f.review.value as string) < this.recommendedWordCount) {
+      this.openShortReviewDialog()
+      return
+    }
     this.loading = true
     if(this.reviewId) {
       this.afs.collection('Reviews')
@@ -146,7 +156,7 @@ export class CreateReviewComponent implements OnInit {
         .update(this.reviewForm.value)
         .then(result => {
           this.loading = false
-          this.openDialog()
+          this.openSubmittedDialog()
         }, error => {
           console.error("Create Review: Submission failed - ", error)
           this.loading = false
@@ -157,7 +167,7 @@ export class CreateReviewComponent implements OnInit {
         .add(this.reviewForm.value)
         .then(result => {
           this.loading = false
-          this.openDialog()
+          this.openSubmittedDialog()
         }, error => {
           console.error("Create Review: Submission failed -", error)
           this.loading = false
@@ -166,10 +176,22 @@ export class CreateReviewComponent implements OnInit {
     }
   }
 
-  openDialog() {
+  openSubmittedDialog() {
     const dialogRef = this.dialog.open(DialogReviewSubmission)
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['courses', this.reviewForm.controls['course'].value])
+    })
+  }
+
+  openShortReviewDialog() {
+    const dialogRef = this.dialog.open(DialogReviewTooShort)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+      this.wordCountEnforced = result
+      if(result) {
+        window.location.hash = ""
+        window.location.hash = "reviewTooShort"
+      }
     })
   }
 }

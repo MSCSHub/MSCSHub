@@ -28,7 +28,7 @@ import { environment } from '../environments/environment';
 
 
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
-import { ReviewDetailComponent, DialogOnDelete } from './reviews/review-detail/review-detail.component';
+import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
@@ -37,10 +37,13 @@ import { CourseCardComponent } from './courses/course-detail/course-card/course-
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { CourseGridCardComponent } from './courses/course-grid/course-grid-card/course-grid-card.component';
 import { LogoutComponent } from './user/logout/logout.component';
-import { CreateReviewComponent, DialogReviewSubmission } from './reviews/create-review/create-review.component';
+import { CreateReviewComponent } from './reviews/create-review/create-review.component';
 import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logged-in.component';
 import { DialogNotVerified } from './shared/dialog/not-verified/dialog-not-verified.component';
 import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-feedback.component';
+import { DialogReviewSubmission } from './shared/dialog/review-submission/dialog-review-submission.component';
+import { DialogReviewTooShort } from './shared/dialog/review-too-short/dialog-review-too-short.component';
+import { DialogOnDelete } from './shared/dialog/review-delete/dialog-on-delete.component';
 import { EditComponent } from './user/edit/edit.component';
 import { ViewUserReviewsComponent } from './user/view-user-reviews/view-user-reviews.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
@@ -78,6 +81,7 @@ import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpf
     LogoutComponent,
     CreateReviewComponent,
     DialogReviewSubmission,
+    DialogReviewTooShort,
     DialogNotLoggedIn,
     DialogNotVerified,
     DialogSendFeedback,
