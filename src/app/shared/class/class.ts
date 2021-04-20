@@ -24,7 +24,11 @@ export interface ClassData {
   TextbookName: string,
   WorkloadAvg: number,
   WorkloadCount: number,
-  category: string
+  category: string,
+  dataScience: {
+    isDataScience: boolean,
+    category?: string,
+  },
   languages: string[] | null,
   lastUpdated: Timestamp,
   meta: {
