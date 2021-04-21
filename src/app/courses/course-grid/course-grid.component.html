@@ -6,7 +6,7 @@
         <mat-chip [selected]="isSelected(category)" 
                   (click)="toggleSelection(category)" 
                   *ngFor="let category of categories">
-                  {{category}}
+                  {{category | titlecase}}
         </mat-chip>
       </mat-chip-list>
     </mat-card>

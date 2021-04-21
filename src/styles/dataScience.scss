@@ -9,7 +9,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$ng-io-primary: mat-palette($mat-blue, 700, 600, 800);
+$ng-io-primary: mat-palette($mat-gray, 700, 600, 800);
 $ng-io-accent:  mat-palette($mat-red, 700, 600, 800);
 $ng-io-approve: mat-palette($mat-blue, 700, 600, 800);
 
@@ -19,8 +19,7 @@ $ng-io-warn:    mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
 $ng-io-theme: mat-light-theme($ng-io-primary, $ng-io-accent, $ng-io-warn);
 
-$navbar-color: mat-color($mat-blue, 700);
-$background-color: $mat-blue;
+$navbar-color: mat-color($mat-gray, 800);
 
 .mat-toolbar.mat-primary {
   background: $navbar-color !important;

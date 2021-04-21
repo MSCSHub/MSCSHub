@@ -117,6 +117,9 @@ export class CreateReviewComponent implements OnInit {
       helpfulNegative: [0, Validators.required],
       wilsonScore: [0.8, Validators.required],
       lastUpdated: [''],
+      degreeProgram: [''],
+      isComputerScience: [this.courseService.website === "computerScience" ? true : false],
+      isDataScience: [this.courseService.website === "dataScience" ? true : false]
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
@@ -128,12 +131,23 @@ export class CreateReviewComponent implements OnInit {
     return this.reviewForm?.controls
   }
 
+  addCourseDegreeType(courseName: string): void {
+    let reviewedCourse = this.courses?.filter(course => course.ClassName === courseName)
+    if(!reviewedCourse?.length) return
+    let course = reviewedCourse[0]
+    this.f.isComputerScience.setValue(course.computerScience.isComputerScience)
+    this.f.isDataScience.setValue(course.dataScience.isDataScience)
+    if(course.dataScience.isDataScience && course.computerScience.isComputerScience) this.f.degreeProgram.setValue(3)
+    else if(course.dataScience.isDataScience) this.f.degreeProgram.setValue(2)
+    else if(course.computerScience.isComputerScience) this.f.degreeProgram.setValue(1)
+    else this.f.degreeProgram.setValue(0)
+  }
+    
   countWords(s: string){
     s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
     s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
     s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
     return s.split(' ').filter(function(str){return str!="";}).length;
-    //return s.split(' ').filter(String).length; - this can also be used
   }
 
   onSubmit() {
@@ -145,6 +159,7 @@ export class CreateReviewComponent implements OnInit {
       this.error = this.reviewForm.errors
       return
     }
+    this.addCourseDegreeType(courseName)
     if(this.wordCountEnforced && this.countWords(this.f.review.value as string) < this.recommendedWordCount) {
       this.openShortReviewDialog()
       return
@@ -177,6 +192,7 @@ export class CreateReviewComponent implements OnInit {
   }
 
   openSubmittedDialog() {
+    this.courseService.updateCourseData()
     const dialogRef = this.dialog.open(DialogReviewSubmission)
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['courses', this.reviewForm.controls['course'].value])

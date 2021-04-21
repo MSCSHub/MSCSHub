@@ -6,8 +6,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from '@angular/router';
 import firebase from 'firebase/app'
 import { Observable, ReplaySubject } from 'rxjs';
-import { Review, reviewFeedbackType } from 'src/app/shared/review/review';
-
+import { reviewFeedbackType } from 'src/app/shared/review/review';
 import { FbUser } from '../../shared/user/user'
 
 @Injectable({

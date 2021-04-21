@@ -13,11 +13,16 @@ export class CourseGridComponent implements OnInit {
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
   selected: string[] = []
   visibleClasses: ClassData[] = []
-  visibleClasses2: Set<ClassData> = new Set()
+  visibleClassesSet: Set<ClassData> = new Set()
 
   constructor(
     private courses: ClassService,
-  ) { }
+  ) { 
+    if(this.courses.website == "dataScience") {
+      this.categories = ["foundations", "elective"]
+      this.languages = ['Python', 'R', 'No Code']
+    }
+  }
 
   ngOnInit(): void {
     this.courses.classes.subscribe(data => {
@@ -42,37 +47,37 @@ export class CourseGridComponent implements OnInit {
 
   filterItems(): void {
     // this.visibleClasses = []
-    this.visibleClasses2.clear()
+    this.visibleClassesSet.clear()
     let selectedLangs: ClassData[] = []
     let selectedCats: ClassData[] = []
     if(this.selected.length === 0){
       this.classes.forEach(data => {
-        this.visibleClasses2.add(data)
+        this.visibleClassesSet.add(data)
       })
     } else {
       for(var i=0; i<this.selected.length; i++){
         let item = this.selected[i]
         if(this.categories.includes(item)){
           this.classes.filter(x => x.category === item).forEach(data => {
-            this.visibleClasses2.add(data)
+            this.visibleClassesSet.add(data)
           })
         } else {
           this.classes.filter(x => x.languages?.includes(item)).forEach(data => {
-            this.visibleClasses2.add(data)
+            this.visibleClassesSet.add(data)
           })
         }
       }
       if (selectedLangs.length === 0 || selectedCats.length === 0){
         selectedCats.forEach(data => {
-          this.visibleClasses2.add(data)
+          this.visibleClassesSet.add(data)
         })
       } else {
         selectedLangs.filter(x => selectedCats.includes(x)).forEach(data => {
-          this.visibleClasses2.add(data)
+          this.visibleClassesSet.add(data)
         })
       }
     }
-    this.visibleClasses = Array.from(this.visibleClasses2)
+    this.visibleClasses = Array.from(this.visibleClassesSet)
     this.visibleClasses.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
   }
 }
