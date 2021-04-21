@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   algolia: "6639432e69f6e88a1b0feb7208ffacf4",
   algoliaIndex: "MSCSHUB",
+  website: "computerScience",
   firebase: {
     apiKey: "AIzaSyB8rANSR3HoQdSprafHYjKw_wI5WOazlgQ",
     authDomain: "utmcs-1bcf2.firebaseapp.com",

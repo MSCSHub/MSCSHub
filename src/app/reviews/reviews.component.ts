@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
-import { Review } from '../shared/review/review';
+import { Review, degreeProgram } from '../shared/review/review';
 import firebase from 'firebase/app'
 
 @Component({
@@ -39,8 +39,8 @@ export class ReviewsComponent implements OnInit {
     {displayText: "Newest", field: "timestamp", order: "desc"},
     {displayText: "Oldest", field: "timestamp", order: "asc"},
   ]
-  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[0]
-
+  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[2]
+  websiteFilter: string = this.classService.website === "computerScience" ? "isComputerScience" : "isDataScience"
 
   constructor(
     private afs: AngularFirestore,
@@ -68,6 +68,7 @@ export class ReviewsComponent implements OnInit {
     this.afs.collection('Reviews', ref => {
       let query = ref.limit(this.pageLength)
       if(this.courseId) {query = query.where("classId", "==", this.courseId)}
+      query = query.where(this.websiteFilter, "==", true) 
       if(this.queryValid) {
         query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
         if (this.f['operation'].value != "==") {query = query.orderBy(this.f['category'].value, "desc")}
@@ -105,6 +106,7 @@ export class ReviewsComponent implements OnInit {
     this.afs.collection('Reviews', ref => {
       let query = ref.limit(this.pageLength)
       if(this.courseId) {query = query.where("classId", "==", this.courseId)}
+      // TODO - query = query.where("appliesTo", "!=", this.reviewExclusionEnum) 
       if(this.queryValid) {
         query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
         if (this.f['operation'].value != "==") {query = query.orderBy(this.f['category'].value, "desc")}

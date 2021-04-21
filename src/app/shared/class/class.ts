@@ -25,6 +25,10 @@ export interface ClassData {
   WorkloadAvg: number,
   WorkloadCount: number,
   category: string,
+  computerScience: {
+    isComputerScience: boolean,
+    category?: string,
+  }
   dataScience: {
     isDataScience: boolean,
     category?: string,

@@ -12,13 +12,13 @@
         </app-search-input>
         <button fxHide.lt-md mat-raised-button class="donate" (click)="donateLink()">Donate</button>
         <div class="toolbar-external-icons-container" fxHide.lt-md fxShow>
-            <a href="https://utmscso.slack.com" title="Slack" aria-label="UT MSCSO on Slack">
-                <mat-icon svgIcon="logos:slack"></mat-icon>
+            <a href="{{socialURL}}" title="{{socialName}}" attr.aria-label="UT {{properName}} on {{socialName}}">
+                <mat-icon svgIcon="{{socialLogo}}"></mat-icon>
             </a>
             <a href="https://github.com/MSCSHub/MSCSHub" title="GitHub" aria-label="UT MSCSO on GitHub">
                 <mat-icon svgIcon="logos:github"></mat-icon>
             </a>
-            <a href="https://reddit.com/r/MSCSO" title="GitHub" aria-label="UT MSCSO on Reddit">
+            <a href="{{redditURL}}" title="Reddit" attr.aria-label="UT {{properName}} on Reddit">
                 <mat-icon svgIcon="logos:reddit"></mat-icon>
             </a>
         </div>

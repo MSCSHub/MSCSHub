@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClassService } from '../services/classes/class.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,5 +8,8 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   scale: number = 7
-  constructor() {}
+
+  constructor(
+    public courseService: ClassService
+  ) {}
 }

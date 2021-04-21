@@ -27,7 +27,12 @@ export class EditCourseMetadataComponent implements OnInit {
     private afs: AngularFirestore,
     private router: Router,
     private tc: TitleCasePipe,
-  ) { }
+  ) {
+    if(this.courseService.website == "dataScience") {
+      this.categories = ["foundations", "elective"]
+      this.languages = ['Python', 'R', 'No Code']
+    }
+  }
 
   ngOnInit(): void {
     this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
@@ -92,6 +97,7 @@ export class EditCourseMetadataComponent implements OnInit {
         Textbook: this.f.textbookBool.value === "true" ? true : false,
         TextbookName: this.tc.transform(this.f.textbook.value),
       }).then(() => {
+        this.courseService.updateCourseData()
         this.router.navigate([`courses/${this.courseName}`])
       })
   }
