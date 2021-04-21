@@ -33,7 +33,7 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="form-field-full-width">
+                <mat-form-field class="form-field-full-width" id="reviewTooShort">
                     <mat-label>Year</mat-label>
                     <mat-select formControlName="year" required [ngClass]="{'is-invalid': submitted}">
                         <mat-option *ngFor="let year of years" [value]="year">
