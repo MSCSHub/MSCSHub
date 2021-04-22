@@ -2247,7 +2247,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _misc_panda_party_panda_party_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./misc/panda-party/panda-party.component */ "y23b");
 /* harmony import */ var _reviews_star_rating_star_rating_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./reviews/star-rating/star-rating.component */ "gPcw");
 /* harmony import */ var _reviews_review_detail_review_helpfulness_review_helpfulness_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./reviews/review-detail/review-helpfulness/review-helpfulness.component */ "CUl5");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _courses_create_course_create_course_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./courses/create-course/create-course.component */ "yuGV");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 
@@ -2300,11 +2301,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_49__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_49__["ɵɵdefineInjector"]({ providers: [
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_50__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_50__["ɵɵdefineInjector"]({ providers: [
         _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_19__["ScreenTrackingService"],
         _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_19__["UserTrackingService"],
     ], imports: [[
@@ -2321,7 +2323,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_49__["ɵɵdefineInjecto
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"],
             _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"],
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_49__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_50__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
         _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["DashboardComponent"],
         _navigation_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_9__["NavbarComponent"],
         _search_search_input_search_input_component__WEBPACK_IMPORTED_MODULE_10__["SearchInputComponent"],
@@ -2357,7 +2359,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_49__["ɵɵdefineInjecto
         _misc_nothing_here_nothing_here_component__WEBPACK_IMPORTED_MODULE_45__["NothingHereComponent"],
         _misc_panda_party_panda_party_component__WEBPACK_IMPORTED_MODULE_46__["PandaPartyComponent"],
         _reviews_star_rating_star_rating_component__WEBPACK_IMPORTED_MODULE_47__["StarRatingComponent"],
-        _reviews_review_detail_review_helpfulness_review_helpfulness_component__WEBPACK_IMPORTED_MODULE_48__["ReviewHelpfulnessComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _reviews_review_detail_review_helpfulness_review_helpfulness_component__WEBPACK_IMPORTED_MODULE_48__["ReviewHelpfulnessComponent"],
+        _courses_create_course_create_course_component__WEBPACK_IMPORTED_MODULE_49__["CreateCourseComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
         _material_material_module__WEBPACK_IMPORTED_MODULE_4__["MaterialModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_16__["AngularFireModule"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_17__["AngularFireAuthModule"],
@@ -4227,7 +4230,7 @@ class CourseDetailComponent {
             }
             this.reviewDataStack.push(response);
             this.pageNumber++;
-            if (response.docs.length < 5 || this.reviewData.length >= this.course.RatingCount) { // TODO Add || this.page_number*this.page_length + this.reviewData.length >= course.RatingCount
+            if (response.docs.length < 5 || this.reviewData.length >= this.course.RatingCount) {
                 this.disableNext = true;
                 this.maxLength = this.reviewData.length;
             }
@@ -5834,7 +5837,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _misc_sad_panda_sad_panda_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./misc/sad-panda/sad-panda.component */ "7usI");
 /* harmony import */ var _misc_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./misc/thankyou/thankyou.component */ "eYhB");
 /* harmony import */ var _misc_nothing_here_nothing_here_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./misc/nothing-here/nothing-here.component */ "PPJd");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _courses_create_course_create_course_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./courses/create-course/create-course.component */ "yuGV");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -5862,6 +5867,7 @@ const routes = [
     { path: '', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"] },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'courses', component: _courses_course_grid_course_grid_component__WEBPACK_IMPORTED_MODULE_2__["CourseGridComponent"] },
+    { path: 'courses/create', component: _courses_create_course_create_course_component__WEBPACK_IMPORTED_MODULE_21__["CreateCourseComponent"] },
     { path: 'courses/:courseId', component: _courses_course_detail_course_detail_component__WEBPACK_IMPORTED_MODULE_1__["CourseDetailComponent"] },
     { path: 'courses/edit/:courseId', component: _courses_course_detail_edit_course_metadata_edit_course_metadata_component__WEBPACK_IMPORTED_MODULE_17__["EditCourseMetadataComponent"], canActivate: [_user_authguard_guard__WEBPACK_IMPORTED_MODULE_13__["AuthguardGuard"]] },
     { path: 'reviews', component: _reviews_reviews_component__WEBPACK_IMPORTED_MODULE_5__["ReviewsComponent"] },
@@ -5879,14 +5885,14 @@ const routes = [
     { path: 'user/reviews', component: _user_view_user_reviews_view_user_reviews_component__WEBPACK_IMPORTED_MODULE_16__["ViewUserReviewsComponent"], canActivate: [_user_authguard_guard__WEBPACK_IMPORTED_MODULE_13__["AuthguardGuard"]] },
     { path: 'sadPanda', component: _misc_sad_panda_sad_panda_component__WEBPACK_IMPORTED_MODULE_18__["SadPandaComponent"] },
     { path: 'thankyou', component: _misc_thankyou_thankyou_component__WEBPACK_IMPORTED_MODULE_19__["ThankyouComponent"] },
-    { path: '**', component: _misc_nothing_here_nothing_here_component__WEBPACK_IMPORTED_MODULE_20__["NothingHereComponent"] }
+    { path: '**', component: _misc_nothing_here_nothing_here_component__WEBPACK_IMPORTED_MODULE_20__["NothingHereComponent"] },
 ];
 class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
-AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_21__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_21__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_21__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_22__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_22__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_22__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),
@@ -5943,6 +5949,224 @@ PandaPartyComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.src, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("routerLink", ctx.link);
     } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_1__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_1__["DefaultLayoutAlignDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_2__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_2__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_2__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_2__["MatCardSubtitle"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLink"]], styles: [".mat-card[_ngcontent-%COMP%] {\n  max-width: 500px;\n  padding: 30px;\n}\n.mat-card[_ngcontent-%COMP%]   .mat-card-header[_ngcontent-%COMP%] {\n  justify-content: center;\n  text-align: center;\n}\n.panda-party[_ngcontent-%COMP%] {\n  width: 100%;\n  height: auto;\n  padding-top: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxwYW5kYS1wYXJ0eS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0VBQ0EsYUFBQTtBQUNKO0FBQUk7RUFDSSx1QkFBQTtFQUNBLGtCQUFBO0FBRVI7QUFFQTtFQUNJLFdBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7QUFDSiIsImZpbGUiOiJwYW5kYS1wYXJ0eS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtY2FyZCB7XHJcbiAgICBtYXgtd2lkdGg6IDUwMHB4O1xyXG4gICAgcGFkZGluZzogMzBweDtcclxuICAgIC5tYXQtY2FyZC1oZWFkZXJ7XHJcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgfVxyXG59XHJcblxyXG4ucGFuZGEtcGFydHkge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IGF1dG87XHJcbiAgICBwYWRkaW5nLXRvcDogMjBweDtcclxufSJdfQ== */"] });
+
+
+/***/ }),
+
+/***/ "yuGV":
+/*!******************************************************************!*\
+  !*** ./src/app/courses/create-course/create-course.component.ts ***!
+  \******************************************************************/
+/*! exports provided: CreateCourseComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateCourseComponent", function() { return CreateCourseComponent; });
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_services_classes_class_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/classes/class.service */ "IBUy");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/firestore */ "I/3d");
+/* harmony import */ var _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/flex-layout/flex */ "XiUz");
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function CreateCourseComponent_div_8_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-form-field", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "input", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const field_r1 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpropertyInterpolate"]("placeholder", field_r1.display);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpropertyInterpolate"]("formControlName", field_r1.field);
+} }
+class CreateCourseComponent {
+    constructor(formBuilder, route, courseService, afs, router, tc) {
+        this.formBuilder = formBuilder;
+        this.route = route;
+        this.courseService = courseService;
+        this.afs = afs;
+        this.router = router;
+        this.tc = tc;
+        this.courseName = "";
+        this.fields = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"];
+        this.languages = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"];
+        this.categories = ["Applications", "Systems", "Theory", "Elective"];
+        this.classFields = [
+            { field: 'ClassName', display: 'Class Name' },
+            { field: 'CourseNumber', display: 'Course Number' },
+            { field: 'GraphicThumbnail', display: 'Graphic Thumbnail (from main grid)' },
+            { field: 'GraphicColor', display: 'Graphic Color (from course page - lienar-gradient...)' },
+            { field: 'GraphicUrl', display: 'Graphic URL (from course page - url(https://...) )' },
+            { field: 'Teacher', display: 'Teacher (separated by &)' },
+            { field: 'category', display: 'Category (if dataScience only this does not get used)' },
+            { field: 'csIsComputerScience', display: 'is Computer Science? boolean true or false' },
+            { field: 'csCategory', display: 'CS category' },
+            { field: 'dsIsDataScience', display: 'is Data Science? boolean true or false' },
+            { field: 'dsCategory', display: 'DS category' },
+        ];
+        if (this.courseService.website == "dataScience") {
+            this.categories = ["foundations", "elective"];
+            this.languages = ['Python', 'R', 'No Code'];
+        }
+    }
+    ngOnInit() {
+        this.courseMetadataForm = this.formBuilder.group({
+            BookUsefulnessAvg: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            BookUsefulnessCount: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            ClassName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            CourseNumber: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            DifficultyAvg: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            DifficultyCount: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            GraphicThumbnail: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            GraphicColor: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            GraphicUrl: ['url(https://www.cs.utexas.edu', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            LectureQualityAvg: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            LectureQualityCount: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            PiazzaCommunityAvg: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            PiazzaCommunityCount: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            ProfessorQualityAvg: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            ProfessorQualityCount: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            RatingAvg: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            RatingCount: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            Teacher: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            Textbook: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            TextbookName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            WorkloadAvg: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            WorkloadCount: [0, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            category: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            csIsComputerScience: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            csCategory: [''],
+            dsIsDataScience: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            dsCategory: [''],
+            languages: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            // lastUpdated: ['', Validators.required],
+            metaExams: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            metaHomework: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            metaPeerReviewed: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            metaProjects: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            metaProofs: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            seasonSpring: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            seasonSummer: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+            seasonFall: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required],
+        });
+    }
+    get f() {
+        var _a;
+        return (_a = this.courseMetadataForm) === null || _a === void 0 ? void 0 : _a.controls;
+    }
+    setFieldData(field, fieldBool, fieldValue) {
+        fieldValue ? field.setValue(fieldValue) : "";
+        fieldValue ? fieldBool.setValue("true") : fieldBool.setValue("false");
+        fieldValue ? field.enable() : field.disable();
+        fieldBool.valueChanges.subscribe(val => { val == "true" ? field.enable() : field.disable(); });
+    }
+    onSubmit() {
+        this.afs.collection('Class')
+            // .add(this.courseMetadataForm.value)
+            .add({
+            BookUsefulnessAvg: this.f.BookUsefulnessAvg.value,
+            BookUsefulnessCount: this.f.BookUsefulnessCount.value,
+            ClassName: this.f.ClassName.value,
+            CourseNumber: this.f.CourseNumber.value,
+            DifficultyAvg: this.f.DifficultyAvg.value,
+            DifficultyCount: this.f.DifficultyCount.value,
+            GraphicThumbnail: this.f.GraphicThumbnail.value,
+            GraphicColor: this.f.GraphicColor.value,
+            GraphicUrl: this.f.GraphicUrl.value,
+            LectureQualityAvg: this.f.LectureQualityAvg.value,
+            LectureQualityCount: this.f.LectureQualityCount.value,
+            PiazzaCommunityAvg: this.f.PiazzaCommunityAvg.value,
+            PiazzaCommunityCount: this.f.PiazzaCommunityCount.value,
+            ProfessorQualityAvg: this.f.ProfessorQualityAvg.value,
+            ProfessorQualityCount: this.f.ProfessorQualityCount.value,
+            RatingAvg: this.f.RatingAvg.value,
+            RatingCount: this.f.RatingCount.value,
+            Teacher: this.f.Teacher.value,
+            Textbook: this.f.Textbook.value === "true" ? true : false,
+            TextbookName: this.f.TextbookName.value,
+            WorkloadAvg: this.f.WorkloadAvg.value,
+            WorkloadCount: this.f.WorkloadCount.value,
+            category: this.f.category.value,
+            computerScience: {
+                isComputerScience: this.f.csIsComputerScience.value === "true" ? true : false,
+                category: this.f.csCategory.value,
+            },
+            dataScience: {
+                isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
+                category: this.f.dsCategory.value,
+            },
+            languages: [],
+            meta: {
+                exams: this.f.metaExams.value,
+                homework: this.f.metaHomework.value,
+                "peer reviewed": this.f.metaPeerReviewed.value,
+                projects: this.f.metaProjects.value,
+                proofs: this.f.metaProofs.value,
+            },
+            season: {
+                spring: this.f.seasonSpring.value === "true" ? true : false,
+                summer: this.f.seasonSummer.value === "true" ? true : false,
+                fall: this.f.seasonFall.value === "true" ? true : false,
+            },
+            semesters: {},
+        })
+            .then(result => {
+            window.alert("Added! Reload the window to add another one.");
+            location.reload();
+        }, error => {
+            console.error("Create Review: Submission failed -", error);
+            window.alert("Error! See the console for more.");
+        });
+    }
+}
+CreateCourseComponent.ɵfac = function CreateCourseComponent_Factory(t) { return new (t || CreateCourseComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_classes_class_service__WEBPACK_IMPORTED_MODULE_4__["ClassService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_1__["TitleCasePipe"])); };
+CreateCourseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: CreateCourseComponent, selectors: [["app-create-course"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵProvidersFeature"]([_angular_common__WEBPACK_IMPORTED_MODULE_1__["TitleCasePipe"]])], decls: 12, vars: 2, consts: [["fxLayout", "row", "fxLayoutAlign", "center center", 1, "login-wrapper"], [1, "box"], [2, "text-align", "center"], [1, "user-edit-form", 3, "formGroup", "ngSubmit"], [4, "ngFor", "ngForOf"], ["mat-stroked-button", "", "color", "primary"], [1, "form-field-full-width"], ["matInput", "", 3, "placeholder", "formControlName"]], template: function CreateCourseComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "mat-card", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "mat-card-header");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "mat-card-title");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "Create a new course!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "mat-card-content", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](6, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "form", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngSubmit", function CreateCourseComponent_Template_form_ngSubmit_7_listener() { return ctx.onSubmit(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](8, CreateCourseComponent_div_8_Template, 3, 2, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](9, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "button", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](11, "Save Changes");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formGroup", ctx.courseMetadataForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.classFields);
+    } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_6__["DefaultLayoutAlignDirective"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCard"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardHeader"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardTitle"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardContent"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormField"], _angular_material_input__WEBPACK_IMPORTED_MODULE_10__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjcmVhdGUtY291cnNlLmNvbXBvbmVudC5zY3NzIn0= */"] });
 
 
 /***/ }),
