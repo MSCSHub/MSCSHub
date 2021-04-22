@@ -133,7 +133,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       }
       this.reviewDataStack.push(response)
       this.pageNumber++
-      if (response.docs.length < 5 || this.reviewData.length >= this.course!.RatingCount) { // TODO Add || this.page_number*this.page_length + this.reviewData.length >= course.RatingCount
+      if (response.docs.length < 5 || this.reviewData.length >= this.course!.RatingCount) {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
