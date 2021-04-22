@@ -54,6 +54,7 @@ import { NothingHereComponent } from './misc/nothing-here/nothing-here.component
 import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
 import { StarRatingComponent } from './reviews/star-rating/star-rating.component';
 import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpfulness/review-helpfulness.component';
+import { CreateCourseComponent } from './courses/create-course/create-course.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpf
     PandaPartyComponent,
     StarRatingComponent,
     ReviewHelpfulnessComponent,
+    CreateCourseComponent,
   ],
   imports: [
     BrowserModule,

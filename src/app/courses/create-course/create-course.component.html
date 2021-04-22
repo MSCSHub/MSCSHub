@@ -1,0 +1,20 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+      <mat-card-header>
+          <mat-card-title>Create a new course!</mat-card-title>
+      </mat-card-header>
+      <mat-card-content style="text-align: center;">
+          <br>
+          <form class="user-edit-form" 
+                [formGroup]="courseMetadataForm" 
+                (ngSubmit)="onSubmit()">
+              <div *ngFor="let field of classFields">
+                <mat-form-field class="form-field-full-width">
+                    <input matInput placeholder="{{field.display}}" formControlName="{{field.field}}">
+                </mat-form-field>
+              </div>
+              <br><button mat-stroked-button color="primary">Save Changes</button>
+          </form>
+      </mat-card-content>
+  </mat-card>
+</div>
