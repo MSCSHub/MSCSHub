@@ -30,6 +30,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            //"styles": [ // this is a hack to get it to work with testing
+            //  "src/styles/main.scss"
+            //],
             "scripts": []
           },
           "configurations": {

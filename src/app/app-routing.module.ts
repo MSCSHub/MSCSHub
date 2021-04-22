@@ -20,11 +20,13 @@ import { EditCourseMetadataComponent } from './courses/course-detail/edit-course
 import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
 import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
+import { CreateCourseComponent } from './courses/create-course/create-course.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'home', redirectTo: '', pathMatch: 'full'},
   {path: 'courses', component: CourseGridComponent},
+  {path: 'courses/create', component: CreateCourseComponent},
   {path: 'courses/:courseId', component: CourseDetailComponent},
   {path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard]},
   {path: 'reviews', component: ReviewsComponent},
@@ -42,7 +44,7 @@ const routes: Routes = [
   {path: 'user/reviews', component: ViewUserReviewsComponent, canActivate: [AuthguardGuard]},
   {path: 'sadPanda', component: SadPandaComponent},
   {path: 'thankyou', component: ThankyouComponent},
-  {path: '**', component: NothingHereComponent}
+  {path: '**', component: NothingHereComponent},
 ];
 
 @NgModule({

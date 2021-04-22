@@ -28,7 +28,7 @@ export interface ClassData {
   computerScience: {
     isComputerScience: boolean,
     category?: string,
-  }
+  },
   dataScience: {
     isDataScience: boolean,
     category?: string,
