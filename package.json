@@ -12,7 +12,7 @@
     "ng-deploy": "ng deploy",
     "deploy": "npm run build & npm run deploy-both & npm run doc",
     "doc": "(npm run compodoc) & (cd documentation && git add . && git diff-index --quiet HEAD || (git commit -a -m 'Updated' && git push))",
-    "deploy-mscs": "ng deploy --base-href=https://mscshub.com --cname=mscshub.com --repo=git@github.com:MSCSHub/MSCSHub.git --no-build",
+    "deploy-mscs": "ng build --configuration=mscs & ng deploy --base-href=https://mscshub.com --cname=mscshub.com --repo=git@github.com:MSCSHub/MSCSHub.git --no-build",
     "deploy-msds": "ng build --configuration=msds & ng deploy --base-href=https://msdshub.com --cname=msdshub.com --repo=git@github.com:MSCSHub/MSDSHub.git --no-build",
     "deploy-both": "npm run deploy-mscs & npm run deploy-msds"
   },
