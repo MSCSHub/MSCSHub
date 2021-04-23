@@ -3,6 +3,7 @@
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/MSCSHub/MSCSHub)
 ![GitHub contributors](https://img.shields.io/github/contributors/MSCSHub/MSCSHub)
+![Github Issues](https://img.shields.io/github/issues/MSCSHub/MSCSHub)
 ![GitHub stars](https://img.shields.io/github/stars/MSCSHub/MSCSHub)
 ![GitHub forks](https://img.shields.io/github/forks/MSCSHub/MSCSHub)
 ![License](https://img.shields.io/github/license/MSCSHub/MSCSHub)
