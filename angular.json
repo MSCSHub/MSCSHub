@@ -106,6 +106,7 @@
                   "with": "src/environments/environment.msds.prod.ts"
                 }
               ],
+              "index": "src/MSDS-specific-files/index.html",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -140,6 +141,12 @@
           "configurations": {
             "production": {
               "browserTarget": "utmscs:build:production"
+            },
+            "mscs": {
+              "browserTarget": "utmscs:build:mscs"
+            },
+            "msds": {
+              "browserTarget": "utmscs:build:msds"
             }
           }
         },
@@ -194,9 +201,29 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "base-href": "https://mscshub.com", 
-            "cname": "mscshub.com"
+          "configurations": {
+            "production": {
+              "buildTarget": "utmscs:build:production",
+              "options": {
+                "base-href": "https://msdshub.com", 
+                "cname": "msdshub.com"
+              }
+            },
+            "mscs": {
+              "buildTarget": "utmscs:build:mscs",
+              "options": {
+                "base-href": "https://msdshub.com", 
+                "cname": "msdshub.com"
+              }
+            },
+            "msds": {
+              "browserTarget": "utmscs:build:msds",
+              "buildTarget": "utmscs:build:msds",
+              "options": {
+                "base-href": "https://msdshub.com", 
+                "cname": "msdshub.com"
+              }
+            }
           }
         }
       }
