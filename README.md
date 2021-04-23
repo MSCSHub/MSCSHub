@@ -3,9 +3,10 @@
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/MSCSHub/MSCSHub)
 ![GitHub contributors](https://img.shields.io/github/contributors/MSCSHub/MSCSHub)
+![Github Issues](https://img.shields.io/github/issues/MSCSHub/MSCSHub)
 ![GitHub stars](https://img.shields.io/github/stars/MSCSHub/MSCSHub)
 ![GitHub forks](https://img.shields.io/github/forks/MSCSHub/MSCSHub)
-![Twitter Follow](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FMSCSHub%2FMSCSHub)
+![License](https://img.shields.io/github/license/MSCSHub/MSCSHub)
 
 The Hub is a website that allows students in UT's MSCS and MSDS to review courses and connect to student-run communities.
 
