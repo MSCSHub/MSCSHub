@@ -18,7 +18,7 @@ Each website is tailored to the indivual program but is all run using the same f
 Before you begin, ensure you have met the following requirements:
 <!--- These are just example requirements. Add, duplicate or remove as required --->
 * You have installed the latest version of `Node.js`
-* You have a computer capable of running web applications. This project has been tested on Windows, Mac, and Linux.
+* You have web browser with JavaScript enabled. This project has been tested on Windows, Mac, and Linux.
 * You are familiar with general web development techniques and technologies.
 
 ## Installing MSCS Hub
