@@ -1,27 +1,78 @@
-# Utmscs
+# MSCS Hub + MSDS Hub
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+<!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
+![GitHub repo size](https://img.shields.io/github/repo-size/MSCSHub/MSCSHub)
+![GitHub contributors](https://img.shields.io/github/contributors/MSCSHub/MSCSHub)
+![GitHub stars](https://img.shields.io/github/stars/MSCSHub/MSCSHub)
+![GitHub forks](https://img.shields.io/github/forks/MSCSHub/MSCSHub)
+![Twitter Follow](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2FMSCSHub%2FMSCSHub)
 
-## Development server
+The Hub is a website that allows students in UT's MSCS and MSDS to review courses and connect to student-run communities.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Computer Science - [MSCSHub.com](https://mscshub.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Science - [MSDSHub.com](https://msdshub.com)
 
-## Code scaffolding
+Each website is tailored to the indivual program but is all run using the same frontend and backend codebase. The entire frontend is built using Angular v11. The backend is serverless and runs off of firebase with node.js functions.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerequisites
 
-## Build
+Before you begin, ensure you have met the following requirements:
+<!--- These are just example requirements. Add, duplicate or remove as required --->
+* You have installed the latest version of `Node.js`
+* You have a computer capable of running web applications. This project has been tested on Windows, Mac, and Linux.
+* You are familiar with general web development techniques and technologies.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Installing MSCS Hub
 
-## Running unit tests
+To install `MSCSHub`, follow these steps:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+git clone https://github.com/MSCSHub/MSCSHub.git
+cd MSCSHub
+npm install
+ng serve
+```
 
-## Running end-to-end tests
+## Using MSCS Hub
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Local Development
+After running `ng serve` you will have a local version of `MSCSHub.com` running on your machine. Open your favorite browser and navigate to [localhost:4200](http://localhost:4200) to begin
 
-## Further help
+### Deploying to MSCSHub.com and MSDSHub.com
+Use the command `npm run deploy` to run the deployment script that will update both MSCSHub.com and MSDSHub.com. If you want to see more about what's happening behind the scenes when you run this command, take a look at the `scripts` section of `package.json`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Documentation
+The documentation for MSCSHub.com is hosted at https://mscshub.github.io/MSCSHub-documentation/. This is generated automatically using `compodoc`. It works by automatically parsing the files in the codebase and uses the inline comments to create a fully functional website for documentation.
+
+## Contributing to The Hub
+<!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
+To contribute to MSCSHub, follow these steps:
+
+1. Create an issue on the repo https://github.com/MSCSHub/MSCSHub/issues
+2. Assign yourself (or someone else) to the new issue.
+3. Branch Bot will automatically create a new branch
+3. On your local machine, switch to the new branch: `git checkout -b <branch_name>`.
+4. Make your changes and commit them: `git commit -m '<commit_message>'`
+5. Push to the original branch: `git push origin <project_name>/<location>`
+6. Create the pull request.
+
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## Contributors
+
+Thanks to the following people who have contributed to this project:
+
+* [@EricPryzant](https://github.com/EricPryzant) 💻
+* [@estraw1059](https://github.com/estraw1059) 📦
+* All of the #koolkidz that helped beta test this
+* All of the students that have created reviews
+
+You might want to consider using something like the [All Contributors](https://github.com/all-contributors/all-contributors) specification and its [emoji key](https://allcontributors.org/docs/en/emoji-key).
+
+## Contact
+
+If you want to contact the owners of this repo you can reach us at <mscshub@gmail.com>.
+
+## License
+<!--- If you're not sure which open license to use see https://choosealicense.com/--->
+
+This project uses the following license: [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.html).
