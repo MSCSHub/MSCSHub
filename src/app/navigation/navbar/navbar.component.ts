@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   public currentUrl: string = ''
   menuStatus = false
   public readonly website: string = environment.website
+  logoUrl: string = this.website === "computerScience" ? "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png" : "assets/images/logos/Colorwheel/TheHubMSDS-128.png"
   public readonly degreeName: string = this.website === "computerScience" ? "Computer Science" : "Data Science"
   public readonly websiteName: string = this.website === "computerScience" ? "MSCSHub" : "MSDSHub"
   public readonly properName: string = this.website === "computerScience" ? "MSCSO" : "MSDSO"
