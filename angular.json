@@ -44,6 +44,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "index": "src/index.html",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -75,6 +76,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "index": "src/index.html",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -205,15 +207,15 @@
             "production": {
               "buildTarget": "utmscs:build:production",
               "options": {
-                "base-href": "https://msdshub.com", 
-                "cname": "msdshub.com"
+                "base-href": "https://mscshub.com", 
+                "cname": "mscshub.com"
               }
             },
             "mscs": {
               "buildTarget": "utmscs:build:mscs",
               "options": {
-                "base-href": "https://msdshub.com", 
-                "cname": "msdshub.com"
+                "base-href": "https://mscshub.com", 
+                "cname": "mscshub.com"
               }
             },
             "msds": {
