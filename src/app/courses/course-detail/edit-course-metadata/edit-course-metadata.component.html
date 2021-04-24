@@ -11,7 +11,7 @@
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Category</mat-label>
                     <mat-select type="boolean" formControlName="category" required>
-                        <mat-option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</mat-option>
+                        <mat-option *ngFor="let category of categories" value="{{category}}">{{category | titlecase}}</mat-option>
                     </mat-select>
                     <mat-hint>What type of credit is this course?</mat-hint>
                 </mat-form-field>
