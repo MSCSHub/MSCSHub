@@ -63,17 +63,15 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 Thanks to the following people who have contributed to this project:
 
 * [@EricPryzant](https://github.com/EricPryzant) 💻
-* [@estraw1059](https://github.com/estraw1059) 📦
-* All of the #koolkidz that helped beta test this
-* All of the students that have created reviews
-
-You might want to consider using something like the [All Contributors](https://github.com/all-contributors/all-contributors) specification and its [emoji key](https://allcontributors.org/docs/en/emoji-key).
+* [@estraw1059](https://github.com/estraw1059) 🔧
+* All of the #koolkidz that helped beta test this 🐛
+* All of the students that have created reviews 👀
+* Everyone who has donated to this project to keep it running! 💸
 
 ## Contact
 
 If you want to contact the owners of this repo you can reach us at <mscshub@gmail.com>.
 
 ## License
-<!--- If you're not sure which open license to use see https://choosealicense.com/--->
 
 This project uses the following license: [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.html).
