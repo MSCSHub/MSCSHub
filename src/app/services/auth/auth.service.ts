@@ -89,7 +89,7 @@ export class AuthService {
           firstSemester: firstSemester,
           firstName: firstName,
           lastName: lastName,
-          reviewFeedback: new Map<string, boolean>()
+          reviewFeedback: {}
         })
         this.router.navigate(['verifyEmail'])
       })
