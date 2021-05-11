@@ -15,10 +15,12 @@
                     </mat-select>
                     <mat-hint>What type of credit is this course?</mat-hint>
                 </mat-form-field>
+                <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider'"></mat-divider>
                 <mat-form-field class="form-field-full-width">
                     <input matInput placeholder="Professor Name" formControlName="professor">
                     <mat-hint>Separate professor names with an ampersand ' & '.</mat-hint>
                 </mat-form-field>
+                <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider'"></mat-divider>
                 <div *ngFor="let field of fields">
                     <mat-form-field class="form-field-full-width">
                         <mat-label>{{field | titlecase}}</mat-label>
@@ -27,9 +29,11 @@
                             <mat-option value="false">No</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="form-field-full-width">
-                        <textarea matInput type="textarea" rows="3" placeholder="{{field | titlecase}} Information" formControlName="{{field}}"></textarea>
+                    <mat-form-field class="form-field-full-width" *ngIf="f[field + 'Bool'].value === 'true'">
+                        <textarea *ngIf="field != 'slack channel'; else slackBlock" matInput type="textarea" rows="3" placeholder="{{field | titlecase}} Information" formControlName="{{field}}"></textarea>
+                        <ng-template #slackBlock><input matInput placeholder="#course-channel" formControlName="{{field}}"></ng-template>
                     </mat-form-field>
+                    <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider field-divider'"></mat-divider>
                 </div>
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Languages</mat-label>

@@ -1,3 +1,13 @@
 .mat-card {
     max-width: 500px;
 }
+
+.edit-metadata-divider {
+    margin: 20px 0px !important;
+    &.field-divider {
+        margin-top: 12px !important;
+        margin-bottom: 30px !important;
+        // margin-bottom: 37px !important;
+    }
+    // border-color: white !important;
+}
