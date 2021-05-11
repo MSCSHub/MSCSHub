@@ -14,7 +14,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
-  fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
+  fields: string[] = ["slack channel", "exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
   categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
   courseMetadataForm!: FormGroup
@@ -37,10 +37,12 @@ export class EditCourseMetadataComponent implements OnInit {
   ngOnInit(): void {
     this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
     this.courseMetadataForm = this.formBuilder.group({
+      category: ['', Validators.required],
       exams: ['', Validators.required],
       examsBool: ['', Validators.required],
       homework: ['', Validators.required],
       homeworkBool: ['', Validators.required],
+      languages: [''],
       professor: ['', Validators.required],
       projects: ['', Validators.required],
       projectsBool: ['', Validators.required],
@@ -48,11 +50,11 @@ export class EditCourseMetadataComponent implements OnInit {
       proofsBool: ['', Validators.required],
       "peer reviewed": ['', Validators.required],
       "peer reviewedBool": ['', Validators.required],
+      "slack channel": ['', Validators.required],
+      "slack channelBool": ['', Validators.required],
       textbook: ['', Validators.required],
       textbookBool: ['', Validators.required],
       textbookName: [''],
-      category: ['', Validators.required],
-      languages: ['']
     })
     this.courseService.classes.subscribe(data => {
       this.courseData = data.find(x => x.ClassName == this.courseName)
@@ -65,6 +67,7 @@ export class EditCourseMetadataComponent implements OnInit {
       this.f.category.setValue(this.courseData?.category)
       this.f.languages.setValue(this.courseData?.languages)
       this.f.professor.setValue(this.courseData?.Teacher)
+      this.setFieldData(this.f["slack channel"], this.f["slack channelBool"], "#" + this.courseData?.SlackChannel)
     })
   }
 
@@ -93,6 +96,7 @@ export class EditCourseMetadataComponent implements OnInit {
           "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
         },
         languages: this.f.languages.value,
+        SlackChannel: this.f["slack channelBool"].value === "true" ? this.f["slack channel"].value.replace('#', '') : "",
         Teacher: this.tc.transform(this.f.professor.value),
         Textbook: this.f.textbookBool.value === "true" ? true : false,
         TextbookName: this.tc.transform(this.f.textbook.value),
