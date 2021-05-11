@@ -21,6 +21,23 @@
                     <mat-hint>Separate professor names with an ampersand ' & '.</mat-hint>
                 </mat-form-field>
                 <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider'"></mat-divider>
+                
+                <!-- Slack Channel Fields have to go in a separate box because I can't put a field in a field -->
+                <mat-form-field class="form-field-full-width">
+                    <mat-label>Slack Channel</mat-label>
+                    <mat-select type="boolean" formControlName="slack channelBool" required>
+                        <mat-option value="true">Yes</mat-option>
+                        <mat-option value="false">No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="form-field-full-width" *ngIf="f['slack channelBool'].value === 'true'">
+                    <input matInput placeholder="#course-channel" formControlName="slack channel">
+                </mat-form-field>
+                <mat-form-field class="form-field-full-width" *ngIf="f['slack channelBool'].value === 'true'">
+                    <input matInput placeholder="Slack Channel Link" formControlName="slack channelLink">
+                </mat-form-field>
+                <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider field-divider'"></mat-divider>
+
                 <div *ngFor="let field of fields">
                     <mat-form-field class="form-field-full-width">
                         <mat-label>{{field | titlecase}}</mat-label>
@@ -30,8 +47,7 @@
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field class="form-field-full-width" *ngIf="f[field + 'Bool'].value === 'true'">
-                        <textarea *ngIf="field != 'slack channel'; else slackBlock" matInput type="textarea" rows="3" placeholder="{{field | titlecase}} Information" formControlName="{{field}}"></textarea>
-                        <ng-template #slackBlock><input matInput placeholder="#course-channel" formControlName="{{field}}"></ng-template>
+                        <textarea matInput type="textarea" rows="3" placeholder="{{field | titlecase}} Information" formControlName="{{field}}"></textarea>
                     </mat-form-field>
                     <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider field-divider'"></mat-divider>
                 </div>

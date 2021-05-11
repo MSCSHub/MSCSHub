@@ -20,6 +20,7 @@ export interface ClassData {
   RatingAvg: number,
   RatingCount: number,
   SlackChannel?: string,
+  SlackChannelLink?: string,
   Teacher: string,
   Textbook: boolean,
   TextbookName: string,

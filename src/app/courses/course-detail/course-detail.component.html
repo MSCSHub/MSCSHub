@@ -11,6 +11,7 @@
         <h2 class="flat-bottom">{{courseName}}</h2>
         <h3 class="white">({{courseNumber}})</h3>
         <h4 class="white">
+          <span *ngIf="course?.SlackChannelLink">Slack Channel Link: <a class="slack-channel-link" href="{{course?.SlackChannelLink}}">#{{course?.SlackChannel}}</a><br></span>
           <span>Professor: {{course?.Teacher | titlecase}}</span>
           <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
         </h4>
