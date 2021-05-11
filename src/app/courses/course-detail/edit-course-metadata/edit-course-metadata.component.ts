@@ -14,7 +14,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
-  fields: string[] = ["slack channel", "exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
+  fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
   categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
   courseMetadataForm!: FormGroup
@@ -52,6 +52,7 @@ export class EditCourseMetadataComponent implements OnInit {
       "peer reviewedBool": ['', Validators.required],
       "slack channel": ['', Validators.required],
       "slack channelBool": ['', Validators.required],
+      "slack channelLink": ['', Validators.required],
       textbook: ['', Validators.required],
       textbookBool: ['', Validators.required],
       textbookName: [''],
@@ -68,6 +69,7 @@ export class EditCourseMetadataComponent implements OnInit {
       this.f.languages.setValue(this.courseData?.languages)
       this.f.professor.setValue(this.courseData?.Teacher)
       this.setFieldData(this.f["slack channel"], this.f["slack channelBool"], "#" + this.courseData?.SlackChannel)
+      this.setFieldData(this.f["slack channelLink"], this.f["slack channelBool"], this.courseData?.SlackChannelLink)
     })
   }
 
@@ -97,6 +99,7 @@ export class EditCourseMetadataComponent implements OnInit {
         },
         languages: this.f.languages.value,
         SlackChannel: this.f["slack channelBool"].value === "true" ? this.f["slack channel"].value.replace('#', '') : "",
+        SlackChannelLink: this.f["slack channelBool"].value === "true" ? this.f["slack channelLink"].value : "",
         Teacher: this.tc.transform(this.f.professor.value),
         Textbook: this.f.textbookBool.value === "true" ? true : false,
         TextbookName: this.tc.transform(this.f.textbook.value),
