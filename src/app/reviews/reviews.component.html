@@ -59,7 +59,7 @@
     </div>
     <div class="review-container">
         <div class="center" *ngIf="nothingHere"><h1>Could not find any Reviews using input parameters.<br>Please try a different search.</h1></div>
-        <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber"></app-review-detail>
+        <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber" [showEmptyMsg]="false"></app-review-detail>
     </div>
     <div class="review-footer review-controller">
         <div class="next-prev-container">
