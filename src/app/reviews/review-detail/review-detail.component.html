@@ -1,6 +1,6 @@
 <div class="content">
   <div class="review-container">
-    <div *ngIf="!reviewData.length">No reviews exist for this class yet. Be the first to leave one!</div>
+    <div *ngIf="!reviewData.length && showEmptyMsg">No reviews exist for this class yet. Be the first to leave one!</div>
     <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
       <mat-card-header>
         <mat-card-title>{{review.title}}</mat-card-title>
