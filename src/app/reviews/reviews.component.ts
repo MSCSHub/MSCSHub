@@ -73,7 +73,6 @@ export class ReviewsComponent implements OnInit {
         query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
         if (this.f['operation'].value != "==") {query = query.orderBy(this.f['category'].value, "desc")}
       }
-      // return query.orderBy('timestamp', 'desc')
       return query.orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
     }).get().subscribe(response => {
       if (!response.docs.length){
@@ -106,7 +105,7 @@ export class ReviewsComponent implements OnInit {
     this.afs.collection('Reviews', ref => {
       let query = ref.limit(this.pageLength)
       if(this.courseId) {query = query.where("classId", "==", this.courseId)}
-      // TODO - query = query.where("appliesTo", "!=", this.reviewExclusionEnum) 
+      query = query.where(this.websiteFilter, "==", true) 
       if(this.queryValid) {
         query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
         if (this.f['operation'].value != "==") {query = query.orderBy(this.f['category'].value, "desc")}
