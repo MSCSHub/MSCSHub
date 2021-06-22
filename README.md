@@ -51,10 +51,12 @@ To contribute to MSCSHub, follow these steps:
 1. Create an issue on the repo https://github.com/MSCSHub/MSCSHub/issues
 2. Assign yourself (or someone else) to the new issue.
 3. Branch Bot will automatically create a new branch
-3. On your local machine, switch to the new branch: `git checkout -b <branch_name>`.
+3. On your local machine, first `git pull` then switch to the new branch: `git checkout -b <branch_name>`.
 4. Make your changes and commit them: `git commit -m '<commit_message>'`
-5. Push to the original branch: `git push origin <project_name>/<location>`
+5. Push your changes to the MSCSHub repo: `git push`
 6. Create the pull request.
+7. Get signoff from the required reviewers and merge the changes
+8. The repo owner (@EricPryzant or @estraw1059) will deploy the changes once the PR is merged
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
