@@ -9,7 +9,7 @@ import { ClassData } from '../../shared/class/class'
 })
 export class CourseGridComponent implements OnInit {
   classes: ClassData[] = []
-  categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
+  categories: string[] = ["Applications", "Systems", "Theory", "Elective", "Thesis"]
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
   selected: string[] = []
   visibleClasses: ClassData[] = []
