@@ -16,7 +16,7 @@ export class CreateCourseComponent implements OnInit {
   courseName: string = ""
   fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
-  categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
+  categories: string[] = ["Applications", "Systems", "Theory", "Elective", "Thesis"]
   courseMetadataForm!: FormGroup
   courseData: ClassData | undefined
 
