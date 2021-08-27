@@ -14,6 +14,7 @@ export class ClassService {
   public readonly website: string = environment.website
   public readonly degreeName: string = this.website === "computerScience" ? "Computer Science" : "Data Science"
   public readonly websiteName: string = this.website === "computerScience" ? "MSCSHub" : "MSDSHub"
+  public readonly websiteURL: string = this.website === "computerScience" ? "https://www.cs.utexas.edu/graduate-program/masters-program/online-option" : "https://ms-datascience.utexas.edu/"
   public readonly properName: string = this.website === "computerScience" ? "MSCS Hub" : "MSDS Hub"
   public readonly socialName: string = this.website === "computerScience" ? "Slack #MSCSHub" : "Discord"
   public readonly socialURL: string = this.website === "computerScience" ? "https://utmscso.slack.com/archives/C01QM0A19QR" : "https://discord.gg/SDh57AHQu3"
