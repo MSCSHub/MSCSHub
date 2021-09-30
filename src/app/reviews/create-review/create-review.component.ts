@@ -115,7 +115,7 @@ export class CreateReviewComponent implements OnInit {
       classId: ['', Validators.required],
       helpfulPositive: [1, Validators.required],
       helpfulNegative: [0, Validators.required],
-      wilsonScore: [0.8, Validators.required],
+      wilsonScore: [0.20654329147389294, Validators.required],
       lastUpdated: [''],
       degreeProgram: [''],
       isComputerScience: [this.courseService.website === "computerScience" ? true : false],
