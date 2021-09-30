@@ -21,11 +21,12 @@ import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
 import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
+import { CourseListViewComponent } from './courses/course-list-view/course-list-view.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'home', redirectTo: '', pathMatch: 'full'},
-  {path: 'courses', component: CourseGridComponent},
+  {path: 'courses', component: CourseListViewComponent},
   {path: 'courses/create', component: CreateCourseComponent},
   {path: 'courses/:courseId', component: CourseDetailComponent},
   {path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard]},
