@@ -15,6 +15,7 @@ export interface ClassData {
   LectureQualityCount: number,
   PiazzaCommunityAvg: number,
   PiazzaCommunityCount: number,
+  Prerequisites: string,
   ProfessorQualityAvg: number,
   ProfessorQualityCount: number,
   RatingAvg: number,
