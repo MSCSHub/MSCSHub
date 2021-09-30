@@ -1,0 +1,18 @@
+.cl-container {
+    overflow-x: auto;
+    @media(min-width:1300px){
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .center-text, .radio-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+  
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }

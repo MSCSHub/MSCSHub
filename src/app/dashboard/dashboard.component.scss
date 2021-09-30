@@ -1,12 +1,3 @@
-.cl-container {
-  overflow-x: auto;
-  @media(min-width:1600px){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 .dashboard-header {
   display: flex;
   align-content: center;
@@ -38,12 +29,3 @@
   // color: rgb(57,114,234);
 }
 
-.center-text, .radio-container {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 10px;
-}
-
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
-}

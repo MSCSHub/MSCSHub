@@ -55,6 +55,7 @@ import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
 import { StarRatingComponent } from './reviews/star-rating/star-rating.component';
 import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpfulness/review-helpfulness.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
+import { CourseListViewComponent } from './courses/course-list-view/course-list-view.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { CreateCourseComponent } from './courses/create-course/create-course.com
     StarRatingComponent,
     ReviewHelpfulnessComponent,
     CreateCourseComponent,
+    CourseListViewComponent,
   ],
   imports: [
     BrowserModule,
