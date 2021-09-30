@@ -14,6 +14,7 @@
           <span *ngIf="course?.SlackChannelLink">Slack Channel Link: <a class="slack-channel-link" href="{{course?.SlackChannelLink}}">#{{course?.SlackChannel}}</a><br></span>
           <span>Professor: {{course?.Teacher | titlecase}}</span>
           <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
+          <span><br>Prerequisites: {{(course?.Prerequisites) ? course?.Prerequisites : "None"}}</span>
         </h4>
         <mat-chip-list>
           <mat-chip>{{course?.category | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>

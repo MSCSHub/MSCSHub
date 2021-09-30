@@ -14,7 +14,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
-  fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
+  fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook", "prerequisites"]
   languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
   categories: string[] = ["Applications", "Systems", "Theory", "Elective", "Thesis"]
   courseMetadataForm!: FormGroup
@@ -43,6 +43,8 @@ export class EditCourseMetadataComponent implements OnInit {
       homework: ['', Validators.required],
       homeworkBool: ['', Validators.required],
       languages: [''],
+      prerequisites: [''],
+      prerequisitesBool: ['', Validators.required],
       professor: ['', Validators.required],
       projects: ['', Validators.required],
       projectsBool: ['', Validators.required],
@@ -98,6 +100,7 @@ export class EditCourseMetadataComponent implements OnInit {
           "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
         },
         languages: this.f.languages.value,
+        Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",
         SlackChannel: this.f["slack channelBool"].value === "true" ? this.f["slack channel"].value.replace('#', '') : "",
         SlackChannelLink: this.f["slack channelBool"].value === "true" ? this.f["slack channelLink"].value : "",
         Teacher: this.tc.transform(this.f.professor.value),
