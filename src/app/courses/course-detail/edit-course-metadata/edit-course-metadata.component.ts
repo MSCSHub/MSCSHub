@@ -63,6 +63,7 @@ export class EditCourseMetadataComponent implements OnInit {
       this.courseData = data.find(x => x.ClassName == this.courseName)
       this.setFieldData(this.f.exams, this.f.examsBool, this.courseData?.meta.exams)
       this.setFieldData(this.f.homework, this.f.homeworkBool, this.courseData?.meta.homework)
+      this.setFieldData(this.f.prerequisites, this.f.prerequisitesBool, this.courseData?.Prerequisites)
       this.setFieldData(this.f.projects, this.f.projectsBool, this.courseData?.meta.projects)
       this.setFieldData(this.f.proofs, this.f.proofsBool, this.courseData?.meta.proofs)
       this.setFieldData(this.f["peer reviewed"], this.f["peer reviewedBool"], this.courseData?.meta['peer reviewed'].toString())
