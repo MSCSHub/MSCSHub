@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ClassData } from 'src/app/shared/class/class';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, ReplaySubject } from 'rxjs';
 import { environment } from './../../../environments/environment';
 

@@ -19,12 +19,17 @@ import { AdminComponent } from './user/admin/admin.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 
 // Firebase
-import { AngularFireModule } from "@angular/fire"
-import { AngularFireAuthModule } from "@angular/fire/auth"
-import { AngularFirestoreModule } from "@angular/fire/firestore"
-import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+// Version 8 namespaced compatability
+import { AngularFireModule } from "@angular/fire/compat"
+import { AngularFireAuthModule } from "@angular/fire/compat/auth"
+import { AngularFirestoreModule } from "@angular/fire/compat/firestore"
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+// Version 9 modular
+import { provideAuth,getAuth } from "@angular/fire/auth"
+import { provideFirestore,getFirestore } from "@angular/fire/firestore"
+import { ScreenTrackingService, UserTrackingService, provideAnalytics,getAnalytics } from '@angular/fire/analytics';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-
 
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
@@ -112,8 +117,14 @@ import { CourseListViewComponent } from './courses/course-list-view/course-list-
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [
+    ScreenTrackingService,
+    UserTrackingService,
     ScreenTrackingService,
     UserTrackingService,
   ],

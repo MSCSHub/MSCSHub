@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
-import { Review, degreeProgram } from '../shared/review/review';
-import firebase from 'firebase/app'
+import { Review } from '../shared/review/review';
+import firebase from 'firebase/compat/app'
 
 @Component({
   selector: 'app-reviews',

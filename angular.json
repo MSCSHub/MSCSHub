@@ -25,7 +25,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -44,14 +44,6 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "index": "src/index.html",
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -64,10 +56,19 @@
                   "maximumError": "4kb"
                 }
               ],
+              "outputHashing": "all",
               "styles": [
                 "src/styles/computerScience.scss",
                 "src/styles/main.scss"
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             },
             "mscs": {
               "fileReplacements": [
@@ -77,13 +78,6 @@
                 }
               ],
               "index": "src/index.html",
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -96,6 +90,7 @@
                   "maximumError": "4kb"
                 }
               ],
+              "outputHashing": "all",
               "styles": [
                 "src/styles/computerScience.scss",
                 "src/styles/main.scss"
@@ -109,13 +104,6 @@
                 }
               ],
               "index": "src/MSDS-specific-files/index.html",
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -128,21 +116,23 @@
                   "maximumError": "4kb"
                 }
               ],
+              "outputHashing": "all",
               "styles": [
                 "src/styles/dataScience.scss",
                 "src/styles/main.scss"
               ]
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "utmscs:build"
-          },
           "configurations": {
             "production": {
               "browserTarget": "utmscs:build:production"
+            },
+            "development": {
+              "browserTarget": "utmscs:build:development"
             },
             "mscs": {
               "browserTarget": "utmscs:build:mscs"
@@ -150,7 +140,8 @@
             "msds": {
               "browserTarget": "utmscs:build:msds"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -165,40 +156,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles/computerScience.scss",
+              "src/styles/main.scss"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "utmscs:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "utmscs:serve:production"
-            }
           }
         },
         "deploy": {
@@ -226,13 +193,11 @@
                 "cname": "msdshub.com"
               }
             }
-          }
+          },
+          "options": {}
         }
       }
     }
   },
-  "defaultProject": "utmscs",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "utmscs"
 }
