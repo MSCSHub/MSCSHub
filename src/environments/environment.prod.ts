@@ -11,6 +11,7 @@ export const environment = {
     storageBucket: "utmcs-1bcf2.appspot.com",
     messagingSenderId: "669197706574",
     appId: "1:669197706574:web:e972d2e24776573d60aa1f",
-    measurementId: "G-2LNR16P8J4"
+    measurementId: "G-2LNR16P8J4",
+    locationId: "us-central",
   }
 };
