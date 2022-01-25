@@ -43,7 +43,6 @@ export class ClassService {
         window.alert("The application is misconfigured. Contact the website admins if this problem persists.")
       }
       this._classes.next(data)
-      // if(data.length > 0) courseListener.unsubscribe()
     })
   }
 }

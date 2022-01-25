@@ -17,6 +17,18 @@
             <span class="nav-link-inner">{{ navInfo.reviews.title }}</span>
         </a>
     </li>
+    <!-- <li fxShow fxHide.lt-lg
+        [ngClass]="{selected: currentUrl === navInfo.faq.url }">
+        <a class="nav-link" routerLink="{{navInfo.faq.url}}" [title]="navInfo.faq.title">
+            <span class="nav-link-inner">{{ navInfo.faq.title }}</span>
+        </a>
+    </li> -->
+    <li fxShow fxHide.lt-lg
+        [ngClass]="{selected: currentUrl === navInfo.map.url }">
+        <a class="nav-link" routerLink="{{navInfo.map.url}}" [title]="navInfo.map.title">
+            <span class="nav-link-inner">{{ navInfo.map.title }}</span>
+        </a>
+    </li>
     <li fxShow fxHide.lt-md
         [ngClass]="{selected: currentUrl === navInfo.createReview.url }">
         <a class="nav-link" routerLink="{{navInfo.createReview.url}}" [title]="navInfo.createReview.title">

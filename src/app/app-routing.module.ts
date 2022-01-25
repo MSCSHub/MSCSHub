@@ -22,6 +22,9 @@ import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { CourseListViewComponent } from './courses/course-list-view/course-list-view.component';
+import { FaqEditComponent } from './faq/faq-edit/faq-edit.component';
+import { FaqPageComponent } from './faq/faq-page/faq-page.component';
+import { CourseMapComponent } from './courses/course-map/course-map.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -43,8 +46,11 @@ const routes: Routes = [
   {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
   {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
   {path: 'user/reviews', component: ViewUserReviewsComponent, canActivate: [AuthguardGuard]},
+  {path: 'faq', component: FaqPageComponent},
+  {path: 'faq/edit/:entryId', component: FaqEditComponent},
   {path: 'sadPanda', component: SadPandaComponent},
   {path: 'thankyou', component: ThankyouComponent},
+  {path: 'courseMap', component: CourseMapComponent},
   {path: '**', component: NothingHereComponent},
 ];
 

@@ -61,6 +61,11 @@ import { StarRatingComponent } from './reviews/star-rating/star-rating.component
 import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpfulness/review-helpfulness.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { CourseListViewComponent } from './courses/course-list-view/course-list-view.component';
+import { FaqEditComponent } from './faq/faq-edit/faq-edit.component';
+import { FaqPageComponent } from './faq/faq-page/faq-page.component';
+import { FaqEntryComponent } from './faq/faq-entry/faq-entry.component';
+import { FaqCategoriesPipe } from './pipes/faq/faq-categories.pipe';
+import { CourseMapComponent } from './courses/course-map/course-map.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +108,11 @@ import { CourseListViewComponent } from './courses/course-list-view/course-list-
     ReviewHelpfulnessComponent,
     CreateCourseComponent,
     CourseListViewComponent,
+    FaqPageComponent,
+    FaqEntryComponent,
+    FaqEditComponent,
+    FaqCategoriesPipe,
+    CourseMapComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,8 @@ export class MenuComponent implements OnInit {
     home: {title: 'Home', url: '/home'},
     register: {title: 'Register', url: '/register'},
     createReview: {title: 'Create Review', url: '/createReview'},
+    faq: {title: 'FAQ', url: '/faq'},
+    map: {title: 'Course Map', url: '/courseMap'}
   }
 
   constructor(
