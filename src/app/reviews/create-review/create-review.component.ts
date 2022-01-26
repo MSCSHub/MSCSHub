@@ -38,7 +38,7 @@ export class CreateReviewComponent implements OnInit {
     Seven is great because you get more than the simplicity of 1-5 and can be a better reflection of your true evaluation.
   `
   fields = [
-    {formName: "workload", title: "Workload", min: "1", max: "50", hint: "How many hours per week did this class require?"},
+    {formName: "workload", title: "Workload (hrs/wk)", min: "1", max: "50", hint: "How many hours per week did this class require?"},
     {formName: "rating", title: "Rating", min: "1", max: "7", hint: "Rate the class overall on a scale of 1-7"},
     {formName: "difficulty", title: "Difficulty", min: "1", max: "7", hint: "How difficult was this class on a scale of 1-7? 1 = Easiest, 7 = Hardest"},
     {formName: "bookUsefulness", title: "Textbook Usefulness", min: "0", max: "7", hint: "How usefull was the textbook on a scale of 1-7? Use 0 if there was no textbook."},
