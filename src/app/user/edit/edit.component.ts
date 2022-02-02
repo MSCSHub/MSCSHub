@@ -16,12 +16,7 @@ export class EditComponent implements OnInit {
     b_lastName: {name: "lastName", displayName: "Last Name", value: "Name Test", is_input: true},
     c_firstSemester: {name: "firstSemester", displayName: "First Semester", value: "Fall 2020", is_input: false}
   }
-  Semesters = [
-    'Fall 2019',
-    'Spring 2020',
-    'Fall 2020',
-    'Spring 2021'
-  ]
+  semesters: string[] = []
 
   constructor(
     private auth: AuthService,
@@ -58,5 +53,17 @@ export class EditComponent implements OnInit {
       this.f.lastName.value,
       this.f.firstSemester.value
     )
+  }
+
+  getSemesterList() {
+    let semesterNames: string[] = ["Spring", "Fall"]
+    let currentYear: number = (new Date()).getFullYear()
+    let years: number[] = [currentYear, currentYear-1, currentYear-2, currentYear-3]
+    
+    years.forEach(year => {
+      semesterNames.forEach(semester => {
+        this.semesters.push(`${semester} ${year}`)
+      })
+    })
   }
 }
