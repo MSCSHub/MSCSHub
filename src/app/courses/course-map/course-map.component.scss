@@ -8,7 +8,12 @@
 .course-map-image {
     margin-top: 15px;
     max-width: 1032px;
-    width: -webkit-fill-available;
+    @supports (width: -webkit-fill-available){
+        width: -webkit-fill-available;
+    }
+    @supports (width: -moz-available){
+        width: -moz-available;
+    }
 }
 
 a {
