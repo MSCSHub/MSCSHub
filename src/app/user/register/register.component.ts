@@ -15,12 +15,7 @@ export class RegisterComponent implements OnInit {
   returnUrl: string = '/'
   error: string = ''
   emailRegex: string = "^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?utexas\.edu"
-  Semesters = [
-    'Fall 2019',
-    'Spring 2020',
-    'Fall 2020',
-    'Spring 2021'
-  ]
+  Semesters: string[] = []
 
   constructor(
     private auth: AuthService,
@@ -37,11 +32,23 @@ export class RegisterComponent implements OnInit {
       firstSemester: ['', Validators.required],
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/verifyEmail';
-
+    this.getSemesterList()
   }
 
   get f() {
     return this.registerForm?.controls
+  }
+
+  getSemesterList() {
+    let semesters: string[] = ["Spring", "Fall"]
+    let currentYear: number = (new Date()).getFullYear()
+    let years: number[] = [currentYear, currentYear-1, currentYear-2, currentYear-3]
+    
+    years.forEach(year => {
+      semesters.forEach(semester => {
+        this.Semesters.push(`${semester} ${year}`)
+      })
+    })
   }
 
   onSubmit() {
@@ -61,5 +68,4 @@ export class RegisterComponent implements OnInit {
         this.error = error
       })
   }
-
 }
