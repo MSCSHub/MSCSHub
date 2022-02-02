@@ -24,6 +24,7 @@ import { CreateCourseComponent } from './courses/create-course/create-course.com
 import { CourseListViewComponent } from './courses/course-list-view/course-list-view.component';
 import { FaqEditComponent } from './faq/faq-edit/faq-edit.component';
 import { FaqPageComponent } from './faq/faq-page/faq-page.component';
+import { FaqEntryComponent } from './faq/faq-entry/faq-entry.component';
 import { CourseMapComponent } from './courses/course-map/course-map.component';
 
 const routes: Routes = [
@@ -47,7 +48,9 @@ const routes: Routes = [
   {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
   {path: 'user/reviews', component: ViewUserReviewsComponent, canActivate: [AuthguardGuard]},
   {path: 'faq', component: FaqPageComponent},
+  {path: 'faq/view/:entryId', component: FaqEntryComponent},
   {path: 'faq/edit/:entryId', component: FaqEditComponent},
+  {path: 'faq/create', component: FaqEditComponent},
   {path: 'sadPanda', component: SadPandaComponent},
   {path: 'thankyou', component: ThankyouComponent},
   {path: 'courseMap', component: CourseMapComponent},
