@@ -1,0 +1,24 @@
+<mat-expansion-panel [expanded]="isExpanded">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{title}}
+        </mat-panel-title>
+        <mat-panel-description>
+            <button mat-icon-button routerLink="/faq/view/{{id}}">
+              <mat-icon matTooltip="Copy link to FAQ">add_link</mat-icon>
+            </button>
+            <div *ngIf="isUserLoggedIn" class="review-detail-owner-buttons">
+              <button mat-icon-button routerLink="/faq/edit/{{id}}">
+                <mat-icon matTooltip="Edit FAQ">mode_edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="removeFaqEntry(id)">
+                <mat-icon matTooltip="Delete FAQ">delete</mat-icon>
+              </button>
+            </div>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <p>{{body}}</p>
+    <!-- <br>{{subtitle}} -->
+
+</mat-expansion-panel>

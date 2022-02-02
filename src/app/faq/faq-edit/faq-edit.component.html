@@ -1,0 +1,54 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Frequently Asked Questions</mat-card-title>
+        </mat-card-header>
+    
+        <form class="login-form" [formGroup]="faqForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field class="form-field-full-width">
+                    <input matInput placeholder="FAQ Title"
+                           formControlName="title" required
+                           [ngClass]="{'is-invalid': submitted && f.title.errors}">
+                    <mat-error *ngIf="f.title.errors">
+                        You must include a title that is longer than 20 characters.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field-full-width">
+                    <mat-label>Category</mat-label>
+                    <!-- <mat-select formControlName="category" required> -->
+                    <input type="text"
+                        placeholder="Categories"
+                        aria-label="Categories"
+                        matInput required
+                        formControlName="category"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let category of categories" [value]="category">
+                            {{category | titlecase}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <!-- </mat-select> -->
+                </mat-form-field>
+
+                <mat-form-field class="form-field-full-width">
+                    <textarea matInput type="textarea" rows="10"
+                           formControlName="body" required
+                           [ngClass]="{'is-invalid': submitted && f.body.errors}"
+                           placeholder="FAQ Body"></textarea>
+                    <mat-error *ngIf="f.body.errors">
+                        The body text of the FAQ entry must be more than 50 characters.
+                    </mat-error>
+                </mat-form-field>
+
+            </mat-card-content>
+
+            <button [disabled]="loading" mat-raised-button color="primary" class="btn-block">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Submit
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </form>
+    </mat-card>
+</div>
