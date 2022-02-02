@@ -47,7 +47,7 @@
                     <mat-label>What was your first semester in the program?</mat-label>
                         <mat-select formControlName="firstSemester">
                             <mat-option [value]="semester" 
-                                        *ngFor="let semester of Semesters">
+                                        *ngFor="let semester of semesters">
                                 {{semester}}
                             </mat-option>
                         </mat-select>

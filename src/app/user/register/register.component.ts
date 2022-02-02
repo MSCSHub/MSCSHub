@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   returnUrl: string = '/'
   error: string = ''
   emailRegex: string = "^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?utexas\.edu"
-  Semesters: string[] = []
+  semesters: string[] = []
 
   constructor(
     private auth: AuthService,
@@ -40,13 +40,13 @@ export class RegisterComponent implements OnInit {
   }
 
   getSemesterList() {
-    let semesters: string[] = ["Spring", "Fall"]
+    let semesterNames: string[] = ["Spring", "Fall"]
     let currentYear: number = (new Date()).getFullYear()
     let years: number[] = [currentYear, currentYear-1, currentYear-2, currentYear-3]
     
     years.forEach(year => {
-      semesters.forEach(semester => {
-        this.Semesters.push(`${semester} ${year}`)
+      semesterNames.forEach(semester => {
+        this.semesters.push(`${semester} ${year}`)
       })
     })
   }
