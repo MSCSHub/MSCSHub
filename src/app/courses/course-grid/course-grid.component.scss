@@ -4,6 +4,10 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 15px;
   padding-bottom: 0px;
+
+  .mat-chip:hover {
+    cursor: pointer;
+  }
 }
 
 .selected {
@@ -19,6 +23,10 @@
   justify-content: center;
   align-content: center;
   padding-top: 20px;
+
+  .mat-card:hover {
+    cursor: pointer;
+  }
 
   .mat-card-header, .mat-card-title, .mat-card-subtitle {
     display: flex;
