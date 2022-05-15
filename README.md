@@ -33,6 +33,8 @@ npm install
 ng serve
 ```
 
+Note: The `npm install` step will install all of the required dependencies, including Angular `ng`. If `ng serve` does not work at first you may need to try performing a global install.
+
 ## Using MSCS Hub
 
 ### Local Development
