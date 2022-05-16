@@ -5,8 +5,8 @@
         </mat-card-header>
         <mat-card-content style="text-align: center;">
             <br>
-            <form class="user-edit-form" 
-                  [formGroup]="courseMetadataForm" 
+            <form class="user-edit-form"
+                  [formGroup]="courseMetadataForm"
                   (ngSubmit)="onSubmit()">
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Category</mat-label>
@@ -17,11 +17,11 @@
                 </mat-form-field>
                 <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider'"></mat-divider>
                 <mat-form-field class="form-field-full-width">
-                    <input matInput placeholder="Professor Name" formControlName="professor">
+                    <input matInput placeholder="Professor Name" formControlName="professor" required>
                     <mat-hint>Separate professor names with an ampersand ' & '.</mat-hint>
                 </mat-form-field>
                 <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider'"></mat-divider>
-                
+
                 <!-- Slack Channel Fields have to go in a separate box because I can't put a field in a field -->
                 <mat-form-field class="form-field-full-width">
                     <mat-label>Slack Channel</mat-label>
