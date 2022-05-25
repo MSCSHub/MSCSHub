@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: wei/git-sync@v3
-      with:
-        source_repo: MSCSHub/MSCSHub
-        source_branch: main
-        destination_repo: MSCSHub/MSCSHub-staging
-        destination_branch: main
+        with:
+          source_repo: MSCSHub/MSCSHub
+          source_branch: main
+          destination_repo: MSCSHub/MSCSHub-staging
+          destination_branch: main
