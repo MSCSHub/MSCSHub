@@ -2,12 +2,15 @@ on:
   push:
     branches: [ main ]
 jobs:
-  git-sync:
-    name: Staging Push
+  repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: wei/git-sync@v3
-        with:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Staging-push
+      uses: repo-sync/github-sync@v2
+      with:
           source_repo: MSCSHub/MSCSHub
           source_branch: main
           destination_repo: MSCSHub/MSCSHub-staging
