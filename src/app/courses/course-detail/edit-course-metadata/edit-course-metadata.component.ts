@@ -106,7 +106,7 @@ export class EditCourseMetadataComponent implements OnInit {
         SlackChannelLink: this.f["slack channelBool"].value === "true" ? this.f["slack channelLink"].value : "",
         Teacher: this.tc.transform(this.f.professor.value),
         Textbook: this.f.textbookBool.value === "true" ? true : false,
-        TextbookName: this.tc.transform(this.f.textbook.value),
+        TextbookName: this.f.textbookBool.value === "true" ? this.tc.transform(this.f.textbook.value) : null,
       }).then(() => {
         this.courseService.updateCourseData()
         this.router.navigate([`courses/${this.courseName}`])
