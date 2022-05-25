@@ -1,8 +1,7 @@
-on:
-  push:
-    branches: [main]
+on: push
 jobs:
-  - name: git-sync
+  git-sync:
+    runs-on: ubuntu-latest
     uses: wei/git-sync@v3
     with:
       source_repo: MSCSHub/MSCSHub
