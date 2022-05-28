@@ -40,6 +40,8 @@ Note: The `npm install` step will install all of the required dependencies, incl
 ### Local Development
 After running `ng serve` you will have a local version of `MSCSHub.com` running on your machine. Open your favorite browser and navigate to [localhost:4200](http://localhost:4200) to begin
 
+Please note that the backend data is shared regardless if you are running locally or in production. You will need a MSCS Hub account. 
+
 ### Deploying to MSCSHub.com and MSDSHub.com
 Use the command `npm run deploy` to run the deployment script that will update both MSCSHub.com and MSDSHub.com. If you want to see more about what's happening behind the scenes when you run this command, take a look at the `scripts` section of `package.json`.
 
