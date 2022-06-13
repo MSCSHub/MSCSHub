@@ -113,7 +113,7 @@ export class CreateReviewComponent implements OnInit {
       userId: ['', Validators.required],
       timestamp: [new Date(), Validators.required],
       classId: ['', Validators.required],
-      helpfulPositive: [1, Validators.required],
+      helpfulPositive: [0, Validators.required],
       helpfulNegative: [0, Validators.required],
       wilsonScore: [0.20654329147389294, Validators.required],
       lastUpdated: [''],
