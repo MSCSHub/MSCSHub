@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CourseCardComponent } from 'src/app/courses/course-detail/course-card/course-card.component';
+import { CourseDetailComponent } from 'src/app/courses/course-detail/course-detail.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
@@ -69,7 +71,7 @@ export class CreateReviewComponent implements OnInit {
       this.userData = data
       this.getUserReviews()
     })
-    this.initializeReviewForm()
+    this.initializeReviewForm('')
     this.loadReview()
   }
 
@@ -96,10 +98,15 @@ export class CreateReviewComponent implements OnInit {
     }, error => {console.error("Create Review:", error)})
   }
 
-  initializeReviewForm() {
+  initializeReviewForm(courseName: string) {
+    if(courseName==''){
+      courseName = '';
+    }else{
+      courseName = "TEst";
+    }
     this.reviewForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      course: ['', Validators.required],
+      title: ['', Validators.required],    
+      course: [courseName, Validators.required],
       semester: ['', Validators.required],
       year: ['', [Validators.required, Validators.max(2099), Validators.min(2019)]],
       review: ['Pros:\n1. \n2. \n3. \n\nCons:\n1. \n2. \n3. \n\nDetailed Review:\n', Validators.required],
@@ -113,7 +120,7 @@ export class CreateReviewComponent implements OnInit {
       userId: ['', Validators.required],
       timestamp: [new Date(), Validators.required],
       classId: ['', Validators.required],
-      helpfulPositive: [1, Validators.required],
+      helpfulPositive: [0, Validators.required],
       helpfulNegative: [0, Validators.required],
       wilsonScore: [0.20654329147389294, Validators.required],
       lastUpdated: [''],
