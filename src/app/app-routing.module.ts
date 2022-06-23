@@ -45,6 +45,7 @@ const routes: Routes = [
   {path: 'verifyEmail', component: VerifyEmailComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
+  {path: 'createReview/:className', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
   {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
   {path: 'user/reviews', component: ViewUserReviewsComponent, canActivate: [AuthguardGuard]},
   {path: 'faq', component: FaqPageComponent},

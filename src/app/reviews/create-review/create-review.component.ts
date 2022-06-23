@@ -62,6 +62,7 @@ export class CreateReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const courseName: string = this.route.snapshot.paramMap.get('className') || '';
     this.reviewId = this.route.snapshot.paramMap.get('id') || ""
     this.courseService.classes.subscribe(data => {
       this.courses = data

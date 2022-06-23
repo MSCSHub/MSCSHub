@@ -3,7 +3,7 @@
     <div class="gradient-container" #gradientContainer>
       <div>
         <div>
-          <mat-chip class="createReview-chip" routerLink="/createReview">
+          <mat-chip class="createReview-chip" [routerLink]="['/createReview', 'testCourse']">
             Create Review for {{courseName}} <mat-icon class="tab" matTooltip="Create a new review for this course">description</mat-icon>
           </mat-chip>
         </div>
