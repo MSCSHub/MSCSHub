@@ -5,8 +5,8 @@ Frequently Asked Questions
             <mat-panel-title>
               <p>{{category.key}}</p>
           </mat-panel-title>
-          <mat-panel-description>
-            <mat-icon matTooltip="Create new {{category.key}} FAQ">add_circle_outline</mat-icon>
+          <mat-panel-description class="add-faq-button">
+            <mat-icon matTooltip="Create new {{category.key}} FAQ" >add_circle_outline</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>        
         <faq-entry *ngFor="let faqEntry of category.value"
@@ -14,6 +14,6 @@ Frequently Asked Questions
             [subtitle]="formatSubtitle(faqEntry.lastModifiedAt)"
             [body]="faqEntry.body"
             [id]="faqEntry.entryId"
-            [isUserLoggedIn]="isUserLoggedIn"></faq-entry>
+            [isUserLoggedIn]="isUserLoggedIn" class="faq-button"></faq-entry>
     </mat-expansion-panel>
 </mat-accordion>
