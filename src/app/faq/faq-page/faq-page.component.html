@@ -1,13 +1,13 @@
 Frequently Asked Questions
-<mat-accordion *ngFor="let category of faqCategories | keyvalue" class="example-headers-align" multi>
-    <mat-expansion-panel [expanded]="true">
+<mat-accordion *ngFor="let category of faqCategories | keyvalue" multi>
+    <mat-expansion-panel [expanded]="false">
         <mat-expansion-panel-header>
             <mat-panel-title>
               <p>{{category.key}}</p>
           </mat-panel-title>
-          <mat-panel-description class="add-faq-button">
+          <!-- <mat-panel-description class="add-faq-button">
             <mat-icon matTooltip="Create new {{category.key}} FAQ" >add_circle_outline</mat-icon>
-          </mat-panel-description>
+          </mat-panel-description> -->
         </mat-expansion-panel-header>        
         <faq-entry *ngFor="let faqEntry of category.value"
             [title]="faqEntry.title" 
