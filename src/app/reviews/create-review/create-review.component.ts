@@ -8,7 +8,7 @@ import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from 'src/app/shared/dialog/review-too-short/dialog-review-too-short.component';
-import { Review } from 'src/app/shared/review/review';
+import { Review, reviewFeedbackType } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
 
 @Component({
@@ -48,7 +48,7 @@ export class CreateReviewComponent implements OnInit {
   ]
   recommendedWordCount: number = 100
   wordCountEnforced: boolean = true
-  
+
   constructor(
     private courseService: ClassService,
     private formBuilder: FormBuilder,
@@ -84,7 +84,7 @@ export class CreateReviewComponent implements OnInit {
   }
 
   getUserReviews(): void {
-    this.afs.collection('Reviews', ref => 
+    this.afs.collection('Reviews', ref =>
       ref.where("userId", '==', this.userData?.uid)
     ).get().subscribe(response => {
       if (!response.docs.length) return
@@ -142,7 +142,7 @@ export class CreateReviewComponent implements OnInit {
     else if(course.computerScience.isComputerScience) this.f.degreeProgram.setValue(1)
     else this.f.degreeProgram.setValue(0)
   }
-    
+
   countWords(s: string){
     s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
     s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
@@ -170,6 +170,7 @@ export class CreateReviewComponent implements OnInit {
         .doc(this.reviewId)
         .update(this.reviewForm.value)
         .then(result => {
+          this.auth.reviewFeedback(this.reviewId, reviewFeedbackType.positive);
           this.loading = false
           this.openSubmittedDialog()
         }, error => {
@@ -181,6 +182,7 @@ export class CreateReviewComponent implements OnInit {
       this.afs.collection('Reviews')
         .add(this.reviewForm.value)
         .then(result => {
+          this.auth.reviewFeedback(result.id, reviewFeedbackType.positive);
           this.loading = false
           this.openSubmittedDialog()
         }, error => {
@@ -189,6 +191,7 @@ export class CreateReviewComponent implements OnInit {
           this.error = error.message
         })
     }
+
   }
 
   openSubmittedDialog() {
