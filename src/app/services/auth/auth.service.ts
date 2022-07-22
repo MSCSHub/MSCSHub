@@ -110,11 +110,11 @@ export class AuthService {
   forgotPassword(email: string){
     return this.afAuth.sendPasswordResetEmail(email)
       .then(_ => {
-        window.alert('Password reset email has been sent. Check your email inbox to proceed.')
+        window.alert('If the email exist a password reset email has been sent. Check your email inbox to proceed.')
         this.router.navigate(['login'])
       })
       .catch(error => {
-        window.alert("User not found. Please try again.");
+        window.alert("If the email exist a password reset email has been sent. Check your email inbox to proceed.");
         this.router.navigate(['login'])
       })
   }
