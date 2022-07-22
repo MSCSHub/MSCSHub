@@ -6,6 +6,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { Observable, ReplaySubject } from 'rxjs';
+import { DialogFaqSubmission } from 'src/app/shared/dialog/faq-submission/dialog-faq-submission.component';
 import { reviewFeedbackType } from 'src/app/shared/review/review';
 import { FbUser } from '../../shared/user/user'
 
@@ -25,7 +26,7 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
-  ) { 
+  ) {
     this.afs.firestore.enablePersistence().catch(err => console.error("Persistence failed to enable, error:", err))
     let localData = localStorage.getItem('user')
     if(localData != 'null' && localData) {
@@ -112,7 +113,10 @@ export class AuthService {
         window.alert('Password reset email has been sent. Check your email inbox to proceed.')
         this.router.navigate(['login'])
       })
-      .catch(error => {window.alert(error)})
+      .catch(error => {
+        window.alert("User not found. Please try again.");
+        this.router.navigate(['login'])
+      })
   }
 
   updateUserExtraData(firstName: string, lastName: string, firstSemester: string) {
