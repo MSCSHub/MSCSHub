@@ -101,8 +101,12 @@ export class EditCourseMetadataComponent implements OnInit {
           "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
         },
         computerScience: {
-          category: this.f.category.value,
+          category: this.courseService.website != "dataScience" ? this.f.category.value : this.courseData?.computerScience?.category,
           isComputerScience: this.courseData?.computerScience.isComputerScience
+        },
+        dataScience: {
+          category: this.courseService.website == "dataScience" ? this.f.category.value : this.courseData?.dataScience?.category,
+          isDataScience: this.courseData?.computerScience.isComputerScience
         },
         languages: this.f.languages.value,
         Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",
