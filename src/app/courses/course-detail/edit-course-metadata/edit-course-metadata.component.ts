@@ -100,6 +100,10 @@ export class EditCourseMetadataComponent implements OnInit {
           proofs: this.f.proofsBool.value === "true" ? this.f.proofs.value : "",
           "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
         },
+        computerScience: {
+          category: this.f.category.value,
+          isComputerScience: this.courseData?.computerScience.isComputerScience
+        },
         languages: this.f.languages.value,
         Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",
         SlackChannel: this.f["slack channelBool"].value === "true" ? this.f["slack channel"].value.replace('#', '') : "",
