@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { TitleCasePipe } from '@angular/common';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-create-course',
@@ -28,7 +29,11 @@ export class CreateCourseComponent implements OnInit {
     private router: Router,
     private tc: TitleCasePipe,
   ) {
+    //TODO: Turn this into a shared attribute somewhere in the code
     if(this.courseService.website == "dataScience") {
+      this.categories = ["foundations", "elective"]
+      this.languages = ['Python', 'R', 'No Code']
+    } else if (this.courseService.website === "ai") {
       this.categories = ["foundations", "elective"]
       this.languages = ['Python', 'R', 'No Code']
     }
@@ -45,6 +50,8 @@ export class CreateCourseComponent implements OnInit {
     {field: 'csCategory', display: 'CS category'},
     {field: 'dsIsDataScience', display: 'is Data Science? boolean true or false'},
     {field: 'dsCategory', display: 'DS category'},
+    {field: 'aiIsArtificialIntelligence', display: 'is Artificial Intelligence? boolean true or false'},
+    {field: 'aiCategory', display: 'AI category'},
   ]
 
   ngOnInit(): void {
@@ -76,6 +83,8 @@ export class CreateCourseComponent implements OnInit {
       csCategory: [''],              // NEED
       dsIsDataScience: ['', Validators.required],         // NEED
       dsCategory: [''],              // NEED
+      aiArtificialIntelligence: ['', Validators.required],         // NEED
+      aiCategory: [''],              // NEED
       languages: ['', Validators.required],               
       // lastUpdated: ['', Validators.required],
       metaExams: ['', Validators.required],
@@ -134,6 +143,10 @@ export class CreateCourseComponent implements OnInit {
           dataScience: {
             isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
             category: this.f.dsCategory.value,
+          },
+          artificialIntelligence: {
+            isArtificialIntelligence: this.f.aiIsArtificialIntelligence.value === "true" ? true: false,
+            category: this.f.aiCategory.value,
           },
           languages: [],
           meta: {

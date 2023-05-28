@@ -42,6 +42,19 @@ export class ReviewsComponent implements OnInit {
   selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[2]
   websiteFilter: string = this.classService.website === "computerScience" ? "isComputerScience" : "isDataScience"
 
+  selectWebsiteFilter(): string {
+    switch(this.classService.website) {
+      case this.classService.MSCS: 
+        return "isComputerScience";
+      case this.classService.MSDS:
+        return "isDataScience";
+      case this.classService.MSAI:
+        return "isArtificialIntelligence";
+      default:
+        return "isComputerScience";
+    }
+  }
+
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,

@@ -23,6 +23,9 @@ export class CourseGridComponent implements OnInit {
     if(this.courses.website == "dataScience") {
       this.categories = ["foundations", "elective"]
       this.languages = ['Python', 'R', 'No Code']
+    } else if (this.courses.website === "ai") {
+      this.categories = ["foundations", "elective"]
+      this.languages = ['Python', 'R', 'No Code']
     }
   }
 
