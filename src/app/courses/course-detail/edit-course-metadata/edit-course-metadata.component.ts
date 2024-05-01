@@ -102,11 +102,11 @@ export class EditCourseMetadataComponent implements OnInit {
         },
         computerScience: {
           category: this.courseService.website != "dataScience" ? this.f.category.value : this.courseData?.computerScience?.category,
-          isComputerScience: this.courseData?.computerScience.isComputerScience
+          isComputerScience: this.courseData?.computerScience?.isComputerScience ?? false
         },
         dataScience: {
           category: this.courseService.website == "dataScience" ? this.f.category.value : this.courseData?.dataScience?.category,
-          isDataScience: this.courseData?.computerScience.isComputerScience
+          isDataScience: this.courseData?.dataScience?.isDataScience ?? false
         },
         languages: this.f.languages.value,
         Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",

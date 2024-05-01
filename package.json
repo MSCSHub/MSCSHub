@@ -18,6 +18,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
+    "@angular/cdk": "^12.2.0",
     "@angular/common": "~12.2.0",
     "@angular/compiler": "~12.2.0",
     "@angular/core": "~12.2.0",
@@ -28,14 +29,14 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "ansi-regex": ">=5.0.1",
     "firebase": "^9.2.0",
+    "glob-parent": ">=5.1.2",
+    "path-parse": ">=1.0.7",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
-    "zone.js": "~0.11.4",
-    "ansi-regex": ">=5.0.1",
-    "path-parse": ">=1.0.7",
-    "glob-parent": ">=5.1.2"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.12",
