@@ -121,6 +121,32 @@
                 "src/styles/dataScience.scss",
                 "src/styles/main.scss"
               ]
+            },
+            "msai": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.msai.prod.ts"
+                }
+              ],
+              "index": "src/MSAI-specific-files/index.html",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "styles": [
+                "src/styles/ai.scss",
+                "src/styles/main.scss"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -139,6 +165,9 @@
             },
             "msds": {
               "browserTarget": "utmscs:build:msds"
+            },
+            "msai": {
+              "browserTarget": "utmscs:build:msai"
             }
           },
           "defaultConfiguration": "development"
@@ -191,6 +220,14 @@
               "options": {
                 "base-href": "https://msdshub.com", 
                 "cname": "msdshub.com"
+              }
+            },
+            "msai": {
+              "browserTarget": "utmscs:build:msai",
+              "buildTarget": "utmscs:build:msai",
+              "options": {
+                "base-href": "https://msaihub.com", 
+                "cname": "msaihub.com"
               }
             }
           },

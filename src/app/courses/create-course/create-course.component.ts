@@ -28,7 +28,7 @@ export class CreateCourseComponent implements OnInit {
     private router: Router,
     private tc: TitleCasePipe,
   ) {
-    if(this.courseService.website == "dataScience") {
+    if(this.courseService.website == "dataScience" || this.courseService.website == "ai") {
       this.categories = ["foundations", "elective"]
       this.languages = ['Python', 'R', 'No Code']
     }
@@ -45,6 +45,8 @@ export class CreateCourseComponent implements OnInit {
     {field: 'csCategory', display: 'CS category'},
     {field: 'dsIsDataScience', display: 'is Data Science? boolean true or false'},
     {field: 'dsCategory', display: 'DS category'},
+    {field: 'aiIsAi', display: 'is AI? boolean true or false'},
+    {field: 'aiCategories', display: 'AI categories'},
   ]
 
   ngOnInit(): void {
@@ -76,6 +78,8 @@ export class CreateCourseComponent implements OnInit {
       csCategory: [''],              // NEED
       dsIsDataScience: ['', Validators.required],         // NEED
       dsCategory: [''],              // NEED
+      aiIsAi: ['', Validators.required],                  // NEED
+      aiCategories: [''],
       languages: ['', Validators.required],               
       // lastUpdated: ['', Validators.required],
       metaExams: ['', Validators.required],
@@ -134,6 +138,10 @@ export class CreateCourseComponent implements OnInit {
           dataScience: {
             isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
             category: this.f.dsCategory.value,
+          },
+          ai: {
+            isAi: this.f.aiIsAi.value === "true" ? true : false,
+            category = this.f.aiCategories.value,
           },
           languages: [],
           meta: {

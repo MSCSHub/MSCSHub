@@ -11,6 +11,7 @@ export interface Review {
   helpfulPositive?: number,
   isDataScience?: boolean,
   isComputerScience?: boolean,
+  isAI?: boolean,
   homework: true,
   lastUpdated: Timestamp,
   lectureQuality: number,
@@ -40,5 +41,9 @@ export enum degreeProgram {
   none = 0,
   computerScience = 1,
   dataScience = 2,
-  both = 3,
+  both = 3, //Existing code, should refactor
+  ai = 4,
+  aiAndComputerScience = 5,
+  aiAndDataScience = 6,
+  all = 7,
 }

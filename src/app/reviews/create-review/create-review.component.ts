@@ -119,7 +119,8 @@ export class CreateReviewComponent implements OnInit {
       lastUpdated: [''],
       degreeProgram: [''],
       isComputerScience: [this.courseService.website === "computerScience" ? true : false],
-      isDataScience: [this.courseService.website === "dataScience" ? true : false]
+      isDataScience: [this.courseService.website === "dataScience" ? true : false],
+      isAi: [this.courseService.website === "ai" ? true : false],
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
@@ -137,9 +138,14 @@ export class CreateReviewComponent implements OnInit {
     let course = reviewedCourse[0]
     this.f.isComputerScience.setValue(course.computerScience.isComputerScience)
     this.f.isDataScience.setValue(course.dataScience.isDataScience)
+    this.f.isAi.setValue(course.ai.isAI)
     if(course.dataScience.isDataScience && course.computerScience.isComputerScience) this.f.degreeProgram.setValue(3)
     else if(course.dataScience.isDataScience) this.f.degreeProgram.setValue(2)
     else if(course.computerScience.isComputerScience) this.f.degreeProgram.setValue(1)
+    else if (course.ai.isAI) this.f.degreeProgram.setValue(4)
+    else if (course.ai.isAI && course.computerScience.isComputerScience) this.f.degreeProgram.setValue(5)
+    else if (course.ai.isAI && course.dataScience.isDataScience) this.f.degreeProgram
+    else if (course.ai.isAI && course.computerScience.isComputerScience && course.dataScience.isDataScience) this.f.degreeProgram.setValue(7);
     else this.f.degreeProgram.setValue(0)
   }
 

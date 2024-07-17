@@ -1,4 +1,4 @@
-# MSCS Hub + MSDS Hub
+# MSCS Hub + MSDS Hub + MSAI Hub
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/MSCSHub/MSCSHub)
@@ -8,9 +8,9 @@
 ![GitHub forks](https://img.shields.io/github/forks/MSCSHub/MSCSHub)
 ![License](https://img.shields.io/github/license/MSCSHub/MSCSHub)
 
-The Hub is a website that allows students in UT's MSCS and MSDS to review courses and connect to student-run communities.
+The Hub is a website that allows students in UT's MSCS, MSDS and MSAI to review courses and connect to student-run communities.
 
-Computer Science - [MSCSHub.com](https://mscshub.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Science - [MSDSHub.com](https://msdshub.com)
+Computer Science - [MSCSHub.com](https://mscshub.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Science - [MSDSHub.com](https://msdshub.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Science - [MSAIHub.com](https://msaihub.com)
 
 Each website is tailored to the indivual program but is all run using the same frontend and backend codebase. The entire frontend is built using Angular v11. The backend is serverless and runs off of firebase with node.js functions.
 
@@ -42,8 +42,8 @@ After running `ng serve` you will have a local version of `MSCSHub.com` running 
 
 Please note that the backend data is shared regardless if you are running locally or in production. You will need a MSCS Hub account. 
 
-### Deploying to MSCSHub.com and MSDSHub.com
-Use the command `npm run deploy` to run the deployment script that will update both MSCSHub.com and MSDSHub.com. If you want to see more about what's happening behind the scenes when you run this command, take a look at the `scripts` section of `package.json`.
+### Deploying to MSCSHub.com, MSDSHub.com and MSAIHub.com
+Use the command `npm run deploy` to run the deployment script that will update for all of MSCSHub.com, MSDSHub.com, MSAIHub.com. If you want to see more about what's happening behind the scenes when you run this command, take a look at the `scripts` section of `package.json`.
 
 ## Documentation
 The documentation for MSCSHub.com is hosted at https://mscshub.github.io/MSCSHub-documentation/. This is generated automatically using `compodoc`. It works by automatically parsing the files in the codebase and uses the inline comments to create a fully functional website for documentation.

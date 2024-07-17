@@ -40,7 +40,7 @@ export class ReviewsComponent implements OnInit {
     {displayText: "Oldest", field: "timestamp", order: "asc"},
   ]
   selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[2]
-  websiteFilter: string = this.classService.website === "computerScience" ? "isComputerScience" : "isDataScience"
+  websiteFilter: string = this.classService.website === "computerScience" ? "isComputerScience" : this.classService.website === "dataScience"  ? "isDataScience" : "isAi"
 
   constructor(
     private afs: AngularFirestore,

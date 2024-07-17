@@ -9,11 +9,12 @@
     "test": "ng test",
     "compodoc": "npx compodoc -p tsconfig.doc.json",
     "ng-deploy": "ng deploy",
-    "deploy": "npm run build && npm run deploy-both && npm run doc",
+    "deploy": "npm run build && npm run deploy-all && npm run doc",
     "doc": "(npm run compodoc) && (cd documentation && git add . && git diff-index --quiet HEAD || (git commit -a -m 'Updated' && git push))",
     "deploy-mscs": "ng build --configuration=mscs && ng deploy --base-href=https://mscshub.com --cname=mscshub.com --repo=git@github.com:MSCSHub/MSCSHub.git --no-build --no-silent",
     "deploy-msds": "ng build --configuration=msds && ng deploy --base-href=https://msdshub.com --cname=msdshub.com --repo=git@github.com:MSCSHub/MSDSHub.git --no-build --no-silent",
-    "deploy-both": "npm run deploy-mscs && npm run deploy-msds"
+    "deploy-msai": "ng build --configuration=msai && ng deploy --base-href=https://msaihub.com --cname=msaihub.com --repo=git@github.com:MSCSHub/MSAIHub.git --no-build --no-silent",
+    "deploy-all": "npm run deploy-mscs && npm run deploy-msds && npm run deploy-msai"
   },
   "private": true,
   "dependencies": {

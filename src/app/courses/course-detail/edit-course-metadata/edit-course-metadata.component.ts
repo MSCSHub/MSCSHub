@@ -108,6 +108,10 @@ export class EditCourseMetadataComponent implements OnInit {
           category: this.courseService.website == "dataScience" ? this.f.category.value : this.courseData?.dataScience?.category,
           isDataScience: this.courseData?.dataScience?.isDataScience ?? false
         },
+        ai: {
+          category: this.courseService.website == "ai" ? this.f.category.value : this.courseData?.ai?.category,
+          isAI: this.courseData?.ai?.isAI ?? false
+        },
         languages: this.f.languages.value,
         Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",
         SlackChannel: this.f["slack channelBool"].value === "true" ? this.f["slack channel"].value.replace('#', '') : "",

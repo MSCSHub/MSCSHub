@@ -13,18 +13,47 @@ export class NavbarComponent implements OnInit {
   public currentUrl: string = ''
   menuStatus = false
   public readonly website: string = environment.website
-  logoUrl: string = this.website === "computerScience" ? "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png" : "assets/images/logos/Colorwheel/TheHubMSDS-128.png"
-  public readonly degreeName: string = this.website === "computerScience" ? "Computer Science" : "Data Science"
-  public readonly websiteName: string = this.website === "computerScience" ? "MSCSHub" : "MSDSHub"
-  public readonly properName: string = this.website === "computerScience" ? "MSCSO" : "MSDSO"
-  public readonly socialName: string = this.website === "computerScience" ? "Slack" : "Discord"
-  public readonly socialURL: string = this.website === "computerScience" ? "https://utmscso.slack.com/archives/C01QM0A19QR" : "https://discord.gg/SDh57AHQu3"
-  public readonly socialLogo: string = this.website === "computerScience" ? "logos:slack" : "logos:discord"
-  public readonly redditURL: string = this.website === "computerScience" ? "https://www.reddit.com/r/mscso" : "https://www.reddit.com/r/msdso"
+  logoUrl!: string;
+  degreeName!: string;
+  websiteName!: string;
+  properName!: string;
+  socialName!: string;
+  socialURL!: string;
+  socialLogo!: string;
+  redditURL!: string;
 
   constructor(
     private router: Router,
-  ) { }
+  ) {
+    this.initializeProperties();
+  }
+
+  private initializeProperties(): void {
+    switch (this.website) {
+      case "computerScience":
+        this.setProperties("Computer Science", "MSCSHub", "MSCSO", "Slack", "https://utmscso.slack.com/archives/C01QM0A19QR", "logos:slack", "https://www.reddit.com/r/mscso", "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png");
+        break;
+      case "dataScience":
+        this.setProperties("Data Science", "MSDSHub", "MSDSO", "Discord", "https://discord.gg/SDh57AHQu3", "logos:discord", "https://www.reddit.com/r/msdso", "assets/images/logos/Colorwheel/TheHubMSDS-128.png");
+        break;
+      case "ai":
+        this.setProperties("Artificial Intelligence", "AIHub", "AISO", "Discord", "https://discord.gg/aihub", "logos:discord", "https://www.reddit.com/r/MSAI", "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png");
+        break;
+      default:
+        this.setProperties("Computer Science", "MSCSHub", "MSCSO", "Slack", "https://utmscso.slack.com/archives/C01QM0A19QR", "logos:slack", "https://www.reddit.com/r/mscso", "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png");
+    }
+  }
+
+  private setProperties(degreeName: string, websiteName: string, properName: string, socialName: string, socialURL: string, socialLogo: string, redditURL: string, logoUrl: string): void {
+    this.degreeName = degreeName;
+    this.websiteName = websiteName;
+    this.properName = properName;
+    this.socialName = socialName;
+    this.socialURL = socialURL;
+    this.socialLogo = socialLogo;
+    this.redditURL = redditURL;
+    this.logoUrl = logoUrl;
+  }
 
   ngOnInit(): void {
     this.currentUrl = this.router.url
