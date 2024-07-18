@@ -33,10 +33,10 @@ export class ClassService {
     .valueChanges({idField: 'courseId'})
     .subscribe(data => {
       if(this.website == "computerScience") {
-        data = data.filter(course => course.computerScience.isComputerScience)
+        data = data.filter(course => course?.computerScience?.isComputerScience ?? false)
         data.forEach(course => course.category = course.computerScience.category || course.category)
       } else if(this.website == "dataScience") {
-        data = data.filter(course => course.dataScience.isDataScience)
+        data = data.filter(course => course?.dataScience?.isDataScience ?? false)
         data.forEach(course => course.category = course.dataScience.category || course.category)
       } else {
         data = []

@@ -67,6 +67,9 @@ import { FaqPageComponent } from './faq/faq-page/faq-page.component';
 import { FaqEntryComponent } from './faq/faq-entry/faq-entry.component';
 import { FaqCategoriesPipe } from './pipes/faq/faq-categories.pipe';
 import { CourseMapComponent } from './courses/course-map/course-map.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -115,7 +118,7 @@ import { CourseMapComponent } from './courses/course-map/course-map.component';
     FaqEditComponent,
     FaqCategoriesPipe,
     DialogFaqSubmission,
-    CourseMapComponent,
+    CourseMapComponent
   ],
   imports: [
     BrowserModule,
@@ -127,6 +130,9 @@ import { CourseMapComponent } from './courses/course-map/course-map.component';
     AngularFirestoreModule,
     AngularFireAnalyticsModule,
     HttpClientModule,
+    MatChipsModule,
+    MatButtonModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,

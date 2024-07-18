@@ -9,15 +9,15 @@
                 <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}">
                     <span matLine>{{ review.course }}&nbsp; — &nbsp;{{ review.title }}</span>
                     <div (click)="$event.stopPropagation()" class="list-buttons">
-                        <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.')">
+                        <mat-icon-button (click)="openSnackBar('Link copied to clipboard.')">
                             <mat-icon>add_link</mat-icon>
-                        </button>
-                        <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
+                        </mat-icon-button>
+                        <mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
                             <mat-icon>mode_edit</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="removeReview(review.reviewId)">
+                        </mat-icon-button>
+                        <mat-icon-button (click)="removeReview(review.reviewId)">
                             <mat-icon>delete</mat-icon>
-                        </button>
+                        </mat-icon-button>
                     </div>
                 </mat-list-item>
               </mat-nav-list>
