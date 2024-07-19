@@ -35,6 +35,8 @@ ng serve
 
 Note: The `npm install` step will install all of the required dependencies, including Angular `ng`. If `ng serve` does not work at first you may need to try performing a global install.
 
+Note: Current Node version: 14.15.0 Current Angular CLI Version: 13.3.11
+
 ## Using MSCS Hub
 
 ### Local Development
