@@ -12,7 +12,7 @@ The Hub is a website that allows students in UT's MSCS and MSDS to review course
 
 Computer Science - [MSCSHub.com](https://mscshub.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Science - [MSDSHub.com](https://msdshub.com)
 
-Each website is tailored to the indivual program but is all run using the same frontend and backend codebase. The entire frontend is built using Angular v11. The backend is serverless and runs off of firebase with node.js functions.
+Each website is tailored to the indivual program but is all run using the same frontend and backend codebase. The entire frontend is built using Angular v14. The backend is serverless and runs off of firebase with node.js functions.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ ng serve
 
 Note: The `npm install` step will install all of the required dependencies, including Angular `ng`. If `ng serve` does not work at first you may need to try performing a global install.
 
-Note: Current Node version: 14.15.0 Current Angular CLI Version: 13.3.11
+Note: Current Node version: 14.15.0 Current Angular CLI Version: 14.2.13
 
 ## Using MSCS Hub
 
