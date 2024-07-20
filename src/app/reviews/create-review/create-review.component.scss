@@ -10,6 +10,13 @@
         justify-content: center;
     }
 }
+
+.flexLayoutTest {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
 ::ng-deep .mat-tooltip  {
     white-space: pre-line !important;
 }

@@ -16,18 +16,18 @@
           <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
           <span><br>Prerequisites: {{(course?.Prerequisites) ? course?.Prerequisites : "None"}}</span>
         </h4>
-        <mat-chip-list>
-          <mat-chip>{{course?.category | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+        <mat-chip-listbox>
+          <mat-chip-option>{{course?.category | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip-option>
           <div *ngFor="let item of course?.meta | keyvalue">
-            <mat-chip *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">{{item.key | titlecase}}&nbsp;<mat-icon>info_outline</mat-icon></mat-chip>
+            <mat-chip-option *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">{{item.key | titlecase}}&nbsp;<mat-icon>info_outline</mat-icon></mat-chip-option>
           </div>
-          <mat-chip *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+          <mat-chip-option *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip-option>
           <div *ngFor="let season of course?.season | keyvalue">
-            <mat-chip *ngIf="season.value" matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}" #tooltip="matTooltip" (click)="tooltip.toggle()">
+            <mat-chip-option *ngIf="season.value" matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}" #tooltip="matTooltip" (click)="tooltip.toggle()">
               {{season.key | titlecase}}&nbsp;<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
-            </mat-chip>
+            </mat-chip-option>
           </div>
-        </mat-chip-list>
+        </mat-chip-listbox>
       </div>
     </div>
   </div>

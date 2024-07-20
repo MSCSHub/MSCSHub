@@ -1,10 +1,12 @@
 // Original source came from https://github.com/angular/angular/blob/a6971ba89adc253bfa4260036ee4a1e0bd76159f/aio/src/styles/ng-io-theme.scss
-@import '~@angular/material/theming';
+@import '@angular/material/theming';
+@import '@angular/material';
 // Plus imports for other components in your app.
 
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 @include mat-core();
+@include legacy-core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -30,3 +32,4 @@ $background-color: $mat-blue;
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($ng-io-theme);
+@include all-legacy-component-themes($ng-io-theme);

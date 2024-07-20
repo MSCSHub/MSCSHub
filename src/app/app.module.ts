@@ -67,6 +67,9 @@ import { FaqPageComponent } from './faq/faq-page/faq-page.component';
 import { FaqEntryComponent } from './faq/faq-entry/faq-entry.component';
 import { FaqCategoriesPipe } from './pipes/faq/faq-categories.pipe';
 import { CourseMapComponent } from './courses/course-map/course-map.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -122,14 +125,17 @@ import { CourseMapComponent } from './courses/course-map/course-map.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireAnalyticsModule,
     HttpClientModule,
+    MatChipsModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    RouterModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
