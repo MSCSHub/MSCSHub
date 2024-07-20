@@ -67,21 +67,22 @@
 }
 
 .review-controller {
+  /*   TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
   ::ng-deep .mat-form-field-infix {
     border-top: 0.5em solid transparent;
     max-width: 150px;
   }
-
+  /*   TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
   ::ng-deep .mat-form-field-flex {
     padding-top: 0px !important;
     border: 1px solid rgba(0, 0, 0, 0.26);
     border-radius: 4px 4px 4px 4px !important;
   }
-
+  /*   TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
   ::ng-deep .mat-form-field-underline {
     width: 0px !important;
   }
-
+  /*   TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
   ::ng-deep .mat-select-arrow-wrapper {
     vertical-align: bottom !important;
   }

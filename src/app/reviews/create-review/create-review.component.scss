@@ -1,4 +1,4 @@
-.mat-card {
+.mat-mdc-card {
     max-width: 800px;
 }
 
@@ -11,13 +11,12 @@
     }
 }
 
-.flexLayoutTest {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+.number-form-field {
+    width: 100%;
+    margin: 2px;
 }
 
-::ng-deep .mat-tooltip  {
+::ng-deep .mat-mdc-tooltip  {
     white-space: pre-line !important;
 }
 

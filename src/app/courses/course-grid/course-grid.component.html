@@ -1,6 +1,6 @@
 <div class="content">
   <div class="filter-cards">
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-subtitle>Filter by Category:</mat-card-subtitle>
       <mat-chip-listbox multiple>
         <mat-chip-option [selected]="isSelected(category)" 
@@ -10,7 +10,7 @@
         </mat-chip-option>
       </mat-chip-listbox>
     </mat-card>
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-subtitle>Filter by Language:</mat-card-subtitle>
       <mat-chip-listbox multiple>
         <mat-chip-option [selected]="isSelected(language)"
@@ -22,7 +22,7 @@
     </mat-card>
   </div>
   <div class="course-grid-container">
-    <mat-card *ngFor="let class of visibleClasses" [routerLink]="['/courses/', class.ClassName]">
+    <mat-card appearance="outlined" *ngFor="let class of visibleClasses" [routerLink]="['/courses/', class.ClassName]">
       <mat-card-header>
         <mat-card-title>{{class.ClassName}}</mat-card-title>
         <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>

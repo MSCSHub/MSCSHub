@@ -70,6 +70,9 @@ import { CourseMapComponent } from './courses/course-map/course-map.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -133,6 +136,10 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     MatChipsModule,
     FormsModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     RouterModule,
@@ -146,6 +153,7 @@ import { MatCardModule } from '@angular/material/card';
     UserTrackingService,
     ScreenTrackingService,
     UserTrackingService,
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
   ],
   bootstrap: [AppComponent]
 })

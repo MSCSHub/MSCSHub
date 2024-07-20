@@ -49,7 +49,8 @@
     .form-field-full-width, .btn-block {
 	    width: 100%; 
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
+    /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
     mat-card-header {
         text-align: center;
         width: 100%;
@@ -57,16 +58,16 @@
         font-weight: 700;
     }
 
-    .mat-card {
+    .mat-mdc-card {
         padding: 45px 70px 55px;
     }
 
-    .mat-stroked-button {
+    .mat-mdc-outlined-button {
         border: 1px solid currentColor;
         line-height: 54px;
         background: #FFF7FA;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
     .mat-form-field-appearance-legacy .mat-form-field-infix {
         padding: 0.8375em 0;
     }
