@@ -64,10 +64,11 @@
                     <p>Difficulty Rating: 1 - Easiest Thing Ever, 7 - Makes You Want To Cry</p>
                 </div>
                 <div *ngFor="let field of fields">
-                    <mat-form-field class="number-form-field" hintLabel="{{ field.hint }}">
+                    <mat-form-field class="number-form-field">
                         <mat-label>{{ field.title }}</mat-label>
                         <input matInput #input required type="number" formControlName="{{ field.formName }}" max="{{ field.max }}" min="{{ field.min }}" />
-                      </mat-form-field>
+                        <mat-hint>{{ field.hint }}</mat-hint>
+                    </mat-form-field>
                 </div>
                 <!-- In case you ever want to use a slider for input, here's a good starting point
                 <div class="review-slider-container">

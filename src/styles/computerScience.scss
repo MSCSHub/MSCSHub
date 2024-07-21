@@ -24,10 +24,6 @@ $ng-io-theme: mat-light-theme($ng-io-primary, $ng-io-accent, $ng-io-warn);
 $navbar-color: mat-color($mat-blue, 700);
 $background-color: $mat-blue;
 
-.mat-toolbar.mat-primary {
-  background: $navbar-color !important;
-}
-
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.

@@ -6,8 +6,11 @@
 }
 
 .query-card {
-  .mat-form-field {
+  padding: 10px;
+  margin: 5px;
+  .mat-mdc-form-field {
     margin-right: 15px;
+    font-size: 12px;
   }
 
   .category-width {
@@ -15,11 +18,10 @@
   }
 
   .op-width {
-    max-width: 55px;
+    max-width: 90px;
   }
 
   .input-width {
-    margin-bottom: 0px;
     max-width: 100px;
   }
 }
@@ -67,26 +69,6 @@
 }
 
 .review-controller {
-  /*   TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-  ::ng-deep .mat-form-field-infix {
-    border-top: 0.5em solid transparent;
-    max-width: 150px;
-  }
-  /*   TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-  ::ng-deep .mat-form-field-flex {
-    padding-top: 0px !important;
-    border: 1px solid rgba(0, 0, 0, 0.26);
-    border-radius: 4px 4px 4px 4px !important;
-  }
-  /*   TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version.*/
-  ::ng-deep .mat-form-field-underline {
-    width: 0px !important;
-  }
-  /*   TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
-  ::ng-deep .mat-select-arrow-wrapper {
-    vertical-align: bottom !important;
-  }
-
   .page-label {
     vertical-align: middle;
     margin-right: 9px;
@@ -98,5 +80,18 @@
     @media(max-width: 400px){
       min-width: 53px;
     }
-  }  
+  } 
+}
+
+.filter-flex {
+  display: flex;
+  align-items: center;
+}
+
+.filter-item {
+  margin: 5px;
+}
+
+.filter-parent-card {
+  padding: 10px;
 }

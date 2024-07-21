@@ -105,7 +105,7 @@ export class EditCourseMetadataComponent implements OnInit {
           isComputerScience: this.courseData?.computerScience?.isComputerScience ?? false
         },
         dataScience: {
-          category: this.courseService.website == "dataScience" ? this.f.category.value : this.courseData?.dataScience?.category,
+          category: this.courseService.website == "dataScience" ? this.f.category.value : this.courseData?.dataScience?.category ? this.courseData?.dataScience?.category : "",
           isDataScience: this.courseData?.dataScience?.isDataScience ?? false
         },
         languages: this.f.languages.value,
