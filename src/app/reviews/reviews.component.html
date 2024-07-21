@@ -48,9 +48,9 @@
         <h1>Course Reviews:</h1>
         <div class="next-prev-container">
             Page {{pageNumber + 1}}
-            <button mat-stroked-button color="primary" [disabled]="disablePrev || pageNumber === 0" (click)=getPrevPage()>Prev</button>
-            <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
-            <mat-form-field class="order-dropdown" appearance="fill">
+            <button mat-stroked-button class="pageButton" color="primary" [disabled]="disablePrev || pageNumber === 0" (click)=getPrevPage()>Prev</button>
+            <button mat-stroked-button class="pageButton" color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+            <mat-form-field class="order-dropdown" subscriptSizing="dynamic">
                 <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
                   <mat-option *ngFor="let option of orderByOptions" [value]="option">
                     Sort by {{option.displayText}}
