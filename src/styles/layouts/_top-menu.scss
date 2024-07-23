@@ -56,7 +56,7 @@ app-root.folder-guide mat-toolbar.mat-toolbar,
 app-root.folder-start mat-toolbar.mat-toolbar,
 app-root.folder-tutorial mat-toolbar.mat-toolbar {
   @media (min-width: $showTopMenuWidth) {
-    .hamburger.mat-button {
+    .hamburger.mat-mdc-button {
       // Hamburger shown on non-marketing pages even on large screens.
       margin: $hamburgerShownMargin;
     }
@@ -64,7 +64,7 @@ app-root.folder-tutorial mat-toolbar.mat-toolbar {
 }
 
 // HAMBURGER BUTTON
-.hamburger.mat-button {
+.hamburger.mat-mdc-button {
   height: 100%;
   margin: $hamburgerShownMargin;
   padding: 0;

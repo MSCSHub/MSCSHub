@@ -67,6 +67,14 @@ import { FaqPageComponent } from './faq/faq-page/faq-page.component';
 import { FaqEntryComponent } from './faq/faq-entry/faq-entry.component';
 import { FaqCategoriesPipe } from './pipes/faq/faq-categories.pipe';
 import { CourseMapComponent } from './courses/course-map/course-map.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -122,14 +130,23 @@ import { CourseMapComponent } from './courses/course-map/course-map.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireAnalyticsModule,
     HttpClientModule,
+    MatChipsModule,
     FormsModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    RouterModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -140,6 +157,7 @@ import { CourseMapComponent } from './courses/course-map/course-map.component';
     UserTrackingService,
     ScreenTrackingService,
     UserTrackingService,
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
   ],
   bootstrap: [AppComponent]
 })
