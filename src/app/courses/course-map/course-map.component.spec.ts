@@ -8,8 +8,8 @@ describe('CourseMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CourseMapComponent ]
-    })
+    declarations: [CourseMapComponent]
+})
     .compileComponents();
   });
 

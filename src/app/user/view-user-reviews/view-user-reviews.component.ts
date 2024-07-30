@@ -7,6 +7,7 @@ import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-de
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-view-user-reviews',
