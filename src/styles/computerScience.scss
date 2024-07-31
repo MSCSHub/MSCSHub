@@ -1,31 +1,37 @@
-// Original source came from https://github.com/angular/angular/blob/a6971ba89adc253bfa4260036ee4a1e0bd76159f/aio/src/styles/ng-io-theme.scss
-@import '@angular/material/theming';
-@import '@angular/material';
-// Plus imports for other components in your app.
+@use '@angular/material' as mat;
 
-// Include the base styles for Angular Material core. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-@include mat-core();
-@include legacy-core();
+
+@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$ng-io-primary: mat-palette($mat-blue, 700, 600, 800);
-$ng-io-accent:  mat-palette($mat-red, 700, 600, 800);
-$ng-io-approve: mat-palette($mat-blue, 700, 600, 800);
+$ng-io-primary: mat.define-palette(mat.$blue-palette, 700, 600, 800);
+$ng-io-accent:  mat.define-palette(mat.$red-palette, 700, 600, 800);
+$ng-io-approve: mat.define-palette(mat.$blue-palette, 700, 600, 800);
 
 // The warn palette is optional (defaults to red).
-$ng-io-warn:    mat-palette($mat-red);
+$my-warn:    mat.define-palette(mat.$red-palette);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$ng-io-theme: mat-light-theme($ng-io-primary, $ng-io-accent, $ng-io-warn);
-
-$navbar-color: mat-color($mat-blue, 700);
-$background-color: $mat-blue;
+$navbar-color: mat.define-palette(mat.$blue-palette, 700);
+$background-color: mat.$blue-palette;
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($ng-io-theme);
-@include all-legacy-component-themes($ng-io-theme);
+$my-primary: $ng-io-primary;
+$my-accent: $ng-io-accent;
+$my-approve: $ng-io-approve;
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn,
+   approve: $my-approve
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
