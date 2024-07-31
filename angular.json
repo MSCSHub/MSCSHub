@@ -129,16 +129,16 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "utmscs:build:production"
+              "buildTarget": "utmscs:build:production"
             },
             "development": {
-              "browserTarget": "utmscs:build:development"
+              "buildTarget": "utmscs:build:development"
             },
             "mscs": {
-              "browserTarget": "utmscs:build:mscs"
+              "buildTarget": "utmscs:build:mscs"
             },
             "msds": {
-              "browserTarget": "utmscs:build:msds"
+              "buildTarget": "utmscs:build:msds"
             }
           },
           "defaultConfiguration": "development"
@@ -146,7 +146,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "utmscs:build"
+            "buildTarget": "utmscs:build"
           }
         },
         "test": {
