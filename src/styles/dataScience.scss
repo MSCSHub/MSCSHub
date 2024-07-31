@@ -4,24 +4,22 @@
 
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
-@include mat-core();
+@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
-$ng-io-primary: mat.define-palette(mat.$gray-palette, 700, 600, 800);
-$ng-io-accent:  mat.define-palette(mat.$red-palette, 700, 600, 800);
-$ng-io-approve: mat.define-palette(mat.$blue-palette, 700, 600, 800);
+$my-primary: mat.define-palette(mat.$gray-palette, 700, 600, 800);
+$my-accent:  mat.define-palette(mat.$red-palette, 700, 600, 800);
+$my-approve: mat.define-palette(mat.$blue-palette, 700, 600, 800);
 
 // The warn palette is optional (defaults to red).
 $my-warn:    mat.define-palette(mat.$red-palette);
 
 $navbar-color: mat.define-palette(mat.$gray-palette, 800);
 
-.mat-toolbar.mat-primary {
-  background: $navbar-color !important;
-}
+$background-color: mat.$gray-palette;
 
 $my-theme: mat.define-light-theme((
  color: (
@@ -39,4 +37,4 @@ $my-theme: mat.define-light-theme((
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($my-theme);
+@include mat.all-component-themes($my-theme);
