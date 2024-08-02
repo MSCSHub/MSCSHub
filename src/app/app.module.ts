@@ -75,6 +75,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -142,6 +143,7 @@ import { MatSelectModule } from '@angular/material/select';
         MatOptionModule,
         MatSelectModule,
         ReactiveFormsModule,
+        MatIconModule,
         FlexLayoutModule,
         RouterModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),

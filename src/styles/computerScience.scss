@@ -6,15 +6,15 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$ng-io-primary: mat.define-palette(mat.$blue-palette, 700, 600, 800);
-$ng-io-accent:  mat.define-palette(mat.$red-palette, 700, 600, 800);
-$ng-io-approve: mat.define-palette(mat.$blue-palette, 700, 600, 800);
+$ng-io-primary: mat.m2-define-palette(mat.$m2-blue-palette, 700, 600, 800);
+$ng-io-accent:  mat.m2-define-palette(mat.$m2-red-palette, 700, 600, 800);
+$ng-io-approve: mat.m2-define-palette(mat.$m2-blue-palette, 700, 600, 800);
 
 // The warn palette is optional (defaults to red).
-$my-warn:    mat.define-palette(mat.$red-palette);
+$my-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
-$navbar-color: mat.define-palette(mat.$blue-palette, 700);
-$background-color: mat.$blue-palette;
+$navbar-color: mat.m2-define-palette(mat.$m2-blue-palette, 700);
+$background-color: mat.$m2-blue-palette;
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -23,14 +23,14 @@ $my-primary: $ng-io-primary;
 $my-accent: $ng-io-accent;
 $my-approve: $ng-io-approve;
 
-$my-theme: mat.define-light-theme((
+$my-theme: mat.m2-define-light-theme((
  color: (
    primary: $my-primary,
    accent: $my-accent,
    warn: $my-warn,
    approve: $my-approve
  ),
- typography: mat.define-typography-config(),
+ typography: mat.m2-define-typography-config(),
  density: 0,
 ));
 
