@@ -75,9 +75,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
-@NgModule({ declarations: [
+@NgModule({ 
+    declarations: [
         AppComponent,
         DashboardComponent,
         NavbarComponent,
@@ -125,7 +126,9 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
         DialogFaqSubmission,
         CourseMapComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], 
+    imports: [
+        BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
@@ -137,19 +140,20 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
         MatChipsModule,
         FormsModule,
         MatInputModule,
+        MatIconModule,
         MatToolbarModule,
         MatFormFieldModule,
         MatInputModule,
         MatOptionModule,
         MatSelectModule,
         ReactiveFormsModule,
-        MatIconModule,
         FlexLayoutModule,
         RouterModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAnalytics(() => getAnalytics()),
         provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore())], providers: [
+        provideFirestore(() => getFirestore())], 
+    providers: [
         ScreenTrackingService,
         UserTrackingService,
         ScreenTrackingService,
