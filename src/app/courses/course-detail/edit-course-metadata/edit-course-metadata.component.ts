@@ -1,16 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
-import { TitleCasePipe } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import {  MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { ReviewDetailComponent } from 'src/app/reviews/review-detail/review-detail.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-edit-course-metadata',
   templateUrl: './edit-course-metadata.component.html',
   styleUrls: ['./edit-course-metadata.component.scss'],
+  standalone: true,
   providers: [TitleCasePipe],
+  imports: [CommonModule, MatOptionModule, MatSelectModule, MatDividerModule, MatFormFieldModule, ReactiveFormsModule, MatCardModule, MatInputModule, FlexLayoutModule, MatButtonModule]
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
