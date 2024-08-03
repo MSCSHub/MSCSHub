@@ -77,7 +77,7 @@ export class FaqEditComponent implements OnInit {
       lastModifiedBy: ['', Validators.required],
       version: [1, Validators.required],
     })
-    this.auth.userData.subscribe(data => this.f.lastModifiedBy.setValue(data.displayName))
+    this.auth.userData.subscribe(data => this.f.lastModifiedBy.setValue(data?.displayName))
     this.faqForm.controls['lastModifiedAt'].setValue(new Date())
   }
   

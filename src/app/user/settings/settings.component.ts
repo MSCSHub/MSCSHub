@@ -34,10 +34,10 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.auth.userData.subscribe(user => {
       this.userData = user
-      this.userInfo.a_email.value = user.email || 'null',
-      this.userInfo.b_firstName.value = user.firstName || 'null'
-      this.userInfo.c_lastName.value = user.lastName || 'null'
-      this.userInfo.d_firstSemester.value = user.firstSemester || 'null'
+      this.userInfo.a_email.value = user?.email || 'null',
+      this.userInfo.b_firstName.value = user?.firstName || 'null'
+      this.userInfo.c_lastName.value = user?.lastName || 'null'
+      this.userInfo.d_firstSemester.value = user?.firstSemester || 'null'
     })
   }
 }
