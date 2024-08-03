@@ -1,167 +1,13 @@
-@angular/animations
-MIT
 
-@angular/cdk
-MIT
-The MIT License
-
-Copyright (c) 2024 Google LLC.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+--------------------------------------------------------------------------------
+Package: @angular/core
+License: "MIT"
 
 
-@angular/common
-MIT
+--------------------------------------------------------------------------------
+Package: rxjs
+License: "Apache-2.0"
 
-@angular/core
-MIT
-
-@angular/fire
-MIT
-
-@angular/flex-layout
-MIT
-
-@angular/forms
-MIT
-
-@angular/material
-MIT
-The MIT License
-
-Copyright (c) 2024 Google LLC.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-@angular/platform-browser
-MIT
-
-@angular/router
-MIT
-
-@babel/runtime
-MIT
-MIT License
-
-Copyright (c) 2014-present Sebastian McKenzie and other contributors
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-@firebase/analytics
-Apache-2.0
-
-@firebase/app
-Apache-2.0
-
-@firebase/app-compat
-Apache-2.0
-
-@firebase/auth
-Apache-2.0
-
-@firebase/auth-compat
-Apache-2.0
-
-@firebase/component
-Apache-2.0
-
-@firebase/firestore
-Apache-2.0
-
-@firebase/firestore-compat
-Apache-2.0
-
-@firebase/installations
-Apache-2.0
-
-@firebase/logger
-Apache-2.0
-
-@firebase/util
-Apache-2.0
-
-@firebase/webchannel-wrapper
-Apache-2.0
-
-firebase/analytics
-
-firebase/app
-
-firebase/auth
-
-firebase/compat/app
-
-firebase/compat/auth
-
-firebase/compat/firestore
-
-firebase/firestore
-
-idb
-ISC
-ISC License (ISC)
-Copyright (c) 2016, Jake Archibald <jaffathecake@gmail.com>
-
-Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-
-rxfire/auth
-
-rxjs
-Apache-2.0
                                Apache License
                          Version 2.0, January 2004
                       http://www.apache.org/licenses/
@@ -365,9 +211,208 @@ Apache-2.0
  limitations under the License.
  
 
+--------------------------------------------------------------------------------
+Package: @angular/common
+License: "MIT"
 
-tslib
-0BSD
+
+--------------------------------------------------------------------------------
+Package: firebase
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/fire
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/app-check
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/webchannel-wrapper
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/firestore
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/firestore-compat
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/platform-browser
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/router
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/cdk
+License: "MIT"
+
+The MIT License
+
+Copyright (c) 2024 Google LLC.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+Package: @angular/material
+License: "MIT"
+
+The MIT License
+
+Copyright (c) 2024 Google LLC.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+Package: @angular/forms
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/util
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/component
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/app
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/logger
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/app-compat
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: firebase
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/animations
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/flex-layout
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/installations
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/analytics
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/auth
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: rxfire
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/util
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/component
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/app
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @firebase/logger
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: idb
+License: "ISC"
+
+ISC License (ISC)
+Copyright (c) 2016, Jake Archibald <jaffathecake@gmail.com>
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+--------------------------------------------------------------------------------
+Package: @firebase/app-compat
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: tslib
+License: "0BSD"
+
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -380,9 +425,20 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
+--------------------------------------------------------------------------------
+Package: @firebase/auth
+License: "Apache-2.0"
 
-zone.js
-MIT
+
+--------------------------------------------------------------------------------
+Package: @firebase/auth-compat
+License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: zone.js
+License: "MIT"
+
 The MIT License
 
 Copyright (c) 2010-2024 Google LLC. https://angular.io/license
@@ -404,3 +460,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+--------------------------------------------------------------------------------
