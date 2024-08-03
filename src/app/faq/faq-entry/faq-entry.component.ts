@@ -1,7 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FaqService } from 'src/app/services/faq/faq-service.service';
 import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
@@ -9,7 +14,9 @@ import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-de
 @Component({
   selector: 'faq-entry',
   templateUrl: './faq-entry.component.html',
-  styleUrls: ['./faq-entry.component.scss']
+  styleUrls: ['./faq-entry.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatTooltipModule, MatIconModule, RouterModule, MatExpansionModule, MatFormFieldModule]
 })
 export class FaqEntryComponent implements OnInit {
   @Input() title: string = "Placeholder Title"

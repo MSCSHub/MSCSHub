@@ -1,11 +1,20 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from './../../../environments/environment';
+import { MatIconModule } from '@angular/material/icon';
+import { SearchInputComponent } from 'src/app/search/search-input/search-input.component';
+import { CommonModule } from '@angular/common';
+import { MenuComponent } from './menu/menu.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from 'src/app/material/material.module';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  standalone: true,
+  imports: [MatIconModule, MatButtonModule, SearchInputComponent, CommonModule, MenuComponent, MatToolbarModule, MaterialModule]
 })
 export class NavbarComponent implements OnInit {
   @Input() drawerFunc: any
