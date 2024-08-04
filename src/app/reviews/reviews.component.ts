@@ -1,16 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
 import { Review } from '../shared/review/review';
 import firebase from 'firebase/compat/app'
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReviewDetailComponent } from './review-detail/review-detail.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
-  styleUrls: ['./reviews.component.scss']
+  styleUrls: ['./reviews.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatPaginatorModule, ReviewDetailComponent, MatOptionModule, MatSelectModule, ReactiveFormsModule, MatButtonModule]
 })
 export class ReviewsComponent implements OnInit {
   reviewData: Review[] = []

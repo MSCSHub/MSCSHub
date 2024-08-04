@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
-import { TitleCasePipe } from '@angular/common';
-import { runInThisContext } from 'vm';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-create-course',
   templateUrl: './create-course.component.html',
   styleUrls: ['./create-course.component.scss'],
   providers: [TitleCasePipe],
+  standalone: true,
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatCardModule]
 })
 export class CreateCourseComponent implements OnInit {
   courseName: string = ""

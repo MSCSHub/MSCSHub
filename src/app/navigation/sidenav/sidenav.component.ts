@@ -1,10 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatListModule, MatNavList } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatNavList, MatListModule]
 })
 export class SidenavComponent implements OnInit {
   @Output() routeSelected: EventEmitter<any> = new EventEmitter

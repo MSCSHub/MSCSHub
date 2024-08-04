@@ -1,9 +1,9 @@
 <div class="content">
-    <mat-card>
+    <mat-card appearance="outlined" class="filter-parent-card">
         <mat-card-subtitle>Filter Reviews By:</mat-card-subtitle>
         <mat-card-content>
             <form class="filter-grid" [formGroup]="queryForm">
-                <mat-card class="query-card">
+                <mat-card appearance="outlined" class="query-card">
                     <mat-card-subtitle>Filter by Class Name</mat-card-subtitle>
                     <mat-form-field style="width: 100%">
                         <mat-label>Course</mat-label>
@@ -14,29 +14,31 @@
                         </mat-select>
                     </mat-form-field>
                 </mat-card>
-                <mat-card class="query-card">
+                <mat-card appearance="outlined" class="query-card">
                     <mat-card-subtitle>Filter By Query</mat-card-subtitle>
-                    <mat-form-field class="category-width">
-                        <mat-label>Category</mat-label>
-                        <mat-select formControlName="category">
-                            <mat-option *ngFor="let category of categories | keyvalue" [value]="category.value">
-                                {{category.key}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="op-width">
-                        <mat-label>Op.</mat-label>
-                        <mat-select formControlName="operation">
-                            <mat-option *ngFor="let operation of operations" [value]="operation">
-                                {{operation}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="input-width">
-                        <mat-label>Input</mat-label>
-                        <input matInput formControlName="inputValue" type="number">
-                    </mat-form-field>
-                    <button mat-flat-button color="primary" (click)="onQuerySubmit()">Submit</button>
+                    <div class="filter-flex">
+                        <mat-form-field subscriptSizing="dynamic" class="filter-item category-width">
+                            <mat-label>Category</mat-label>
+                            <mat-select formControlName="category">
+                                <mat-option *ngFor="let category of categories | keyvalue" [value]="category.value">
+                                    {{category.key}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field subscriptSizing="dynamic" class="op-width filter-item">
+                            <mat-label>Op.</mat-label>
+                            <mat-select formControlName="operation">
+                                <mat-option *ngFor="let operation of operations" [value]="operation">
+                                    {{operation}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field subscriptSizing="dynamic" class="input-width filter-item">
+                            <mat-label>Input</mat-label>
+                            <input matInput formControlName="inputValue" type="number">
+                        </mat-form-field>
+                        <button mat-flat-button class="filter-item" color="primary" (click)="onQuerySubmit()">Submit</button>
+                    </div>
                 </mat-card>
             </form>
         </mat-card-content>
@@ -46,9 +48,9 @@
         <h1>Course Reviews:</h1>
         <div class="next-prev-container">
             Page {{pageNumber + 1}}
-            <button mat-stroked-button color="primary" [disabled]="disablePrev || pageNumber === 0" (click)=getPrevPage()>Prev</button>
-            <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
-            <mat-form-field class="order-dropdown" appearance="fill">
+            <button mat-stroked-button class="pageButton" color="primary" [disabled]="disablePrev || pageNumber === 0" (click)=getPrevPage()>Prev</button>
+            <button mat-stroked-button class="pageButton" color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+            <mat-form-field class="order-dropdown" subscriptSizing="dynamic">
                 <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
                   <mat-option *ngFor="let option of orderByOptions" [value]="option">
                     Sort by {{option.displayText}}

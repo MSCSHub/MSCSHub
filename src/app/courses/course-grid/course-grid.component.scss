@@ -5,7 +5,7 @@
   grid-gap: 15px;
   padding-bottom: 0px;
 
-  .mat-chip:hover {
+  .mat-mdc-chip:hover {
     cursor: pointer;
   }
 }
@@ -24,26 +24,26 @@
   align-content: center;
   padding-top: 20px;
 
-  .mat-card:hover {
+  .mat-mdc-card:hover {
     cursor: pointer;
   }
 
-  .mat-card-header, .mat-card-title, .mat-card-subtitle {
+  .mat-mdc-card-header, .mat-mdc-card-title, .mat-mdc-card-subtitle {
     display: flex;
     justify-content: center;
     text-align:center;
     align-items: center;
   }
 
-  .mat-card-header {
+  .mat-mdc-card-header {
     height: 100px;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version. */
   .mat-chip-list {
     display: flex;
     justify-content: center;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version. */
   .mat-chip-list-wrapper {
     justify-content: center;
   }

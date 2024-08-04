@@ -7,11 +7,19 @@ import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-de
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
+import { CommonModule } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { MatNavList } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-view-user-reviews',
   templateUrl: './view-user-reviews.component.html',
-  styleUrls: ['./view-user-reviews.component.scss']
+  styleUrls: ['./view-user-reviews.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatIcon, RouterModule, MatNavList, MatCardModule, FlexLayoutModule]
 })
 export class ViewUserReviewsComponent implements OnInit {
   reviewData: Review[] = []
