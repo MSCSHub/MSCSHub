@@ -7,6 +7,9 @@ import { ClassData } from 'src/app/shared/class/class';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-course',
@@ -14,7 +17,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./create-course.component.scss'],
   providers: [TitleCasePipe],
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatCardModule]
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatCardModule, FlexLayoutModule, MatInputModule, MatButtonModule]
 })
 export class CreateCourseComponent implements OnInit {
   courseName: string = ""
@@ -53,7 +56,7 @@ export class CreateCourseComponent implements OnInit {
     {field: 'csCategory', display: 'CS category'},
     {field: 'dsIsDataScience', display: 'is Data Science? boolean true or false'},
     {field: 'dsCategory', display: 'DS category'},
-    {field: 'aiIsArtificialIntelligence', display: 'is Artificial Intelligence? boolean true or false'},
+    {field: 'aiArtificialIntelligence', display: 'is Artificial Intelligence? boolean true or false'},
     {field: 'aiCategory', display: 'AI category'},
   ]
 
@@ -81,7 +84,7 @@ export class CreateCourseComponent implements OnInit {
       TextbookName: ['', Validators.required],
       WorkloadAvg: [0, Validators.required],
       WorkloadCount: [0, Validators.required],
-      category: ['', Validators.required],                // NEED
+      category: [''],                // NEED
       csIsComputerScience: ['', Validators.required],     // NEED
       csCategory: [''],              // NEED
       dsIsDataScience: ['', Validators.required],         // NEED
@@ -147,8 +150,8 @@ export class CreateCourseComponent implements OnInit {
             isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
             category: this.f.dsCategory.value,
           },
-          artificialIntelligence: {
-            isArtificialIntelligence: this.f.aiIsArtificialIntelligence.value === "true" ? true: false,
+          ai: {
+            isArtificialIntelligence: this.f.aiArtificialIntelligence.value === "true" ? true: false,
             category: this.f.aiCategory.value,
           },
           languages: [],
