@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-msds": "ng serve --configuration=msds",
+    "start-msai": "ng serve --configuration=msai",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

@@ -123,8 +123,8 @@ export class EditCourseMetadataComponent implements OnInit {
           isDataScience: this.courseData?.dataScience.isDataScience
         },
         ai: {
-          category: this.courseService.website === this.courseService.MSAI ? this.f.category.value : this.courseData?.artificialIntelligence?.category,
-          isArtificialIntelligence: this.courseData?.artificialIntelligence.isArtificialIntelligence
+          category: this.courseService.website === this.courseService.MSAI ? this.f.category.value : this.courseData?.ai?.category,
+          isArtificialIntelligence: this.courseData?.ai.isArtificialIntelligence
         },
         languages: this.f.languages.value,
         Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",

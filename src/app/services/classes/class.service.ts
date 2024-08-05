@@ -44,8 +44,8 @@ export class ClassService {
         data = data.filter(course => course?.dataScience?.isDataScience ?? false)
         data.forEach(course => course.category = course.dataScience.category || course.category)
       } else {
-        data = []
-        window.alert("The application is misconfigured. Contact the website admins if this problem persists.")
+        data = data.filter(course => course?.ai?.isArtificialIntelligence ?? false)
+        data.forEach(course => course.category = course.dataScience.category || course.category)
       }
       this._classes.next(data)
     })

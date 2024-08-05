@@ -36,7 +36,7 @@ export interface ClassData {
     isDataScience: boolean,
     category?: string,
   },
-  artificialIntelligence: {
+  ai: {
     isArtificialIntelligence: boolean,
     category?: string
   }
