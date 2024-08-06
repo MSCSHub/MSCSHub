@@ -23,13 +23,13 @@ export class NavbarComponent implements OnInit {
   menuStatus = false
   public readonly website: string = environment.website
   logoUrl: string = this.website === "computerScience" ? "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png" : "assets/images/logos/Colorwheel/TheHubMSDS-128.png"
-  public readonly degreeName: string = this.website === "computerScience" ? "Computer Science" : "Data Science"
-  public readonly websiteName: string = this.website === "computerScience" ? "MSCSHub" : "MSDSHub"
-  public readonly properName: string = this.website === "computerScience" ? "MSCSO" : "MSDSO"
+  public readonly degreeName: string = this.website === "computerScience" ? "Computer Science" : this.website === "dataScience" ? "Data Science" : "Artifical Intelligence"
+  public readonly websiteName: string = this.website === "computerScience" ? "MSCSHub" : this.website === "dataScience" ? "MSDSHub" : "MSAIHub"
+  public readonly properName: string = this.website === "computerScience" ? "MSCSO" : this.website === "dataScience" ? "MSDSO" : "MSAIO"
   public readonly socialName: string = this.website === "computerScience" ? "Slack" : "Discord"
   public readonly socialURL: string = this.website === "computerScience" ? "https://utmscso.slack.com/archives/C01QM0A19QR" : "https://discord.gg/SDh57AHQu3"
   public readonly socialLogo: string = this.website === "computerScience" ? "logos:slack" : "logos:discord"
-  public readonly redditURL: string = this.website === "computerScience" ? "https://www.reddit.com/r/mscso" : "https://www.reddit.com/r/msdso"
+  public readonly redditURL: string = this.website === "computerScience" ? "https://www.reddit.com/r/mscso" : this.website === "dataScience" ? "https://www.reddit.com/r/msdso" : "https://www.reddit.com/r/MSAI"
 
   constructor(
     private router: Router,
