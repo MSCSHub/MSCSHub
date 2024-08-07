@@ -127,7 +127,7 @@
                   "with": "src/environments/environment.msai.prod.ts"
                 }
               ],
-              "index": "src/MSDS-specific-files/index.html",
+              "index": "src/MSAI-specific-files/index.html",
               "budgets": [
                 {
                   "type": "initial",
