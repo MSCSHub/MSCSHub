@@ -4,7 +4,10 @@
     <mat-card-subtitle>{{course.CourseNumber}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <img src="{{course.GraphicThumbnail}}">
+    <img 
+      src="{{course.GraphicThumbnail}}"
+      class="course-thumbnail"
+    >
   </mat-card-content>
   <mat-chip-listbox>
     <div *ngFor="let item of course.meta | keyvalue">
