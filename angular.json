@@ -119,6 +119,32 @@
                 "src/styles/dataScience.scss",
                 "src/styles/main.scss"
               ]
+            },
+            "msai": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.msai.prod.ts"
+                }
+              ],
+              "index": "src/MSAI-specific-files/index.html",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "styles": [
+                "src/styles/ai.scss",
+                "src/styles/main.scss"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -137,6 +163,9 @@
             },
             "msds": {
               "buildTarget": "utmscs:build:msds"
+            },
+            "msai": {
+              "buildTarget": "utmscs:build:msai"
             }
           },
           "defaultConfiguration": "development"

@@ -39,7 +39,10 @@ export class EditCourseMetadataComponent implements OnInit {
     private router: Router,
     private tc: TitleCasePipe,
   ) {
-    if(this.courseService.website == "dataScience") {
+    if(this.courseService.website === "dataScience") {
+      this.categories = ["foundations", "elective"]
+      this.languages = ['Python', 'R', 'No Code']
+    } else if (this.courseService.website === "ai") {
       this.categories = ["foundations", "elective"]
       this.languages = ['Python', 'R', 'No Code']
     }
@@ -112,12 +115,16 @@ export class EditCourseMetadataComponent implements OnInit {
           "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
         },
         computerScience: {
-          category: this.courseService.website != "dataScience" ? this.f.category.value : this.courseData?.computerScience?.category,
-          isComputerScience: this.courseData?.computerScience?.isComputerScience ?? false
+          category: this.courseService.website === this.courseService.MSCS ? this.f.category.value : this.courseData?.computerScience?.category,
+          isComputerScience: this.courseData?.computerScience.isComputerScience
         },
         dataScience: {
-          category: this.courseService.website == "dataScience" ? this.f.category.value : this.courseData?.dataScience?.category ? this.courseData?.dataScience?.category : "",
-          isDataScience: this.courseData?.dataScience?.isDataScience ?? false
+          category: this.courseService.website === this.courseService.MSDS ? this.f.category.value : this.courseData?.dataScience?.category,
+          isDataScience: this.courseData?.dataScience.isDataScience
+        },
+        ai: {
+          category: this.courseService.website === this.courseService.MSAI ? this.f.category.value : this.courseData?.ai?.category,
+          isArtificialIntelligence: this.courseData?.ai.isArtificialIntelligence
         },
         languages: this.f.languages.value,
         Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",

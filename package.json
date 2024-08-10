@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-msds": "ng serve --configuration=msds",
+    "start-msai": "ng serve --configuration=msai",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -13,6 +15,7 @@
     "doc": "(npm run compodoc) && (cd documentation && git add . && git diff-index --quiet HEAD || (git commit -a -m 'Updated' && git push))",
     "deploy-mscs": "ng build --configuration=mscs && ng deploy --base-href=https://mscshub.com --cname=mscshub.com --repo=git@github.com:MSCSHub/MSCSHub.git --no-build --no-silent",
     "deploy-msds": "ng build --configuration=msds && ng deploy --base-href=https://msdshub.com --cname=msdshub.com --repo=git@github.com:MSCSHub/MSDSHub.git --no-build --no-silent",
+    "deploy-msai": "ng build --configuration=msai && ng deploy --base-href=https://msaihub.com --cname=msaihub.com --repo=git@github.com:MSCSHub/MSAIHub.git --no-build --no-silent",
     "deploy-both": "npm run deploy-mscs && npm run deploy-msds"
   },
   "private": true,
@@ -34,7 +37,7 @@
     "glob-parent": ">=5.1.2",
     "path-parse": ">=1.0.7",
     "rxfire": "^6.0.5",
-    "rxjs": "~7.8.1",
+    "rxjs": "^7.4.0",
     "tslib": "^2.6.3",
     "zone.js": "~0.14"
   },
