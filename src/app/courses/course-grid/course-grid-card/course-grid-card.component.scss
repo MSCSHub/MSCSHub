@@ -15,8 +15,8 @@
   justify-content: center;
 }
 
-img {
-  border: 0;
-  width: 100%;
-  height: auto;
+.course-thumbnail {
+  width: 150px; /* Set your desired width */
+  height: 150px; /* Set your desired height */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
 }

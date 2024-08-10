@@ -5,8 +5,16 @@
   grid-gap: 15px;
   padding-bottom: 0px;
 
+  .filter-title {
+    padding: 5px;
+  }
+
   .mat-mdc-chip:hover {
     cursor: pointer;
+  }
+
+  .filter-list {
+    padding: 10px;
   }
 }
 
@@ -36,22 +44,11 @@
   }
 
   .mat-mdc-card-header {
-    height: 100px;
-  }
-  /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version. */
-  .mat-chip-list {
-    display: flex;
-    justify-content: center;
+    height: 150px;
   }
   /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version. */
   .mat-chip-list-wrapper {
     justify-content: center;
-  }
-
-  img {
-    border: 0;
-    width: 100%;
-    height: auto;
   }
 }
 
@@ -62,4 +59,23 @@
   max-width: 1180px;
   margin: 0 auto;
   margin-top: 20px;
+}
+
+.course-thumbnail-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.course-thumbnail {
+  width: 150px; /* Set your desired width */
+  height: 150px; /* Set your desired height */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+.course-card-tag-list {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
