@@ -56,5 +56,8 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.3.5",
     "ua-parser-js": "^0.7.33"
+  },
+  "overrides": {
+    "gh-pages": "^6.1.1"
   }
 }
