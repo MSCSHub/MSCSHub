@@ -1,18 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Review } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { ReviewHelpfulnessComponent } from './review-helpfulness/review-helpfulness.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-review-detail',
   templateUrl: './review-detail.component.html',
-  styleUrls: ['./review-detail.component.scss']
+  styleUrls: ['./review-detail.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, ReviewHelpfulnessComponent, StarRatingComponent, MatIconModule, RouterModule, FlexLayoutModule, MatButtonModule]
 })
 export class ReviewDetailComponent implements OnInit {
   @Input() reviewId: string = ""

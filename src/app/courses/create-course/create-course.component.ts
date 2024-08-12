@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
-import { TitleCasePipe } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-course',
   templateUrl: './create-course.component.html',
   styleUrls: ['./create-course.component.scss'],
   providers: [TitleCasePipe],
+  standalone: true,
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatCardModule, FlexLayoutModule, MatInputModule, MatButtonModule]
 })
 export class CreateCourseComponent implements OnInit {
   courseName: string = ""
@@ -28,7 +35,11 @@ export class CreateCourseComponent implements OnInit {
     private router: Router,
     private tc: TitleCasePipe,
   ) {
+    //TODO: Turn this into a shared attribute somewhere in the code
     if(this.courseService.website == "dataScience") {
+      this.categories = ["foundations", "elective"]
+      this.languages = ['Python', 'R', 'No Code']
+    } else if (this.courseService.website === "ai") {
       this.categories = ["foundations", "elective"]
       this.languages = ['Python', 'R', 'No Code']
     }
@@ -45,6 +56,8 @@ export class CreateCourseComponent implements OnInit {
     {field: 'csCategory', display: 'CS category'},
     {field: 'dsIsDataScience', display: 'is Data Science? boolean true or false'},
     {field: 'dsCategory', display: 'DS category'},
+    {field: 'aiArtificialIntelligence', display: 'is Artificial Intelligence? boolean true or false'},
+    {field: 'aiCategory', display: 'AI category'},
   ]
 
   ngOnInit(): void {
@@ -71,11 +84,13 @@ export class CreateCourseComponent implements OnInit {
       TextbookName: ['', Validators.required],
       WorkloadAvg: [0, Validators.required],
       WorkloadCount: [0, Validators.required],
-      category: ['', Validators.required],                // NEED
+      category: [''],                // NEED
       csIsComputerScience: ['', Validators.required],     // NEED
       csCategory: [''],              // NEED
       dsIsDataScience: ['', Validators.required],         // NEED
       dsCategory: [''],              // NEED
+      aiArtificialIntelligence: ['', Validators.required],         // NEED
+      aiCategory: [''],              // NEED
       languages: ['', Validators.required],               
       // lastUpdated: ['', Validators.required],
       metaExams: ['', Validators.required],
@@ -134,6 +149,10 @@ export class CreateCourseComponent implements OnInit {
           dataScience: {
             isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
             category: this.f.dsCategory.value,
+          },
+          ai: {
+            isArtificialIntelligence: this.f.aiArtificialIntelligence.value === "true" ? true: false,
+            category: this.f.aiCategory.value,
           },
           languages: [],
           meta: {

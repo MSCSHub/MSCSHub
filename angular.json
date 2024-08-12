@@ -18,12 +18,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/utmscs",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -34,7 +33,8 @@
               "src/styles/computerScience.scss",
               "src/styles/main.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -47,8 +47,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "2.5mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -63,9 +63,7 @@
               ]
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -81,8 +79,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -107,8 +105,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "2mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -121,6 +119,32 @@
                 "src/styles/dataScience.scss",
                 "src/styles/main.scss"
               ]
+            },
+            "msai": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.msai.prod.ts"
+                }
+              ],
+              "index": "src/MSAI-specific-files/index.html",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all",
+              "styles": [
+                "src/styles/ai.scss",
+                "src/styles/main.scss"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -129,16 +153,19 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "utmscs:build:production"
+              "buildTarget": "utmscs:build:production"
             },
             "development": {
-              "browserTarget": "utmscs:build:development"
+              "buildTarget": "utmscs:build:development"
             },
             "mscs": {
-              "browserTarget": "utmscs:build:mscs"
+              "buildTarget": "utmscs:build:mscs"
             },
             "msds": {
-              "browserTarget": "utmscs:build:msds"
+              "buildTarget": "utmscs:build:msds"
+            },
+            "msai": {
+              "buildTarget": "utmscs:build:msai"
             }
           },
           "defaultConfiguration": "development"
@@ -146,14 +173,14 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "utmscs:build"
+            "buildTarget": "utmscs:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
@@ -198,6 +225,5 @@
         }
       }
     }
-  },
-  "defaultProject": "utmscs"
+  }
 }

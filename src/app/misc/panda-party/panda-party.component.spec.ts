@@ -8,8 +8,8 @@ describe('PandaPartyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PandaPartyComponent ]
-    })
+    declarations: [PandaPartyComponent]
+})
     .compileComponents();
   });
 
