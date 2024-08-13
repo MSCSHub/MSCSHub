@@ -8,8 +8,8 @@ describe('EditCourseMetadataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditCourseMetadataComponent ]
-    })
+    declarations: [EditCourseMetadataComponent]
+})
     .compileComponents();
   });
 

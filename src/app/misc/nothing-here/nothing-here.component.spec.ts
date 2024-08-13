@@ -8,8 +8,8 @@ describe('NothingHereComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NothingHereComponent ]
-    })
+    declarations: [NothingHereComponent]
+})
     .compileComponents();
   });
 

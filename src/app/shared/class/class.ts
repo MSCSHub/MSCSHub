@@ -36,6 +36,10 @@ export interface ClassData {
     isDataScience: boolean,
     category?: string,
   },
+  ai: {
+    isArtificialIntelligence: boolean,
+    category?: string
+  }
   languages: string[] | null,
   lastUpdated: Timestamp,
   meta: {

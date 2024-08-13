@@ -77,6 +77,7 @@ h6 {
   }
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
 .mat-tab-body-wrapper h2 {
   margin-top: 0;
 }
@@ -238,6 +239,7 @@ code {
   justify-content: center !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
 .course-grid-container .mat-chip-list-wrapper {
   justify-content: center;
 }
