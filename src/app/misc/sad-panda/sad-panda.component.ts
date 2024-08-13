@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { PandaPartyComponent } from '../panda-party/panda-party.component';
 
 @Component({
   selector: 'app-sad-panda',
   templateUrl: './sad-panda.component.html',
-  styleUrls: ['./sad-panda.component.scss']
+  styleUrls: ['./sad-panda.component.scss'],
+  standalone: true,
+  imports: [PandaPartyComponent]
 })
 export class SadPandaComponent {
   title = "It's ok... we understand :)" 

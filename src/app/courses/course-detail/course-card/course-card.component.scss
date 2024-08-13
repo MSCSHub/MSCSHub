@@ -1,16 +1,16 @@
-.mat-card-header, .mat-card-title, .mat-card-subtitle {
+.mat-mdc-card-header, .mat-mdc-card-title, .mat-mdc-card-subtitle {
   display: flex;
   justify-content: center;
 }
 
-.mat-card-content {
+.mat-mdc-card-content {
   display: flex;
   justify-content: center;
   font-weight: 600;
   font-size: 21px;
 }
 
-.mat-card-title {
+.mat-mdc-card-title {
   font-size: 20px;
   margin: 0 -15px;
 }

@@ -8,8 +8,8 @@ describe('SadPandaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SadPandaComponent ]
-    })
+    declarations: [SadPandaComponent]
+})
     .compileComponents();
   });
 

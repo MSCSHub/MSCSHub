@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { PandaPartyComponent } from '../panda-party/panda-party.component';
 
 @Component({
   selector: 'app-thankyou',
   templateUrl: './thankyou.component.html',
-  styleUrls: ['./thankyou.component.scss']
+  styleUrls: ['./thankyou.component.scss'],
+  standalone: true,
+  imports: [PandaPartyComponent]
 })
 export class ThankyouComponent implements OnInit {
   title = "Thank you!!!"

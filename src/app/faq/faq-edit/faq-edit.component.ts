@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FaqService } from 'src/app/services/faq/faq-service.service';
 import { FaqEntry } from 'src/app/shared/faq/faq-entry';
-import { FbUser } from 'src/app/shared/user/user';
 import { DialogFaqSubmission } from 'src/app/shared/dialog/faq-submission/dialog-faq-submission.component';
-import { TitleCasePipe } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'faq-edit',
   templateUrl: './faq-edit.component.html',
   styleUrls: ['./faq-edit.component.scss'],
   providers: [TitleCasePipe],
+  standalone: true,
+  imports: [CommonModule, MatFormFieldModule, MatOptionModule, MatAutocompleteModule, MatCardModule, ReactiveFormsModule]
 })
 export class FaqEditComponent implements OnInit {
   faqForm!: FormGroup
@@ -72,7 +77,7 @@ export class FaqEditComponent implements OnInit {
       lastModifiedBy: ['', Validators.required],
       version: [1, Validators.required],
     })
-    this.auth.userData.subscribe(data => this.f.lastModifiedBy.setValue(data.displayName))
+    this.auth.userData.subscribe(data => this.f.lastModifiedBy.setValue(data?.displayName))
     this.faqForm.controls['lastModifiedAt'].setValue(new Date())
   }
   
