@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import {Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/compat/firestore';
-import {ActivatedRoute} from '@angular/router';
-import {AuthService} from 'src/app/services/auth/auth.service';
-import {ClassService} from 'src/app/services/classes/class.service';
-import {ClassData} from 'src/app/shared/class/class';
-import {Review} from '../../shared/review/review';
-=======
 import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -14,7 +5,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { Review } from '../../shared/review/review';
->>>>>>> main
 import firebase from 'firebase/compat/app'
 import { ReviewDetailComponent } from 'src/app/reviews/review-detail/review-detail.component';
 import { MatOptionModule } from '@angular/material/core';
