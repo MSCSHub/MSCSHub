@@ -29,7 +29,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   courseNumber: string = ""
   course?: ClassData
   cards = [
-    {title: 'Reviews', subtitle: 'Total Count', value: 0}, 
+    {title: 'Reviews', subtitle: 'Total Count', value: 0},
     {title: 'Rating', subtitle: 'On a Scale of 1-7', value: 0},
     {title: 'Difficulty', subtitle: 'On a Scale of 1-7', value: 0},
     {title: 'Workload', subtitle: 'Hours Per Week', value: 0},
@@ -39,10 +39,10 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     {title: 'Piazza Support', subtitle: 'On a Scale of 1-7', value: 0},
   ]
   orderByOptions = [
-    {displayText: "Most Helpful", field: "wilsonScore", order: "desc"},
-    {displayText: "Least Helpful", field: "wilsonScore", order: "asc"},
     {displayText: "Newest", field: "timestamp", order: "desc"},
+    {displayText: "Most Helpful", field: "wilsonScore", order: "desc"},
     {displayText: "Oldest", field: "timestamp", order: "asc"},
+    {displayText: "Least Helpful", field: "wilsonScore", order: "asc"},
   ]
   reviewDataStack: any[] = []
   reviewData: Review[] = []
@@ -52,11 +52,11 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   pageLength: number = 5
   maxLength: number = 99999
   isLoggedIn: boolean = false
-  selectedSort: {displayText: string, field: string, order: string} = this.orderByOptions[0]
+  selectedSort: { displayText: string, field: string, order: string } = this.orderByOptions[0]
   objectKeys = Object.keys
 
-  @ViewChild('imageContainer')  imageContainer!: ElementRef;
-  @ViewChild('gradientContainer')  gradientContainer!: ElementRef;
+  @ViewChild('imageContainer') imageContainer!: ElementRef;
+  @ViewChild('gradientContainer') gradientContainer!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -68,15 +68,17 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.updateGraphicStyles()
   }
-  
+
   ngOnInit(): void {
     this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
-    this.auth.isLoggedIn.subscribe(state => {this.isLoggedIn = state})
+    this.auth.isLoggedIn.subscribe(state => {
+      this.isLoggedIn = state
+    })
     this.getClassData()
     this.getFirstPage()
-    document.getElementsByClassName("mat-drawer-content")[0].scroll(0,0) // Ensures that we start from the top
+    document.getElementsByClassName("mat-drawer-content")[0].scroll(0, 0) // Ensures that we start from the top
   }
-  
+
   getClassData(): void {
     this.classService.classes.subscribe(data => {
       this.course = data.find(x => x.ClassName == this.courseName)
@@ -87,9 +89,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   updateGraphicStyles(): void {
-    if(this.gradientContainer?.nativeElement){
-      this.renderer.setStyle(this.gradientContainer?.nativeElement,'background',this.course?.GraphicColor)
-      this.renderer.setStyle(this.imageContainer?.nativeElement,'background-image',this.course?.GraphicUrl)
+    if (this.gradientContainer?.nativeElement) {
+      this.renderer.setStyle(this.gradientContainer?.nativeElement, 'background', this.course?.GraphicColor)
+      this.renderer.setStyle(this.imageContainer?.nativeElement, 'background-image', this.course?.GraphicUrl)
     }
   }
 
@@ -104,7 +106,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       .orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
     ).get().subscribe(response => {
       this.reviewData = []
-      if (!response.docs.length){
+      if (!response.docs.length) {
         console.warn("Course Detail: No reviews exist")
         this.disableNext = true
         this.disablePrev = true
@@ -121,19 +123,21 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.error("Course Detail: getFirstPage - ", error)})
+    }, error => {
+      console.error("Course Detail: getFirstPage - ", error)
+    })
   }
 
   nextPage() {
     this.disablePrev = false
-    const lastReview = this.reviewDataStack[this.reviewDataStack.length-1].docs[this.pageLength-1]
+    const lastReview = this.reviewDataStack[this.reviewDataStack.length - 1].docs[this.pageLength - 1]
     this.afs.collection('Reviews', ref => ref
       .where("course", '==', this.courseName)
       .limit(this.pageLength)
       .orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
       .startAfter(lastReview)
     ).get().subscribe(response => {
-      if (!response.docs.length){
+      if (!response.docs.length) {
         console.warn("Course Detail: No reviews exist")
         this.disableNext = true
         return
@@ -149,7 +153,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
-    }, error => {console.error("Course Detail: nextPage -", error)})
+    }, error => {
+      console.error("Course Detail: nextPage -", error)
+    })
   }
 
   getPrevPage(): void {
@@ -163,10 +169,12 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
 
   getNextPage(): void {
     this.disablePrev = false
-    if((this.pageNumber+1) * this.pageLength >= this.reviewData.length) {
+    if ((this.pageNumber + 1) * this.pageLength >= this.reviewData.length) {
       this.nextPage()
-    } else { this.pageNumber++ }
-    if ((this.pageNumber+1)*this.pageLength >= this.maxLength) {
+    } else {
+      this.pageNumber++
+    }
+    if ((this.pageNumber + 1) * this.pageLength >= this.maxLength) {
       this.disableNext = true
     }
     this.goToLocation("review-spacer")
@@ -191,7 +199,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   semesterMatch(season: string, semesters: string[]): string {
-    return semesters.filter(function(k){return ~k.indexOf(season)}).toString().split(',').join('\n')
+    return semesters.filter(function (k) {
+      return ~k.indexOf(season)
+    }).toString().split(',').join('\n')
   }
 
   newSort(event: any): void {
