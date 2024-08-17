@@ -102,6 +102,7 @@ export class EditCourseMetadataComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log("Testing");
     this.afs
       .collection("Class")
       .doc(this.courseData?.courseId)
@@ -116,15 +117,15 @@ export class EditCourseMetadataComponent implements OnInit {
         },
         computerScience: {
           category: this.courseService.website === this.courseService.MSCS ? this.f.category.value : this.courseData?.computerScience?.category,
-          isComputerScience: this.courseData?.computerScience.isComputerScience
+          isComputerScience: this.courseData?.computerScience?.isComputerScience ?? false
         },
         dataScience: {
-          category: this.courseService.website === this.courseService.MSDS ? this.f.category.value : this.courseData?.dataScience?.category,
-          isDataScience: this.courseData?.dataScience.isDataScience
+          category: this.courseService.website === this.courseService.MSDS ? this.f.category.value : this.courseData?.dataScience?.category ?? "",
+          isDataScience: this.courseData?.dataScience?.isDataScience ?? false
         },
         ai: {
-          category: this.courseService.website === this.courseService.MSAI ? this.f.category.value : this.courseData?.ai?.category,
-          isArtificialIntelligence: this.courseData?.ai.isArtificialIntelligence
+          category: this.courseService.website === this.courseService.MSAI ? this.f.category.value : this.courseData?.ai?.category ?? "",
+          isArtificialIntelligence: this.courseData?.ai?.isArtificialIntelligence ?? false
         },
         languages: this.f.languages.value,
         Prerequisites: this.f.prerequisitesBool.value === "true" ? this.f.prerequisites.value : "",
