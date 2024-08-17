@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {ActivatedRoute} from '@angular/router';
@@ -5,12 +6,33 @@ import {AuthService} from 'src/app/services/auth/auth.service';
 import {ClassService} from 'src/app/services/classes/class.service';
 import {ClassData} from 'src/app/shared/class/class';
 import {Review} from '../../shared/review/review';
+=======
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ClassService } from 'src/app/services/classes/class.service';
+import { ClassData } from 'src/app/shared/class/class';
+import { Review } from '../../shared/review/review';
+>>>>>>> main
 import firebase from 'firebase/compat/app'
+import { ReviewDetailComponent } from 'src/app/reviews/review-detail/review-detail.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { CourseCardComponent } from './course-card/course-card.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipListbox, MatChipOption } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.scss'],
+  standalone: true,
+  imports: [CommonModule, ReviewDetailComponent, MatOptionModule, MatSelectModule, CourseCardComponent, MatIconModule, MatOptionModule, MatTooltipModule, MatChipOption, MatChipListbox, RouterModule, MatButtonModule, FlexLayoutModule]
 })
 export class CourseDetailComponent implements OnInit, AfterViewInit {
   courseName: string = ""
@@ -51,10 +73,8 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     private afs: AngularFirestore,
     private auth: AuthService,
     private renderer: Renderer2,
-    private classService: ClassService,
-  ) {
-  }
-
+    private classService: ClassService
+  ) {}
   ngAfterViewInit(): void {
     this.updateGraphicStyles()
   }

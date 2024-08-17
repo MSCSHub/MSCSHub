@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { PandaPartyComponent } from '../panda-party/panda-party.component';
 
 @Component({
   selector: 'app-nothing-here',
   templateUrl: './nothing-here.component.html',
-  styleUrls: ['./nothing-here.component.scss']
+  styleUrls: ['./nothing-here.component.scss'],
+  standalone: true,
+  imports: [PandaPartyComponent]
 })
 export class NothingHereComponent implements OnInit {
   title = "You look lost..."

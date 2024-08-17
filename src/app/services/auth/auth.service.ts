@@ -14,8 +14,8 @@ import { FbUser } from '../../shared/user/user'
   providedIn: 'root'
 })
 export class AuthService {
-  private _userData: ReplaySubject<FbUser> = new ReplaySubject(1)
-  public userData: Observable<FbUser> = this._userData.asObservable()
+  private _userData: ReplaySubject<FbUser | undefined> = new ReplaySubject(1)
+  public userData: Observable<FbUser | undefined> = this._userData.asObservable()
   private _isLoggedIn: ReplaySubject<boolean> = new ReplaySubject(1)
   public isLoggedIn: Observable<boolean> = this._isLoggedIn.asObservable()
   private _isVerified: ReplaySubject<boolean> = new ReplaySubject(1)

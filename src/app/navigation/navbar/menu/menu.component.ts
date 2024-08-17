@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-nav-nodes',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+  standalone: true,
+  imports: [RouterModule, CommonModule, FlexLayoutModule, MatIconModule]
 })
 export class MenuComponent implements OnInit {
   public currentUrl: string = ''

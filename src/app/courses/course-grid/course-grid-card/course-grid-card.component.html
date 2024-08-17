@@ -1,15 +1,18 @@
-<mat-card >
+<mat-card appearance="outlined" >
   <mat-card-header>
     <mat-card-title>{{course.ClassName}}</mat-card-title>
     <mat-card-subtitle>{{course.CourseNumber}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <img src="{{course.GraphicThumbnail}}">
+    <img 
+      src="{{course.GraphicThumbnail}}"
+      class="course-thumbnail"
+    >
   </mat-card-content>
-  <mat-chip-list>
+  <mat-chip-listbox>
     <div *ngFor="let item of course.meta | keyvalue">
-      <mat-chip *ngIf="item.value">{{item.key | titlecase}}</mat-chip>
+      <mat-chip-option *ngIf="item.value">{{item.key | titlecase}}</mat-chip-option>
     </div>
-    <mat-chip *ngFor="let lang of course.languages">{{lang}}</mat-chip>
-  </mat-chip-list>
+    <mat-chip-option *ngFor="let lang of course.languages">{{lang}}</mat-chip-option>
+  </mat-chip-listbox>
 </mat-card>

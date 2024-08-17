@@ -8,8 +8,8 @@ describe('FaqEntryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FaqEntryComponent ]
-    })
+    declarations: [FaqEntryComponent]
+})
     .compileComponents();
   });
 

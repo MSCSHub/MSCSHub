@@ -3,11 +3,18 @@ import { Timestamp } from "@firebase/firestore-types";
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FaqService } from 'src/app/services/faq/faq-service.service';
 import { FaqEntry } from 'src/app/shared/faq/faq-entry';
+import { FaqEntryComponent } from '../faq-entry/faq-entry.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'faq-page',
   templateUrl: './faq-page.component.html',
-  styleUrls: ['./faq-page.component.scss']
+  styleUrls: ['./faq-page.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FaqEntryComponent, MatTooltipModule, MatExpansionModule, RouterModule]
 })
 export class FaqPageComponent implements OnInit {
   faqData: FaqEntry[] = []

@@ -1,12 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FbUser } from 'src/app/shared/user/user';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  styleUrls: ['./edit.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatOptionModule, MatSelectModule, ReactiveFormsModule, MatCardModule, MatDialogModule, MatInputModule, MatButtonModule, FlexLayoutModule]
 })
 export class EditComponent implements OnInit {
   editUserDataForm!: FormGroup
@@ -31,12 +42,12 @@ export class EditComponent implements OnInit {
     })
     this.auth.userData.subscribe(user => {
       this.userData = user
-      this.userInfo.a_firstName.value = user.firstName || 'null'
-      this.userInfo.b_lastName.value = user.lastName || 'null'
-      this.userInfo.c_firstSemester.value = user.firstSemester || 'null'
-      this.f.firstName.setValue(user.firstName)
-      this.f.lastName.setValue(user.lastName)
-      this.f.firstSemester.setValue(user.firstSemester)
+      this.userInfo.a_firstName.value = user?.firstName || 'null'
+      this.userInfo.b_lastName.value = user?.lastName || 'null'
+      this.userInfo.c_firstSemester.value = user?.firstSemester || 'null'
+      this.f.firstName.setValue(user?.firstName)
+      this.f.lastName.setValue(user?.lastName)
+      this.f.firstSemester.setValue(user?.firstSemester)
     })
   }
 

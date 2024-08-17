@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { DialogNotLoggedIn } from '../shared/dialog/not-logged-in/dialog-not-logged-in.component';
@@ -10,7 +10,7 @@ import { FbUser } from '../shared/user/user';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthguardGuard implements CanActivate {
+export class AuthguardGuard  {
   private isLoggedIn: boolean = false
   private isVerified: boolean = false
   private userData: FbUser | undefined

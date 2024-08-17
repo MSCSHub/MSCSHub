@@ -1,5 +1,5 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card class="box">
+    <mat-card class="box mat-card">
         <mat-card-header>
             <mat-card-title>{{headerText}}</mat-card-title>
             <p>
@@ -63,12 +63,13 @@
                     <p>1 - The Worst, 2 - Bad, 3 - Below Average, 4 - Average, 5 - Above Average, 6 - Good, 7 - The Best</p>
                     <p>Difficulty Rating: 1 - Easiest Thing Ever, 7 - Makes You Want To Cry</p>
                 </div>
-                <mat-form-field *ngFor="let field of fields" class="form-field-full-width">
-                    <input matInput type="number" placeholder="{{ field.title }}"
-                           required max="{{ field.max }}" min="{{ field.min }}"
-                            formControlName="{{ field.formName }}">
-                    <mat-hint>{{ field.hint }}</mat-hint>
-                </mat-form-field>
+                <div *ngFor="let field of fields">
+                    <mat-form-field class="number-form-field">
+                        <mat-label>{{ field.title }}</mat-label>
+                        <input matInput #input required type="number" formControlName="{{ field.formName }}" max="{{ field.max }}" min="{{ field.min }}" />
+                        <mat-hint>{{ field.hint }}</mat-hint>
+                    </mat-form-field>
+                </div>
                 <!-- In case you ever want to use a slider for input, here's a good starting point
                 <div class="review-slider-container">
                     <mat-label class="review-label">Difficulty:</mat-label>

@@ -27,7 +27,7 @@ import { FaqPageComponent } from './faq/faq-page/faq-page.component';
 import { FaqEntryComponent } from './faq/faq-entry/faq-entry.component';
 import { CourseMapComponent } from './courses/course-map/course-map.component';
 
-const routes: Routes = [
+export const APP_ROUTES: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'home', redirectTo: '', pathMatch: 'full'},
   {path: 'courses', component: CourseListViewComponent},
@@ -56,9 +56,3 @@ const routes: Routes = [
   {path: 'courseMap', component: CourseMapComponent},
   {path: '**', component: NothingHereComponent},
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
