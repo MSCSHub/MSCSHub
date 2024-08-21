@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
       this.error = "Your account information was entered incorrectly."
     // } else if(error.code === "auth/wrong-password") {
     } else {
-      this.error = error.message
+      this.error = "Unknown Error Occurred"
     }
   }
 

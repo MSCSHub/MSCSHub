@@ -75,7 +75,12 @@ export class RegisterComponent implements OnInit {
       .then(() => {this.loading = false})
       .catch(error => {
         this.loading = false
-        this.error = error
+        if (error.code === "auth/email-already-in-use") {
+          this.error = "This email is already in use. Please sign-in or reset your password."
+        } else {
+          this.error = "Unknown Error Occurred"
+        }
+
       })
   }
 }
