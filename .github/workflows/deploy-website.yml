@@ -1,23 +1,25 @@
 name: Deploy GH-Pages
-# on:
-#   push:
-#     branches:
-#       - master
-# Start with Pull Request for Testing
-on: pull_request
+on:
+  push:
+    branches:
+      - master
 permissions:
-  checks: write
-  contents: read
-  pull-requests: write
+  contents: write
+# Start with Pull Request for Testing
 jobs:
-  build_and_deploy:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
     steps:
-      - uses: actions/checkout@v4
-      - run: npm install
-      - run: npm run build
-      - run: npm run deploy-all
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          ng build --configuration=mscs
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/utmscs
