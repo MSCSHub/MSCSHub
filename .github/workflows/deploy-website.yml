@@ -2,7 +2,7 @@ name: Deploy GH-Pages
 on:
   push:
     branches:
-      - master
+      - main
 permissions:
   contents: write
 # Start with Pull Request for Testing
