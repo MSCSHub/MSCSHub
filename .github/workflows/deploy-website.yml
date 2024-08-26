@@ -1,0 +1,19 @@
+name: Deploy GH-Pages
+# on:
+#   push:
+#     branches:
+#       - master
+# Start with Pull Request for Testing
+on: pull_request
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm run build
+      - run: npm run deploy-all
