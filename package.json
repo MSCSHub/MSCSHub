@@ -13,9 +13,9 @@
     "ng-deploy": "ng deploy",
     "deploy": "npm run build && npm run deploy-both && npm run doc",
     "doc": "(npm run compodoc) && (cd documentation && git add . && git diff-index --quiet HEAD || (git commit -a -m 'Updated' && git push))",
-    "deploy-mscs": "ng build --configuration=mscs && ng deploy --base-href=https://mscshub.com --cname=mscshub.com --repo=git@github.com:MSCSHub/MSCSHub.git --no-build --no-silent",
-    "deploy-msds": "ng build --configuration=msds && ng deploy --base-href=https://msdshub.com --cname=msdshub.com --repo=git@github.com:MSCSHub/MSDSHub.git --no-build --no-silent",
-    "deploy-msai": "ng build --configuration=msai && ng deploy --base-href=https://msaihub.com --cname=msaihub.com --repo=git@github.com:MSCSHub/MSAIHub.git --no-build --no-silent",
+    "deploy-mscs": "ng build --configuration=mscs && firebase deploy --only hosting:utmscs",
+    "deploy-msds": "ng build --configuration=msds --output-path dist/msds && firebase deploy --only hosting:msds",
+    "deploy-msai": "ng build --configuration=msai --output-path dist/msai && firebase deploy --only hosting:msai",
     "deploy-all": "npm run deploy-mscs && npm run deploy-msds && npm run deploy-msai"
   },
   "private": true,

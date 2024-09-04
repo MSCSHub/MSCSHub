@@ -9,8 +9,35 @@
       "npm --prefix \"$RESOURCE_DIR\" run build"
     ]
   },
-  "hosting": {
-    "source": ".",
+  "hosting": [
+    {
+      "target": "utmscs",
+      "public": "dist/utmscs/browser",
+
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "frameworksBackend": {
+        "region": "us-central1"
+      }
+  },
+  {
+    "target": "msds",
+    "public": "dist/msds/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
+  },
+  {
+    "target": "msai",
+    "public": "dist/msai/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -20,4 +47,5 @@
       "region": "us-central1"
     }
   }
+]
 }
