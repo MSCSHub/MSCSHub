@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CourseCardComponent } from 'src/app/courses/course-detail/course-card/course-card.component';
+import { CourseDetailComponent } from 'src/app/courses/course-detail/course-detail.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
@@ -71,6 +73,7 @@ export class CreateReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const courseName: string = this.route.snapshot.paramMap.get('course') || '';
     this.reviewId = this.route.snapshot.paramMap.get('id') || ""
     this.courseService.classes.subscribe(data => {
       this.courses = data
@@ -80,7 +83,7 @@ export class CreateReviewComponent implements OnInit {
       this.userData = data
       this.getUserReviews()
     })
-    this.initializeReviewForm()
+    this.initializeReviewForm(courseName)
     this.loadReview()
   }
 
@@ -107,10 +110,10 @@ export class CreateReviewComponent implements OnInit {
     }, error => {console.error("Create Review:", error)})
   }
 
-  initializeReviewForm() {
+  initializeReviewForm(courseName: string) {
     this.reviewForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      course: ['', Validators.required],
+      title: ['', Validators.required],    
+      course: [courseName, Validators.required],
       semester: ['', Validators.required],
       year: ['', [Validators.required, Validators.max(2099), Validators.min(2019)]],
       review: ['Pros:\n1. \n2. \n3. \n\nCons:\n1. \n2. \n3. \n\nDetailed Review:\n', Validators.required],

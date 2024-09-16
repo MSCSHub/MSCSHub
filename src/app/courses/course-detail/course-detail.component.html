@@ -2,6 +2,9 @@
   <div class="image-container" #imageContainer>
     <div class="gradient-container" #gradientContainer>
       <div>
+        <mat-chip-option class="edit-chip" [routerLink]="['/createReview', { course: courseName }]" >
+          Create Review
+        </mat-chip-option>
         <div fxFlex></div>
         <mat-chip-option class="edit-chip" routerLink="/courses/edit/{{courseName}}">
           Edit<mat-icon class="tab" matTooltip="Edit course details">mode_edit</mat-icon>
