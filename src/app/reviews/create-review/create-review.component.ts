@@ -73,7 +73,7 @@ export class CreateReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const courseName: string = this.route.snapshot.paramMap.get('className') || '';
+    const courseName: string = this.route.snapshot.paramMap.get('course') || '';
     this.reviewId = this.route.snapshot.paramMap.get('id') || ""
     this.courseService.classes.subscribe(data => {
       this.courses = data
@@ -83,7 +83,7 @@ export class CreateReviewComponent implements OnInit {
       this.userData = data
       this.getUserReviews()
     })
-    this.initializeReviewForm('')
+    this.initializeReviewForm(courseName)
     this.loadReview()
   }
 
@@ -111,11 +111,6 @@ export class CreateReviewComponent implements OnInit {
   }
 
   initializeReviewForm(courseName: string) {
-    if(courseName==''){
-      courseName = '';
-    }else{
-      courseName = "TEst";
-    }
     this.reviewForm = this.formBuilder.group({
       title: ['', Validators.required],    
       course: [courseName, Validators.required],
