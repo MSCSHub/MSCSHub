@@ -1,11 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { reviewFeedbackType } from 'src/app/shared/review/review';
 
 @Component({
   selector: 'app-review-helpfulness',
   templateUrl: './review-helpfulness.component.html',
-  styleUrls: ['./review-helpfulness.component.scss']
+  styleUrls: ['./review-helpfulness.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatButtonModule, MatButtonToggleModule, MatTooltipModule]
 })
 export class ReviewHelpfulnessComponent {
   @Input() isLoggedIn: boolean = false

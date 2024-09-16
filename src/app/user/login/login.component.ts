@@ -1,12 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, FlexLayoutModule, MatButtonModule, MatInputModule, RouterModule]
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup
@@ -60,7 +68,7 @@ export class LoginComponent implements OnInit {
       this.error = "Your account information was entered incorrectly."
     // } else if(error.code === "auth/wrong-password") {
     } else {
-      this.error = error.message
+      this.error = "Unknown Error Occurred"
     }
   }
 

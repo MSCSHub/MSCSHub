@@ -1,39 +1,39 @@
 <div class="content">
   <div class="filter-cards">
-    <mat-card>
-      <mat-card-subtitle>Filter by Category:</mat-card-subtitle>
-      <mat-chip-list multiple>
-        <mat-chip [selected]="isSelected(category)" 
+    <mat-card appearance="outlined">
+      <mat-card-subtitle class="filter-title">Filter by Category:</mat-card-subtitle>
+      <mat-chip-listbox multiple class="filter-list">
+        <mat-chip-option [selected]="isSelected(category)" 
                   (click)="toggleSelection(category)" 
                   *ngFor="let category of categories">
                   {{category | titlecase}}
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-option>
+      </mat-chip-listbox>
     </mat-card>
-    <mat-card>
-      <mat-card-subtitle>Filter by Language:</mat-card-subtitle>
-      <mat-chip-list multiple>
-        <mat-chip [selected]="isSelected(language)"
+    <mat-card appearance="outlined">
+      <mat-card-subtitle class="filter-title">Filter by Language:</mat-card-subtitle>
+      <mat-chip-listbox multiple class="filter-list">
+        <mat-chip-option [selected]="isSelected(language)"
                   (click)="toggleSelection(language)" 
                   *ngFor="let language of languages">
                   {{language}}
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-option>
+      </mat-chip-listbox>
     </mat-card>
   </div>
   <div class="course-grid-container">
-    <mat-card *ngFor="let class of visibleClasses" [routerLink]="['/courses/', class.ClassName]">
+    <mat-card appearance="outlined" *ngFor="let class of visibleClasses" [routerLink]="['/courses/', class.ClassName]">
       <mat-card-header>
         <mat-card-title>{{class.ClassName}}</mat-card-title>
         <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
-        <img src="{{class.GraphicThumbnail}}">
+      <mat-card-content class="course-thumbnail-wrapper">
+        <img class="course-thumbnail" src="{{class.GraphicThumbnail}}">
       </mat-card-content>
-      <mat-chip-list>
-        <mat-chip *ngIf="class.category">{{class.category | titlecase}}</mat-chip>
-        <mat-chip *ngFor="let lang of class.languages">{{lang}}</mat-chip>
-      </mat-chip-list>
+      <mat-chip-listbox class="course-card-tag-list">
+        <mat-chip-option *ngIf="class.category">{{class.category | titlecase}}</mat-chip-option>
+        <mat-chip-option *ngFor="let lang of class.languages">{{lang}}</mat-chip-option>
+      </mat-chip-listbox>
     </mat-card>
   </div>
 </div>

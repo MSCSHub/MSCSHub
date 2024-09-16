@@ -8,8 +8,8 @@ describe('StarRatingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StarRatingComponent ]
-    })
+    declarations: [StarRatingComponent]
+})
     .compileComponents();
   });
 

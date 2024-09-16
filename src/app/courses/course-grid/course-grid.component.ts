@@ -1,11 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from '../../shared/class/class'
+import { MatCardModule } from '@angular/material/card';
+import { MatChipOption, MatChipsModule } from '@angular/material/chips';
+import { MatCommonModule, MatOptionModule } from '@angular/material/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-grid',
   templateUrl: './course-grid.component.html',
-  styleUrls: ['./course-grid.component.scss']
+  styleUrls: ['./course-grid.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatChipsModule, MatOptionModule, MatCommonModule, RouterModule, MatChipOption],
+  providers: [TitleCasePipe]
 })
 export class CourseGridComponent implements OnInit {
   classes: ClassData[] = []
@@ -23,15 +31,27 @@ export class CourseGridComponent implements OnInit {
     if(this.courses.website == "dataScience") {
       this.categories = ["foundations", "elective"]
       this.languages = ['Python', 'R', 'No Code']
+    } else if (this.courses.website === "ai") {
+      this.categories = ["foundations", "elective"]
+      this.languages = ['Python', 'R', 'No Code']
     }
   }
 
   ngOnInit(): void {
     this.courses.classes.subscribe(data => {
       this.classes = data.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
+      this.classes.forEach(data => {
+        if (this.courses.website === "dataScience") {
+          data.category = data?.dataScience?.category ?? data.category
+        } else if (this.courses.website === "ai") {
+          data.category = data?.ai?.category ?? data.category
+        } else {
+          data.category = data?.computerScience?.category ?? data.category
+        }
       this.filterItems()
     })
     document.getElementsByClassName("mat-drawer-content")[0].scroll(0,0)
+    })
   }
 
   isSelected(item: string): boolean {

@@ -12,7 +12,7 @@ The Hub is a website that allows students in UT's MSCS and MSDS to review course
 
 Computer Science - [MSCSHub.com](https://mscshub.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data Science - [MSDSHub.com](https://msdshub.com)
 
-Each website is tailored to the indivual program but is all run using the same frontend and backend codebase. The entire frontend is built using Angular v11. The backend is serverless and runs off of firebase with node.js functions.
+Each website is tailored to the indivual program but is all run using the same frontend and backend codebase. The entire frontend is built using Angular v14. The backend is serverless and runs off of firebase with node.js functions.
 
 ## Prerequisites
 
@@ -35,6 +35,8 @@ ng serve
 
 Note: The `npm install` step will install all of the required dependencies, including Angular `ng`. If `ng serve` does not work at first you may need to try performing a global install.
 
+Note: Current Node version: 14.15.0 Current Angular CLI Version: 14.2.13
+
 ## Using MSCS Hub
 
 ### Local Development
@@ -42,8 +44,8 @@ After running `ng serve` you will have a local version of `MSCSHub.com` running 
 
 Please note that the backend data is shared regardless if you are running locally or in production. You will need a MSCS Hub account. 
 
-### Deploying to MSCSHub.com and MSDSHub.com
-Use the command `npm run deploy` to run the deployment script that will update both MSCSHub.com and MSDSHub.com. If you want to see more about what's happening behind the scenes when you run this command, take a look at the `scripts` section of `package.json`.
+### Deploying
+When you create a PR a demo site for MSCSHub will be auto built as part of the PR. This will allow you to check your changes. Once you merge to master an auto deployment job will be triggered for MSCS, MSDS, and MSAI. 
 
 ## Documentation
 The documentation for MSCSHub.com is hosted at https://mscshub.github.io/MSCSHub-documentation/. This is generated automatically using `compodoc`. It works by automatically parsing the files in the codebase and uses the inline comments to create a fully functional website for documentation.
@@ -59,8 +61,9 @@ To contribute to MSCSHub, follow these steps:
 4. Make your changes and commit them: `git commit -m '<commit_message>'`
 5. Push your changes to the MSCSHub repo: `git push`
 6. Create the pull request.
-7. Get signoff from the required reviewers and merge the changes
-8. The repo owner (@EricPryzant or @estraw1059) will deploy the changes once the PR is merged
+7. Check your changes in test site deployed with the PR. 
+8. Get signoff from the required reviewers and merge the changes
+9. Auto Deployment will be triggered by a merge to master. 
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 

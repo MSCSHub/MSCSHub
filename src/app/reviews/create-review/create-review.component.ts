@@ -1,7 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatOptionModule } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseCardComponent } from 'src/app/courses/course-detail/course-card/course-card.component';
 import { CourseDetailComponent } from 'src/app/courses/course-detail/course-detail.component';
@@ -10,13 +19,15 @@ import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from 'src/app/shared/dialog/review-too-short/dialog-review-too-short.component';
-import { Review } from 'src/app/shared/review/review';
+import { Review, reviewFeedbackType } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
 
 @Component({
   selector: 'app-create-review',
   templateUrl: './create-review.component.html',
-  styleUrls: ['./create-review.component.scss']
+  styleUrls: ['./create-review.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatTooltipModule, MatOptionModule, MatCardModule, FlexLayoutModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule]
 })
 export class CreateReviewComponent implements OnInit {
   headerText: string = "Create New Review"
@@ -50,7 +61,7 @@ export class CreateReviewComponent implements OnInit {
   ]
   recommendedWordCount: number = 100
   wordCountEnforced: boolean = true
-  
+
   constructor(
     private courseService: ClassService,
     private formBuilder: FormBuilder,
@@ -87,7 +98,7 @@ export class CreateReviewComponent implements OnInit {
   }
 
   getUserReviews(): void {
-    this.afs.collection('Reviews', ref => 
+    this.afs.collection('Reviews', ref =>
       ref.where("userId", '==', this.userData?.uid)
     ).get().subscribe(response => {
       if (!response.docs.length) return
@@ -131,7 +142,7 @@ export class CreateReviewComponent implements OnInit {
     })
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
-      this.reviewForm.controls['userId'].setValue(user.uid)
+      this.reviewForm.controls['userId'].setValue(user?.uid)
     })
   }
 
@@ -150,7 +161,7 @@ export class CreateReviewComponent implements OnInit {
     else if(course.computerScience.isComputerScience) this.f.degreeProgram.setValue(1)
     else this.f.degreeProgram.setValue(0)
   }
-    
+
   countWords(s: string){
     s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
     s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
@@ -178,6 +189,7 @@ export class CreateReviewComponent implements OnInit {
         .doc(this.reviewId)
         .update(this.reviewForm.value)
         .then(result => {
+          this.auth.reviewFeedback(this.reviewId, reviewFeedbackType.positive);
           this.loading = false
           this.openSubmittedDialog()
         }, error => {
@@ -189,6 +201,7 @@ export class CreateReviewComponent implements OnInit {
       this.afs.collection('Reviews')
         .add(this.reviewForm.value)
         .then(result => {
+          this.auth.reviewFeedback(result.id, reviewFeedbackType.positive);
           this.loading = false
           this.openSubmittedDialog()
         }, error => {
@@ -197,6 +210,7 @@ export class CreateReviewComponent implements OnInit {
           this.error = error.message
         })
     }
+
   }
 
   openSubmittedDialog() {

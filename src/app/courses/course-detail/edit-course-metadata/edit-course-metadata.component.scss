@@ -1,6 +1,11 @@
-.mat-card {
-    max-width: 500px;
+.mat-mdc-card {
+    max-width: 800px;
 }
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    font-size: 75%;
+    color: #545454;
+  }
 
 .edit-metadata-divider {
     margin: 20px 0px !important;

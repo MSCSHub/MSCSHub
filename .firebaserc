@@ -7,8 +7,16 @@
       "hosting": {
         "utmscs": [
           "utmcs-1bcf2"
+        ],
+        "msds": [
+          "msds-website"
+        ],
+        "msai": [
+          "msai-website"
         ]
       }
     }
-  }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

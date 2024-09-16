@@ -1,13 +1,19 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from '../../shared/class/class'
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.scss']
+  styleUrls: ['./course-list.component.scss'],
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatIconModule, MatTooltipModule, MatTableModule, MatSortModule]
 })
 export class CourseListComponent implements AfterViewInit {
   @Input() scale: number = 7

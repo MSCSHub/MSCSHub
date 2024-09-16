@@ -1,5 +1,5 @@
-::ng-deep .mat-cell,
-::ng-deep .mat-header-cell {
+::ng-deep .mat-mdc-cell,
+::ng-deep .mat-mdc-header-cell {
     word-wrap: initial;
     display: table-cell;
     padding: 0px 5px !important;
@@ -20,11 +20,11 @@ th {
   font-weight: bold;
 }
 
-::ng-deep .mat-tooltip  {
+::ng-deep .mat-mdc-tooltip  {
   white-space: pre-line !important;
 }
 
-tr.mat-row:hover {
+tr.mat-mdc-row:hover {
   background-color: #F5F5F5;
   cursor: pointer;
 }
