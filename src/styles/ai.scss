@@ -10,12 +10,9 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
-$my-primary: mat.m2-define-palette(mat.$m2-gray-palette, 700, 600, 800);
-$my-accent:  mat.m2-define-palette(mat.$m2-red-palette, 700, 600, 800);
+$my-primary: mat.m2-define-palette(mat.$m2-red-palette, 700, 600, 800);
+$my-accent:  mat.m2-define-palette(mat.$m2-blue-palette, 700, 600, 800);
 $my-approve: mat.m2-define-palette(mat.$m2-blue-palette, 700, 600, 800);
-
-// The warn palette is optional (defaults to red).
-$my-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 $navbar-color: mat.m2-define-palette(mat.$m2-gray-palette, 800);
 
@@ -25,7 +22,6 @@ $my-theme: mat.m2-define-light-theme((
  color: (
    primary: $my-primary,
    accent: $my-accent,
-   warn: $my-warn,
    approve: $my-approve
  ),
  typography: mat.m2-define-typography-config(),
