@@ -10,22 +10,33 @@
     ]
   },
   "hosting": [
-    {
-      "target": "utmscs",
-      "public": "dist/utmscs/browser",
-
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "frameworksBackend": {
-        "region": "us-central1"
+  {
+    "target": "utmscs",
+    "public": "dist/utmscs/browser",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
   },
   {
     "target": "msds",
     "public": "dist/msds/browser",
+      "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -38,6 +49,12 @@
   {
     "target": "msai",
     "public": "dist/msai/browser",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
