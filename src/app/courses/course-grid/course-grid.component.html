@@ -22,18 +22,20 @@
     </mat-card>
   </div>
   <div class="course-grid-container">
-    <mat-card appearance="outlined" *ngFor="let class of visibleClasses" [routerLink]="['/courses/', class.ClassName]">
-      <mat-card-header>
-        <mat-card-title>{{class.ClassName}}</mat-card-title>
-        <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="course-thumbnail-wrapper">
-        <img class="course-thumbnail" src="{{class.GraphicThumbnail}}">
-      </mat-card-content>
-      <mat-chip-listbox class="course-card-tag-list">
-        <mat-chip-option *ngIf="class.category">{{class.category | titlecase}}</mat-chip-option>
-        <mat-chip-option *ngFor="let lang of class.languages">{{lang}}</mat-chip-option>
-      </mat-chip-listbox>
+    <mat-card appearance="outlined" *ngFor="let class of visibleClasses">
+      <a [routerLink]="['/courses/', class.ClassName]">
+        <mat-card-header>
+          <mat-card-title>{{class.ClassName}}</mat-card-title>
+          <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="course-thumbnail-wrapper">
+          <img class="course-thumbnail" src="{{class.GraphicThumbnail}}">
+        </mat-card-content>
+        <mat-chip-listbox class="course-card-tag-list">
+          <mat-chip-option *ngIf="class.category">{{class.category | titlecase}}</mat-chip-option>
+          <mat-chip-option *ngFor="let lang of class.languages">{{lang}}</mat-chip-option>
+        </mat-chip-listbox>
+      </a>
     </mat-card>
   </div>
 </div>
