@@ -70,3 +70,13 @@ tr.mat-mdc-row:hover {
   color: #fff;
   background: #98482b;
 }
+
+.row-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.row-link:hover {
+  background: rgba(0, 0, 0, 0.04); /* same hover effect as mat-row */
+}
